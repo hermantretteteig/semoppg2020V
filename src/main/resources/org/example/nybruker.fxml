@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="400.0" maxWidth="398.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="374.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.NybrukerController">
+   <children>
+      <TextField layoutX="172.0" layoutY="89.0" />
+      <PasswordField layoutX="172.0" layoutY="172.0" />
+      <TextField layoutX="172.0" layoutY="131.0" />
+      <Label layoutX="36.0" layoutY="93.0" text="Fornavn:" />
+      <Label layoutX="36.0" layoutY="135.0" text="Etternavn:" />
+      <Label layoutX="37.0" layoutY="176.0" text="Brukernavn:" />
+      <Label layoutX="37.0" layoutY="218.0" text="Passord:" />
+      <PasswordField layoutX="172.0" layoutY="214.0" />
+      <PasswordField layoutX="172.0" layoutY="254.0" />
+      <Button fx:id="registrer" layoutX="232.0" layoutY="295.0" mnemonicParsing="false" onAction="#registrerAction" text="Lag ny bruker" textFill="#00900c" />
+      <Label layoutX="37.0" layoutY="258.0" text="Gjenta passord:" />
+      <Label layoutX="36.0" layoutY="34.0" prefHeight="38.0" prefWidth="282.0" text="Registrer en ny bruker:">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="avslutt" layoutX="38.0" layoutY="295.0" mnemonicParsing="false" onAction="#avsluttAction" text="Avbryt" textFill="#dd0000" />
+   </children>
+</Pane>

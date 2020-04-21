@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.LogginnController">
+   <children>
+      <TabPane layoutX="-1.0" prefHeight="600.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Bruker">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <PasswordField layoutX="426.0" layoutY="264.0" />
+                        <TextField layoutX="426.0" layoutY="214.0" />
+                        <Label layoutX="426.0" layoutY="194.0" prefHeight="17.0" prefWidth="77.0" text="Brukernavn:" />
+                        <Label layoutX="426.0" layoutY="246.0" prefHeight="17.0" prefWidth="77.0" text="Passord:" />
+                        <Button layoutX="426.0" layoutY="308.0" mnemonicParsing="false" onAction="#logginn" prefHeight="25.0" prefWidth="150.0" text="Logg inn" />
+                        <Button layoutX="425.0" layoutY="352.0" mnemonicParsing="false" onAction="#nyBruker" prefHeight="25.0" prefWidth="150.0" text="Ny bruker" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Administrator">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <PasswordField layoutX="426.0" layoutY="264.0" />
+                        <TextField layoutX="426.0" layoutY="214.0" />
+                        <Label layoutX="426.0" layoutY="194.0" prefHeight="17.0" prefWidth="77.0" text="Brukernavn:" />
+                        <Label layoutX="426.0" layoutY="246.0" prefHeight="17.0" prefWidth="77.0" text="Passord:" />
+                        <Button layoutX="426.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Logg inn" />
+                    </children>
+                </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

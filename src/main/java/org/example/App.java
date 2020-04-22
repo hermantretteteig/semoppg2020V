@@ -42,7 +42,7 @@ public class App extends Application {
 
     public static void nybruker() throws IOException {
         Stage stage = new Stage();
-        scene = new Scene(loadFXML("nybruker"), 350, 350);
+        scene = new Scene(loadFXML("nybruker"), 344, 374);
 
         stage.setTitle("Ny kunde");
         stage.setScene(scene);

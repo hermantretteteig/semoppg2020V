@@ -1,30 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="400.0" maxWidth="398.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="374.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.NybrukerController">
    <children>
-      <TextField layoutX="172.0" layoutY="89.0" />
-      <PasswordField layoutX="172.0" layoutY="172.0" />
-      <TextField layoutX="172.0" layoutY="131.0" />
-      <Label layoutX="36.0" layoutY="93.0" text="Fornavn:" />
-      <Label layoutX="36.0" layoutY="135.0" text="Etternavn:" />
-      <Label layoutX="37.0" layoutY="176.0" text="Brukernavn:" />
-      <Label layoutX="37.0" layoutY="218.0" text="Passord:" />
-      <PasswordField layoutX="172.0" layoutY="214.0" />
-      <PasswordField layoutX="172.0" layoutY="254.0" />
-      <Button fx:id="registrer" layoutX="232.0" layoutY="295.0" mnemonicParsing="false" onAction="#registrerAction" text="Lag ny bruker" textFill="#00900c" />
-      <Label layoutX="37.0" layoutY="258.0" text="Gjenta passord:" />
-      <Label layoutX="36.0" layoutY="34.0" prefHeight="38.0" prefWidth="282.0" text="Registrer en ny bruker:">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
-      <Button fx:id="avslutt" layoutX="38.0" layoutY="295.0" mnemonicParsing="false" onAction="#avsluttAction" text="Avbryt" textFill="#dd0000" />
+      <GridPane layoutX="2.0" prefHeight="374.0" prefWidth="344.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button fx:id="registrer" mnemonicParsing="false" onAction="#registrerAction" text="Lag ny bruker" textFill="#00900c" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Button fx:id="avslutt" mnemonicParsing="false" onAction="#avsluttAction" text="Avbryt" textFill="#dd0000" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Button>
+            <Label text="Gjenta passord:" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Passord:" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Brukernavn:" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label prefHeight="17.0" prefWidth="62.0" text="Etternavn:" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Fornavn:" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label prefHeight="38.0" prefWidth="242.0" text="Registrer en ny bruker:" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblFornavnFeil" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="88.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="60.0" top="42.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="lblEttr" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="88.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="60.0" top="42.0" />
+               </GridPane.margin>
+            </Label>
+            <Label nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="88.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="60.0" top="42.0" />
+               </GridPane.margin>
+            </Label>
+            <Label nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="88.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="60.0" top="42.0" />
+               </GridPane.margin>
+            </Label>
+            <Label nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="88.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="60.0" top="42.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+      </GridPane>
    </children>
 </Pane>

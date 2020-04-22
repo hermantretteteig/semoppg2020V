@@ -7,15 +7,17 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class NybrukerController {
-
+    @FXML private javafx.scene.control.Button registrer;
     @FXML private javafx.scene.control.Button avslutt;
+
+
     @FXML
     private void avsluttAction(){
         Stage stage = (Stage) avslutt.getScene().getWindow();
         stage.close();
     }
 
-    @FXML private javafx.scene.control.Button registrer;
+
     @FXML
     private void registrerAction(){
         Stage stage = (Stage) registrer.getScene().getWindow();

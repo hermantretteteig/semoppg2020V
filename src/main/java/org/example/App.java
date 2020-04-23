@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 
 //Halla, funker fett
-// Ny test - Salem Hamidi sdfhdah
+// Ny test - Salem Hamidi sdfhdah test2
 
 public class App extends Application {
     static AnchorPane root;

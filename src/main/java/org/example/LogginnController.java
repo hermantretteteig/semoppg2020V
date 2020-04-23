@@ -3,13 +3,6 @@ package org.example;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 public class LogginnController  {
 
@@ -20,7 +13,7 @@ public class LogginnController  {
     @FXML
     private void nyBruker() throws IOException {
         //App.setRoot("nybruker");
-        App.nybruker();
+        App.nykunde();
 
         //App.scene.set
         /*Pane pane = new Pane();

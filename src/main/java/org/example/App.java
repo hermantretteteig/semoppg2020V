@@ -27,6 +27,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("logginn"));
         stage.setScene(scene);
         stage.setTitle("Datamaskinkonfiguering");
+        stage.setResizable(false);
         stage.show();
 
     }
@@ -41,13 +42,14 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
-    public static void nybruker() throws IOException {
+    public static void nykunde() throws IOException {
         Stage stage = new Stage();
-        scene = new Scene(loadFXML("nybruker"), 344, 374);
+        scene = new Scene(loadFXML("nykunde"), 344, 374);
 
         stage.setTitle("Ny kunde");
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.setAlwaysOnTop(true);
         stage.show();
     }
 

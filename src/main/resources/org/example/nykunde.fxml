@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="400.0" maxWidth="398.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="374.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.NybrukerController">
+<Pane maxHeight="400.0" maxWidth="398.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="374.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.NykundeController">
    <children>
       <GridPane layoutX="2.0" prefHeight="374.0" prefWidth="344.0">
         <columnConstraints>
@@ -28,9 +28,9 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="txtFornavn" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtEtternavn" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtBrukernavn" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <PasswordField fx:id="txtPassord" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <PasswordField fx:id="txtGjentaPassord" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Button fx:id="registrer" mnemonicParsing="false" onAction="#registrerAction" text="Lag ny bruker" textFill="#00900c" GridPane.columnIndex="1" GridPane.rowIndex="6">
@@ -109,7 +109,7 @@
             </Label>
          </children>
       </GridPane>
-      <Label layoutX="21.0" layoutY="16.0" prefHeight="38.0" prefWidth="260.0" text="Registrer en ny bruker:">
+      <Label layoutX="21.0" layoutY="16.0" prefHeight="38.0" prefWidth="260.0" text="Registrer en ny kunde:">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

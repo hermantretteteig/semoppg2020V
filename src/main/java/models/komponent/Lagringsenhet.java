@@ -46,4 +46,14 @@ public class Lagringsenhet extends Komponent{
     public void setSkriveHastighet(String skriveHastighet) {
         this.skriveHastighet = skriveHastighet;
     }
+
+    @Override
+    public String toString() {
+        return "Lagringsenhet{" +
+                "format='" + format + '\'' +
+                ", gb=" + gb +
+                ", leseHastighet='" + leseHastighet + '\'' +
+                ", skriveHastighet='" + skriveHastighet + '\'' +
+                '}';
+    }
 }

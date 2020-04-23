@@ -25,4 +25,12 @@ public class Tastatur extends Komponent{
     public void setNumpad(boolean numpad) {
         this.numpad = numpad;
     }
+
+    @Override
+    public String toString() {
+        return "Tastatur{" +
+                "trodlos=" + trodlos +
+                ", numpad=" + numpad +
+                '}';
+    }
 }

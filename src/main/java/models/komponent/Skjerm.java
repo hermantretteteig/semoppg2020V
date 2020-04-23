@@ -37,4 +37,13 @@ public class Skjerm extends Komponent{
     public void setMin4k(boolean min4k) {
         this.min4k = min4k;
     }
+
+    @Override
+    public String toString() {
+        return "Skjerm{" +
+                "pixelBredde=" + pixelBredde +
+                ", pixelHoyde=" + pixelHoyde +
+                ", min4k=" + min4k +
+                '}';
+    }
 }

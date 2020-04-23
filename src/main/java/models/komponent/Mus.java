@@ -25,4 +25,12 @@ public class Mus extends Komponent {
     public void setFarge(String farge) {
         this.farge = farge;
     }
+
+    @Override
+    public String toString() {
+        return "Mus{" +
+                "trodlos=" + trodlos +
+                ", farge='" + farge + '\'' +
+                '}';
+    }
 }

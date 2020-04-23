@@ -1,6 +1,6 @@
 package models;
 
-public class Kunde extends Person{
+public class Kunde extends Person {
     private String kundenummer;
     private String epost;
 

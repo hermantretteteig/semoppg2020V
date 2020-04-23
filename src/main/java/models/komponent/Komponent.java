@@ -1,7 +1,11 @@
 package models.komponent;
 
+import java.io.Serializable;
+
 //Superklasse som alle andre varer arver fra.
-public class Komponent {
+public class Komponent implements Serializable {
+    private static final long serialVersionUID = 1;
+
     private String modell;
     private double pris;
     private String varenr;

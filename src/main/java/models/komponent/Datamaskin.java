@@ -1,6 +1,10 @@
 package models.komponent;
 
-public class Datamaskin{
+import java.io.Serializable;
+
+public class Datamaskin implements Serializable {
+    private static final long serialVersionUID = 1;
+
     private Lagringsenhet lagringsenhet;
     private Skjerm skjerm;
     private Mus mus;
@@ -9,7 +13,7 @@ public class Datamaskin{
     private Tastatur tastatur;
 
 
-    public Datamaskin(Lagringsenhet lagringsenhet, Skjerm skjerm, Mus mus, Prosessor prosessor, Skjermkort skjermkort, Tastatur tastatur) {
+    public Datamaskin(Lagringsenhet lagringsenhet, Mus mus, Prosessor prosessor, Skjerm skjerm, Skjermkort skjermkort, Tastatur tastatur) {
         this.lagringsenhet = lagringsenhet;
         this.skjerm = skjerm;
         this.mus = mus;
@@ -64,5 +68,17 @@ public class Datamaskin{
 
     public void setTastatur(Tastatur tastatur) {
         this.tastatur = tastatur;
+    }
+
+    @Override
+    public String toString() {
+        return "Datamaskin{" +
+                "lagringsenhet=" + lagringsenhet +
+                ", skjerm=" + skjerm +
+                ", mus=" + mus +
+                ", prosessor=" + prosessor +
+                ", skjermkort=" + skjermkort +
+                ", tastatur=" + tastatur +
+                '}';
     }
 }

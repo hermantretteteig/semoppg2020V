@@ -25,4 +25,12 @@ public class Skjermkort extends Komponent{
     public void setMinne(int minne) {
         this.minne = minne;
     }
+
+    @Override
+    public String toString() {
+        return "Skjermkort{" +
+                "klokkehastighet=" + klokkehastighet +
+                ", minne=" + minne +
+                '}';
+    }
 }

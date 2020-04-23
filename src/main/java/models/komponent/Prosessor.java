@@ -25,4 +25,12 @@ public class Prosessor extends Komponent {
     public void setKlokkehastighet(double klokkehastighet) {
         this.klokkehastighet = klokkehastighet;
     }
+
+    @Override
+    public String toString() {
+        return "Prosessor{" +
+                "antallKjerner=" + antallKjerner +
+                ", klokkehastighet=" + klokkehastighet +
+                '}';
+    }
 }

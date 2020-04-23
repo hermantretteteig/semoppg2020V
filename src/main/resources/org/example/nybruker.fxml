@@ -31,12 +31,15 @@
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Button fx:id="registrer" mnemonicParsing="false" onAction="#registrerAction" text="Lag ny bruker" textFill="#00900c" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <PasswordField fx:id="txtPassord" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <PasswordField fx:id="txtGjentaPassord" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button fx:id="registrer" mnemonicParsing="false" onAction="#registrerAction" text="Lag ny bruker" textFill="#00900c" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="60.0" />
+               </GridPane.margin></Button>
             <Button fx:id="avslutt" mnemonicParsing="false" onAction="#avsluttAction" text="Avbryt" textFill="#dd0000" GridPane.rowIndex="6">
                <GridPane.margin>
-                  <Insets left="20.0" />
+                  <Insets bottom="10.0" left="20.0" />
                </GridPane.margin>
             </Button>
             <Label text="Gjenta passord:" GridPane.rowIndex="5">
@@ -64,37 +67,52 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Label>
-            <Label prefHeight="38.0" prefWidth="242.0" text="Registrer en ny bruker:" GridPane.columnIndex="1">
+            <Label fx:id="lblFornavnFeil" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="156.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="24.0" top="40.0" />
+               </GridPane.margin>
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="lblFornavnFeil" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="88.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="lblEtternavnFeil" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="192.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="60.0" top="42.0" />
+                  <Insets right="24.0" top="40.0" />
                </GridPane.margin>
+               <font>
+                  <Font size="10.0" />
+               </font>
             </Label>
-            <Label fx:id="lblEttr" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="88.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="lblBrukernavnFeil" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="169.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
-                  <Insets left="60.0" top="42.0" />
+                  <Insets right="24.0" top="40.0" />
                </GridPane.margin>
+               <font>
+                  <Font size="10.0" />
+               </font>
             </Label>
-            <Label nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="88.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="lblPassordFeil" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="205.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
-                  <Insets left="60.0" top="42.0" />
+                  <Insets right="24.0" top="40.0" />
                </GridPane.margin>
+               <font>
+                  <Font size="10.0" />
+               </font>
             </Label>
-            <Label nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="88.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label fx:id="lblGjentaPassordFeil" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="173.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
-                  <Insets left="60.0" top="42.0" />
+                  <Insets right="24.0" top="40.0" />
                </GridPane.margin>
-            </Label>
-            <Label nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="88.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="60.0" top="42.0" />
-               </GridPane.margin>
+               <font>
+                  <Font size="10.0" />
+               </font>
             </Label>
          </children>
       </GridPane>
+      <Label layoutX="21.0" layoutY="16.0" prefHeight="38.0" prefWidth="260.0" text="Registrer en ny bruker:">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

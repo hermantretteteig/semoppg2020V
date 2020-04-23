@@ -1,4 +1,4 @@
-package org.example;
+package org.example.kundeController;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -32,7 +32,6 @@ public class NykundeController {
         Stage stage = (Stage) avslutt.getScene().getWindow();
         stage.close();
     }
-
 
     @FXML
     private void registrerAction(){

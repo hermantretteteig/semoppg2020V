@@ -2,35 +2,36 @@ package org.example;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 
 public class LogginnController  {
 
-
-    private static Scene scene;
-
-
     @FXML
     private void nyBruker() throws IOException {
-        //App.setRoot("nybruker");
-        App.nykunde();
-
-        //App.scene.set
-        /*Pane pane = new Pane();
-        Scene scene = new Scene(scene, 300, 200);
-
-        scene = new Scene(loadFXML("logginn"));
-        stage.setScene(scene);
-        stage.show();
-
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
-        stage.*/
+        //Åpner vindu for å registrere Kunde
+        App.nyttLiteVindu("kundeView/nykunde", "Ny kund", 344, 374);
     }
 
     @FXML
     private void logginn() throws IOException {
-        App.setRoot("secondary");
+         /*
+
+        TRY/CATCH HER SOM SØRGER FOR AT BRUKEREN BARE FÅR LOGGET INN HVIS PASSORD OG BRUKERNAVN ER GYLDIG
+
+         */
+
+        App.setRoot("kundeView/dashboardKunde");
     }
+
+    @FXML
+    private void adminLoggInnAction() throws IOException {
+         /*
+
+        TRY/CATCH HER SOM SØRGER FOR AT ADMIN BARE FÅR LOGGET INN HVIS PASSORD OG BRUKERNAVN ER GYLDIG
+
+         */
+
+        App.setRoot("adminView/dashboardAdmin");
+    }
+
+
 }

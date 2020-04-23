@@ -40,12 +40,13 @@
                         <TextField layoutX="426.0" layoutY="214.0" />
                         <Label layoutX="426.0" layoutY="194.0" prefHeight="17.0" prefWidth="77.0" text="Brukernavn:" />
                         <Label layoutX="426.0" layoutY="246.0" prefHeight="17.0" prefWidth="77.0" text="Passord:" />
-                        <Button layoutX="426.0" layoutY="308.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Logg inn" />
-                        <Label layoutX="34.0" layoutY="28.0" prefHeight="52.0" prefWidth="300.0" text="Logg inn som bruker">
+                        <Button layoutX="426.0" layoutY="308.0" mnemonicParsing="false" onAction="#adminLoggInnAction" prefHeight="25.0" prefWidth="150.0" text="Logg inn" />
+                        <Label layoutX="34.0" layoutY="28.0" prefHeight="52.0" prefWidth="300.0" text="Logg inn som administrator">
                            <font>
                               <Font name="System Bold" size="21.0" />
                            </font>
                         </Label>
+                        <Label layoutX="34.0" layoutY="489.0" prefHeight="56.0" prefWidth="150.0" text="Brukernavn: admin&#10;Passord: passord123" wrapText="true" />
                     </children>
                 </AnchorPane>
             </content>

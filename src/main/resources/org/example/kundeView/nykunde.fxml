@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="400.0" maxWidth="398.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="374.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.NykundeController">
+<Pane maxHeight="400.0" maxWidth="398.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="374.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.kundeController.NykundeController">
    <children>
       <GridPane layoutX="2.0" prefHeight="374.0" prefWidth="344.0">
         <columnConstraints>

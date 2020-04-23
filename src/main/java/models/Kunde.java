@@ -1,47 +1,28 @@
 package models;
 
-public class Kunde {
-    private String fornavn;
-    private String etternavn;
-    private String brukernavn;
-    private String passord;
+public class Kunde extends Person{
+    private String kundenummer;
+    private String epost;
 
-    public Kunde(String fornavn, String etternavn, String brukernavn, String passord) {
-        this.fornavn = fornavn;
-        this.etternavn = etternavn;
-        this.brukernavn = brukernavn;
-        this.passord = passord;
+    public Kunde(String fornavn, String etternavn, String brukernavn, String passord, String kundenummer, String epost) {
+        super(fornavn, etternavn, brukernavn, passord);
+        this.kundenummer = kundenummer;
+        this.epost = epost;
     }
 
-    public String getFornavn() {
-        return fornavn;
+    public String getKundenummer() {
+        return kundenummer;
     }
 
-    public void setFornavn(String fornavn) {
-        this.fornavn = fornavn;
+    public void setKundenummer(String kundenummer) {
+        this.kundenummer = kundenummer;
     }
 
-    public String getEtternavn() {
-        return etternavn;
+    public String getEpost() {
+        return epost;
     }
 
-    public void setEtternavn(String etternavn) {
-        this.etternavn = etternavn;
-    }
-
-    public String getBrukernavn() {
-        return brukernavn;
-    }
-
-    public void setBrukernavn(String brukernavn) {
-        this.brukernavn = brukernavn;
-    }
-
-    public String getPassord() {
-        return passord;
-    }
-
-    public void setPassord(String passord) {
-        this.passord = passord;
+    public void setEpost(String epost) {
+        this.epost = epost;
     }
 }

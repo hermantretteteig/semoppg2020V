@@ -7,12 +7,13 @@ public class Skjerm extends Komponent{
     //Automatisk generert av pixel høyde og bredde
     private boolean min4k;
 
-    public Skjerm(String modell, double pris, String varenr, String varemerke, int pixelBredde, int pixelHoyde, boolean min4k) {
-        super(modell, pris, varenr, varemerke);
+    public Skjerm(String varenr, String varemerke, String modell, double pris, int pixelBredde, int pixelHoyde, boolean min4k) {
+        super(varenr, varemerke, modell, pris);
         this.pixelBredde = pixelBredde;
         this.pixelHoyde = pixelHoyde;
         this.min4k = min4k;
     }
+
 
     public int getPixelBredde() {
         return pixelBredde;

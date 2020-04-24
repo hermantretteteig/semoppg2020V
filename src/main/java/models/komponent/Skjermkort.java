@@ -4,11 +4,12 @@ public class Skjermkort extends Komponent{
     private double klokkehastighet;
     private int minne;
 
-    public Skjermkort(String modell, double pris, String varenr, String varemerke, double klokkehastighet, int minne) {
-        super(modell, pris, varenr, varemerke);
+    public Skjermkort(String varenr, String varemerke, String modell, double pris, double klokkehastighet, int minne) {
+        super(varenr, varemerke, modell, pris);
         this.klokkehastighet = klokkehastighet;
         this.minne = minne;
     }
+
 
     public double getKlokkehastighet() {
         return klokkehastighet;

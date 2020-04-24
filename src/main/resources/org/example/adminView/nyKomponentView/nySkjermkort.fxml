@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.nyKomponent.nySkjermkortController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.nyKomponent.nySkjermkortController">
    <children>
       <GridPane prefHeight="600.0" prefWidth="1000.0">
         <columnConstraints>
@@ -110,7 +110,7 @@
                   <Insets left="60.0" top="-10.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="txtMinne" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <TextField id="minne" fx:id="txtMinne" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="60.0" top="-10.0" />
                </GridPane.margin>

@@ -3,6 +3,7 @@ package org.example.adminController.nyKomponent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import models.komponent.Skjermkort;
 import org.example.App;
 
 public class nySkjermkortController {
@@ -20,6 +21,9 @@ public class nySkjermkortController {
     public TextField txtKlokkehastighet;
     public TextField txtMinne;
 
+    //Test, husk å fjern
+    public Skjermkort skjermkort = new Skjermkort("null", "null", "null", 2222, 2,8);
+
     @FXML
     public void leggTilAction() throws Exception{
         /*
@@ -27,6 +31,17 @@ public class nySkjermkortController {
         KODE SOM VALIDERER OG LEGGER TIL SKJERMKORT I LISTE
 
          */
+
+        /*
+        Dette er ikke noen ferdig løsning, men test for å se om det fungerer.
+        */
+        String varemerke = txtVaremerke.getText();
+        String modell = txtModell.getText();
+        double pris = Double.parseDouble(txtPris.getText());
+        int klokkehastighet = Integer.parseInt(txtKlokkehastighet.getText());
+        int minne = Integer.parseInt(txtMinne.getText());
+
+        skjermkort = new Skjermkort("metode", varemerke, modell, pris, klokkehastighet, minne);
 
 
 

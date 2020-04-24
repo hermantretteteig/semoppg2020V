@@ -6,17 +6,18 @@ import java.io.Serializable;
 public class Komponent implements Serializable {
     private static final long serialVersionUID = 1;
 
-    private String modell;
-    private double pris;
     private String varenr;
     private String varemerke;
+    private String modell;
+    private double pris;
 
-    public Komponent(String modell, double pris, String varenr, String varemerke) {
-        this.modell = modell;
-        this.pris = pris;
+    public Komponent(String varenr, String varemerke, String modell, double pris) {
         this.varenr = varenr;
         this.varemerke = varemerke;
+        this.modell = modell;
+        this.pris = pris;
     }
+
 
     public String getModell() {
         return modell;

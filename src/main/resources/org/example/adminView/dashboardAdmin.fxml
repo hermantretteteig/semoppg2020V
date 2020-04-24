@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.DashboardAdminController">
+<AnchorPane fx:id="adminPanel" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.DashboardAdminController">
    <children>
       <GridPane prefHeight="600.0" prefWidth="1000.0">
         <columnConstraints>
@@ -46,7 +46,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#lagreAction" prefHeight="150.0" prefWidth="300.0" text="Lagre / skriv til fil" GridPane.rowIndex="2">
+            <Button fx:id="lagreFil" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#lagreAction" prefHeight="150.0" prefWidth="300.0" text="Lagre / skriv til fil" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>

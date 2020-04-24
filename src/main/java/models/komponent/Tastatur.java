@@ -4,11 +4,12 @@ public class Tastatur extends Komponent{
     private boolean trodlos;
     private boolean numpad;
 
-    public Tastatur(String modell, double pris, String varenr, String varemerke, boolean trodlos, boolean numpad) {
-        super(modell, pris, varenr, varemerke);
+    public Tastatur(String varenr, String varemerke, String modell, double pris, boolean trodlos, boolean numpad) {
+        super(varenr, varemerke, modell, pris);
         this.trodlos = trodlos;
         this.numpad = numpad;
     }
+
 
     public boolean isTrodlos() {
         return trodlos;

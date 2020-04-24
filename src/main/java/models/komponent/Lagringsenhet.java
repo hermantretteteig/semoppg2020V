@@ -7,13 +7,14 @@ public class Lagringsenhet extends Komponent{
     private String leseHastighet;
     private String skriveHastighet;
 
-    public Lagringsenhet(String modell, double pris, String varenr, String varemerke, String format, int gb, String leseHastighet, String skriveHastighet) {
-        super(modell, pris, varenr, varemerke);
+    public Lagringsenhet(String varenr, String varemerke, String modell, double pris, String format, int gb, String leseHastighet, String skriveHastighet) {
+        super(varenr, varemerke, modell, pris);
         this.format = format;
         this.gb = gb;
         this.leseHastighet = leseHastighet;
         this.skriveHastighet = skriveHastighet;
     }
+
 
     public String getFormat() {
         return format;

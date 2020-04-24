@@ -11,14 +11,28 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class LagreJOBJ extends LagreFil {
+
+
     @Override
-    public void lagreBruker(Person person) {
+    public void lagreBruker(Person person, String filnavn) {
 
     }
 
     @Override
-    public void lagreKomponent(Komponent komponent) {
+    public void lagreKomponent(Komponent komponent, String filnavn) {
 
+        LagreFil lagre = new LagreJOBJ();
+        LesFil les = new LesJOBJ();
+
+        try(FileOutputStream fos = new FileOutputStream(filnavn);
+            ObjectOutputStream out = new ObjectOutputStream(fos))
+        {
+            out.writeObject(komponent);
+        }
+        //Feilhåndtering
+        catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @Override

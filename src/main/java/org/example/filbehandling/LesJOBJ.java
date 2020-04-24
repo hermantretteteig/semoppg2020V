@@ -24,4 +24,19 @@ public class LesJOBJ extends LesFil {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void lesKomponent(Path path) throws ClassNotFoundException {
+        try (InputStream in = Files.newInputStream(path);
+             ObjectInputStream oin = new ObjectInputStream(in))
+        {
+            Object object = oin.readObject();
+            Komponent komponent;
+            komponent= (Komponent) object;
+            System.out.println(komponent);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

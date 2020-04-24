@@ -4,11 +4,12 @@ public class Prosessor extends Komponent {
     private int antallKjerner;
     private double klokkehastighet;
 
-    public Prosessor(String modell, double pris, String varenr, String varemerke, int antallKjerner, double klokkehastighet) {
-        super(modell, pris, varenr, varemerke);
+    public Prosessor(String varenr, String varemerke, String modell, double pris, int antallKjerner, double klokkehastighet) {
+        super(varenr, varemerke, modell, pris);
         this.antallKjerner = antallKjerner;
         this.klokkehastighet = klokkehastighet;
     }
+
 
     public int getAntallKjerner() {
         return antallKjerner;

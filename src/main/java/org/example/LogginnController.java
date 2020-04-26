@@ -8,7 +8,7 @@ public class LogginnController  {
     @FXML
     private void nyBruker() throws IOException {
         //Åpner vindu for å registrere Kunde
-        App.nyttLiteVindu("kundeView/nykunde", "Ny kund", 344, 374);
+        App.nyttLiteVindu("kundeView/nykunde", "Ny kunde", 365, 410);
     }
 
     @FXML

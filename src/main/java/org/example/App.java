@@ -48,9 +48,9 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
-    public static void nyttLiteVindu(String fxml, String tittel, int hoyde, int lengde) throws IOException {
+    public static void nyttLiteVindu(String fxml, String tittel, int lengde, int hoyde) throws IOException {
         Stage stage = new Stage();
-        registrerScene = new Scene(loadFXML(fxml), hoyde, lengde);
+        registrerScene = new Scene(loadFXML(fxml), lengde, hoyde);
         stage.setTitle(tittel);
         stage.setScene(registrerScene);
         stage.setResizable(false);

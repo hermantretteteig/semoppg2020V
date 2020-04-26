@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -29,6 +30,8 @@ public class App extends Application {
         stage.setTitle("Datamaskinkonfiguering");
         stage.setResizable(false);
         stage.show();
+        Image ikoner = new Image("ikoner/Gnome-computer.png");
+        stage.getIcons().add(ikoner);
 
 
     }

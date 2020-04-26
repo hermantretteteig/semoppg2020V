@@ -1,20 +1,19 @@
 package org.example.adminController;
+import data.KomponentData;
+import filbehandling.LesJOBJ;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import models.komponent.Skjermkort;
 import org.example.App;
 import org.example.adminController.nyKomponent.nySkjermkortController;
-import org.example.filbehandling.LagreJOBJ;
+import filbehandling.LagreJOBJ;
 
 import java.io.File;
-import java.nio.file.Paths;
+
+import static data.KomponentData.getAlleKomponenter;
 
 public class DashboardAdminController {
 
@@ -49,11 +48,25 @@ public class DashboardAdminController {
         Stage stage = (Stage) adminPanel.getScene().getWindow();
         File file = fileChooser.showSaveDialog(stage);
         if(file != null){
-            nySkjermkortController controller = new nySkjermkortController();
             LagreJOBJ lagreJOBJ = new LagreJOBJ();
-            lagreJOBJ.lagreKomponent( controller.skjermkort, file.getAbsolutePath());
+            lagreJOBJ.lagreKomponent(getAlleKomponenter(), file.getAbsolutePath());
         }
 
+        //TODO Kode for å hente fil
+        /*//FileChooser
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Velg fil");
+        fileChooser.setInitialDirectory(filBane);
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("JOBJ Filer", "*.jobj")
+        );
+
+        Stage stage = (Stage) adminPanel.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
+        if(file != null){
+            LesJOBJ lesJOBJ = new LesJOBJ();
+            lesJOBJ.lesKomponent(file.getAbsolutePath());
+        }*/
 
     }
 

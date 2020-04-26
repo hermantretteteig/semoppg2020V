@@ -1,26 +1,32 @@
 package data;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.komponent.Komponent;
 
-public class KomponentData {
-    private static ObservableList<Komponent> alleKompenter;
+import java.io.Serializable;
 
-    public static ObservableList<Komponent> getAlleKompenter() {
-        return alleKompenter;
+public class KomponentData implements Serializable {
+    private static ObservableList<Komponent> alleKomponenter = FXCollections.observableArrayList();
+
+    public KomponentData() {
     }
 
-    public static void setAlleKompenter(ObservableList<Komponent> alleKompenter) {
-        KomponentData.alleKompenter = alleKompenter;
+    public static ObservableList<Komponent> getAlleKomponenter() {
+        return alleKomponenter;
+    }
+
+    public static void setAlleKomponenter(ObservableList<Komponent> alleKomponenter) {
+        KomponentData.alleKomponenter = alleKomponenter;
     }
 
     public static void leggTilKomponent(Komponent nyKomponent){
-        alleKompenter.add(nyKomponent);
+        alleKomponenter.add(nyKomponent);
     }
 
     public static Komponent hentMedVarenummer(int varenummer){
 
-        for (Komponent enKomponent : alleKompenter){
+        for (Komponent enKomponent : alleKomponenter){
             if(enKomponent.getVarenr().equals(varenummer)){
                 return enKomponent;
             }
@@ -29,9 +35,9 @@ public class KomponentData {
     }
 
     public static void slettMedVarenummer(int varenummer){
-        for (Komponent enKomponent : alleKompenter){
+        for (Komponent enKomponent : alleKomponenter){
             if(enKomponent.getVarenr().equals(varenummer)){
-                alleKompenter.remove(enKomponent);
+                alleKomponenter.remove(enKomponent);
             }
         }
     }

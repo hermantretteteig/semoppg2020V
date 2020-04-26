@@ -1,8 +1,8 @@
-package models;
+package models.brukere;
 
 import java.io.Serializable;
 
-public class Person implements Serializable {
+public class Bruker implements Serializable {
     private static final long serialVersionUID = 1;
 
     private String fornavn;
@@ -10,7 +10,7 @@ public class Person implements Serializable {
     private String brukernavn;
     private String passord;
 
-    public Person(String fornavn, String etternavn, String brukernavn, String passord) {
+    public Bruker(String fornavn, String etternavn, String brukernavn, String passord) {
         this.fornavn = fornavn;
         this.etternavn = etternavn;
         this.brukernavn = brukernavn;

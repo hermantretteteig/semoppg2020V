@@ -1,6 +1,6 @@
-package models;
+package models.brukere;
 
-public class Kunde extends Person {
+public class Kunde extends Bruker {
     private String kundenummer;
     private String epost;
 

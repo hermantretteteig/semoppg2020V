@@ -1,20 +1,18 @@
 package org.example.filbehandling;
 
-import models.Person;
+import models.brukere.Bruker;
 import models.komponent.Datamaskin;
 import models.komponent.Komponent;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class LagreJOBJ extends LagreFil {
 
 
     @Override
-    public void lagreBruker(Person person, String filnavn) {
+    public void lagreBruker(Bruker bruker, String filnavn) {
 
     }
 

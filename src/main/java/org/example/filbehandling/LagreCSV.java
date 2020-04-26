@@ -1,15 +1,13 @@
 package org.example.filbehandling;
 
-import models.Person;
+import models.brukere.Bruker;
 import models.komponent.Datamaskin;
 import models.komponent.Komponent;
-
-import java.nio.file.Path;
 
 public class LagreCSV extends LagreFil {
 
     @Override
-    public void lagreBruker(Person person, String filnavn) {
+    public void lagreBruker(Bruker bruker, String filnavn) {
 
     }
 

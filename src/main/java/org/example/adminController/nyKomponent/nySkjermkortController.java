@@ -1,5 +1,6 @@
 package org.example.adminController.nyKomponent;
 
+import data.KomponentData;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -7,7 +8,6 @@ import models.komponent.Skjermkort;
 import org.example.App;
 
 public class nySkjermkortController {
-
 
     public Label lblVaremerkeFeil;
     public Label lblModellFeil;
@@ -21,7 +21,7 @@ public class nySkjermkortController {
     public TextField txtKlokkehastighet;
     public TextField txtMinne;
 
-    //Test, husk å fjern
+    //TODO, husk å fjern
     public Skjermkort skjermkort = new Skjermkort("null", "null", "null", 2222, 2,8);
 
     @FXML
@@ -42,8 +42,7 @@ public class nySkjermkortController {
         int minne = Integer.parseInt(txtMinne.getText());
 
         skjermkort = new Skjermkort("metode", varemerke, modell, pris, klokkehastighet, minne);
-
-
+        KomponentData.leggTilKomponent(skjermkort);
 
         App.setRoot("adminView/nyKomponentView/nyKomponent");
     }

@@ -3,4 +3,4 @@ Semesteroppgave V2020, av Salem Hamidi, Tore Halle og Herman Tretteteig
 
 
 <h3>Kilder</h3>
-Ikoner som kjører i applikasjonen er hentet fra: https://no.m.wikipedia.org/wiki/Fil:Gnome-computer.svg
+Ikonet som kjøres for applikasjonen er hentet fra: https://no.m.wikipedia.org/wiki/Fil:Gnome-computer.svg

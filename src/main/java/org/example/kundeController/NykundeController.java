@@ -1,5 +1,6 @@
 package org.example.kundeController;
 
+import checker.emailChecker;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -15,12 +16,15 @@ public class NykundeController {
     public Label lblEtternavnFeil;
     public Label lblPassordFeil;
     public Label lblBrukernavnFeil;
+    public Label lblEpostFeil;
 
     public TextField txtFornavn;
     public TextField txtEtternavn;
     public TextField txtBrukernavn;
+    public TextField txtEpost;
     public PasswordField txtGjentaPassord;
     public PasswordField txtPassord;
+
 
 
     @FXML private javafx.scene.control.Button registrer;
@@ -41,6 +45,7 @@ public class NykundeController {
             lblBrukernavnFeil.setText("");
             lblPassordFeil.setText("");
             lblGjentaPassordFeil.setText("");
+            lblEpostFeil.setText("");
 
             if(txtFornavn.getText().length()<2){
                 lblFornavnFeil.setText("Fornavn må være minst to tegn.");
@@ -56,6 +61,10 @@ public class NykundeController {
             }
             if(!(txtGjentaPassord.getText().equals(txtPassord.getText()))){
                 lblGjentaPassordFeil.setText("Passordene er ulike.");
+            }
+
+            if(emailChecker.emailchecker(txtEpost.getText())==false){
+                lblEpostFeil.setText("Eposen er ugyldig.");
             }
 
 

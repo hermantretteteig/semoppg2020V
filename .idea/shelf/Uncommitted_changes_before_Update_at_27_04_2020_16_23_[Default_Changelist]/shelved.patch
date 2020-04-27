@@ -1,0 +1,82 @@
+Index: src/main/java/exception/FileNotFoundException.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package exception;\r\n\r\npublic class FileNotFoundException {\r\n}\r\n
+===================================================================
+--- src/main/java/exception/FileNotFoundException.java	(revision 9cd5a15c94738306e79f012f3b52475d5bf7258e)
++++ src/main/java/avvikshandtering/FileNotFoundException.java	(date 1587997345415)
+@@ -1,4 +1,7 @@
+-package exception;
++package avvikshandtering;
++
++import java.io.*;
+ 
+-public class FileNotFoundException {
++public class FileNotFoundException extends Exception {
++
+ }
+Index: src/main/java/data/AdminData.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package data;\r\n\r\npublic class AdminData {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/data/AdminData.java	(revision 9cd5a15c94738306e79f012f3b52475d5bf7258e)
++++ src/main/java/data/AdminData.java	(date 1587991968092)
+@@ -1,4 +1,10 @@
+ package data;
+ 
++/**
++
++
++
++ */
++
+ public class AdminData {
+ }
+Index: src/main/java/org/example/kundeController/NykundeController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.kundeController;\r\n\r\nimport checker.epostChecker;\r\nimport javafx.fxml.FXML;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.control.PasswordField;\r\nimport javafx.scene.control.TextField;\r\nimport javafx.stage.Stage;\r\n\r\npublic class NykundeController {\r\n    public Label lblGjentaPassordFeil;\r\n    public Label lblFornavnFeil;\r\n    public Label lblEtternavnFeil;\r\n    public Label lblPassordFeil;\r\n    public Label lblBrukernavnFeil;\r\n    public Label lblEpostFeil;\r\n\r\n    public TextField txtFornavn;\r\n    public TextField txtEtternavn;\r\n    public TextField txtBrukernavn;\r\n    public TextField txtEpost;\r\n    public PasswordField txtGjentaPassord;\r\n    public PasswordField txtPassord;\r\n\r\n\r\n\r\n    @FXML private javafx.scene.control.Button registrer;\r\n    @FXML private javafx.scene.control.Button avslutt;\r\n\r\n\r\n    @FXML\r\n    private void avsluttAction(){\r\n        Stage stage = (Stage) avslutt.getScene().getWindow();\r\n        stage.close();\r\n    }\r\n\r\n    @FXML\r\n    private void registrerAction(){\r\n\r\n            lblFornavnFeil.setText(\"\");\r\n            lblEtternavnFeil.setText(\"\");\r\n            lblBrukernavnFeil.setText(\"\");\r\n            lblPassordFeil.setText(\"\");\r\n            lblGjentaPassordFeil.setText(\"\");\r\n            lblEpostFeil.setText(\"\");\r\n\r\n            if(txtFornavn.getText().length()<2){\r\n                lblFornavnFeil.setText(\"Fornavn må være minst to tegn.\");\r\n            }\r\n            if(txtEtternavn.getText().length()<2){\r\n                lblEtternavnFeil.setText(\"Etternavn må være minst to tegn.\");\r\n            }\r\n            if(txtBrukernavn.getText().length()<2){\r\n                lblBrukernavnFeil.setText(\"Må være minst to tegn.\");\r\n            }\r\n            if(txtPassord.getText().length()<8){\r\n                lblPassordFeil.setText(\"Passord må være minst 8 tegn.\");\r\n            }\r\n            if(!(txtGjentaPassord.getText().equals(txtPassord.getText()))){\r\n                lblGjentaPassordFeil.setText(\"Passordene er ulike.\");\r\n            }\r\n\r\n            if(!epostChecker.epostchecker(txtEpost.getText())){\r\n                lblEpostFeil.setText(\"Eposen er ugyldig.\");\r\n            }\r\n\r\n\r\n\r\n\r\n\r\n        //Stage stage = (Stage) registrer.getScene().getWindow();\r\n        //stage.close();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/org/example/kundeController/NykundeController.java	(revision 9cd5a15c94738306e79f012f3b52475d5bf7258e)
++++ src/main/java/org/example/kundeController/NykundeController.java	(date 1587991286058)
+@@ -53,6 +53,7 @@
+             if(txtBrukernavn.getText().length()<2){
+                 lblBrukernavnFeil.setText("Må være minst to tegn.");
+             }
++
+             if(txtPassord.getText().length()<8){
+                 lblPassordFeil.setText("Passord må være minst 8 tegn.");
+             }
+Index: src/main/java/avvikshandtering/InvalidEmailException.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/avvikshandtering/InvalidEmailException.java	(date 1587997356181)
++++ src/main/java/avvikshandtering/InvalidEmailException.java	(date 1587997356181)
+@@ -0,0 +1,7 @@
++package avvikshandtering;
++
++public class InvalidEmailException extends Exception {
++    public InvalidEmailException(String ut) {
++        super(ut);
++    }
++}
+Index: src/main/java/exception/IOexception.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package exception;\r\n\r\npublic class IOexception {\r\n}\r\n
+===================================================================
+--- src/main/java/exception/IOexception.java	(revision 9cd5a15c94738306e79f012f3b52475d5bf7258e)
++++ src/main/java/avvikshandtering/IOexception.java	(date 1587991286145)
+@@ -1,4 +1,4 @@
+-package exception;
++package avvikshandtering;
+ 
+ public class IOexception {
+ }

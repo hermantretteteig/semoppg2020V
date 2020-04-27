@@ -53,6 +53,7 @@ public class NykundeController {
             if(txtBrukernavn.getText().length()<2){
                 lblBrukernavnFeil.setText("Må være minst to tegn.");
             }
+
             if(txtPassord.getText().length()<8){
                 lblPassordFeil.setText("Passord må være minst 8 tegn.");
             }

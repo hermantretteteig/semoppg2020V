@@ -6,8 +6,6 @@ import models.komponent.Datamaskin;
 import models.komponent.Komponent;
 
 public abstract class LagreFil {
-    public abstract void lagreBruker(Bruker bruker, String filnavn);
-    public abstract void lagreKomponent(Komponent komponent, String filnavn);
     public abstract void lagreKomponent(ObservableList<Komponent> komponenter, String filnavn);
-    public abstract void lagreDatamaskin(Datamaskin datamaskin, String filnavn);
+    public abstract void lagreDatamaskin(ObservableList<Datamaskin> datamaskiner, String filnavn);
 }

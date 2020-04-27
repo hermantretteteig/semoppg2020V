@@ -1,12 +1,10 @@
 package models.Tore;
 
 import models.komponent.*;
-import org.example.filbehandling.LagreJOBJ;
-import org.example.filbehandling.LesJOBJ;
+import filbehandling.LagreJOBJ;
+import filbehandling.LesJOBJ;
 
 import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class Test {
     public static void main(String[] args) throws ClassNotFoundException {

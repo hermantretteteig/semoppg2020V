@@ -8,22 +8,12 @@ import models.komponent.Komponent;
 public class LagreCSV extends LagreFil {
 
     @Override
-    public void lagreBruker(Bruker bruker, String filnavn) {
-
-    }
-
-    @Override
-    public void lagreKomponent(Komponent komponent, String filnavn) {
-
-    }
-
-    @Override
     public void lagreKomponent(ObservableList<Komponent> komponenter, String filnavn) {
 
     }
 
     @Override
-    public void lagreDatamaskin(Datamaskin datamaskin, String filnavn) {
+    public void lagreDatamaskin(ObservableList<Datamaskin> datamaskiner, String filnavn) {
 
     }
 }

@@ -120,5 +120,11 @@ public class Eksempeldata {
                 skjermkort2,
                 tastatur1,
                 tastatur2);
+
+        for(Komponent enKomponent : KomponentData.getAlleKomponenter()){
+            System.out.println("Pris: "+enKomponent.getPris().get()+"\nVarenr: "+
+                    enKomponent.getVarenr().get()+"\nModell: "+enKomponent.getModell().get()+"\nVaremerke: "+enKomponent.getVaremerke().get()+"\n\n");
+
+        }
         }
 }

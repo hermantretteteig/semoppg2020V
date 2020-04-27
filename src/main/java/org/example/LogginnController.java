@@ -1,6 +1,8 @@
 package org.example;
 
 import java.io.IOException;
+
+import data.KomponentData;
 import javafx.fxml.FXML;
 
 public class LogginnController  {
@@ -24,6 +26,7 @@ public class LogginnController  {
 
     @FXML
     private void adminLoggInnAction() throws IOException {
+
          /*
 
         TRY/CATCH HER SOM SØRGER FOR AT ADMIN BARE FÅR LOGGET INN HVIS PASSORD OG BRUKERNAVN ER GYLDIG
@@ -32,6 +35,10 @@ public class LogginnController  {
 
         App.setRoot("adminView/dashboardAdmin");
     }
+
+
+
+
 
 
 }

@@ -1,6 +1,7 @@
 package org.example;
 
 import data.Eksempeldata;
+import data.KomponentData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import models.komponent.Komponent;
 
 import java.io.IOException;
 
@@ -28,6 +30,10 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         //Legger in eksepeldata
         Eksempeldata.GenererEksempeldata();
+
+
+        //System.out.println("\n\n\n-----\n"+KomponentData.hentMedVarenummer("100").getVaremerke());
+
 
         hovedscene = new Scene(loadFXML("logginn"));
         stage.setScene(hovedscene);

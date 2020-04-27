@@ -3,6 +3,7 @@ package data;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
 import models.komponent.Komponent;
 
 import java.util.ArrayList;
@@ -22,22 +23,24 @@ public class KomponentData {
         alleKomponenter.add(nyKomponent);
     }
 
-    public static Komponent hentMedVarenummer(String varenummer){
-
-        SimpleStringProperty sspVarenummer = new SimpleStringProperty(varenummer);
+   /* public static Komponent hentMedVarenummer(String varenummer){
         for (Komponent enKomponent : alleKomponenter){
-            if(enKomponent.getVarenr().equals(sspVarenummer)){
-                return enKomponent;
+            if(enKomponent.getVarenr().get().equals(varenummer)){
+                return  enKomponent;
             }
         }
         return null;
+    }*/
+
+    public void attachTableView(TableView tv) {
+        tv.setItems(alleKomponenter);
     }
 
-    public static void slettMedVarenummer(SimpleStringProperty varenummer){
+    /*public static void slettMedVarenummer(String varenummer){
         for (Komponent enKomponent : alleKomponenter){
-            if(enKomponent.getVarenr().equals(varenummer)){
+            if(enKomponent.getVarenr().get().equals(varenummer)){
                 alleKomponenter.remove(enKomponent);
             }
         }
-    }
+    }*/
     }

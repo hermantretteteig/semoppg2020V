@@ -67,7 +67,6 @@ public class Lagringsenhet extends Komponent{
     }
 
     private void writeObject(ObjectOutputStream out) throws IOException {
-
         out.defaultWriteObject();
 
         out.writeObject(format.get());

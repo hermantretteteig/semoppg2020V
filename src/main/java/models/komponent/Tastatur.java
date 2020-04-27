@@ -1,30 +1,34 @@
 package models.komponent;
 
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Tastatur extends Komponent{
-    private boolean trodlos;
-    private boolean numpad;
+    private SimpleBooleanProperty  trodlos;
+    private SimpleBooleanProperty  numpad;
 
     public Tastatur(String varenr, String varemerke, String modell, double pris, boolean trodlos, boolean numpad) {
         super(varenr, varemerke, modell, pris);
-        this.trodlos = trodlos;
-        this.numpad = numpad;
+        this.trodlos = new SimpleBooleanProperty(trodlos);
+        this.numpad = new SimpleBooleanProperty (numpad);
     }
 
 
     public boolean isTrodlos() {
-        return trodlos;
+        return trodlos.get();
     }
 
     public void setTrodlos(boolean trodlos) {
-        this.trodlos = trodlos;
+        this.trodlos = new SimpleBooleanProperty(trodlos);
     }
 
     public boolean isNumpad() {
-        return numpad;
+        return numpad.get();
     }
 
     public void setNumpad(boolean numpad) {
-        this.numpad = numpad;
+        this.numpad = new SimpleBooleanProperty(numpad);
     }
 
     @Override

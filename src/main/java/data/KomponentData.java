@@ -1,5 +1,6 @@
 package data;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.komponent.Komponent;
@@ -21,7 +22,7 @@ public class KomponentData {
         alleKomponenter.add(nyKomponent);
     }
 
-    public static Komponent hentMedVarenummer(String varenummer){
+    public static Komponent hentMedVarenummer(SimpleStringProperty varenummer){
 
         for (Komponent enKomponent : alleKomponenter){
             if(enKomponent.getVarenr().equals(varenummer)){
@@ -31,7 +32,7 @@ public class KomponentData {
         return null;
     }
 
-    public static void slettMedVarenummer(String varenummer){
+    public static void slettMedVarenummer(SimpleStringProperty varenummer){
         for (Komponent enKomponent : alleKomponenter){
             if(enKomponent.getVarenr().equals(varenummer)){
                 alleKomponenter.remove(enKomponent);

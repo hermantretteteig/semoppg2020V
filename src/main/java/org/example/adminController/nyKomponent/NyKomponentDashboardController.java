@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.example.App;
 
-public class NyKomponentController {
+public class NyKomponentDashboardController {
 
 
     @FXML

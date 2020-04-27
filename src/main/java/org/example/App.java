@@ -1,5 +1,6 @@
 package org.example;
 
+import data.Eksempeldata;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,6 +26,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        Eksempeldata.GenererEksempeldata();
+
         hovedscene = new Scene(loadFXML("logginn"));
         stage.setScene(hovedscene);
         stage.setTitle("Datamaskinkonfiguering");

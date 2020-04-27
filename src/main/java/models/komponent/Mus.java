@@ -1,30 +1,34 @@
 package models.komponent;
 
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Mus extends Komponent {
-    private boolean trodlos;
-    private String farge;
+    private SimpleBooleanProperty trodlos;
+    private SimpleStringProperty farge;
 
     public Mus(String varenr, String varemerke, String modell, double pris, boolean trodlos, String farge) {
         super(varenr, varemerke, modell, pris);
-        this.trodlos = trodlos;
-        this.farge = farge;
+        this.trodlos = new SimpleBooleanProperty(trodlos);
+        this.farge = new SimpleStringProperty(farge);
     }
 
 
     public boolean isTrodlos() {
-        return trodlos;
+        return trodlos.get();
     }
 
     public void setTrodlos(boolean trodlos) {
-        this.trodlos = trodlos;
+        this.trodlos = new SimpleBooleanProperty(trodlos);
     }
 
     public String getFarge() {
-        return farge;
+        return farge.get();
     }
 
     public void setFarge(String farge) {
-        this.farge = farge;
+        this.farge = new SimpleStringProperty(farge);
     }
 
     @Override

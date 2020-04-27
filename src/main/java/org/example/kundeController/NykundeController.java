@@ -1,14 +1,11 @@
 package org.example.kundeController;
 
-import checker.emailChecker;
-import javafx.application.Platform;
+import checker.epostChecker;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class NykundeController {
     public Label lblGjentaPassordFeil;
@@ -63,7 +60,7 @@ public class NykundeController {
                 lblGjentaPassordFeil.setText("Passordene er ulike.");
             }
 
-            if(emailChecker.emailchecker(txtEpost.getText())==false){
+            if(epostChecker.emailchecker(txtEpost.getText())==false){
                 lblEpostFeil.setText("Eposen er ugyldig.");
             }
 

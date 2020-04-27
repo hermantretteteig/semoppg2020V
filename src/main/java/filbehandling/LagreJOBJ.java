@@ -25,6 +25,9 @@ public class LagreJOBJ extends LagreFil {
         }
         //TODO Feilhåndtering
         catch (IOException e){
+
+            //Kan også bruke den under istedenfor e.getCause-metoden
+            //System.err.println("ERROR: Kan ikke lese filen fordi: "  + e.getCause());
             e.printStackTrace();
         }
     }
@@ -41,6 +44,7 @@ public class LagreJOBJ extends LagreFil {
         }
         //TODO Feilhåndtering
         catch (IOException e){
+            System.err.println("ERROR: Kan ikke lese filen fordi: " + e.getCause());
             e.printStackTrace();
         }
     }

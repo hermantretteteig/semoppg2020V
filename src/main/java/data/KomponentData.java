@@ -22,10 +22,11 @@ public class KomponentData {
         alleKomponenter.add(nyKomponent);
     }
 
-    public static Komponent hentMedVarenummer(SimpleStringProperty varenummer){
+    public static Komponent hentMedVarenummer(String varenummer){
 
+        SimpleStringProperty sspVarenummer = new SimpleStringProperty(varenummer);
         for (Komponent enKomponent : alleKomponenter){
-            if(enKomponent.getVarenr().equals(varenummer)){
+            if(enKomponent.getVarenr().equals(sspVarenummer)){
                 return enKomponent;
             }
         }

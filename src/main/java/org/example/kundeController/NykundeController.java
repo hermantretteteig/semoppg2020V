@@ -60,7 +60,7 @@ public class NykundeController {
                 lblGjentaPassordFeil.setText("Passordene er ulike.");
             }
 
-            if(epostChecker.emailchecker(txtEpost.getText())==false){
+            if(!epostChecker.epostchecker(txtEpost.getText())){
                 lblEpostFeil.setText("Eposen er ugyldig.");
             }
 

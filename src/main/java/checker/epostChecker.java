@@ -2,7 +2,7 @@ package checker;
 
 import java.util.regex.Pattern;
 
-public class epostChecker{
+public class epostChecker {
     public static boolean epostchecker(String epost) {
 
         //Tillater også norske bokstaver æ-ø-å
@@ -11,7 +11,7 @@ public class epostChecker{
 
         Pattern pat = Pattern.compile(epostRegex);
 
-        if(epost == null) {
+        if (epost == null) {
             return false;
         }
         return pat.matcher(epost).matches();

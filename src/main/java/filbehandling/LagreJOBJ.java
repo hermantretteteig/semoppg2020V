@@ -40,6 +40,7 @@ public class LagreJOBJ extends LagreFil {
         try(FileOutputStream fos = new FileOutputStream(filnavn);
             ObjectOutputStream out = new ObjectOutputStream(fos))
         {
+
             out.writeObject(datamaskiner);
         }
         //TODO Feilhåndtering

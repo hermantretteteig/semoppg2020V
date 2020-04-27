@@ -1,9 +1,14 @@
 package models.komponent;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+
 
 //Superklasse som alle andre varer arver fra.
 public class Komponent implements Serializable {
@@ -23,35 +28,37 @@ public class Komponent implements Serializable {
     }
 
 
-    public SimpleStringProperty getModell() {
-        return modell;
+    public String getModell() {
+        return modell.get();
     }
 
-    public void setModell(SimpleStringProperty modell) {
-        this.modell = modell;
+    public void setModell(String modell) {
+        this.modell.set(modell);
     }
 
-    public SimpleDoubleProperty getPris() {
-        return pris;
+    public double getPris() {
+        return pris.get();
     }
 
-    public void setPris(SimpleDoubleProperty pris) {
-        this.pris = pris;
+    public void setPris(double pris) {
+        this.pris.set(pris);
     }
 
-    public SimpleStringProperty getVarenr() {
-        return varenr;
+    public String getVarenr() {
+        return varenr.get();
     }
 
-    public void setVarenr(SimpleStringProperty varenr) {
-        this.varenr = varenr;
+    public void setVarenr(String varenr) {
+        this.varenr.set(varenr);
     }
 
-    public SimpleStringProperty getVaremerke() {
-        return varemerke;
+
+    public String getVaremerke() {
+        return varemerke.get();
     }
 
-    public void setVaremerke(SimpleStringProperty varemerke) {
-        this.varemerke = varemerke;
+    public void setVaremerke(String varemerke) {
+        this.varemerke.set(varemerke);
     }
+
 }

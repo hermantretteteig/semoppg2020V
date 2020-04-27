@@ -15,7 +15,7 @@ public class Tastatur extends Komponent{
     }
 
 
-    public boolean isTrodlos() {
+    public boolean getTrodlos() {
         return trodlos.get();
     }
 
@@ -23,7 +23,7 @@ public class Tastatur extends Komponent{
         this.trodlos = new SimpleBooleanProperty(trodlos);
     }
 
-    public boolean isNumpad() {
+    public boolean getNumpad() {
         return numpad.get();
     }
 

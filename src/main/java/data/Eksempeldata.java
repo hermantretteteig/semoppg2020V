@@ -6,7 +6,7 @@ public class Eksempeldata {
 
     public static void GenererEksempeldata(){
         Lagringsenhet lagringsenhetEn = new Lagringsenhet(
-                "måEndres",
+                "maEndres",
                 "Samsung",
                 "2000",
                 2490,
@@ -16,7 +16,7 @@ public class Eksempeldata {
                 "2150");
 
         Lagringsenhet lagringsenhetTo = new Lagringsenhet(
-                "måEndres2",
+                "maEndres2",
                 "Apple",
                 "Ultra",
                 9490,
@@ -26,7 +26,7 @@ public class Eksempeldata {
                 "2134");
 
         Mus musEn = new Mus(
-                "måEndres",
+                "maEndres",
                 "Logi",
                 "Super",
                 499,
@@ -34,7 +34,7 @@ public class Eksempeldata {
                 "#F2F2F2");
 
         Mus toMus = new Mus(
-                "måEndres2",
+                "maEndres2",
                 "Apple",
                 "Rask",
                 699,
@@ -42,7 +42,7 @@ public class Eksempeldata {
                 "#000000");
 
         Prosessor prosessor1 = new Prosessor(
-                "måEndres2",
+                "maEndres2",
                 "AMD",
                 "i5",
                 4599,
@@ -50,7 +50,7 @@ public class Eksempeldata {
                 1200);
 
         Prosessor prosessor2 = new Prosessor(
-                "måEndres2",
+                "maEndres2",
                 "Intel",
                 "i7",
                 6099,
@@ -58,7 +58,7 @@ public class Eksempeldata {
                 2400);
 
         Skjerm skjerm1 = new Skjerm(
-                "måEndres2",
+                "maEndres2",
                 "LG",
                 "MH56",
                 1499,
@@ -66,7 +66,7 @@ public class Eksempeldata {
                 720);
 
         Skjerm skjerm2 = new Skjerm(
-                "måEndres2",
+                "maEndres2",
                 "LG",
                 "Ultra 4K",
                 5499,
@@ -74,7 +74,7 @@ public class Eksempeldata {
                 2160);
 
         Skjermkort skjermkort1 = new Skjermkort(
-                "måEndres2",
+                "maEndres2",
                 "GTX",
                 "Lyn",
                 5499,
@@ -82,7 +82,7 @@ public class Eksempeldata {
                 2);
 
         Skjermkort skjermkort2 = new Skjermkort(
-                "måEndres2",
+                "maEndres2",
                 "GTX",
                 "Pro",
                 8499,
@@ -90,7 +90,7 @@ public class Eksempeldata {
                 3);
 
         Tastatur tastatur1 = new Tastatur(
-                "måEndres2",
+                "maEndres2",
                 "Logo",
                 "Ultra",
                 1499,
@@ -98,7 +98,7 @@ public class Eksempeldata {
                 true);
 
         Tastatur tastatur2 = new Tastatur(
-                "måEndres2",
+                "100",
                 "Logi",
                 "Simpel",
                 499,
@@ -122,8 +122,8 @@ public class Eksempeldata {
                 tastatur2);
 
         for(Komponent enKomponent : KomponentData.getAlleKomponenter()){
-            System.out.println("Pris: "+enKomponent.getPris().get()+"\nVarenr: "+
-                    enKomponent.getVarenr().get()+"\nModell: "+enKomponent.getModell().get()+"\nVaremerke: "+enKomponent.getVaremerke().get()+"\n\n");
+            System.out.println("Pris: "+enKomponent.getPris()+"\nVarenr: "+
+                    enKomponent.getVarenr()+"\nModell: "+enKomponent.getModell()+"\nVaremerke: "+enKomponent.getVaremerke()+"\n\n");
 
         }
         }

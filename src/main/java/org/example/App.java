@@ -26,6 +26,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        //Legger in eksepeldata
         Eksempeldata.GenererEksempeldata();
 
         hovedscene = new Scene(loadFXML("logginn"));

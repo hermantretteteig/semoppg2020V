@@ -26,8 +26,15 @@ public class DashboardAdminController {
         2. Trykk lagre
         3. Filen befinner seg i mappen C:\Users\brukernavn\Datamaskinkonfigurering\komponenter
     */
+
     @FXML
-    public void lagreAction(ActionEvent actionEvent) throws Exception{
+    public void hentFilAction() throws Exception {
+
+    }
+
+
+    @FXML
+    public void eksportFilAction() throws Exception{
         //Filbane.
         File filBane = new File(System.getProperty("user.home"), "Datamaskinkonfigurering/komponenter");
         //Lager filbanen om den ikke allerede eksisterer.

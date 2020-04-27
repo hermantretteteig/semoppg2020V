@@ -4,6 +4,7 @@ import data.KomponentData;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import models.komponent.Skjermkort;
 import org.example.App;
 
@@ -21,6 +22,8 @@ public class NySkjermkortController {
     public TextField txtKlokkehastighet;
     public TextField txtMinne;
 
+    @FXML
+    public AnchorPane skjermkortPanel;
 
     @FXML
     public void leggTilAction() throws Exception{
@@ -29,6 +32,8 @@ public class NySkjermkortController {
         KODE SOM VALIDERER OG LEGGER TIL SKJERMKORT I LISTE
 
          */
+
+
 
         lblVaremerkeFeil.setText("feil");
         lblKlokkehastighetFeil.setText("feil");

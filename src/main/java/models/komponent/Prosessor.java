@@ -4,16 +4,19 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 public class Prosessor extends Komponent {
-    private SimpleIntegerProperty antallKjerner;
-    private SimpleDoubleProperty klokkehastighet;
+    private transient SimpleIntegerProperty antallKjerner;
+    private transient SimpleDoubleProperty klokkehastighet;
 
     public Prosessor(String varenr, String varemerke, String modell, double pris, int antallKjerner, double klokkehastighet) {
         super(varenr, varemerke, modell, pris);
         this.antallKjerner = new SimpleIntegerProperty(antallKjerner);
         this.klokkehastighet = new SimpleDoubleProperty(klokkehastighet);
     }
-
 
     public int getAntallKjerner() {
         return antallKjerner.get();
@@ -37,5 +40,19 @@ public class Prosessor extends Komponent {
                 "antallKjerner=" + antallKjerner +
                 ", klokkehastighet=" + klokkehastighet +
                 '}';
+    }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+
+        out.defaultWriteObject();
+        out.writeObject(antallKjerner.get());
+        out.writeObject(klokkehastighet.get());
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+
+        antallKjerner = new SimpleIntegerProperty((Integer) in.readObject());
+        klokkehastighet = new SimpleDoubleProperty((Double) in.readObject());
     }
 }

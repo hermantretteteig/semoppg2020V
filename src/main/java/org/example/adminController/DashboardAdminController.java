@@ -1,4 +1,5 @@
 package org.example.adminController;
+import filbehandling.LesJOBJ;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,9 +16,6 @@ import static data.KomponentData.getAlleKomponenter;
 public class DashboardAdminController {
 
     @FXML
-    private Button lagreFil;
-
-    @FXML
     private AnchorPane adminPanel;
 
 
@@ -29,6 +27,26 @@ public class DashboardAdminController {
 
     @FXML
     public void hentFilAction() throws Exception {
+        //Filbane.
+        File filBane = new File(System.getProperty("user.home"), "Datamaskinkonfigurering/komponenter");
+        //Lager filbanen om den ikke allerede eksisterer.
+        if (!filBane.exists()) {
+            filBane.mkdirs();
+        }
+        //FileChooser
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Velg fil");
+        fileChooser.setInitialDirectory(filBane);
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("JOBJ Filer", "*.jobj")
+        );
+
+        Stage stage = (Stage) adminPanel.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
+        if(file != null){
+            LesJOBJ lesJOBJ = new LesJOBJ();
+            lesJOBJ.lesKomponent(file.getAbsolutePath());
+        }
 
     }
 
@@ -57,20 +75,7 @@ public class DashboardAdminController {
         }
 
         //TODO Kode for å hente fil
-        /*//FileChooser
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Velg fil");
-        fileChooser.setInitialDirectory(filBane);
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("JOBJ Filer", "*.jobj")
-        );
-
-        Stage stage = (Stage) adminPanel.getScene().getWindow();
-        File file = fileChooser.showOpenDialog(stage);
-        if(file != null){
-            LesJOBJ lesJOBJ = new LesJOBJ();
-            lesJOBJ.lesKomponent(file.getAbsolutePath());
-        }*/
+        /**/
 
     }
 

@@ -4,12 +4,16 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 public class Lagringsenhet extends Komponent{
     //Nedtreksliste med alle de ulike formatene (HDD, hybrid, SSD)
-    private SimpleStringProperty format;
-    private SimpleIntegerProperty gb;
-    private SimpleStringProperty leseHastighet;
-    private SimpleStringProperty skriveHastighet;
+    private transient SimpleStringProperty format;
+    private transient SimpleIntegerProperty gb;
+    private transient SimpleStringProperty leseHastighet;
+    private transient SimpleStringProperty skriveHastighet;
 
     public Lagringsenhet(String varenr, String varemerke, String modell, double pris, String format, int gb, String leseHastighet, String skriveHastighet) {
         super(varenr, varemerke, modell, pris);
@@ -61,4 +65,24 @@ public class Lagringsenhet extends Komponent{
                 ", skriveHastighet='" + skriveHastighet + '\'' +
                 '}';
     }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+
+        out.defaultWriteObject();
+
+        out.writeObject(format.get());
+        out.writeObject(gb.get());
+        out.writeObject(leseHastighet.get());
+        out.writeObject(skriveHastighet.get());
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+
+        format = new SimpleStringProperty((String) in.readObject());
+        gb = new SimpleIntegerProperty((Integer) in.readObject());
+        leseHastighet = new SimpleStringProperty((String) in.readObject());
+        skriveHastighet = new SimpleStringProperty((String) in.readObject());
+    }
+
 }

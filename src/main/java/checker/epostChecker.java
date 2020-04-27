@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class epostChecker {
     public static boolean epostchecker(String epost) {
 
-        //Tillater også norske bokstaver æ-ø-å
+        //Tillater norske bokstaver æ-ø-å
 
         String epostRegex = "^[æøåa-zÆØA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[^ æøåa-zÆØÅA-Z0-9.-]+$";
 
@@ -16,4 +16,5 @@ public class epostChecker {
         }
         return pat.matcher(epost).matches();
     }
+
 }

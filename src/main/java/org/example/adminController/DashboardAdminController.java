@@ -1,6 +1,4 @@
 package org.example.adminController;
-import data.KomponentData;
-import filbehandling.LesJOBJ;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,7 +6,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.App;
-import org.example.adminController.nyKomponent.nySkjermkortController;
 import filbehandling.LagreJOBJ;
 
 import java.io.File;

@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import org.example.App;
 
-public class nyAdminController {
+public class NyAdminController {
 
 
     @FXML private javafx.scene.control.Button registrer;

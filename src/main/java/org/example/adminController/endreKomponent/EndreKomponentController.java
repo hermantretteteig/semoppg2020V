@@ -2,8 +2,12 @@ package org.example.adminController.endreKomponent;
 
 import checker.ValideringKomponent;
 import data.KomponentData;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.control.cell.ComboBoxTableCell;
+import javafx.util.Callback;
 import javafx.util.converter.BooleanStringConverter;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
@@ -46,12 +50,10 @@ public class EndreKomponentController {
     public TableColumn coMinne;
 
     private KomponentData collection = new KomponentData();
-    //private Lagringsenhet lagringsenhetCollectin = new Lagringsenhet();
 
     @FXML
     public void tilbakeAction() throws Exception {
         App.setRoot("adminView/dashboardAdmin");
-        //coLesehastighet.setVisible(false);
     }
 
     @FXML
@@ -59,32 +61,28 @@ public class EndreKomponentController {
         SkjulAlleEkstrakolonner();
         collection.hentLagrinsenheter(tableView, choKomponentvelger.getValue().toString());
         visEkstrakolonner(choKomponentvelger.getValue().toString());
-        //App.setRoot("adminView/dashboardAdmin");
-        //coLesehastighet.setVisible(false);
     }
 
 
     public void initialize() {
-        //tableView.setEditable(true);
-        //tableView.setEditable(true);
-        //coLesehastighet.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        coTrodlos.setCellFactory(TextFieldTableCell.forTableColumn(new BooleanStringConverter()));
-        coNumpad.setCellFactory(TextFieldTableCell.forTableColumn(new BooleanStringConverter()));
+        //Konverterer double og integer til string, slik at disse verdiene kan bli endres i tekstfelt
         coPris.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         coGb.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        coMusTrodlos.setCellFactory(TextFieldTableCell.forTableColumn(new BooleanStringConverter()));
         coKjerner.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         coKlokkehastighet.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         coBredde.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         coHoyde.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        co4K.setCellFactory(TextFieldTableCell.forTableColumn(new BooleanStringConverter()));
         coSkKlokkehastighet.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         coMinne.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
 
-        //collection.attachTableView(tableView);
+        LagBindingFraDataTilTabell();
+
+        //Setter startvisning til å være lagringsenhet
         choKomponentvelger.setValue("Lagringsenhet");
 
         SkjulAlleEkstrakolonner();
+
+        //Generer kolonner som gjelder for "Lagringsenhet"
         collection.hentLagrinsenheter(tableView, choKomponentvelger.getValue().toString());
         visEkstrakolonner(choKomponentvelger.getValue().toString());
     }
@@ -167,10 +165,12 @@ public class EndreKomponentController {
     //Skjerm
     public void HoydeEdit(TableColumn.CellEditEvent<Komponent, Integer> event) {
         ((Skjerm) event.getRowValue()).setPixelHoyde(event.getNewValue());
+        tableView.refresh();
     }
 
     public void BreddeEdit(TableColumn.CellEditEvent<Komponent, Integer> event) {
         ((Skjerm) event.getRowValue()).setPixelBredde(event.getNewValue());
+        tableView.refresh();
     }
 
     //Skjermkort
@@ -256,5 +256,51 @@ public class EndreKomponentController {
         }
             return true;
         }
+
+    /*
+    Metoden under lager bindinger til de datane som krever noe annet enn tekstfelt. I dette tilfellet er det
+    valgvelger og sjekkboks.
+     */
+    private void LagBindingFraDataTilTabell() {
+        coTrodlos.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Tastatur,Boolean>, ObservableValue<Boolean>>()
+        {
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Tastatur, Boolean> event)
+            {
+                return event.getValue().getBpTrodlos();}
+        });
+
+        coNumpad.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Tastatur,Boolean>, ObservableValue<Boolean>>()
+        {
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Tastatur, Boolean> event)
+            {
+                return event.getValue().getBpNumpad();}
+        });
+        co4K.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Skjerm,Boolean>, ObservableValue<Boolean>>()
+        {
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Skjerm, Boolean> event)
+            {
+                return event.getValue().getBpMin4K();}
+        });
+        coMusTrodlos.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Mus,Boolean>, ObservableValue<Boolean>>()
+        {
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Mus, Boolean> event)
+            {
+                return event.getValue().getBpMusTrodlos();}
+        });
+
+
+        coFormat.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Lagringsenhet,String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Lagringsenhet, String> event) {
+                return event.getValue().getSpFormat();
+            }
+        });
+
+        coFormat.setCellFactory(ComboBoxTableCell.<Lagringsenhet, String>forTableColumn("SSD 2.5", "SDD M.2", "SSD mSATA", "HDD"));
+        coNumpad.setCellFactory( CheckBoxTableCell.forTableColumn(coNumpad) );
+        coTrodlos.setCellFactory( CheckBoxTableCell.forTableColumn(coTrodlos) );
+        co4K.setCellFactory( CheckBoxTableCell.forTableColumn(co4K) );
+        coMusTrodlos.setCellFactory( CheckBoxTableCell.forTableColumn(coMusTrodlos) );
+
     }
+}
 

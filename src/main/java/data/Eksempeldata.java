@@ -103,7 +103,7 @@ public class Eksempeldata {
                 "Simpel",
                 499,
                 false,
-                true);
+                false);
 
 
         //Legger alle komponenete til i lista

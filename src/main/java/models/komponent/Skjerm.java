@@ -1,9 +1,7 @@
 package models.komponent;
 
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
+import javafx.beans.value.ObservableValue;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -29,8 +27,8 @@ public class Skjerm extends Komponent {
     }
 
     public void setPixelBredde(int pixelBredde) {
-        this.pixelBredde = new SimpleIntegerProperty(pixelBredde);
-        sjekk4K(pixelBredde, this.pixelHoyde.get());
+        this.pixelBredde.set(pixelBredde);
+        this.min4k.set(sjekk4K(pixelBredde, this.pixelHoyde.get()));
     }
 
     public int getPixelHoyde() {
@@ -39,7 +37,7 @@ public class Skjerm extends Komponent {
 
     public void setPixelHoyde(int pixelHoyde) {
         this.pixelHoyde.set(pixelHoyde);
-        sjekk4K(this.pixelBredde.get(), pixelHoyde);
+        this.min4k.set(sjekk4K(this.pixelBredde.get(), pixelHoyde));
     }
 
     public boolean getMin4K() {
@@ -77,10 +75,14 @@ public class Skjerm extends Komponent {
     }
 
     private static boolean sjekk4K(int bredde, int hoyde) {
-        if (bredde >= 3840 || hoyde >= 2160) {
+        if (bredde >= 3840 && hoyde >= 2160) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public BooleanProperty getBpMin4K() {
+        return min4k;
     }
 }

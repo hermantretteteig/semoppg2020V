@@ -1,9 +1,7 @@
 package models.komponent;
 
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
+import javafx.beans.value.ObservableValue;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -55,5 +53,9 @@ public class Mus extends Komponent {
 
         trodlos = new SimpleBooleanProperty((Boolean) in.readObject());
         farge = new SimpleStringProperty((String) in.readObject());
+    }
+
+    public BooleanProperty getBpMusTrodlos() {
+        return trodlos;
     }
 }

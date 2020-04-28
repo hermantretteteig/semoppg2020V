@@ -128,7 +128,9 @@
                </GridPane.margin>
                <items>
                   <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="SSD" />
+                     <String fx:value="SSD 2.5" />
+                     <String fx:value="SDD M.2" />
+                     <String fx:value="SSD mSATA" />
                      <String fx:value="HDD" />
                   </FXCollections>
                </items>

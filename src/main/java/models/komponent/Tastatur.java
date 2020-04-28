@@ -1,9 +1,7 @@
 package models.komponent;
 
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
+import javafx.beans.value.ObservableValue;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -32,6 +30,12 @@ public class Tastatur extends Komponent{
         return numpad.get();
     }
 
+    public BooleanProperty getBpTrodlos() {
+        return trodlos;
+    }
+
+
+
     public void setNumpad(boolean numpad) {
         this.numpad = new SimpleBooleanProperty(numpad);
     }
@@ -57,5 +61,9 @@ public class Tastatur extends Komponent{
 
         trodlos = new SimpleBooleanProperty((Boolean) in.readObject());
         numpad = new SimpleBooleanProperty((Boolean) in.readObject());
+    }
+
+    public BooleanProperty getBpNumpad() {
+        return numpad;
     }
 }

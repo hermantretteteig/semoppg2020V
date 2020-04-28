@@ -41,13 +41,20 @@ public class NyMusController {
         KODE SOM VALIDERER OG LEGGER TIL SKJERMKORT I LISTE
 
          */
+        boolean trodlos = false;
+        if(choTrodlos.getValue().equals("Ja")){
+            trodlos = true;
+        }
 
         /*
         Dette er ikke noen ferdig løsning, men test for å se om det fungerer.
         */
-        String varemerke = txtVaremerke.getText();
-        String modell = txtModell.getText();
+
+
         double pris = Double.parseDouble(txtPris.getText());
+
+        Mus nyMus = new Mus("2300", txtVaremerke.getText(), txtModell.getText(), pris, trodlos, colFarge.getValue().toString());
+        KomponentData.leggTilKomponent(nyMus);
 
 
         //Mus nyMus = new Mus();

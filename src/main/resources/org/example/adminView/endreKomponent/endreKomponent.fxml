@@ -37,7 +37,7 @@
      <!--GENERELLE FOR ALLE-->
      <!--GENERELLE FOR ALLE-->
      <!--GENERELLE FOR ALLE-->
-         <TableColumn onEditCommit="#VarenrEdit" prefWidth="115.0" text="Varenummer">
+         <TableColumn onEditCommit="#VarenrEdit" prefWidth="100.0" text="Varenummer">
          <cellValueFactory>
             <PropertyValueFactory property="Varenr" />
          </cellValueFactory>
@@ -45,7 +45,7 @@
                  <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
          </TableColumn>
-         <TableColumn onEditCommit="#ModellEdit" prefWidth="115.0" text="Modell">
+         <TableColumn onEditCommit="#ModellEdit" prefWidth="100.0" text="Modell">
              <cellValueFactory>
                  <PropertyValueFactory property="Modell" />
              </cellValueFactory>
@@ -53,7 +53,7 @@
                  <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
          </TableColumn>
-         <TableColumn fx:id="coPris" onEditCommit="#PrisEdit" prefWidth="115.0" text="Pris">
+         <TableColumn fx:id="coPris" onEditCommit="#PrisEdit" prefWidth="100.0" text="Pris (kr)">
              <cellValueFactory>
                  <PropertyValueFactory property="Pris" />
              </cellValueFactory>
@@ -61,7 +61,7 @@
                  <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
          </TableColumn>
-         <TableColumn onEditCommit="#VareMerkeEdit" prefWidth="115.0" text="Varemerke">
+         <TableColumn onEditCommit="#VareMerkeEdit" prefWidth="100.0" text="Varemerke">
              <cellValueFactory>
                  <PropertyValueFactory property="Varemerke" />
              </cellValueFactory>
@@ -75,7 +75,7 @@
              <!--GENERELLE FOR SLUTT-->
 
              <!--LAGRINGSENHET-->
-             <TableColumn fx:id="coFormat" onEditCommit="#FormatEdit" prefWidth="115.0" text="Format">
+             <TableColumn fx:id="coFormat" onEditCommit="#FormatEdit" prefWidth="115.0" text="Lagringsformat">
                  <cellValueFactory>
                      <PropertyValueFactory property="Format" />
                  </cellValueFactory>
@@ -91,7 +91,7 @@
                      <TextFieldTableCell fx:factory="forTableColumn" />
                  </cellFactory>
              </TableColumn>
-             <TableColumn fx:id="coLesehastighet" onEditCommit="#LesehastighetEdit" prefWidth="115.0" text="Lesehastighet">
+             <TableColumn fx:id="coLesehastighet" onEditCommit="#LesehastighetEdit" prefWidth="135.0" text="Lesehastighet (MB/s)">
                  <cellValueFactory>
                      <PropertyValueFactory property="LeseHastighet" />
                  </cellValueFactory>
@@ -99,7 +99,7 @@
                      <TextFieldTableCell fx:factory="forTableColumn" />
                  </cellFactory>
              </TableColumn>
-             <TableColumn fx:id="coSkrivehastighet" onEditCommit="#SkrivehastighetEdit" prefWidth="115.0" text="Skrivehastighet">
+             <TableColumn fx:id="coSkrivehastighet" onEditCommit="#SkrivehastighetEdit" prefWidth="135.0" text="Skrivehastighet (MB/s)">
                  <cellValueFactory>
                      <PropertyValueFactory property="SkriveHastighet" />
                  </cellValueFactory>
@@ -111,12 +111,6 @@
 
              <!--MUS-->
              <TableColumn fx:id="coMusTrodlos" onEditCommit="#MusTrodlosEdit" prefWidth="115.0" text="Trådløs">
-                 <cellValueFactory>
-                     <PropertyValueFactory property="Trodlos" />
-                 </cellValueFactory>
-                 <cellFactory>
-                     <TextFieldTableCell fx:factory="forTableColumn" />
-                 </cellFactory>
              </TableColumn>
              <TableColumn fx:id="coFarge" onEditCommit="#FargeEdit" prefWidth="115.0" text="Farge">
                  <cellValueFactory>
@@ -129,7 +123,7 @@
              <!--MUS SLUTT-->
 
              <!--PROSESSOR-->
-             <TableColumn fx:id="coKjerner" onEditCommit="#KjernerEdit" prefWidth="115.0" text="Kjerner">
+             <TableColumn fx:id="coKjerner" onEditCommit="#KjernerEdit" prefWidth="115.0" text="Antall kjerner">
                  <cellValueFactory>
                      <PropertyValueFactory property="AntallKjerner" />
                  </cellValueFactory>
@@ -137,7 +131,7 @@
                      <TextFieldTableCell fx:factory="forTableColumn" />
                  </cellFactory>
              </TableColumn>
-             <TableColumn fx:id="coKlokkehastighet" onEditCommit="#KlokkehastgihetEdit" prefWidth="115.0" text="Klokkehastighet">
+             <TableColumn fx:id="coKlokkehastighet" onEditCommit="#KlokkehastgihetEdit" prefWidth="115.0" text="Klokkehastighet (GHz)">
                  <cellValueFactory>
                      <PropertyValueFactory property="Klokkehastighet" />
                  </cellValueFactory>
@@ -164,18 +158,12 @@
                      <TextFieldTableCell fx:factory="forTableColumn" />
                  </cellFactory>
              </TableColumn>
-             <TableColumn fx:id="co4K" prefWidth="115.0" text="4K">
-                 <cellValueFactory>
-                     <PropertyValueFactory property="min4K" />
-                 </cellValueFactory>
-                 <cellFactory>
-                     <TextFieldTableCell fx:factory="forTableColumn" />
-                 </cellFactory>
+             <TableColumn fx:id="co4K" editable="false" prefWidth="135.0" text="4K (autogenerert)">
              </TableColumn>
              <!--SKJERM SLUTT-->
 
              <!--SKJERMKORT-->
-             <TableColumn fx:id="coSkKlokkehastighet" onEditCommit="#SkKlokkehastgihetEdit" prefWidth="115.0" text="Klokkehastighet">
+             <TableColumn fx:id="coSkKlokkehastighet" onEditCommit="#SkKlokkehastgihetEdit" prefWidth="115.0" text="Klokkehastighet (GHz)">
                  <cellValueFactory>
                      <PropertyValueFactory property="Klokkehastighet" />
                  </cellValueFactory>
@@ -183,7 +171,7 @@
                      <TextFieldTableCell fx:factory="forTableColumn" />
                  </cellFactory>
              </TableColumn>
-             <TableColumn fx:id="coMinne" onEditCommit="#MinneEdit" prefWidth="115.0" text="Minne">
+             <TableColumn fx:id="coMinne" onEditCommit="#MinneEdit" prefWidth="115.0" text="Minne (GB)">
                  <cellValueFactory>
                      <PropertyValueFactory property="Minne" />
                  </cellValueFactory>
@@ -198,21 +186,8 @@
 
              <!--TASTATUR-->
          <TableColumn fx:id="coNumpad" onEditCommit="#NumpadEdit" prefWidth="115.0" text="Numpad">
-             <cellValueFactory>
-                 <PropertyValueFactory property="Numpad" />
-             </cellValueFactory>
-             <cellFactory>
-                 <TextFieldTableCell fx:factory="forTableColumn" />
-             </cellFactory>
          </TableColumn>
-
-         <TableColumn fx:id="coTrodlos" onEditCommit="#TrodlosEdit" prefWidth="115.0" text="Trodlos">
-             <cellValueFactory>
-                 <PropertyValueFactory property="Trodlos" />
-             </cellValueFactory>
-             <cellFactory>
-                 <TextFieldTableCell fx:factory="forTableColumn" />
-             </cellFactory>
+         <TableColumn fx:id="coTrodlos" onEditCommit="#TrodlosEdit" prefWidth="115.0" text="Trådløs">
          </TableColumn>
              <!--TASTATUR SLUTT-->
 

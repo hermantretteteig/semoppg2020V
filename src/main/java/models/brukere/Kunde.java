@@ -1,28 +1,30 @@
 package models.brukere;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class Kunde extends Bruker {
-    private String kundenummer;
-    private String epost;
+    private transient SimpleStringProperty kundenummer;
+    private transient SimpleStringProperty epost;
 
     public Kunde(String fornavn, String etternavn, String brukernavn, String passord, String kundenummer, String epost) {
         super(fornavn, etternavn, brukernavn, passord);
-        this.kundenummer = kundenummer;
-        this.epost = epost;
+        this.kundenummer = new SimpleStringProperty(kundenummer);
+        this.epost = new SimpleStringProperty(epost);
     }
 
     public String getKundenummer() {
-        return kundenummer;
+        return kundenummer.get();
     }
 
     public void setKundenummer(String kundenummer) {
-        this.kundenummer = kundenummer;
+        this.kundenummer.set(kundenummer);
     }
 
     public String getEpost() {
-        return epost;
+        return epost.get();
     }
 
     public void setEpost(String epost) {
-        this.epost = epost;
+        this.epost.set(epost);
     }
 }

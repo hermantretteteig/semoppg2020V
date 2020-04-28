@@ -33,14 +33,14 @@ public class DashboardAdminController {
         if (!filBane.exists()) {
             filBane.mkdirs();
         }
-        //FileChooser
+        //Oppretter FileChooser
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Velg fil");
         fileChooser.setInitialDirectory(filBane);
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("JOBJ Filer", "*.jobj")
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JOBJ Filer", "*.jobj")
         );
 
+        //Åpner filechooser og henter data hvis fil er valgt
         Stage stage = (Stage) adminPanel.getScene().getWindow();
         File file = fileChooser.showOpenDialog(stage);
         if(file != null){
@@ -59,23 +59,20 @@ public class DashboardAdminController {
         if (!filBane.exists()) {
             filBane.mkdirs();
         }
-        //FileChooser
+        //Oppretter filechooser
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Velg fil");
+        fileChooser.setTitle("Velg filplassering");
         fileChooser.setInitialDirectory(filBane);
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("JOBJ Filer", "*.jobj")
-        );
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JOBJ Filer", "*.jobj"));
 
+        //Åpner filechooser og eksporterer data
         Stage stage = (Stage) adminPanel.getScene().getWindow();
         File file = fileChooser.showSaveDialog(stage);
         if(file != null){
             LagreJOBJ lagreJOBJ = new LagreJOBJ();
-            lagreJOBJ.lagreKomponent(getAlleKomponenter(), file.getAbsolutePath());
+            lagreJOBJ.lagreKomponent(getAlleKomponenter(), file.getAbsolutePath()
+            );
         }
-
-        //TODO Kode for å hente fil
-        /**/
 
     }
 

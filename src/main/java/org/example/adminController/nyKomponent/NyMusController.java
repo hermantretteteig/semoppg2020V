@@ -1,14 +1,19 @@
 package org.example.adminController.nyKomponent;
 
 import data.KomponentData;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.util.Duration;
+import logikk.NyKomponentAlert;
 import models.komponent.Mus;
 import models.komponent.Skjermkort;
 import org.example.App;
+
+import java.util.concurrent.TimeUnit;
 
 public class NyMusController {
 
@@ -38,30 +43,24 @@ public class NyMusController {
 
         /*
 
-        KODE SOM VALIDERER OG LEGGER TIL SKJERMKORT I LISTE
+        METODER SOM VALIDERER ALLE TEKTFELT, OG GIR FEILMELDINGER TIL FELT MED FEIL
 
          */
-        boolean trodlos = false;
-        if(choTrodlos.getValue().equals("Ja")){
-            trodlos = true;
-        }
-
-        /*
-        Dette er ikke noen ferdig løsning, men test for å se om det fungerer.
-        */
 
 
-        double pris = Double.parseDouble(txtPris.getText());
+        //HVIS FELTENE ER GYLDIGE GJØR FØLGENDE UNDER
+                boolean trodlos = false;
+                if(choTrodlos.getValue().equals("Ja")){
+                    trodlos = true;
+                }
 
-        Mus nyMus = new Mus("2300", txtVaremerke.getText(), txtModell.getText(), pris, trodlos, colFarge.getValue().toString());
-        KomponentData.leggTilKomponent(nyMus);
+                Mus nyMus = new Mus("2300", txtVaremerke.getText(), txtModell.getText(), Integer.parseInt(txtPris.getText()), trodlos, colFarge.getValue().toString());
+                KomponentData.leggTilKomponent(nyMus);
 
+                NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
 
-        //Mus nyMus = new Mus();
-        //KomponentData.leggTilKomponent(nyMus);
-
-        //Rooter tilslutt til oversiktview
-        //App.setRoot("adminView/nyKomponentView/nyKomponent");
+                //Rooter tilslutt til oversiktview
+                App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 
     @FXML

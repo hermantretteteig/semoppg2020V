@@ -1,8 +1,6 @@
-package checker;
+package validering;
 
-import java.util.regex.Pattern;
-
-public class ValideringKomponent {
+public class ValiKomponent {
     public static boolean vareNr(String varenr){
         if(varenr.length() <= 6) {
             return false;

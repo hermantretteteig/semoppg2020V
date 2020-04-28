@@ -1,4 +1,4 @@
-package avvikshandtering;
+package exceptions;
 
 public class IOexception {
 }

@@ -1,11 +1,11 @@
-package checker;
+package validering;
 
 import java.util.regex.Pattern;
 
 public class epostChecker {
     public static boolean epostchecker(String epost) {
 
-        //Tillater norske bokstaver æ-ø-å
+        //Tillater ikke norske bokstaver æ-ø-å
 
         String epostRegex = "^[æøåa-zÆØA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[^ æøåa-zÆØÅA-Z0-9.-]+$";
 

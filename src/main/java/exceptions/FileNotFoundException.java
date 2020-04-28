@@ -1,6 +1,4 @@
-package avvikshandtering;
-
-import java.io.*;
+package exceptions;
 
 public class FileNotFoundException extends Exception {
 

@@ -1,6 +1,6 @@
 package org.example.kundeController;
 
-import checker.epostChecker;
+import validering.epostChecker;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;

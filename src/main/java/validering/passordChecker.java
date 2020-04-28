@@ -1,4 +1,4 @@
-package checker;
+package validering;
 
 import java.util.regex.Pattern;
 

@@ -1,6 +1,6 @@
 package org.example.adminController.endreKomponent;
 
-import checker.ValideringKomponent;
+import validering.ValiKomponent;
 import data.KomponentData;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -8,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.util.Callback;
-import javafx.util.converter.BooleanStringConverter;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import models.komponent.*;
@@ -98,7 +97,7 @@ public class EndreKomponentController {
     @FXML
     //Generelt
     public void VarenrEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if (nyFeil("For kort varenummer eller allerde i bruk", ValideringKomponent.vareNr(event.getNewValue())) == true) {
+        if (nyFeil("For kort varenummer eller allerde i bruk", ValiKomponent.vareNr(event.getNewValue())) == true) {
             event.getRowValue().setVarenr(event.getNewValue()); }
         tableView.refresh();
     }

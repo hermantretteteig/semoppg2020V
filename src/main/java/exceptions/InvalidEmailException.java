@@ -1,4 +1,4 @@
-package avvikshandtering;
+package exceptions;
 
 public class InvalidEmailException extends Exception {
     public InvalidEmailException(String ut) {

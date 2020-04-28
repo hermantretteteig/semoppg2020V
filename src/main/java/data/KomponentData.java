@@ -5,6 +5,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 import models.komponent.Komponent;
+import models.komponent.Lagringsenhet;
+import models.komponent.Tastatur;
 
 import java.util.ArrayList;
 
@@ -34,6 +36,16 @@ public class KomponentData {
 
     public void attachTableView(TableView tv) {
         tv.setItems(alleKomponenter);
+    }
+
+    public void hentLagrinsenheter(TableView tv, String enhet) {
+        ObservableList<Komponent> alleLagringsenheter = FXCollections.observableArrayList();
+        for(Komponent enKomponent : alleKomponenter){
+            if(enKomponent.getClass().getSimpleName().equals(enhet)){
+                alleLagringsenheter.add(enKomponent);
+            }
+        }
+        tv.setItems(alleLagringsenheter);
     }
 
     /*public static void slettMedVarenummer(String varenummer){

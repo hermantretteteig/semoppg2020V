@@ -28,7 +28,6 @@ public class Komponent implements Serializable {
 
     }
 
-
     public String getModell() {
         return modell.get();
     }

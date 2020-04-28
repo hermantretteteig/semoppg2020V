@@ -29,7 +29,7 @@ public class Lagringsenhet extends Komponent{
     }
 
     public void setFormat(String format) {
-        this.format = new SimpleStringProperty(format);
+        this.format.set(format);
     }
 
     public int getGb() {
@@ -37,7 +37,7 @@ public class Lagringsenhet extends Komponent{
     }
 
     public void setGb(int gb) {
-        this.gb = new SimpleIntegerProperty(gb);
+        this.gb.set(gb);
     }
 
     public String getLeseHastighet() {
@@ -45,7 +45,7 @@ public class Lagringsenhet extends Komponent{
     }
 
     public void setLeseHastighet(String leseHastighet) {
-        this.leseHastighet = new SimpleStringProperty(leseHastighet);
+        this.leseHastighet.set(leseHastighet);
     }
 
     public String getSkriveHastighet() {
@@ -53,7 +53,7 @@ public class Lagringsenhet extends Komponent{
     }
 
     public void setSkriveHastighet(String skriveHastighet) {
-        this.skriveHastighet = new SimpleStringProperty(skriveHastighet);
+        this.skriveHastighet.set(skriveHastighet);
     }
 
     @Override

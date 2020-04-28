@@ -19,7 +19,7 @@ public class Mus extends Komponent {
         this.farge = new SimpleStringProperty(farge);
     }
 
-    public boolean isTrodlos() {
+    public boolean getTrodlos() {
         return trodlos.get();
     }
 

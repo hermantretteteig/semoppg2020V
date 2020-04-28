@@ -38,7 +38,7 @@ public class Skjerm extends Komponent {
     }
 
     public void setPixelHoyde(int pixelHoyde) {
-        this.pixelHoyde = new SimpleIntegerProperty(pixelHoyde);
+        this.pixelHoyde.set(pixelHoyde);
         sjekk4K(this.pixelBredde.get(), pixelHoyde);
     }
 

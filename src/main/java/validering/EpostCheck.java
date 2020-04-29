@@ -2,7 +2,7 @@ package validering;
 
 import java.util.regex.Pattern;
 
-public class epostChecker {
+public class EpostCheck {
     public static boolean epostchecker(String epost) {
 
         //Tillater ikke norske bokstaver æ-ø-å

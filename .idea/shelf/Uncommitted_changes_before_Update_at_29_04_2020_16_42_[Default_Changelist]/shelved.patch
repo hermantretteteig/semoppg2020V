@@ -1,0 +1,128 @@
+Index: src/main/java/validering/passordChecker.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package validering;\r\n\r\nimport java.util.regex.Pattern;\r\n\r\npublic class passordChecker {\r\n    public boolean passordchecker(String passord) {\r\n        //Må inneholde minst et tall fra 0-9\r\n        //Må inneholde minst en liten bokstaver fra a-å\r\n        //Må inneholde minst en stor bokstav fra a-å\r\n        //Det er ikke tillatt med mellomrom\r\n        //Lengden på passorden må være minst 8 tegn\r\n        String passordRegex = \"(?=.*[0-9])(?=.*[æøåa-z])(?=.*[ÆØÅA-Z])(?=\\\\S+$).{8,}\";\r\n\r\n        Pattern pat = Pattern.compile(passordRegex);\r\n\r\n        if(passord == null){\r\n            return false;\r\n        }\r\n        return pat.matcher(passord).matches();\r\n    }\r\n}\r\n
+===================================================================
+--- src/main/java/validering/passordChecker.java	(revision 5b0f9c68b73897035934f81a07125a8caa396083)
++++ src/main/java/validering/PassordCheck.java	(date 1588168986109)
+@@ -2,7 +2,7 @@
+ 
+ import java.util.regex.Pattern;
+ 
+-public class passordChecker {
++public class PassordCheck {
+     public boolean passordchecker(String passord) {
+         //Må inneholde minst et tall fra 0-9
+         //Må inneholde minst en liten bokstaver fra a-å
+Index: src/main/java/validering/LengeCheck.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/validering/LengeCheck.java	(date 1588169411730)
++++ src/main/java/validering/LengeCheck.java	(date 1588169411730)
+@@ -0,0 +1,10 @@
++package validering;
++
++public class LengeCheck {
++    public static boolean lengdeCheck(String lengde) {
++        if(lengde.length() < 2) {
++            return false;
++        }
++        return true;
++    }
++}
+Index: src/main/java/org/example/kundeController/NykundeController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.kundeController;\r\n\r\nimport validering.epostChecker;\r\nimport javafx.fxml.FXML;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.control.PasswordField;\r\nimport javafx.scene.control.TextField;\r\nimport javafx.stage.Stage;\r\n\r\npublic class NykundeController {\r\n    public Label lblGjentaPassordFeil;\r\n    public Label lblFornavnFeil;\r\n    public Label lblEtternavnFeil;\r\n    public Label lblPassordFeil;\r\n    public Label lblBrukernavnFeil;\r\n    public Label lblEpostFeil;\r\n\r\n    public TextField txtFornavn;\r\n    public TextField txtEtternavn;\r\n    public TextField txtBrukernavn;\r\n    public TextField txtEpost;\r\n    public PasswordField txtGjentaPassord;\r\n    public PasswordField txtPassord;\r\n\r\n\r\n\r\n    @FXML private javafx.scene.control.Button registrer;\r\n    @FXML private javafx.scene.control.Button avslutt;\r\n\r\n\r\n    @FXML\r\n    private void avsluttAction(){\r\n        Stage stage = (Stage) avslutt.getScene().getWindow();\r\n        stage.close();\r\n    }\r\n\r\n    @FXML\r\n    private void registrerAction(){\r\n\r\n            lblFornavnFeil.setText(\"\");\r\n            lblEtternavnFeil.setText(\"\");\r\n            lblBrukernavnFeil.setText(\"\");\r\n            lblPassordFeil.setText(\"\");\r\n            lblGjentaPassordFeil.setText(\"\");\r\n            lblEpostFeil.setText(\"\");\r\n\r\n            if(txtFornavn.getText().length()<2){\r\n                lblFornavnFeil.setText(\"Fornavn må være minst to tegn.\");\r\n            }\r\n            if(txtEtternavn.getText().length()<2){\r\n                lblEtternavnFeil.setText(\"Etternavn må være minst to tegn.\");\r\n            }\r\n            if(txtBrukernavn.getText().length()<2){\r\n                lblBrukernavnFeil.setText(\"Må være minst to tegn.\");\r\n            }\r\n\r\n            if(txtPassord.getText().length()<8){\r\n                lblPassordFeil.setText(\"Passord må være minst 8 tegn.\");\r\n            }\r\n            if(!(txtGjentaPassord.getText().equals(txtPassord.getText()))){\r\n                lblGjentaPassordFeil.setText(\"Passordene er ulike.\");\r\n            }\r\n\r\n            if(!epostChecker.epostchecker(txtEpost.getText())){\r\n                lblEpostFeil.setText(\"Eposen er ugyldig.\");\r\n            }\r\n\r\n\r\n\r\n\r\n\r\n        //Stage stage = (Stage) registrer.getScene().getWindow();\r\n        //stage.close();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/org/example/kundeController/NykundeController.java	(revision 5b0f9c68b73897035934f81a07125a8caa396083)
++++ src/main/java/org/example/kundeController/NykundeController.java	(date 1588168986090)
+@@ -1,6 +1,6 @@
+ package org.example.kundeController;
+ 
+-import validering.epostChecker;
++import validering.EpostCheck;
+ import javafx.fxml.FXML;
+ import javafx.scene.control.Label;
+ import javafx.scene.control.PasswordField;
+@@ -61,7 +61,7 @@
+                 lblGjentaPassordFeil.setText("Passordene er ulike.");
+             }
+ 
+-            if(!epostChecker.epostchecker(txtEpost.getText())){
++            if(!EpostCheck.epostchecker(txtEpost.getText())){
+                 lblEpostFeil.setText("Eposen er ugyldig.");
+             }
+ 
+Index: src/main/java/validering/PassordValCheck.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/validering/PassordValCheck.java	(date 1588170795106)
++++ src/main/java/validering/PassordValCheck.java	(date 1588170795106)
+@@ -0,0 +1,12 @@
++package validering;
++
++public class PassordValCheck {
++    public static boolean passordValCheck(String passord1, String passord2){
++        if(!passord1.equals(passord2)) {
++            return false;
++        }
++        else{
++            return true;
++        }
++    }
++}
+Index: src/main/java/validering/navnChecker.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package validering;\r\n\r\nimport java.util.regex.Pattern;\r\n\r\npublic class navnChecker {\r\n    public boolean navnchecker(String navn){\r\n\r\n        //Tillater kun navn som inneholde store og små bokstaver\r\n        String navnRegex = \"^[æøåa-zÆØÅA-Z]+$\";\r\n\r\n        Pattern pat = Pattern.compile(navnRegex);\r\n\r\n        if(navn == null) {\r\n            return false;\r\n        }\r\n        return pat.matcher(navn).matches();\r\n    }\r\n}\r\n
+===================================================================
+--- src/main/java/validering/navnChecker.java	(revision 5b0f9c68b73897035934f81a07125a8caa396083)
++++ src/main/java/validering/NavnCheck.java	(date 1588168986215)
+@@ -2,7 +2,7 @@
+ 
+ import java.util.regex.Pattern;
+ 
+-public class navnChecker {
++public class NavnCheck {
+     public boolean navnchecker(String navn){
+ 
+         //Tillater kun navn som inneholde store og små bokstaver
+Index: src/main/java/validering/epostChecker.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package validering;\r\n\r\nimport java.util.regex.Pattern;\r\n\r\npublic class epostChecker {\r\n    public static boolean epostchecker(String epost) {\r\n\r\n        //Tillater ikke norske bokstaver æ-ø-å\r\n\r\n        String epostRegex = \"^[æøåa-zÆØA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[^ æøåa-zÆØÅA-Z0-9.-]+$\";\r\n\r\n        Pattern pat = Pattern.compile(epostRegex);\r\n\r\n        if (epost == null) {\r\n            return false;\r\n        }\r\n        return pat.matcher(epost).matches();\r\n    }\r\n\r\n}
+===================================================================
+--- src/main/java/validering/epostChecker.java	(revision 5b0f9c68b73897035934f81a07125a8caa396083)
++++ src/main/java/validering/EpostCheck.java	(date 1588168986187)
+@@ -2,7 +2,7 @@
+ 
+ import java.util.regex.Pattern;
+ 
+-public class epostChecker {
++public class EpostCheck {
+     public static boolean epostchecker(String epost) {
+ 
+         //Tillater ikke norske bokstaver æ-ø-å
+Index: src/main/java/validering/tallChecker.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package validering;\r\n\r\nimport java.util.regex.Pattern;\r\n\r\npublic class tallChecker {\r\n    public boolean tallchecker(String tall){\r\n\r\n        //Tillater kun 0-9, og må være et norsk telefonnummer med 8 siffer\r\n        Pattern pat = Pattern.compile(\"(0047|\\\\+47|47)?\\\\d{8}\");\r\n        if(tall == null) {\r\n            return false;\r\n        }\r\n        return pat.matcher(tall).matches();\r\n    }\r\n}\r\n
+===================================================================
+--- src/main/java/validering/tallChecker.java	(revision 5b0f9c68b73897035934f81a07125a8caa396083)
++++ src/main/java/validering/TallCheck.java	(date 1588168986099)
+@@ -2,7 +2,7 @@
+ 
+ import java.util.regex.Pattern;
+ 
+-public class tallChecker {
++public class TallCheck {
+     public boolean tallchecker(String tall){
+ 
+         //Tillater kun 0-9, og må være et norsk telefonnummer med 8 siffer

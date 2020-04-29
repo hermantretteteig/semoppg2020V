@@ -1,17 +1,15 @@
 package org.example.kundeController;
 
+import data.HandlekurvData;
 import data.KomponentData;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
+import javafx.util.converter.DoubleStringConverter;
+import models.HandlekurvVare;
 import models.komponent.Komponent;
-import models.komponent.Prosessor;
-import models.komponent.Skjerm;
-
-import java.util.Collection;
 
 public class NyttKjopController {
 
@@ -20,9 +18,19 @@ public class NyttKjopController {
     public TreeTableView<Komponent> tabell;
 
     @FXML
+    public TableView tableHandekurv;
+
+    @FXML
     public TreeTableColumn<Komponent, String> coVaremerke;
     public TreeTableColumn<Komponent, String> coModell;
     public TreeTableColumn<Komponent, Double> coPris;
+
+    @FXML
+    public TableColumn coHandlekurvNavn;
+    public TableColumn coHandlekurvPris;
+
+
+    private HandlekurvData collection = new HandlekurvData();
 
 
     public static TreeItem<Komponent> getModel()
@@ -57,20 +65,33 @@ public class NyttKjopController {
         return alleKomponener;
     }
 
+    @FXML
+    public void leggTilIHandekurv(){
+        Komponent valgtKomponent = tabell.getSelectionModel().getSelectedItem().getValue();
+        System.out.println("Varenr: "+valgtKomponent.getVarenr());
+
+        HandlekurvVare nyVare = new HandlekurvVare(valgtKomponent.getVarenr(), (valgtKomponent.getVaremerke()+" "+valgtKomponent.getModell()), valgtKomponent.getPris());
+        HandlekurvData.nyVare(nyVare);
+        tableHandekurv.refresh();
 
 
-    private KomponentData nyttKjop = new KomponentData();
+    }
+
+
 
 
     public void initialize() {
+        coHandlekurvPris.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
 
-
+        collection.hentKomponenttype(tableHandekurv);
         coVaremerke.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Komponent, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Komponent, String> param) {
                 return param.getValue().getValue().getSSPVaremerke();
             }
         });
+
+
 
         coModell.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Komponent, String>, ObservableValue<String>>() {
             @Override

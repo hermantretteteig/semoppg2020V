@@ -28,13 +28,13 @@ public class KomponentData {
 
 
     public void hentKomponenttype(TableView tv, String enhet) {
-        ObservableList<Komponent> alleLagringsenheter = FXCollections.observableArrayList();
+        ObservableList<Komponent> utvalgteLagrinsenheter = FXCollections.observableArrayList();
         for(Komponent enKomponent : alleKomponenter){
             if(enKomponent.getClass().getSimpleName().equals(enhet)){
-                alleLagringsenheter.add(enKomponent);
+                utvalgteLagrinsenheter.add(enKomponent);
             }
         }
-        tv.setItems(alleLagringsenheter);
+        tv.setItems(utvalgteLagrinsenheter);
     }
 
     /*public static void slettMedVarenummer(String varenummer){

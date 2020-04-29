@@ -37,7 +37,7 @@
      <!--GENERELLE FOR ALLE-->
      <!--GENERELLE FOR ALLE-->
      <!--GENERELLE FOR ALLE-->
-         <TableColumn onEditCommit="#VarenrEdit" prefWidth="100.0" text="Varenummer">
+         <TableColumn editable="false" prefWidth="100.0" text="Varenummer">
          <cellValueFactory>
             <PropertyValueFactory property="Varenr" />
          </cellValueFactory>

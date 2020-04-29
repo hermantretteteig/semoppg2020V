@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TreeTableColumn?>
@@ -11,37 +12,72 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.kundeController.NyttKjopController">
    <children>
-      <TreeTableView fx:id="tabell" layoutX="53.0" layoutY="50.0" prefHeight="464.0" prefWidth="412.0">
+      <TreeTableView fx:id="tabell" layoutX="28.0" layoutY="98.0" onMousePressed="#valgtKomponent" prefHeight="414.0" prefWidth="425.0">
         <columns>
-            <TreeTableColumn fx:id="coVaremerke" prefWidth="134.0" text="Varemerke">
+            <TreeTableColumn fx:id="coVaremerke" prefWidth="152.0" resizable="false" text="Varemerke">
             <cellValueFactory>
                 <PropertyValueFactory property="Varemerke" />
             </cellValueFactory>
         </TreeTableColumn>
-            <TreeTableColumn fx:id="coModell" prefWidth="130.5" text="Modell" />
-            <TreeTableColumn fx:id="coPris" prefWidth="146.5" text="Pris" />
+            <TreeTableColumn fx:id="coModell" prefWidth="133.5" resizable="false" text="Modell" />
+            <TreeTableColumn fx:id="coPris" prefWidth="136.5" resizable="false" text="Pris" />
         </columns>
       </TreeTableView>
-      <Button layoutX="488.0" layoutY="50.0" mnemonicParsing="false" onAction="#leggTilIHandekurv" prefHeight="49.0" prefWidth="211.0" text="Legg valgt vare i handekurv">
+      <Button layoutX="229.0" layoutY="523.0" mnemonicParsing="false" onAction="#leggTilIHandekurv" prefHeight="49.0" prefWidth="211.0" text="Legg valgt vare i handekurv">
          <font>
             <Font size="15.0" />
          </font></Button>
 
 
 
-      <TableView fx:id="tableHandekurv" layoutX="766.0" layoutY="50.0" prefHeight="228.0" prefWidth="211.0">
+      <TableView fx:id="tableHandekurv" layoutX="480.0" layoutY="308.0" prefHeight="206.0" prefWidth="364.0">
         <columns>
-            <TableColumn prefWidth="75.0" text="Varenavn">
+            <TableColumn prefWidth="124.5" text="Varenavn">
                 <cellValueFactory>
                     <PropertyValueFactory property="Navn" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="coHandlekurvPris" prefWidth="75.0" text="Pris (kr)">
+            <TableColumn fx:id="coHandlekurvPris" prefWidth="123.0" text="Pris (kr)">
                 <cellValueFactory>
                     <PropertyValueFactory property="Pris" />
                 </cellValueFactory>
             </TableColumn>
         </columns>
       </TableView>
+
+      <Label layoutX="482.0" layoutY="87.0" prefHeight="37.0" prefWidth="270.0" text="Informasjon om valgt komponent:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+
+      <Button layoutX="870.0" layoutY="523.0" mnemonicParsing="false" onAction="#leggTilIHandekurv" prefHeight="49.0" prefWidth="99.0" text="Fullfør kjøp">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="870.0" layoutY="308.0" mnemonicParsing="false" onAction="#leggTilIHandekurv" prefHeight="30.0" prefWidth="99.0" text="Slett valgt vare" />
+
+
+       <TableView fx:id="komponentinfo" layoutX="480.0" layoutY="115.0" prefHeight="198.0" prefWidth="483.0" stylesheets="@../../../style/komponentinfotabell.css" visible="false">
+        <columns>
+            <TableColumn editable="false" maxWidth="180.0" minWidth="180.0" prefWidth="180.0" sortable="false" text="">
+                <cellValueFactory>
+                    <PropertyValueFactory property="Verdibeskrivelse" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn editable="false" maxWidth="500.0" minWidth="106.0" prefWidth="300.5" resizable="false" sortable="false" text="">
+                <cellValueFactory>
+                    <PropertyValueFactory property="Verdi" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+      </TableView>
+      <Button layoutX="870.0" layoutY="352.0" mnemonicParsing="false" onAction="#leggTilIHandekurv" prefHeight="30.0" prefWidth="99.0" text="Slett alle varer" />
+      <Label layoutX="28.0" layoutY="50.0" prefHeight="37.0" prefWidth="278.0" text="Tilgjengelige komponenter:">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

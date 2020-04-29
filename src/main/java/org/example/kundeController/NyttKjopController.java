@@ -2,13 +2,17 @@ package org.example.kundeController;
 
 import data.HandlekurvData;
 import data.KomponentData;
+import data.NyttKjopKomponentinfoViewData;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.TouchEvent;
 import javafx.util.Callback;
 import javafx.util.converter.DoubleStringConverter;
 import models.HandlekurvVare;
+import models.NyttKjopKomponentinfoView;
 import models.komponent.Komponent;
 
 public class NyttKjopController {
@@ -19,6 +23,7 @@ public class NyttKjopController {
 
     @FXML
     public TableView tableHandekurv;
+    public TableView komponentinfo;
 
     @FXML
     public TreeTableColumn<Komponent, String> coVaremerke;
@@ -31,14 +36,13 @@ public class NyttKjopController {
 
 
     private HandlekurvData collection = new HandlekurvData();
-
+    private NyttKjopKomponentinfoViewData collection2 = new NyttKjopKomponentinfoViewData();
 
     public static TreeItem<Komponent> getModel()
     {
 
 
         TreeItem<Komponent> prosssor = new TreeItem<>(new Komponent("", "Prosessorer", "", 0));
-
         TreeItem<Komponent> lagringsenhet = new TreeItem<>(new Komponent("", "Lagringsenheter", "", 0));
 
 
@@ -77,6 +81,16 @@ public class NyttKjopController {
 
     }
 
+    @FXML
+    public void valgtKomponent(){
+        komponentinfo.setVisible(true);
+        NyttKjopKomponentinfoViewData.OppdaterView(tabell.getSelectionModel().getSelectedItem().getValue());
+        komponentinfo.refresh();
+    }
+
+
+
+
 
 
 
@@ -84,6 +98,8 @@ public class NyttKjopController {
         coHandlekurvPris.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
 
         collection.hentKomponenttype(tableHandekurv);
+        collection2.hentKomponentinfo(komponentinfo);
+
         coVaremerke.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Komponent, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Komponent, String> param) {

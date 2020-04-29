@@ -1,0 +1,22 @@
+.table-view {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-font-size: 15;
+}
+
+.table-row-cell{
+    -fx-background-color: transparent;
+}

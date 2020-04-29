@@ -16,4 +16,8 @@ public class LagreCSV extends LagreFil {
     public void lagreDatamaskin(ObservableList<Datamaskin> datamaskiner, String filnavn) {
 
     }
+
+    public void lagreDatamaskin(Datamaskin datamaskiner, String filnavn) {
+
+    }
 }

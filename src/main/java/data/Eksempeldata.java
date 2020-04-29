@@ -6,7 +6,6 @@ public class Eksempeldata {
 
     public static void GenererEksempeldata(){
         Lagringsenhet lagringsenhetEn = new Lagringsenhet(
-                "maEndres",
                 "Samsung",
                 "2000",
                 2490,
@@ -16,7 +15,6 @@ public class Eksempeldata {
                 "2150");
 
         Lagringsenhet lagringsenhetTo = new Lagringsenhet(
-                "maEndres2",
                 "Apple",
                 "Ultra",
                 9490,
@@ -26,7 +24,6 @@ public class Eksempeldata {
                 "2134");
 
         Mus musEn = new Mus(
-                "maEndres",
                 "Logi",
                 "Super",
                 499,
@@ -34,7 +31,6 @@ public class Eksempeldata {
                 "#F2F2F2");
 
         Mus toMus = new Mus(
-                "maEndres2",
                 "Apple",
                 "Rask",
                 699,
@@ -42,7 +38,6 @@ public class Eksempeldata {
                 "#000000");
 
         Prosessor prosessor1 = new Prosessor(
-                "maEndres2",
                 "AMD",
                 "i5",
                 4599,
@@ -50,7 +45,6 @@ public class Eksempeldata {
                 1200);
 
         Prosessor prosessor2 = new Prosessor(
-                "maEndres2",
                 "Intel",
                 "i7",
                 6099,
@@ -58,7 +52,6 @@ public class Eksempeldata {
                 2400);
 
         Skjerm skjerm1 = new Skjerm(
-                "maEndres2",
                 "LG",
                 "MH56",
                 1499,
@@ -66,7 +59,6 @@ public class Eksempeldata {
                 720);
 
         Skjerm skjerm2 = new Skjerm(
-                "maEndres2",
                 "LG",
                 "Ultra 4K",
                 5499,
@@ -74,7 +66,6 @@ public class Eksempeldata {
                 2160);
 
         Skjermkort skjermkort1 = new Skjermkort(
-                "maEndres2",
                 "GTX",
                 "Lyn",
                 5499,
@@ -82,7 +73,6 @@ public class Eksempeldata {
                 2);
 
         Skjermkort skjermkort2 = new Skjermkort(
-                "maEndres2",
                 "GTX",
                 "Pro",
                 8499,
@@ -90,7 +80,6 @@ public class Eksempeldata {
                 3);
 
         Tastatur tastatur1 = new Tastatur(
-                "maEndres2",
                 "Logo",
                 "Ultra",
                 1499,
@@ -98,7 +87,6 @@ public class Eksempeldata {
                 true);
 
         Tastatur tastatur2 = new Tastatur(
-                "100",
                 "Logi",
                 "Simpel",
                 499,

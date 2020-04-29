@@ -13,6 +13,14 @@ public class Skjermkort extends Komponent{
     private transient SimpleDoubleProperty klokkehastighet;
     private transient SimpleIntegerProperty minne;
 
+    //Konstruktør for opprettelse av nytt komponent.
+    public Skjermkort(String varemerke, String modell, double pris, double klokkehastighet, int minne) {
+        super(varemerke, modell, pris);
+        this.klokkehastighet = new SimpleDoubleProperty(klokkehastighet);
+        this.minne = new SimpleIntegerProperty(minne);
+    }
+
+    //Konstruktør for å opprette komponent fra tekstfil.
     public Skjermkort(String varenr, String varemerke, String modell, double pris, double klokkehastighet, int minne) {
         super(varenr, varemerke, modell, pris);
         this.klokkehastighet = new SimpleDoubleProperty(klokkehastighet);

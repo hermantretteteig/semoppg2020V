@@ -11,6 +11,14 @@ public class Mus extends Komponent {
     private transient SimpleBooleanProperty trodlos;
     private transient SimpleStringProperty farge;
 
+    //Konstruktør for opprettelse av nytt komponent.
+    public Mus(String varemerke, String modell, double pris, boolean trodlos, String farge) {
+        super(varemerke, modell, pris);
+        this.trodlos = new SimpleBooleanProperty(trodlos);
+        this.farge = new SimpleStringProperty(farge);
+    }
+
+    //Konstruktør for å opprette komponent fra tekstfil.
     public Mus(String varenr, String varemerke, String modell, double pris, boolean trodlos, String farge) {
         super(varenr, varemerke, modell, pris);
         this.trodlos = new SimpleBooleanProperty(trodlos);

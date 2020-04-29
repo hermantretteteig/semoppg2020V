@@ -5,6 +5,7 @@ import filbehandling.LagreJOBJ;
 import filbehandling.LesJOBJ;
 
 import java.io.File;
+import java.util.UUID;
 
 public class Test {
     public static void main(String[] args) throws ClassNotFoundException {
@@ -12,7 +13,7 @@ public class Test {
         //Mus mus = new Mus("Logitech", 300, "1232", "G5", true, "Svart");
         //Prosessor prosessor = new Prosessor("Intel", 1500, "1222","Pentium", 4, 2.6);
         //Skjerm skjerm = new Skjerm("Samsung", 2200, "1222", "Godskjermen", 1980, 1024, false);
-        Skjermkort skjermkort = new Skjermkort("1111", "MSI", "nVidia1080", 2800, 2, 6);
+        /*Skjermkort skjermkort = new Skjermkort("1111", "MSI", "nVidia1080", 2800, 2, 6);
         //Tastatur tastatur = new Tastatur("Logitech", 150, "1010", "G78", false, true);
 
         //Datamaskin datamaskin = new Datamaskin(lagringsenhet, mus, prosessor, skjerm, skjermkort, tastatur);
@@ -47,6 +48,9 @@ public class Test {
         }
         catch (Exception e) {
             System.err.println(e.getMessage());
-        }
+        }*/
+
+            UUID varenr = UUID.randomUUID();
+            System.out.println(varenr.toString());
     }
 }

@@ -14,6 +14,7 @@ import javafx.util.converter.DoubleStringConverter;
 import models.HandlekurvVare;
 import models.NyttKjopKomponentinfoView;
 import models.komponent.Komponent;
+import org.example.App;
 
 public class NyttKjopController {
 
@@ -86,6 +87,24 @@ public class NyttKjopController {
         komponentinfo.setVisible(true);
         NyttKjopKomponentinfoViewData.OppdaterView(tabell.getSelectionModel().getSelectedItem().getValue());
         komponentinfo.refresh();
+    }
+
+
+    @FXML
+    public void slettHandlekurvAction(){
+        HandlekurvData.getHandekurv().clear();
+        tableHandekurv.refresh();
+    }
+
+    @FXML
+    public void tilbakeAction() throws Exception {
+        App.setRoot("kundeView/dashboardKunde");
+    }
+
+    @FXML
+    public void slettValgtVareAction(){
+        HandlekurvData.getHandekurv().remove(tableHandekurv.getSelectionModel().getSelectedItem());
+        tableHandekurv.refresh();
     }
 
 

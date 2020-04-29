@@ -23,7 +23,7 @@
             <TreeTableColumn fx:id="coPris" prefWidth="136.5" resizable="false" text="Pris" />
         </columns>
       </TreeTableView>
-      <Button layoutX="229.0" layoutY="523.0" mnemonicParsing="false" onAction="#leggTilIHandekurv" prefHeight="49.0" prefWidth="211.0" text="Legg valgt vare i handekurv">
+      <Button layoutX="240.0" layoutY="523.0" mnemonicParsing="false" onAction="#leggTilIHandekurv" prefHeight="49.0" prefWidth="213.0" text="Legg valgt vare i handlekurv">
          <font>
             <Font size="15.0" />
          </font></Button>
@@ -51,12 +51,12 @@
          </font>
       </Label>
 
-      <Button layoutX="870.0" layoutY="523.0" mnemonicParsing="false" onAction="#leggTilIHandekurv" prefHeight="49.0" prefWidth="99.0" text="Fullfør kjøp">
+      <Button layoutX="870.0" layoutY="523.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="99.0" text="Fullfør kjøp">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="870.0" layoutY="308.0" mnemonicParsing="false" onAction="#leggTilIHandekurv" prefHeight="30.0" prefWidth="99.0" text="Slett valgt vare" />
+      <Button layoutX="870.0" layoutY="337.0" mnemonicParsing="false" onAction="#slettValgtVareAction" prefHeight="30.0" prefWidth="99.0" text="Slett valgt vare" />
 
 
        <TableView fx:id="komponentinfo" layoutX="480.0" layoutY="115.0" prefHeight="198.0" prefWidth="483.0" stylesheets="@../../../style/komponentinfotabell.css" visible="false">
@@ -73,10 +73,20 @@
             </TableColumn>
         </columns>
       </TableView>
-      <Button layoutX="870.0" layoutY="352.0" mnemonicParsing="false" onAction="#leggTilIHandekurv" prefHeight="30.0" prefWidth="99.0" text="Slett alle varer" />
+      <Button layoutX="870.0" layoutY="381.0" mnemonicParsing="false" onAction="#slettHandlekurvAction" prefHeight="30.0" prefWidth="99.0" text="Slett alle varer" />
       <Label layoutX="28.0" layoutY="50.0" prefHeight="37.0" prefWidth="278.0" text="Tilgjengelige komponenter:">
          <font>
             <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button onAction="#tilbakeAction" layoutX="28.0" layoutY="541.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" text="Tilbake">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="480.0" layoutY="269.0" prefHeight="37.0" prefWidth="270.0" text="Handlekurv:">
+         <font>
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
    </children>

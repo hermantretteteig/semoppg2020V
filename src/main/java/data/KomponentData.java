@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TreeTableView;
 import models.komponent.Komponent;
 import models.komponent.Lagringsenhet;
 import models.komponent.Tastatur;
@@ -25,20 +26,8 @@ public class KomponentData {
         alleKomponenter.add(nyKomponent);
     }
 
-   /* public static Komponent hentMedVarenummer(String varenummer){
-        for (Komponent enKomponent : alleKomponenter){
-            if(enKomponent.getVarenr().get().equals(varenummer)){
-                return  enKomponent;
-            }
-        }
-        return null;
-    }*/
 
-    public void attachTableView(TableView tv) {
-        tv.setItems(alleKomponenter);
-    }
-
-    public void hentLagrinsenheter(TableView tv, String enhet) {
+    public void hentKomponenttype(TableView tv, String enhet) {
         ObservableList<Komponent> alleLagringsenheter = FXCollections.observableArrayList();
         for(Komponent enKomponent : alleKomponenter){
             if(enKomponent.getClass().getSimpleName().equals(enhet)){

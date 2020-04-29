@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -30,6 +31,17 @@ public class Komponent implements Serializable {
 
     public String getModell() {
         return modell.get();
+    }
+
+    //Simpel property get for treetable view
+    public SimpleStringProperty getSSPVaremerke() {
+        return varemerke;
+    }
+    public SimpleStringProperty getSSPModell() {
+        return modell;
+    }
+    public ObservableValue getSSPPris() {
+        return pris;
     }
 
     public void setModell(String modell) {

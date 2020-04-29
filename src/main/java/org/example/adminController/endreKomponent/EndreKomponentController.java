@@ -48,6 +48,7 @@ public class EndreKomponentController {
     public TableColumn coSkKlokkehastighet;
     public TableColumn coMinne;
 
+
     private KomponentData collection = new KomponentData();
 
     @FXML
@@ -58,7 +59,7 @@ public class EndreKomponentController {
     @FXML
     public void hentAction() throws Exception {
         SkjulAlleEkstrakolonner();
-        collection.hentLagrinsenheter(tableView, choKomponentvelger.getValue().toString());
+        collection.hentKomponenttype(tableView, choKomponentvelger.getValue().toString());
         visEkstrakolonner(choKomponentvelger.getValue().toString());
     }
 
@@ -82,7 +83,7 @@ public class EndreKomponentController {
         SkjulAlleEkstrakolonner();
 
         //Generer kolonner som gjelder for "Lagringsenhet"
-        collection.hentLagrinsenheter(tableView, choKomponentvelger.getValue().toString());
+        collection.hentKomponenttype(tableView, choKomponentvelger.getValue().toString());
         visEkstrakolonner(choKomponentvelger.getValue().toString());
     }
 

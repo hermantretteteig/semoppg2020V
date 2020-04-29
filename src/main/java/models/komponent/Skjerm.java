@@ -11,7 +11,6 @@ public class Skjerm extends Komponent {
     private transient SimpleIntegerProperty pixelBredde;
     private transient SimpleIntegerProperty pixelHoyde;
 
-
     //Automatisk generert av pixel høyde og bredde
     private transient SimpleBooleanProperty min4k;
 
@@ -20,6 +19,14 @@ public class Skjerm extends Komponent {
         this.pixelBredde = new SimpleIntegerProperty(pixelBredde);
         this.pixelHoyde = new SimpleIntegerProperty(pixelHoyde);
         this.min4k = new SimpleBooleanProperty(sjekk4K(pixelBredde, pixelHoyde));
+    }
+
+    //Konstruktør for å lese inn fra tekstfil.
+    public Skjerm(String varenr, String varemerke, String modell, double pris, int pixelBredde, int pixelHoyde, boolean min4k) {
+        super(varenr, varemerke, modell, pris);
+        this.pixelBredde = new SimpleIntegerProperty(pixelBredde);
+        this.pixelHoyde = new SimpleIntegerProperty(pixelHoyde);
+        this.min4k = new SimpleBooleanProperty(min4k);
     }
 
     public int getPixelBredde() {

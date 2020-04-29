@@ -1,6 +1,6 @@
 package org.example.kundeController;
 
-import validering.epostChecker;
+import validering.EpostCheck;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -61,7 +61,7 @@ public class NykundeController {
                 lblGjentaPassordFeil.setText("Passordene er ulike.");
             }
 
-            if(!epostChecker.epostchecker(txtEpost.getText())){
+            if(!EpostCheck.epostchecker(txtEpost.getText())){
                 lblEpostFeil.setText("Eposen er ugyldig.");
             }
 

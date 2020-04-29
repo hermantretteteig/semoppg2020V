@@ -95,16 +95,6 @@ public class EndreKomponentController {
      */
 
 
-    @FXML
-    //Generelt
-    public void VarenrEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if (nyFeil("For kort varenummer eller allerde i bruk", ValiKomponent.vareNr(event.getNewValue())) == true) {
-            event.getRowValue().setVarenr(event.getNewValue()); }
-        tableView.refresh();
-    }
-
-
-
     public void VareMerkeEdit(TableColumn.CellEditEvent<Komponent, String> event) {
         event.getRowValue().setVaremerke(event.getNewValue());
     }

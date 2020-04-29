@@ -2,7 +2,7 @@ package validering;
 
 import java.util.regex.Pattern;
 
-public class tallChecker {
+public class TallCheck {
     public boolean tallchecker(String tall){
 
         //Tillater kun 0-9, og må være et norsk telefonnummer med 8 siffer

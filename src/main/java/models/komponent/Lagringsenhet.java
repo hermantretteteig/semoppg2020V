@@ -17,6 +17,16 @@ public class Lagringsenhet extends Komponent{
     private transient SimpleStringProperty leseHastighet;
     private transient SimpleStringProperty skriveHastighet;
 
+    //Konstruktør for opprettelse av nytt komponent.
+    public Lagringsenhet(String varemerke, String modell, double pris, String format, int gb, String leseHastighet, String skriveHastighet) {
+        super(varemerke, modell, pris);
+        this.format = new SimpleStringProperty(format);
+        this.gb = new SimpleIntegerProperty(gb);
+        this.leseHastighet = new SimpleStringProperty(leseHastighet);
+        this.skriveHastighet = new SimpleStringProperty(skriveHastighet);
+    }
+
+    //Konstruktør for å opprette komponent fra tekstfil.
     public Lagringsenhet(String varenr, String varemerke, String modell, double pris, String format, int gb, String leseHastighet, String skriveHastighet) {
         super(varenr, varemerke, modell, pris);
         this.format = new SimpleStringProperty(format);

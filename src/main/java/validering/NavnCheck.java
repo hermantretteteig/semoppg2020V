@@ -2,7 +2,7 @@ package validering;
 
 import java.util.regex.Pattern;
 
-public class navnChecker {
+public class NavnCheck {
     public boolean navnchecker(String navn){
 
         //Tillater kun navn som inneholde store og små bokstaver

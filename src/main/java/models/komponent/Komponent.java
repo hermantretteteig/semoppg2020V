@@ -10,23 +10,32 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.UUID;
 
 
 //Superklasse som alle andre varer arver fra.
 public class Komponent implements Serializable {
-    private static final long serialVersionUID = 1;
+    private static final long serialVersionUID = 2;
 
     private transient SimpleStringProperty varenr;
     private transient SimpleStringProperty varemerke;
     private transient SimpleStringProperty modell;
     private transient SimpleDoubleProperty pris;
 
+    //Konstruktør for opprettelse av nytt komponent.
+    public Komponent(String varemerke, String modell, double pris) {
+        this.varenr = new SimpleStringProperty(genererVarenr());
+        this.varemerke = new SimpleStringProperty(varemerke);
+        this.modell = new SimpleStringProperty(modell);
+        this.pris = new SimpleDoubleProperty(pris);
+    }
+
+    //Konstruktør for å opprette komponent fra tekstfil.
     public Komponent(String varenr, String varemerke, String modell, double pris) {
         this.varenr = new SimpleStringProperty(varenr);
         this.varemerke = new SimpleStringProperty(varemerke);
         this.modell = new SimpleStringProperty(modell);
         this.pris = new SimpleDoubleProperty(pris);
-
     }
 
     public String getModell() {
@@ -60,11 +69,6 @@ public class Komponent implements Serializable {
         return varenr.get();
     }
 
-    public void setVarenr(String varenr) {
-        this.varenr.set(varenr);
-    }
-
-
     public String getVaremerke() {
         return varemerke.get();
     }
@@ -90,4 +94,11 @@ public class Komponent implements Serializable {
         modell = new SimpleStringProperty((String) in.readObject());
         pris = new SimpleDoubleProperty((Double) in.readObject());
     }
+
+    //Metode for generering av varenr
+    private String genererVarenr() {
+        UUID varenr = UUID.randomUUID();
+        return varenr.toString();
+    }
+
 }

@@ -12,6 +12,14 @@ public class Prosessor extends Komponent {
     private transient SimpleIntegerProperty antallKjerner;
     private transient SimpleDoubleProperty klokkehastighet;
 
+    //Konstruktør for opprettelse av nytt komponent.
+    public Prosessor(String varemerke, String modell, double pris, int antallKjerner, double klokkehastighet) {
+        super(varemerke, modell, pris);
+        this.antallKjerner = new SimpleIntegerProperty(antallKjerner);
+        this.klokkehastighet = new SimpleDoubleProperty(klokkehastighet);
+    }
+
+    //Konstruktør for å opprette komponent fra tekstfil.
     public Prosessor(String varenr, String varemerke, String modell, double pris, int antallKjerner, double klokkehastighet) {
         super(varenr, varemerke, modell, pris);
         this.antallKjerner = new SimpleIntegerProperty(antallKjerner);

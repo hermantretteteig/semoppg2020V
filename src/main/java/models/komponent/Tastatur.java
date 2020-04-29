@@ -11,12 +11,19 @@ public class Tastatur extends Komponent{
     private transient SimpleBooleanProperty  trodlos;
     private transient SimpleBooleanProperty  numpad;
 
+    //Konstruktør for opprettelse av nytt komponent.
+    public Tastatur(String varemerke, String modell, double pris, boolean trodlos, boolean numpad) {
+        super(varemerke, modell, pris);
+        this.trodlos = new SimpleBooleanProperty(trodlos);
+        this.numpad = new SimpleBooleanProperty (numpad);
+    }
+
+    //Konstruktør for å opprette komponent fra tekstfil.
     public Tastatur(String varenr, String varemerke, String modell, double pris, boolean trodlos, boolean numpad) {
         super(varenr, varemerke, modell, pris);
         this.trodlos = new SimpleBooleanProperty(trodlos);
         this.numpad = new SimpleBooleanProperty (numpad);
     }
-
 
     public boolean getTrodlos() {
         return trodlos.get();

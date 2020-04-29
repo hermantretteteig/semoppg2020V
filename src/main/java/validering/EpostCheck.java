@@ -14,6 +14,7 @@ public class EpostCheck {
         if (epost == null) {
             return false;
         }
+
         return pat.matcher(epost).matches();
     }
 

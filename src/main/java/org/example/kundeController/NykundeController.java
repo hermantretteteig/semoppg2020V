@@ -44,6 +44,9 @@ public class NykundeController {
             lblGjentaPassordFeil.setText("");
             lblEpostFeil.setText("");
 
+
+
+
             if(txtFornavn.getText().length()<2){
                 lblFornavnFeil.setText("Fornavn må være minst to tegn.");
             }
@@ -61,7 +64,7 @@ public class NykundeController {
                 lblGjentaPassordFeil.setText("Passordene er ulike.");
             }
 
-            if(!EpostCheck.epostchecker(txtEpost.getText())){
+            if(EpostCheck.epostchecker(txtEpost.getText())==false){
                 lblEpostFeil.setText("Eposen er ugyldig.");
             }
 

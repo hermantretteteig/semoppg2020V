@@ -65,6 +65,7 @@ public class NyMusController {
 
         //HVIS FELTENE ER GYLDIGE GJØR FØLGENDE UNDER
         boolean trodlos = false;
+
         if(choTrodlos.getValue().equals("Ja")){
             trodlos = true;
         }

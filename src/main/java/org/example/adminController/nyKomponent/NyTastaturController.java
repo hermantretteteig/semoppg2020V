@@ -21,9 +21,6 @@ public class NyTastaturController {
     //Må lage to avkrysningsbokser for numpad og trådløs
 
 
-
-
-
     @FXML
     public void leggTilAction() {
 

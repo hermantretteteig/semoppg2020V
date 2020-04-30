@@ -1,11 +1,10 @@
 package org.example.adminController.nyKomponent;
 
-import data.KomponentData;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import models.komponent.Skjermkort;
 import org.example.App;
 import validering.BokstaverCheck;
 import validering.LengeCheck;
@@ -66,6 +65,9 @@ public class NySkjermkortController {
         }
 
         double pris = Double.parseDouble(txtPris.getText());
+
+        //Skjermkort nySkjermkortsenhet = new Skjermkort();
+        //KomponentData.leggTilKomponent(nySkjermkort);
 
         App.setRoot("adminView/nyKomponentView/nyKomponent");
     }

@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import models.Tore.Test;
+import javafx.scene.layout.AnchorPane;
 import org.example.App;
 import validering.BokstaverCheck;
 import validering.LengeCheck;
@@ -30,6 +30,9 @@ public class NyLagringsenhetController {
     public TextField txtLagringskapasitet;
     public TextField txtSkrivehastighet;
     public TextField txtLesehastighet;
+
+    @FXML
+    public AnchorPane lagringsenhetPanel;
 
 
     @FXML
@@ -95,7 +98,7 @@ public class NyLagringsenhetController {
         //Rooter tilslutt til oversiktview
 
         //Hvis felter ok:
-        //App.setRoot("adminView/nyKomponentView/nyKomponent");
+        App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 
     @FXML

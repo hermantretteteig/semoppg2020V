@@ -2,10 +2,10 @@ package validering;
 
 import java.util.regex.Pattern;
 
-public class NavnCheck {
-    public static boolean navncheck(String navn){
+public class BokstaverCheck {
+    public static boolean bokstavercheck(String navn){
 
-        //Tillater kun navn som inneholde store og små bokstaver
+        //Tillater kun input som inneholde store og små bokstaver
         String navnRegex = "^[a-zA-Z]+$";
 
         Pattern pat = Pattern.compile(navnRegex);

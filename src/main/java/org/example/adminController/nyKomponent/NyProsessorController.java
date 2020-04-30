@@ -5,6 +5,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.example.App;
+import validering.BokstaverCheck;
+import validering.LengeCheck;
+import validering.TallCheck;
 
 public class NyProsessorController {
 
@@ -23,25 +26,42 @@ public class NyProsessorController {
 
     @FXML
     public void leggTilAction() throws Exception{
-        /*
 
-        KODE SOM VALIDERER OG LEGGER TIL SKJERMKORT I LISTE
+        lblVaremerkeFeil.setText("");
+        lblModellFeil.setText("");
+        lblPrisFeil.setText("");
+        lblKjernerFeil.setText("");
+        lblKlokkehastighetFeil.setText("");
 
-         */
+        //Validerer Varenummer
 
-        lblVaremerkeFeil.setText("test");
-        lblModellFeil.setText("test");
-        lblPrisFeil.setText("test");
-        lblKjernerFeil.setText("test");
-        lblKlokkehastighetFeil.setText("test");
 
-        /*
-        Dette er ikke noen ferdig løsning, men test for å se om det fungerer.
-        */
+        //Validerer Varemerke
+        if(BokstaverCheck.bokstavercheck(txtVaremerke.getText()) == false){
+            lblVaremerkeFeil.setText("Må kunne inneholde bokstaver");
+        }
 
-        /*String varemerke = txtVaremerke.getText();
-        String modell = txtModell.getText();
-        double pris = Double.parseDouble(txtPris.getText());*/
+        //Validerer Modell
+        if(LengeCheck.lengdeCheck(txtModell.getText()) == false){
+            lblModellFeil.setText("Må inneholde minst 2 bokstaver");
+        }
+
+        //Validerer Pris
+        if(TallCheck.tallcheck(txtPris.getText()) == false){
+            lblPrisFeil.setText("Må inneholde kun tall");
+        }
+
+        //Validerer Kjerner
+        if(TallCheck.tallcheck(txtKjerner.getText()) == false){
+            lblKjernerFeil.setText("Må inneholde kun tall");
+        }
+
+        //Validerer Klokkehastighet
+        if(TallCheck.tallcheck(txtKlokkehastighet.getText()) == false){
+            lblKlokkehastighetFeil.setText("Må inneholde kun tall");
+        }
+
+        double pris = Double.parseDouble(txtPris.getText());
 
 
         //Prosessor nyProsessor = new Prosessor();

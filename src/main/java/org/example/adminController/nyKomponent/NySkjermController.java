@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.example.App;
+import validering.BokstaverCheck;
+import validering.LengeCheck;
+import validering.TallCheck;
 
 public class NySkjermController {
 
@@ -21,24 +24,44 @@ public class NySkjermController {
 
     @FXML
     public void leggTilAction() throws Exception{
-        /*
 
-        KODE SOM VALIDERER OG LEGGER TIL SKJERMKORT I LISTE
+        lblVaremerkeFeil.setText("");
+        lblModellFeil.setText("");
+        lblPrisFeil.setText("");
+        lblHoydeFeil.setText("");
+        lblBreddeFeil.setText("");
 
-         */
+        //Validerer Varenummer
 
-        lblVaremerkeFeil.setText("Test");
-        lblModellFeil.setText("Test");
-        lblPrisFeil.setText("Test");
-        lblHoydeFeil.setText("test");
-        lblBreddeFeil.setText("Feil");
 
-        /*
-        Dette er ikke noen ferdig løsning, men test for å se om det fungerer.
-        */
-        String varemerke = txtVaremerke.getText();
-        String modell = txtModell.getText();
-        //double pris = Double.parseDouble(txtPris.getText());
+        //Validerer Varemerke
+        if(BokstaverCheck.bokstavercheck(txtVaremerke.getText()) == false){
+            lblVaremerkeFeil.setText("Må kunne inneholde bokstaver");
+        }
+
+        //Validerer Modell
+        if(LengeCheck.lengdeCheck(txtModell.getText()) == false){
+            lblModellFeil.setText("Må inneholde minst 2 bokstaver");
+        }
+
+        //Validerer Pris
+        if(TallCheck.tallcheck(txtPris.getText()) == false){
+            lblPrisFeil.setText("Må inneholde kun tall");
+        }
+
+        //Validerer Bredde
+        if(TallCheck.tallcheck(txtBredde.getText()) == false){
+            lblBreddeFeil.setText("Må inneholde kun tall");
+        }
+
+        //Validerer Høyde
+        if(TallCheck.tallcheck(txtHoyde.getText()) == false){
+            lblHoydeFeil.setText("Må inneholde kun tall");
+        }
+        //Må lage test for avkrysset 4k
+
+
+        double pris = Double.parseDouble(txtPris.getText());
 
 
         //Mus nySkjerm = new Skjerm();

@@ -12,6 +12,9 @@ import logikk.NyKomponentAlert;
 import models.komponent.Mus;
 import models.komponent.Skjermkort;
 import org.example.App;
+import validering.BokstaverCheck;
+import validering.LengeCheck;
+import validering.TallCheck;
 
 import java.util.concurrent.TimeUnit;
 
@@ -34,33 +37,45 @@ public class NyMusController {
     @FXML
     public void leggTilAction() throws Exception{
 
-        lblVaremerkeFeil.setText("test");
-        lblModellFeil.setText("test");
-        lblPrisFeil.setText("test");
-        lblTrodlosFeil.setText("test");
-        lblFargeFeil.setText("test");
+        lblVaremerkeFeil.setText("");
+        lblModellFeil.setText("");
+        lblPrisFeil.setText("");
+        lblTrodlosFeil.setText("");
+        lblFargeFeil.setText("");
 
+        //Validerer varenummer?
 
-        /*
+        //Validerer Varemerke
+        if(BokstaverCheck.bokstavercheck(txtVaremerke.getText()) == false){
+            lblVaremerkeFeil.setText("Må kunne inneholde bokstaver");
+        }
 
-        METODER SOM VALIDERER ALLE TEKTFELT, OG GIR FEILMELDINGER TIL FELT MED FEIL
+        //Validerer Modell
+        if(LengeCheck.lengdeCheck(txtModell.getText()) == false){
+            lblModellFeil.setText("Må inneholde minst 2 bokstaver");
+        }
 
-         */
+        //Validerer Pris
+        if(TallCheck.tallcheck(txtPris.getText()) == false){
+            lblPrisFeil.setText("Må inneholde kun tall");
+        }
+
+        double pris = Double.parseDouble(txtPris.getText());
 
 
         //HVIS FELTENE ER GYLDIGE GJØR FØLGENDE UNDER
-                boolean trodlos = false;
-                if(choTrodlos.getValue().equals("Ja")){
-                    trodlos = true;
-                }
+        boolean trodlos = false;
+        if(choTrodlos.getValue().equals("Ja")){
+            trodlos = true;
+        }
 
-                Mus nyMus = new Mus("2300", txtVaremerke.getText(), txtModell.getText(), Integer.parseInt(txtPris.getText()), trodlos, colFarge.getValue().toString());
-                KomponentData.leggTilKomponent(nyMus);
+        //Mus nyMus = new Mus("2300", txtVaremerke.getText(), txtModell.getText(), Integer.parseInt(txtPris.getText()), trodlos, colFarge.getValue().toString());
+        //KomponentData.leggTilKomponent(nyMus);
 
-                NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
+        //NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
 
-                //Rooter tilslutt til oversiktview
-                App.setRoot("adminView/nyKomponentView/nyKomponent");
+        //Rooter tilslutt til oversiktview
+        //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 
     @FXML

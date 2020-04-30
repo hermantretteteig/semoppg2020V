@@ -7,6 +7,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import models.komponent.Skjermkort;
 import org.example.App;
+import validering.BokstaverCheck;
+import validering.LengeCheck;
+import validering.TallCheck;
 
 public class NySkjermkortController {
 
@@ -27,29 +30,42 @@ public class NySkjermkortController {
 
     @FXML
     public void leggTilAction() throws Exception{
-        /*
 
-        KODE SOM VALIDERER OG LEGGER TIL SKJERMKORT I LISTE
+        lblVaremerkeFeil.setText("");
+        lblKlokkehastighetFeil.setText("");
+        lblMinneFeil.setText("");
+        lblModellFeil.setText("");
+        lblPrisFeil.setText("");
 
-         */
+        //Validerer Varenummer
 
 
+        //Validerer Varemerke
+        if(BokstaverCheck.bokstavercheck(txtVaremerke.getText()) == false){
+            lblVaremerkeFeil.setText("Må kunne inneholde bokstaver");
+        }
 
-        lblVaremerkeFeil.setText("feil");
-        lblKlokkehastighetFeil.setText("feil");
-        lblMinneFeil.setText("feil");
-        lblModellFeil.setText("feil");
-        lblPrisFeil.setText("feil");
+        //Validerer Modell
+        if(LengeCheck.lengdeCheck(txtModell.getText()) == false){
+            lblModellFeil.setText("Må inneholde minst 2 bokstaver");
+        }
 
-        /*
-        Dette er ikke noen ferdig løsning, men test for å se om det fungerer.
-        */
-        String varemerke = txtVaremerke.getText();
-        String modell = txtModell.getText();
+        //Validerer Pris
+        if(TallCheck.tallcheck(txtPris.getText()) == false){
+            lblPrisFeil.setText("Må inneholde kun tall");
+        }
+
+        //Validerer klokkehastighet
+        if(TallCheck.tallcheck(txtKlokkehastighet.getText()) == false) {
+            lblKlokkehastighetFeil.setText("Må kun inneholde tall");
+        }
+
+        //Validerer Minne
+        if(TallCheck.tallcheck(txtMinne.getText()) == false) {
+            lblMinneFeil.setText("Må kun inneholde tall");
+        }
+
         double pris = Double.parseDouble(txtPris.getText());
-        int klokkehastighet = Integer.parseInt(txtKlokkehastighet.getText());
-        int minne = Integer.parseInt(txtMinne.getText());
-
 
         App.setRoot("adminView/nyKomponentView/nyKomponent");
     }

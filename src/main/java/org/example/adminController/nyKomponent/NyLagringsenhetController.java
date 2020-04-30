@@ -6,6 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import models.Tore.Test;
 import org.example.App;
+import validering.BokstaverCheck;
+import validering.LengeCheck;
+import validering.TallCheck;
 
 public class NyLagringsenhetController {
 
@@ -13,6 +16,7 @@ public class NyLagringsenhetController {
     public Label lblModellFeil;
     public Label lblPrisFeil;
     public Label lblFormatFeil;
+    public Label lblStorrelse;
     public Label lblLagringsenhetFeil;
     public Label lblLesehastighetFeil;
     public Label lblSkrivehastighetFeil;
@@ -22,6 +26,7 @@ public class NyLagringsenhetController {
     public TextField txtModell;
     public TextField txtPris;
     public ChoiceBox choFormat;
+    public TextField txtStorrelse;
     public TextField txtLagringskapasitet;
     public TextField txtSkrivehastighet;
     public TextField txtLesehastighet;
@@ -29,21 +34,60 @@ public class NyLagringsenhetController {
 
     @FXML
     public void leggTilAction() throws Exception{
-        lblVaremerkeFeil.setText("Test");
-        lblModellFeil.setText("Test");
-        lblPrisFeil.setText("Test");
-        lblFormatFeil.setText("Test");
-        lblLagringsenhetFeil.setText("Test");
-        lblLesehastighetFeil.setText("Test");
-        lblSkrivehastighetFeil.setText("Test");
+        lblVaremerkeFeil.setText("");
+        lblModellFeil.setText("");
+        lblPrisFeil.setText("");
+        lblFormatFeil.setText("");
+        lblStorrelse.setText("");
+        lblLagringsenhetFeil.setText("");
+        lblLesehastighetFeil.setText("");
+        lblSkrivehastighetFeil.setText("");
 
-        /*
-        Dette er ikke noen ferdig løsning, men test for å se om det fungerer.
-        */
-        String varemerke = txtVaremerke.getText();
-        String modell = txtModell.getText();
-        //double pris = Double.parseDouble(txtPris.getText());
+        //Validerer Varenummer
 
+
+        //Validerer Varemerke
+        if(BokstaverCheck.bokstavercheck(txtVaremerke.getText()) == false){
+            lblVaremerkeFeil.setText("Må kunne inneholde bokstaver");
+        }
+
+        //Validerer Modell
+        if(LengeCheck.lengdeCheck(txtModell.getText()) == false){
+            lblModellFeil.setText("Må inneholde minst 2 bokstaver");
+        }
+
+        //Validerer Pris
+        if(TallCheck.tallcheck(txtPris.getText()) == false){
+            lblPrisFeil.setText("Må inneholde kun tall");
+        }
+
+        //Valider Lagringsformat?
+
+        //Valderer Størrelse
+        if(TallCheck.tallcheck(txtStorrelse.getText()) == false){
+            lblStorrelse.setText("Må inneholde kun tall");
+        }
+
+        //Validerer Lesehastighet
+        if(TallCheck.tallcheck(txtLesehastighet.getText()) == false){
+            lblLesehastighetFeil.setText("Må inneholde kun tall");
+        }
+
+        //Validerer Skrivehastighet
+        if(TallCheck.tallcheck(txtSkrivehastighet.getText()) == false) {
+            lblSkrivehastighetFeil.setText("Må inneholde kun tall");
+        }
+
+        double pris = Double.parseDouble(txtPris.getText());
+
+
+        //Husk å test dennne!!!
+        //HVIS FELTENE ER GYLDIGE GJØR FØLGENDE UNDER
+        boolean trodlos = true;
+        if(choFormat.getValue().equals("")){
+            trodlos = false;
+            lblFormatFeil.setText("Må fylles ut");
+        }
 
         //Lagringsenhet nyLagringsenhet = new Lagringsenhet();
         //KomponentData.leggTilKomponent(nyLagringsenhet);

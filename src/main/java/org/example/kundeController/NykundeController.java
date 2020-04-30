@@ -46,12 +46,12 @@ public class NykundeController {
 
 
             //Validerer fornavn
-            if(NavnCheck.navncheck(txtFornavn.getText()) == false){
+            if(BokstaverCheck.bokstavercheck(txtFornavn.getText()) == false){
                 lblFornavnFeil.setText("Fornavn må kunne inneholde bokstaver");
             }
 
             //Validerer etternavn
-            if(NavnCheck.navncheck(txtEtternavn.getText()) == false){
+            if(BokstaverCheck.bokstavercheck(txtEtternavn.getText()) == false){
                 lblEtternavnFeil.setText("Etternavn må kun inneholde bokstaver");
             }
 
@@ -62,7 +62,7 @@ public class NykundeController {
 
             //Validerer passord
             if(PassordCheck.passordchecker(txtPassord.getText()) == false){
-                lblPassordFeil.setText("Passord må inneholde: Små og store bokstaver, minst 8 tegn og tall ");
+                lblPassordFeil.setText("Passord må inneholde:" + "Små og store bokstaver, minst 8 tegn og tall ");
             }
 
             //Validerer gjentatt passord

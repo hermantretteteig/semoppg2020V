@@ -50,6 +50,7 @@ public class NyProsessorController {
         if(TallCheck.tallcheck(txtPris.getText()) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
         }
+        double pris = Double.parseDouble(txtPris.getText());
 
         //Validerer Kjerner
         if(TallCheck.tallcheck(txtKjerner.getText()) == false){
@@ -60,9 +61,6 @@ public class NyProsessorController {
         if(TallCheck.tallcheck(txtKlokkehastighet.getText()) == false){
             lblKlokkehastighetFeil.setText("Må inneholde kun tall");
         }
-
-        double pris = Double.parseDouble(txtPris.getText());
-
 
         //Prosessor nyProsessor = new Prosessor();
         //KomponentData.leggTilKomponent(nyProsessor);

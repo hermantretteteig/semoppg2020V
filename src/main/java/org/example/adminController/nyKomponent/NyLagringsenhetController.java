@@ -60,6 +60,7 @@ public class NyLagringsenhetController {
         if(TallCheck.tallcheck(txtPris.getText()) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
         }
+        double pris = Double.parseDouble(txtPris.getText());
 
         //Valderer Størrelse
         if(TallCheck.tallcheck(txtStorrelse.getText()) == false){
@@ -76,15 +77,9 @@ public class NyLagringsenhetController {
             lblSkrivehastighetFeil.setText("Må inneholde kun tall");
         }
 
-        double pris = Double.parseDouble(txtPris.getText());
-
-
-        //Husk å test dennne!!!
-        //HVIS FELTENE ER GYLDIGE GJØR FØLGENDE UNDER
-        boolean format = false;
-
-        if(choFormat.getValue().equals("")){
-            format = true;
+        //Validerer Format
+        if(choFormat.getValue() == null){
+            lblFormatFeil.setText("Må fylles ut");
         }
 
         //Lagringsenhet nyLagringsenhet = new Lagringsenhet();

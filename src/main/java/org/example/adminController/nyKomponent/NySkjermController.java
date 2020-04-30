@@ -1,6 +1,8 @@
 package org.example.adminController.nyKomponent;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.example.App;
@@ -15,12 +17,14 @@ public class NySkjermController {
     public Label lblPrisFeil;
     public Label lblHoydeFeil;
     public Label lblBreddeFeil;
+    public Label lbl4KFeil;
 
     public TextField txtVaremerke;
     public TextField txtModell;
     public TextField txtPris;
     public TextField txtHoyde;
     public TextField txtBredde;
+    public ChoiceBox cho4K;
 
     @FXML
     public void leggTilAction() throws Exception{
@@ -30,6 +34,7 @@ public class NySkjermController {
         lblPrisFeil.setText("");
         lblHoydeFeil.setText("");
         lblBreddeFeil.setText("");
+        lbl4KFeil.setText("");
 
         //Validerer Varenummer
 
@@ -48,6 +53,7 @@ public class NySkjermController {
         if(TallCheck.tallcheck(txtPris.getText()) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
         }
+        double pris = Double.parseDouble(txtPris.getText());
 
         //Validerer Bredde
         if(TallCheck.tallcheck(txtBredde.getText()) == false){
@@ -58,12 +64,13 @@ public class NySkjermController {
         if(TallCheck.tallcheck(txtHoyde.getText()) == false){
             lblHoydeFeil.setText("Må inneholde kun tall");
         }
-        //Må lage test for avkrysset 4k
 
 
-        double pris = Double.parseDouble(txtPris.getText());
-
-
+        //Validerer 4K
+        if(cho4K.getValue() == null) {
+            lbl4KFeil.setText("Må fylles ut");
+        }
+        
         //Mus nySkjerm = new Skjerm();
         //KomponentData.leggTilKomponent(nySkjerm);
 

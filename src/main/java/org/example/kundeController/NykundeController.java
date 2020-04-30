@@ -1,5 +1,9 @@
 package org.example.kundeController;
 
+import data.KundeData;
+import models.brukere.Bruker;
+import models.brukere.Kunde;
+import org.example.App;
 import validering.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -35,51 +39,55 @@ public class NykundeController {
     }
 
     @FXML
-    private void registrerAction(){
+    private void registrerAction() {
 
-            lblFornavnFeil.setText("");
-            lblEtternavnFeil.setText("");
-            lblBrukernavnFeil.setText("");
-            lblPassordFeil.setText("");
-            lblGjentaPassordFeil.setText("");
-            lblEpostFeil.setText("");
-
-
-            //Validerer fornavn
-            if(BokstaverCheck.bokstavercheck(txtFornavn.getText()) == false){
-                lblFornavnFeil.setText("Fornavn må kunne inneholde bokstaver");
-            }
-
-            //Validerer etternavn
-            if(BokstaverCheck.bokstavercheck(txtEtternavn.getText()) == false){
-                lblEtternavnFeil.setText("Etternavn må kun inneholde bokstaver");
-            }
-
-            //Validerer brukernavn
-            if(LengeCheck.lengdeCheck(txtBrukernavn.getText()) == false){
-                lblBrukernavnFeil.setText("Må inneholde minst to tegn.");
-            }
-
-            //Validerer passord
-            if(PassordCheck.passordchecker(txtPassord.getText()) == false){
-                lblPassordFeil.setText("Passord må inneholde:" + "Små og store bokstaver, minst 8 tegn og tall ");
-            }
-
-            //Validerer gjentatt passord
-            if(PassordValCheck.passordValCheck(txtGjentaPassord.getText(), txtPassord.getText()) == false){
-                lblGjentaPassordFeil.setText("Passordene er ulike.");
-            }
-
-            //Validerer epost
-            if(EpostCheck.epostchecker(txtEpost.getText())==false){
-                lblEpostFeil.setText("Eposen er ugyldig.");
-            }
+        lblFornavnFeil.setText("");
+        lblEtternavnFeil.setText("");
+        lblBrukernavnFeil.setText("");
+        lblPassordFeil.setText("");
+        lblGjentaPassordFeil.setText("");
+        lblEpostFeil.setText("");
 
 
+        //Validerer fornavn
+        if (BokstaverCheck.bokstavercheck(txtFornavn.getText()) == false) {
+            lblFornavnFeil.setText("Fornavn må kunne inneholde bokstaver");
+        }
+
+        //Validerer etternavn
+        if (BokstaverCheck.bokstavercheck(txtEtternavn.getText()) == false) {
+            lblEtternavnFeil.setText("Etternavn må kun inneholde bokstaver");
+        }
+
+        //Validerer brukernavn
+        if (LengeCheck.lengdeCheck(txtBrukernavn.getText()) == false) {
+            lblBrukernavnFeil.setText("Må inneholde minst to tegn.");
+        }
+
+        //Validerer passord
+        if (PassordCheck.passordchecker(txtPassord.getText()) == false) {
+            lblPassordFeil.setText("Passord må inneholde:" + "Små og store bokstaver, minst 8 tegn og tall ");
+        }
+
+        //Validerer gjentatt passord
+        if (PassordValCheck.passordValCheck(txtGjentaPassord.getText(), txtPassord.getText()) == false) {
+            lblGjentaPassordFeil.setText("Passordene er ulike.");
+        }
+
+        //Validerer epost
+        if (EpostCheck.epostchecker(txtEpost.getText()) == false) {
+            lblEpostFeil.setText("Eposen er ugyldig.");
+        }
+
+        //Bruker nyKunde  =  new Bruker(txtFornavn.getText(), txtEtternavn.getText(), txtBrukernavn.getText(), txtPassord.getText());
+        //KundeData.leggTilBruker(nyKunde);
+
+        //App.setRoot("adminView/nyBrukerView/nyBruker");
 
 
 
-        //Stage stage = (Stage) registrer.getScene().getWindow();
-        //stage.close();
     }
+
+    //Stage stage = (Stage) registrer.getScene().getWindow();
+    //stage.close();
 }

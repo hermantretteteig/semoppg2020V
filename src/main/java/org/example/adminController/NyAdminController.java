@@ -1,5 +1,9 @@
 package org.example.adminController;
 
+import data.AdminData;
+import models.brukere.Admin;
+import models.brukere.Bruker;
+import org.example.App;
 import validering.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -65,6 +69,12 @@ public class NyAdminController {
         if(PassordValCheck.passordValCheck(txtGjentaPassord.getText(), txtPassord.getText()) == false){
             lblGjentaPassordFeil.setText("Passordene er ulike.");
         }
+
+        //Admin nyAdmin = new Admin(txtFornavn.getText(), txtEtternavn.getText(), txtBrukernavn.getText(), txtPassord.getText());
+        //AdminData.leggTilBruker(nyAdmin);
+
+        //App.setRoot("Adminview/nyAdminView/nyAdmin");
+
 
         //Stage stage = (Stage) registrer.getScene().getWindow();
         //stage.close();

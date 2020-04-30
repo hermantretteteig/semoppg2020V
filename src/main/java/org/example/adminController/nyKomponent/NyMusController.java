@@ -51,20 +51,13 @@ public class NyMusController {
         if(TallCheck.tallcheck(txtPris.getText()) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
         }
-
         double pris = Double.parseDouble(txtPris.getText());
 
 
-        //HVIS FELTENE ER GYLDIGE GJØR FØLGENDE UNDER
-       /* boolean trodlos = false;
+        if(choTrodlos.getValue() == null) {
+            lblTrodlosFeil.setText("Må fylles ut");
+        }
 
-        if(choTrodlos.getValue().equals("Ja")){
-            trodlos = true;
-        }
-*/
-        if(choTrodlos.getSelectionModel().isEmpty() == true) {
-            lblTrodlosFeil.setText("ag32t23");
-        }
         //Mus nyMus = new Mus("2300", txtVaremerke.getText(), txtModell.getText(), Integer.parseInt(txtPris.getText()), trodlos, colFarge.getValue().toString());
         //KomponentData.leggTilKomponent(nyMus);
 

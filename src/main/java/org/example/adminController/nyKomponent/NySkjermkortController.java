@@ -53,6 +53,7 @@ public class NySkjermkortController {
         if(TallCheck.tallcheck(txtPris.getText()) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
         }
+        double pris = Double.parseDouble(txtPris.getText());
 
         //Validerer klokkehastighet
         if(TallCheck.tallcheck(txtKlokkehastighet.getText()) == false) {
@@ -63,8 +64,6 @@ public class NySkjermkortController {
         if(TallCheck.tallcheck(txtMinne.getText()) == false) {
             lblMinneFeil.setText("Må kun inneholde tall");
         }
-
-        double pris = Double.parseDouble(txtPris.getText());
 
         //Skjermkort nySkjermkortsenhet = new Skjermkort();
         //KomponentData.leggTilKomponent(nySkjermkort);

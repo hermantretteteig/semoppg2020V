@@ -78,13 +78,9 @@ public class NyLagringsenhetController {
 
         double pris = Double.parseDouble(txtPris.getText());
 
-
-        //Husk å test dennne!!!
-        //HVIS FELTENE ER GYLDIGE GJØR FØLGENDE UNDER
-        boolean format = false;
-
-        if(choFormat.getValue().equals("")){
-            format = true;
+        //Validerer Format
+        if(choFormat.getValue() == null){
+            lblFormatFeil.setText("Må fylles ut");
         }
 
         //Lagringsenhet nyLagringsenhet = new Lagringsenhet();

@@ -56,7 +56,7 @@ public class NyMusController {
 
 
         if(choTrodlos.getValue() == null) {
-            lblTrodlosFeil.setText("Må fylle ut");
+            lblTrodlosFeil.setText("Må fylles ut");
         }
 
         //Mus nyMus = new Mus("2300", txtVaremerke.getText(), txtModell.getText(), Integer.parseInt(txtPris.getText()), trodlos, colFarge.getValue().toString());

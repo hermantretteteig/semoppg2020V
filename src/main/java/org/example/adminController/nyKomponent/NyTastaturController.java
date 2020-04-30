@@ -53,7 +53,6 @@ public class NyTastaturController {
         if(TallCheck.tallcheck(txtPris.getText()) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
         }
-
         double pris = Double.parseDouble(txtPris.getText());
 
         //Validerer Numpad

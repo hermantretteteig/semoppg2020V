@@ -60,6 +60,7 @@ public class NyLagringsenhetController {
         if(TallCheck.tallcheck(txtPris.getText()) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
         }
+        double pris = Double.parseDouble(txtPris.getText());
 
         //Valderer Størrelse
         if(TallCheck.tallcheck(txtStorrelse.getText()) == false){
@@ -75,8 +76,6 @@ public class NyLagringsenhetController {
         if(TallCheck.tallcheck(txtSkrivehastighet.getText()) == false) {
             lblSkrivehastighetFeil.setText("Må inneholde kun tall");
         }
-
-        double pris = Double.parseDouble(txtPris.getText());
 
         //Validerer Format
         if(choFormat.getValue() == null){

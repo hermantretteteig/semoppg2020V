@@ -53,6 +53,7 @@ public class NySkjermController {
         if(TallCheck.tallcheck(txtPris.getText()) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
         }
+        double pris = Double.parseDouble(txtPris.getText());
 
         //Validerer Bredde
         if(TallCheck.tallcheck(txtBredde.getText()) == false){
@@ -64,7 +65,6 @@ public class NySkjermController {
             lblHoydeFeil.setText("Må inneholde kun tall");
         }
 
-        double pris = Double.parseDouble(txtPris.getText());
 
         //Validerer 4K
         if(cho4K.getValue() == null) {

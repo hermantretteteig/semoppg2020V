@@ -16,7 +16,7 @@ public class NyLagringsenhetController {
     public Label lblModellFeil;
     public Label lblPrisFeil;
     public Label lblFormatFeil;
-    public Label lblStorrelse;
+    public Label lblStorrelseFeil;
     public Label lblLagringsenhetFeil;
     public Label lblLesehastighetFeil;
     public Label lblSkrivehastighetFeil;
@@ -32,16 +32,13 @@ public class NyLagringsenhetController {
     public TextField txtLesehastighet;
 
     @FXML
-    public AnchorPane lagringsenhetPanel;
-
-
-    @FXML
     public void leggTilAction() throws Exception{
+
         lblVaremerkeFeil.setText("");
         lblModellFeil.setText("");
         lblPrisFeil.setText("");
         lblFormatFeil.setText("");
-        lblStorrelse.setText("");
+        lblStorrelseFeil.setText("");
         lblLagringsenhetFeil.setText("");
         lblLesehastighetFeil.setText("");
         lblSkrivehastighetFeil.setText("");
@@ -64,11 +61,9 @@ public class NyLagringsenhetController {
             lblPrisFeil.setText("Må inneholde kun tall");
         }
 
-        //Valider Lagringsformat?
-
         //Valderer Størrelse
         if(TallCheck.tallcheck(txtStorrelse.getText()) == false){
-            lblStorrelse.setText("Må inneholde kun tall");
+            lblStorrelseFeil.setText("Må inneholde kun tall");
         }
 
         //Validerer Lesehastighet
@@ -86,8 +81,10 @@ public class NyLagringsenhetController {
 
         //Husk å test dennne!!!
         //HVIS FELTENE ER GYLDIGE GJØR FØLGENDE UNDER
-        if(choFormat.getSelectionModel().isEmpty() == false){
-            lblFormatFeil.setText("Må fylles ut");
+        boolean format = false;
+
+        if(choFormat.getValue().equals("")){
+            format = true;
         }
 
         //Lagringsenhet nyLagringsenhet = new Lagringsenhet();
@@ -96,7 +93,7 @@ public class NyLagringsenhetController {
         //Rooter tilslutt til oversiktview
 
         //Hvis felter ok:
-        App.setRoot("adminView/nyKomponentView/nyKomponent");
+        //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 
     @FXML

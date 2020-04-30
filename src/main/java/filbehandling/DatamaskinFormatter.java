@@ -5,7 +5,7 @@ import models.komponent.*;
 public class DatamaskinFormatter {
     public static String DELIMITER = ";";
 
-    public static String formaterDatamaskin(Datamaskin datamaskin){
+     public static String formaterDatamaskin(Datamaskin datamaskin){
         String ut = String.join(System.lineSeparator(),
                 formaterLageringsenhet(datamaskin.getLagringsenhet()),
                 formaterSkjerm(datamaskin.getSkjerm()),

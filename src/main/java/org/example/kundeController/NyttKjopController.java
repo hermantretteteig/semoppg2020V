@@ -100,12 +100,17 @@ public class NyttKjopController {
         HandlekurvVare nyVare = new HandlekurvVare(valgtKomponent.getVarenr(), (valgtKomponent.getVaremerke()+" "+valgtKomponent.getModell()), valgtKomponent.getPris(), valgtKomponent.getClass().getSimpleName());
 
         boolean duplikat = false;
+
         for(HandlekurvVare enKomponent : HandlekurvData.getHandekurv()){
             if(enKomponent.getType().equals(valgtKomponent.getClass().getSimpleName())){
-                duplikater(nyVare);
                 duplikat=true;
+                break;
             }
         }
+        if(duplikat==true){
+            duplikater(nyVare);
+        }
+
         if(duplikat==false) {
             HandlekurvData.nyVare(nyVare);
             tableHandekurv.refresh();
@@ -116,7 +121,7 @@ public class NyttKjopController {
     public void duplikater(HandlekurvVare nyVare){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Duplikater funnet");
-        alert.setHeaderText(nyVare.getType()+" har du allerde i handlekurven. Vil du erstatte varen med "+nyVare.getNavn()+"?");
+        alert.setHeaderText(nyVare.getType()+" har du allerde konfigurert.\n\nVil du erstatte komponenten med "+nyVare.getNavn()+"?");
         alert.setContentText("");
         alert.showAndWait();
         if(alert.getResult().getButtonData().isDefaultButton()==true){

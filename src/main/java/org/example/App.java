@@ -39,6 +39,7 @@ public class App extends Application {
         stage.setScene(hovedscene);
         stage.setTitle("Datamaskinkonfiguering");
         stage.setResizable(false);
+        hovedscene.getStylesheets().add("/style/logginn.css");
         stage.show();
         Image ikoner = new Image("ikoner/Gnome-computer.png");
         stage.getIcons().add(ikoner);

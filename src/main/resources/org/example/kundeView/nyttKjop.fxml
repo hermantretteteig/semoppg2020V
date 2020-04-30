@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.kundeController.NyttKjopController">
+<AnchorPane  prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.kundeController.NyttKjopController">
    <children>
       <TreeTableView fx:id="tabell" layoutX="28.0" layoutY="70.0" onMousePressed="#valgtKomponent" prefHeight="442.0" prefWidth="425.0">
         <columns>
@@ -32,6 +32,11 @@
 
       <TableView fx:id="tableHandekurv" layoutX="480.0" layoutY="308.0" prefHeight="206.0" prefWidth="364.0">
         <columns>
+            <TableColumn prefWidth="124.5" text="Komponent">
+                <cellValueFactory>
+                    <PropertyValueFactory property="Type" />
+                </cellValueFactory>
+            </TableColumn>
             <TableColumn prefWidth="124.5" text="Varenavn">
                 <cellValueFactory>
                     <PropertyValueFactory property="Navn" />

@@ -15,9 +15,9 @@
         <tabs>
           <Tab text="Bruker">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane  minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <PasswordField layoutX="426.0" layoutY="264.0" />
+                        <PasswordField  layoutX="426.0" layoutY="264.0" />
                         <TextField layoutX="426.0" layoutY="214.0" />
                         <Label layoutX="426.0" layoutY="194.0" prefHeight="17.0" prefWidth="77.0" text="Brukernavn:" />
                         <Label layoutX="426.0" layoutY="246.0" prefHeight="17.0" prefWidth="77.0" text="Passord:" />

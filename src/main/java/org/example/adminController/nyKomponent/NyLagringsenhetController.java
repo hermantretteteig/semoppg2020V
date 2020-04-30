@@ -86,9 +86,7 @@ public class NyLagringsenhetController {
 
         //Husk å test dennne!!!
         //HVIS FELTENE ER GYLDIGE GJØR FØLGENDE UNDER
-        boolean trodlos = true;
-        if(choFormat.getValue().equals("")){
-            trodlos = false;
+        if(choFormat.getSelectionModel().isEmpty() == false){
             lblFormatFeil.setText("Må fylles ut");
         }
 

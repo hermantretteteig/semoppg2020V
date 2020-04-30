@@ -92,8 +92,16 @@ public class NyttKjopController {
 
     @FXML
     public void slettHandlekurvAction(){
-        HandlekurvData.getHandekurv().clear();
-        tableHandekurv.refresh();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Slett alle!");
+        alert.setHeaderText("Er du sikker på du vil slette hele varekurven?");
+        alert.setContentText("Slettingen kan ikke angres");
+        alert.showAndWait();
+        if(alert.getResult().getButtonData().isDefaultButton()==true){
+            HandlekurvData.getHandekurv().clear();
+            tableHandekurv.refresh();
+        }
+
     }
 
     @FXML

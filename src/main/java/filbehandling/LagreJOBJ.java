@@ -34,14 +34,13 @@ public class LagreJOBJ extends LagreFil {
 
     @Override
     public void lagreDatamaskin(ObservableList<Datamaskin> datamaskiner, String filnavn) {
-        LagreFil lagre = new LagreJOBJ();
-        LesFil les = new LesJOBJ();
+        List<Datamaskin> liste = new ArrayList<>(datamaskiner);
 
         try(FileOutputStream fos = new FileOutputStream(filnavn);
             ObjectOutputStream out = new ObjectOutputStream(fos))
         {
 
-            out.writeObject(datamaskiner);
+            out.writeObject(liste);
         }
         //TODO Feilhåndtering
         catch (IOException e){

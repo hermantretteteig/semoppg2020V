@@ -81,4 +81,5 @@ public class Datamaskin implements Serializable {
                 ", tastatur=" + tastatur +
                 '}';
     }
+
 }

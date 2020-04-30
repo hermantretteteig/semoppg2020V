@@ -1,5 +1,7 @@
 package models.Tore;
 
+import filbehandling.DatamaskinFormatter;
+import filbehandling.LagreCSV;
 import models.komponent.*;
 import filbehandling.LagreJOBJ;
 import filbehandling.LesJOBJ;
@@ -50,7 +52,8 @@ public class Test {
             System.err.println(e.getMessage());
         }*/
 
-            UUID varenr = UUID.randomUUID();
-            System.out.println(varenr.toString());
+        /*Datamaskin datamaskin = new Datamaskin(lagringsenhetEn, musEn, prosessor1, skjerm1, skjermkort1, tastatur1);
+        LagreCSV lagre = new LagreCSV();
+        lagre.lagreDatamaskin(datamaskin, "datamaskin.csv");*/
     }
 }

@@ -1,10 +1,14 @@
 package data;
 
+import filbehandling.DatamaskinFormatter;
+import filbehandling.LagreCSV;
 import models.komponent.*;
+
+import java.io.IOException;
 
 public class Eksempeldata {
 
-    public static void GenererEksempeldata(){
+    public static void GenererEksempeldata() {
         Lagringsenhet lagringsenhetEn = new Lagringsenhet(
                 "Samsung",
                 "2000",
@@ -92,6 +96,8 @@ public class Eksempeldata {
                 499,
                 false,
                 false);
+
+
 
 
         //Legger alle komponenete til i lista

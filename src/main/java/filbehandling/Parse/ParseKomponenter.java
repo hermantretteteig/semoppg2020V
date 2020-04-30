@@ -9,7 +9,7 @@ public class ParseKomponenter {
 
     private Komponent parseKomponent(String linje){
         String[] split = linje.split(";");
-
+        //TODO validere at varenr, er på riktig format.
         String vareNr = split[0];
         String varemerke = split[1];
         String modell = split[2];

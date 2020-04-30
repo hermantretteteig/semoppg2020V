@@ -62,7 +62,7 @@ public class NyMusController {
             trodlos = true;
         }
 */
-        if(choTrodlos.getSelectionModel().isEmpty() == false) {
+        if(choTrodlos.getSelectionModel().isEmpty() == true) {
             lblTrodlosFeil.setText("ag32t23");
         }
         //Mus nyMus = new Mus("2300", txtVaremerke.getText(), txtModell.getText(), Integer.parseInt(txtPris.getText()), trodlos, colFarge.getValue().toString());

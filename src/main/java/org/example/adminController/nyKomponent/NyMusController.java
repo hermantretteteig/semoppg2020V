@@ -1,22 +1,15 @@
 package org.example.adminController.nyKomponent;
 
-import data.KomponentData;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.util.Duration;
-import logikk.NyKomponentAlert;
-import models.komponent.Mus;
-import models.komponent.Skjermkort;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import org.example.App;
 import validering.BokstaverCheck;
 import validering.LengeCheck;
 import validering.TallCheck;
 
-import java.util.concurrent.TimeUnit;
 
 public class NyMusController {
 
@@ -31,7 +24,6 @@ public class NyMusController {
     public TextField txtPris;
     public ChoiceBox choTrodlos;
     public ColorPicker colFarge;
-
 
 
     @FXML
@@ -64,11 +56,15 @@ public class NyMusController {
 
 
         //HVIS FELTENE ER GYLDIGE GJØR FØLGENDE UNDER
-        boolean trodlos = false;
+       /* boolean trodlos = false;
+
         if(choTrodlos.getValue().equals("Ja")){
             trodlos = true;
         }
-
+*/
+        if(choTrodlos.getSelectionModel().isEmpty() == true) {
+            lblTrodlosFeil.setText("ag32t23");
+        }
         //Mus nyMus = new Mus("2300", txtVaremerke.getText(), txtModell.getText(), Integer.parseInt(txtPris.getText()), trodlos, colFarge.getValue().toString());
         //KomponentData.leggTilKomponent(nyMus);
 

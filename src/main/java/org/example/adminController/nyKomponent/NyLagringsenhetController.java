@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import models.Tore.Test;
+import javafx.scene.layout.AnchorPane;
 import org.example.App;
 import validering.BokstaverCheck;
 import validering.LengeCheck;
@@ -16,7 +16,7 @@ public class NyLagringsenhetController {
     public Label lblModellFeil;
     public Label lblPrisFeil;
     public Label lblFormatFeil;
-    public Label lblStorrelse;
+    public Label lblStorrelseFeil;
     public Label lblLagringsenhetFeil;
     public Label lblLesehastighetFeil;
     public Label lblSkrivehastighetFeil;
@@ -31,14 +31,14 @@ public class NyLagringsenhetController {
     public TextField txtSkrivehastighet;
     public TextField txtLesehastighet;
 
-
     @FXML
     public void leggTilAction() throws Exception{
+
         lblVaremerkeFeil.setText("");
         lblModellFeil.setText("");
         lblPrisFeil.setText("");
         lblFormatFeil.setText("");
-        lblStorrelse.setText("");
+        lblStorrelseFeil.setText("");
         lblLagringsenhetFeil.setText("");
         lblLesehastighetFeil.setText("");
         lblSkrivehastighetFeil.setText("");
@@ -61,11 +61,9 @@ public class NyLagringsenhetController {
             lblPrisFeil.setText("Må inneholde kun tall");
         }
 
-        //Valider Lagringsformat?
-
         //Valderer Størrelse
         if(TallCheck.tallcheck(txtStorrelse.getText()) == false){
-            lblStorrelse.setText("Må inneholde kun tall");
+            lblStorrelseFeil.setText("Må inneholde kun tall");
         }
 
         //Validerer Lesehastighet
@@ -83,10 +81,10 @@ public class NyLagringsenhetController {
 
         //Husk å test dennne!!!
         //HVIS FELTENE ER GYLDIGE GJØR FØLGENDE UNDER
-        boolean trodlos = true;
+        boolean format = false;
+
         if(choFormat.getValue().equals("")){
-            trodlos = false;
-            lblFormatFeil.setText("Må fylles ut");
+            format = true;
         }
 
         //Lagringsenhet nyLagringsenhet = new Lagringsenhet();

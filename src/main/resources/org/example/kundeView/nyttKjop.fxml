@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.kundeController.NyttKjopController">
    <children>
-      <TreeTableView fx:id="tabell" layoutX="28.0" layoutY="98.0" onMousePressed="#valgtKomponent" prefHeight="414.0" prefWidth="425.0">
+      <TreeTableView fx:id="tabell" layoutX="28.0" layoutY="70.0" onMousePressed="#valgtKomponent" prefHeight="442.0" prefWidth="425.0">
         <columns>
             <TreeTableColumn fx:id="coVaremerke" prefWidth="152.0" resizable="false" text="Varemerke">
             <cellValueFactory>
@@ -20,7 +20,7 @@
             </cellValueFactory>
         </TreeTableColumn>
             <TreeTableColumn fx:id="coModell" prefWidth="133.5" resizable="false" text="Modell" />
-            <TreeTableColumn fx:id="coPris" prefWidth="136.5" resizable="false" text="Pris" />
+            <TreeTableColumn fx:id="coPris" prefWidth="134.5" resizable="false" text="Pris" />
         </columns>
       </TreeTableView>
       <Button layoutX="240.0" layoutY="523.0" mnemonicParsing="false" onAction="#leggTilIHandekurv" prefHeight="49.0" prefWidth="213.0" text="Legg valgt vare i handlekurv">
@@ -45,7 +45,7 @@
         </columns>
       </TableView>
 
-      <Label layoutX="482.0" layoutY="87.0" prefHeight="37.0" prefWidth="270.0" text="Informasjon om valgt komponent:">
+      <Label layoutX="480.0" layoutY="54.0" prefHeight="37.0" prefWidth="270.0" text="Informasjon om valgt komponent:">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -59,7 +59,7 @@
       <Button layoutX="870.0" layoutY="337.0" mnemonicParsing="false" onAction="#slettValgtVareAction" prefHeight="30.0" prefWidth="99.0" text="Slett valgt vare" />
 
 
-       <TableView fx:id="komponentinfo" layoutX="480.0" layoutY="115.0" prefHeight="198.0" prefWidth="483.0" stylesheets="@../../../style/komponentinfotabell.css" visible="false">
+       <TableView fx:id="komponentinfo" layoutX="480.0" layoutY="91.0" prefHeight="222.0" prefWidth="483.0" stylesheets="@../../../style/komponentinfotabell.css" visible="false">
         <columns>
             <TableColumn editable="false" maxWidth="180.0" minWidth="180.0" prefWidth="180.0" sortable="false" text="">
                 <cellValueFactory>
@@ -74,12 +74,12 @@
         </columns>
       </TableView>
       <Button layoutX="870.0" layoutY="381.0" mnemonicParsing="false" onAction="#slettHandlekurvAction" prefHeight="30.0" prefWidth="99.0" text="Slett alle varer" />
-      <Label layoutX="28.0" layoutY="50.0" prefHeight="37.0" prefWidth="278.0" text="Tilgjengelige komponenter:">
+      <Label layoutX="28.0" layoutY="29.0" prefHeight="37.0" prefWidth="278.0" text="Tilgjengelige komponenter:">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button onAction="#tilbakeAction" layoutX="28.0" layoutY="541.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" text="Tilbake">
+      <Button layoutX="28.0" layoutY="541.0" mnemonicParsing="false" onAction="#tilbakeAction" prefHeight="31.0" prefWidth="76.0" text="Tilbake">
          <font>
             <Font size="15.0" />
          </font>

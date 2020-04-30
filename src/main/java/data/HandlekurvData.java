@@ -23,4 +23,13 @@ public class HandlekurvData {
     public static void nyVare(HandlekurvVare nyVare){
         handekurv.add(nyVare);
     }
+
+    public static void slettType(String varetype){
+        for(HandlekurvVare enVare : handekurv){
+            if(varetype.equals(enVare.getType())){
+                handekurv.remove(enVare);
+                break;
+            }
+        }
+    }
 }

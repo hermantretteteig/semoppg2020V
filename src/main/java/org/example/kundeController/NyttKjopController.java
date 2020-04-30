@@ -4,6 +4,7 @@ import data.HandlekurvData;
 import data.KomponentData;
 import data.NyttKjopKomponentinfoViewData;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -14,7 +15,12 @@ import javafx.util.converter.DoubleStringConverter;
 import models.HandlekurvVare;
 import models.NyttKjopKomponentinfoView;
 import models.komponent.Komponent;
+import models.komponent.Lagringsenhet;
 import org.example.App;
+
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class NyttKjopController {
 
@@ -42,30 +48,48 @@ public class NyttKjopController {
     public static TreeItem<Komponent> getModel()
     {
 
-
+        TreeItem<Komponent> lagringsenheter = new TreeItem<>(new Komponent("", "Lagringsenheter", "", 0));
+        TreeItem<Komponent> mus = new TreeItem<>(new Komponent("", "Mus", "", 0));
         TreeItem<Komponent> prosssor = new TreeItem<>(new Komponent("", "Prosessorer", "", 0));
-        TreeItem<Komponent> lagringsenhet = new TreeItem<>(new Komponent("", "Lagringsenheter", "", 0));
-
-
-
-        //TreeItem<Komponent> skjerm = new TreeItem<>();
-        for(Komponent enKompoent : KomponentData.getAlleKomponenter()){
-            if(enKompoent.getClass().getSimpleName().equals("Prosessor")){
-                prosssor.getChildren().add(new TreeItem<>(enKompoent));
-            }
-            if(enKompoent.getClass().getSimpleName().equals("Lagringsenhet")){
-                lagringsenhet.getChildren().add(new TreeItem<>(enKompoent));
-            }
-        }
+        TreeItem<Komponent> skjermer = new TreeItem<>(new Komponent("", "Skjermer", "", 0));
+        TreeItem<Komponent> skjermkort = new TreeItem<>(new Komponent("", "Skjermkort", "", 0));
+        TreeItem<Komponent> tastaturer = new TreeItem<>(new Komponent("", "Tastaturer", "", 0));
 
         TreeItem<Komponent> alleKomponener = new TreeItem<>(new Komponent("", "Komponenter", "", 0));
 
+        //TreeItem<Komponent> skjerm = new TreeItem<>();
+        for(Komponent enKompoent : KomponentData.getAlleKomponenter()){
 
-        alleKomponener.getChildren().setAll(prosssor, lagringsenhet);
+            if(enKompoent.getClass().getSimpleName().equals("Lagringsenhet")){
+                lagringsenheter.getChildren().add(new TreeItem<>(enKompoent));
+            }
+            if(enKompoent.getClass().getSimpleName().equals("Mus")){
+                mus.getChildren().add(new TreeItem<>(enKompoent));
+            }
+            if(enKompoent.getClass().getSimpleName().equals("Prosessor")){
+                prosssor.getChildren().add(new TreeItem<>(enKompoent));
+            }
+            if(enKompoent.getClass().getSimpleName().equals("Skjerm")){
+                skjermer.getChildren().add(new TreeItem<>(enKompoent));
+            }
+            if(enKompoent.getClass().getSimpleName().equals("Skjermkort")){
+                skjermkort.getChildren().add(new TreeItem<>(enKompoent));
+            }
+            if(enKompoent.getClass().getSimpleName().equals("Tastatur")){
+                tastaturer.getChildren().add(new TreeItem<>(enKompoent));
+            }
+        }
 
-        prosssor.setExpanded(true);
-        lagringsenhet.setExpanded(true);
+
+        alleKomponener.getChildren().setAll(lagringsenheter, mus, prosssor, skjermer, skjermkort, tastaturer);
+
         alleKomponener.setExpanded(true);
+        lagringsenheter.setExpanded(true);
+        mus.setExpanded(true);
+        prosssor.setExpanded(true);
+        skjermer.setExpanded(true);
+        skjermkort.setExpanded(true);
+        tastaturer.setExpanded(true);
 
         return alleKomponener;
     }
@@ -73,12 +97,33 @@ public class NyttKjopController {
     @FXML
     public void leggTilIHandekurv(){
         Komponent valgtKomponent = tabell.getSelectionModel().getSelectedItem().getValue();
-        System.out.println("Varenr: "+valgtKomponent.getVarenr());
+        HandlekurvVare nyVare = new HandlekurvVare(valgtKomponent.getVarenr(), (valgtKomponent.getVaremerke()+" "+valgtKomponent.getModell()), valgtKomponent.getPris(), valgtKomponent.getClass().getSimpleName());
 
-        HandlekurvVare nyVare = new HandlekurvVare(valgtKomponent.getVarenr(), (valgtKomponent.getVaremerke()+" "+valgtKomponent.getModell()), valgtKomponent.getPris());
-        HandlekurvData.nyVare(nyVare);
-        tableHandekurv.refresh();
+        boolean duplikat = false;
+        for(HandlekurvVare enKomponent : HandlekurvData.getHandekurv()){
+            if(enKomponent.getType().equals(valgtKomponent.getClass().getSimpleName())){
+                duplikater(nyVare);
+                duplikat=true;
+            }
+        }
+        if(duplikat==false) {
+            HandlekurvData.nyVare(nyVare);
+            tableHandekurv.refresh();
+        }
 
+    }
+
+    public void duplikater(HandlekurvVare nyVare){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Duplikater funnet");
+        alert.setHeaderText(nyVare.getType()+" har du allerde i handlekurven. Vil du erstatte varen med "+nyVare.getNavn()+"?");
+        alert.setContentText("");
+        alert.showAndWait();
+        if(alert.getResult().getButtonData().isDefaultButton()==true){
+            HandlekurvData.slettType(nyVare.getType());
+            HandlekurvData.nyVare(nyVare);
+            tableHandekurv.refresh();
+        }
 
     }
 
@@ -93,7 +138,7 @@ public class NyttKjopController {
     @FXML
     public void slettHandlekurvAction(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Slett alle!");
+        alert.setTitle("Slett handlekur");
         alert.setHeaderText("Er du sikker på du vil slette hele varekurven?");
         alert.setContentText("Slettingen kan ikke angres");
         alert.showAndWait();

@@ -7,11 +7,15 @@ public class HandlekurvVare {
     private SimpleStringProperty varenr;
     private SimpleStringProperty navn;
     private SimpleDoubleProperty pris;
+    private SimpleStringProperty type;
 
-    public HandlekurvVare(String varenr, String navn, Double pris) {
+
+
+    public HandlekurvVare(String varenr, String navn, Double pris, String type) {
         this.varenr = new SimpleStringProperty(varenr);
         this.navn = new SimpleStringProperty(navn);
         this.pris = new SimpleDoubleProperty(pris);
+        this.type = new SimpleStringProperty(type);
     }
 
     public String getVarenr() {
@@ -48,5 +52,17 @@ public class HandlekurvVare {
 
     public void setPris(double pris) {
         this.pris.set(pris);
+    }
+
+    public String getType() {
+        return type.get();
+    }
+
+    public SimpleStringProperty typeProperty() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type.set(type);
     }
 }

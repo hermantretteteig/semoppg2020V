@@ -3,7 +3,7 @@ package validering;
 import java.util.regex.Pattern;
 
 public class PassordCheck {
-    public boolean passordchecker(String passord) {
+    public static boolean passordchecker(String passord) {
         //Må inneholde minst et tall fra 0-9
         //Må inneholde minst en liten bokstaver fra a-å
         //Må inneholde minst en stor bokstav fra a-å

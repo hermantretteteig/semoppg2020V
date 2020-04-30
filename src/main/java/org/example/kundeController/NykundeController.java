@@ -1,6 +1,6 @@
 package org.example.kundeController;
 
-import validering.EpostCheck;
+import validering.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -45,25 +45,32 @@ public class NykundeController {
             lblEpostFeil.setText("");
 
 
-
-
-            if(txtFornavn.getText().length()<2){
-                lblFornavnFeil.setText("Fornavn må være minst to tegn.");
-            }
-            if(txtEtternavn.getText().length()<2){
-                lblEtternavnFeil.setText("Etternavn må være minst to tegn.");
-            }
-            if(txtBrukernavn.getText().length()<2){
-                lblBrukernavnFeil.setText("Må være minst to tegn.");
+            //Validerer fornavn
+            if(NavnCheck.navncheck(txtFornavn.getText()) == false){
+                lblFornavnFeil.setText("Fornavn må kunne inneholde bokstaver");
             }
 
-            if(txtPassord.getText().length()<8){
-                lblPassordFeil.setText("Passord må være minst 8 tegn.");
+            //Validerer etternavn
+            if(NavnCheck.navncheck(txtEtternavn.getText()) == false){
+                lblEtternavnFeil.setText("Etternavn må kun inneholde bokstaver");
             }
-            if(!(txtGjentaPassord.getText().equals(txtPassord.getText()))){
+
+            //Validerer brukernavn
+            if(LengeCheck.lengdeCheck(txtBrukernavn.getText()) == false){
+                lblBrukernavnFeil.setText("Må inneholde minst to tegn.");
+            }
+
+            //Validerer passord
+            if(PassordCheck.passordchecker(txtPassord.getText()) == false){
+                lblPassordFeil.setText("Passord må inneholde: Små og store bokstaver, minst 8 tegn og tall ");
+            }
+
+            //Validerer gjentatt passord
+            if(PassordValCheck.passordValCheck(txtGjentaPassord.getText(), txtPassord.getText()) == false){
                 lblGjentaPassordFeil.setText("Passordene er ulike.");
             }
 
+            //Validerer epost
             if(EpostCheck.epostchecker(txtEpost.getText())==false){
                 lblEpostFeil.setText("Eposen er ugyldig.");
             }

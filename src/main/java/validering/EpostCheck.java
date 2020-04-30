@@ -7,7 +7,7 @@ public class EpostCheck {
 
         //Tillater ikke norske bokstaver æ-ø-å
 
-        String epostRegex = "^[æøåa-zÆØA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[^ æøåa-zÆØÅA-Z0-9.-]+$";
+        String epostRegex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[^a-zA-Z0-9.-]+$";
 
         Pattern pat = Pattern.compile(epostRegex);
 

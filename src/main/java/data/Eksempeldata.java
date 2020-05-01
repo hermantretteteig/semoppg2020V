@@ -9,6 +9,18 @@ import java.io.IOException;
 public class Eksempeldata {
 
     public static void GenererEksempeldata() {
+
+
+        Lagringsenhet tomStandardLagrinsingsenhetIHandekurv = new Lagringsenhet("", "", 0, "", 0, "", "");
+        Mus tomStandardMusIHandekurv = new Mus ("", "", "", 0, false, "");
+        Prosessor tomStandardProsessorIHandekurv = new Prosessor("", "", "", 0, 0, 0);
+        Skjerm tomStandardSkjerIHandekurv = new Skjerm("", "", "", 0, 0, 0, false);
+        Skjermkort tomStandardSkjermkortIHandekurv = new Skjermkort("", "", "", 0, 0, 0);
+        Tastatur tomStandardTastaturIHandekurv = new Tastatur("", "", "", 0, false, false);
+
+        HandlekurvData.getHandekurv().addAll(tomStandardTastaturIHandekurv, tomStandardSkjermkortIHandekurv, tomStandardSkjerIHandekurv, tomStandardLagrinsingsenhetIHandekurv, tomStandardMusIHandekurv, tomStandardProsessorIHandekurv);
+
+
         Lagringsenhet lagringsenhetEn = new Lagringsenhet(
                 "Samsung",
                 "2000",

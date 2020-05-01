@@ -4,61 +4,53 @@ import data.HandlekurvData;
 import data.KomponentData;
 import data.NyttKjopKomponentinfoViewData;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.input.TouchEvent;
 import javafx.util.Callback;
 import javafx.util.converter.DoubleStringConverter;
-import models.HandlekurvVare;
-import models.NyttKjopKomponentinfoView;
 import models.komponent.Komponent;
-import models.komponent.Lagringsenhet;
 import org.example.App;
-
-import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
 
 public class NyttKjopController {
 
     //public TreeTableColumn coPris;
     @FXML
-    public TreeTableView<Komponent> tabell;
+    public TreeTableView<models.komponent.Komponent> tabell;
 
     @FXML
     public TableView tableHandekurv;
     public TableView komponentinfo;
 
     @FXML
-    public TreeTableColumn<Komponent, String> coVaremerke;
-    public TreeTableColumn<Komponent, String> coModell;
-    public TreeTableColumn<Komponent, Double> coPris;
+    public TreeTableColumn<models.komponent.Komponent, String> coVaremerke;
+    public TreeTableColumn<models.komponent.Komponent, String> coModell;
+    public TreeTableColumn<models.komponent.Komponent, Double> coPris;
 
     @FXML
     public TableColumn coHandlekurvNavn;
     public TableColumn coHandlekurvPris;
 
+    @FXML
+    public Label lblTotalpris;
 
     private HandlekurvData collection = new HandlekurvData();
     private NyttKjopKomponentinfoViewData collection2 = new NyttKjopKomponentinfoViewData();
 
-    public static TreeItem<Komponent> getModel()
+    public static TreeItem<models.komponent.Komponent> getModel()
     {
 
-        TreeItem<Komponent> lagringsenheter = new TreeItem<>(new Komponent("", "Lagringsenheter", "", 0));
-        TreeItem<Komponent> mus = new TreeItem<>(new Komponent("", "Mus", "", 0));
-        TreeItem<Komponent> prosssor = new TreeItem<>(new Komponent("", "Prosessorer", "", 0));
-        TreeItem<Komponent> skjermer = new TreeItem<>(new Komponent("", "Skjermer", "", 0));
-        TreeItem<Komponent> skjermkort = new TreeItem<>(new Komponent("", "Skjermkort", "", 0));
-        TreeItem<Komponent> tastaturer = new TreeItem<>(new Komponent("", "Tastaturer", "", 0));
+        TreeItem<models.komponent.Komponent> lagringsenheter = new TreeItem<>(new models.komponent.Komponent("", "Lagringsenheter", "", 0));
+        TreeItem<models.komponent.Komponent> mus = new TreeItem<>(new models.komponent.Komponent("", "Mus", "", 0));
+        TreeItem<models.komponent.Komponent> prosssor = new TreeItem<>(new models.komponent.Komponent("", "Prosessorer", "", 0));
+        TreeItem<models.komponent.Komponent> skjermer = new TreeItem<>(new models.komponent.Komponent("", "Skjermer", "", 0));
+        TreeItem<models.komponent.Komponent> skjermkort = new TreeItem<>(new models.komponent.Komponent("", "Skjermkort", "", 0));
+        TreeItem<models.komponent.Komponent> tastaturer = new TreeItem<>(new models.komponent.Komponent("", "Tastaturer", "", 0));
 
-        TreeItem<Komponent> alleKomponener = new TreeItem<>(new Komponent("", "Komponenter", "", 0));
+        TreeItem<models.komponent.Komponent> alleKomponener = new TreeItem<>(new models.komponent.Komponent("", "Komponenter", "", 0));
 
         //TreeItem<Komponent> skjerm = new TreeItem<>();
-        for(Komponent enKompoent : KomponentData.getAlleKomponenter()){
+        for(models.komponent.Komponent enKompoent : KomponentData.getAlleKomponenter()){
 
             if(enKompoent.getClass().getSimpleName().equals("Lagringsenhet")){
                 lagringsenheter.getChildren().add(new TreeItem<>(enKompoent));
@@ -97,35 +89,37 @@ public class NyttKjopController {
     @FXML
     public void leggTilIHandekurv(){
         Komponent valgtKomponent = tabell.getSelectionModel().getSelectedItem().getValue();
-        HandlekurvVare nyVare = new HandlekurvVare(valgtKomponent.getVarenr(), (valgtKomponent.getVaremerke()+" "+valgtKomponent.getModell()), valgtKomponent.getPris(), valgtKomponent.getClass().getSimpleName());
+        //Komponent nyVare = new Komponent(valgtKomponent.getVarenr(), (valgtKomponent.getVaremerke()+" "+valgtKomponent.getModell()), valgtKomponent.getPris(), valgtKomponent.getClass().getSimpleName());
 
         boolean duplikat = false;
 
-        for(HandlekurvVare enKomponent : HandlekurvData.getHandekurv()){
-            if(enKomponent.getType().equals(valgtKomponent.getClass().getSimpleName())){
-                duplikat=true;
+        for(Komponent enKomponent : HandlekurvData.getHandekurv()){
+            if(enKomponent.getClass().getSimpleName().equals(valgtKomponent.getClass().getSimpleName()) && enKomponent.getPris()!=0){
+                enKomponent = tabell.getSelectionModel().getSelectedItem().getValue();
+                duplikat = true;
                 break;
             }
         }
         if(duplikat==true){
-            duplikater(nyVare);
+            duplikater(valgtKomponent);
         }
 
         if(duplikat==false) {
-            HandlekurvData.nyVare(nyVare);
+            HandlekurvData.nyVare(valgtKomponent);
             tableHandekurv.refresh();
         }
+        lblTotalpris.setText("Totalpris: "+ HandlekurvData.getSumHandlkurv());
 
     }
 
-    public void duplikater(HandlekurvVare nyVare){
+    public void duplikater(Komponent nyVare){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Duplikater funnet");
-        alert.setHeaderText(nyVare.getType()+" har du allerde konfigurert.\n\nVil du erstatte komponenten med "+nyVare.getNavn()+"?");
+        alert.setHeaderText(nyVare.getClass().getSimpleName()+" har du allerde konfigurert.\n\nVil du erstatte komponenten med "+nyVare.getVaremerke()+" "+nyVare.getModell()+"?");
         alert.setContentText("");
         alert.showAndWait();
         if(alert.getResult().getButtonData().isDefaultButton()==true){
-            HandlekurvData.slettType(nyVare.getType());
+            HandlekurvData.slettType(nyVare.getClass().getSimpleName());
             HandlekurvData.nyVare(nyVare);
             tableHandekurv.refresh();
         }
@@ -149,7 +143,9 @@ public class NyttKjopController {
         alert.showAndWait();
         if(alert.getResult().getButtonData().isDefaultButton()==true){
             HandlekurvData.getHandekurv().clear();
+            HandlekurvData.setSumHandlkurv(0.0);
             tableHandekurv.refresh();
+            lblTotalpris.setText("Totalpris: "+ HandlekurvData.getSumHandlkurv());
         }
 
     }
@@ -161,52 +157,44 @@ public class NyttKjopController {
 
     @FXML
     public void slettValgtVareAction(){
-        HandlekurvData.getHandekurv().remove(tableHandekurv.getSelectionModel().getSelectedItem());
+        Komponent slettVare = (Komponent) tableHandekurv.getSelectionModel().getSelectedItem();
+        HandlekurvData.getHandekurv().remove(slettVare);
+        HandlekurvData.setSumHandlkurv(HandlekurvData.getSumHandlkurv() - slettVare.getPris());
+        lblTotalpris.setText("Totalpris: "+ HandlekurvData.getSumHandlkurv());
         tableHandekurv.refresh();
     }
 
 
-
-
-
-
-
     public void initialize() {
+        lblTotalpris.setText("Totalpris: "+ HandlekurvData.getSumHandlkurv());
         coHandlekurvPris.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
 
         collection.hentKomponenttype(tableHandekurv);
         collection2.hentKomponentinfo(komponentinfo);
 
-        coVaremerke.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Komponent, String>, ObservableValue<String>>() {
+        coVaremerke.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<models.komponent.Komponent, String>, ObservableValue<String>>() {
             @Override
-            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Komponent, String> param) {
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<models.komponent.Komponent, String> param) {
                 return param.getValue().getValue().getSSPVaremerke();
             }
         });
 
 
 
-        coModell.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Komponent, String>, ObservableValue<String>>() {
+        coModell.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<models.komponent.Komponent, String>, ObservableValue<String>>() {
             @Override
-            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Komponent, String> param) {
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<models.komponent.Komponent, String> param) {
                 return param.getValue().getValue().getSSPModell();
             }
         });
 
-        coPris.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Komponent, Double>, ObservableValue<Double>>() {
+        coPris.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<models.komponent.Komponent, Double>, ObservableValue<Double>>() {
             @Override
-            public ObservableValue<Double> call(TreeTableColumn.CellDataFeatures<Komponent, Double> param) {
+            public ObservableValue<Double> call(TreeTableColumn.CellDataFeatures<models.komponent.Komponent, Double> param) {
                 return param.getValue().getValue().getSSPPris();
             }
         });
 
-
-        /*coPris.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<String, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue call(TreeTableColumn.CellDataFeatures<String, String> param) {
-                return new SimpleStringProperty(param.getValue().getValue());
-            }
-        });*/
         tabell.setRoot(getModel());
         //tabell.setShowRoot(false);
     }

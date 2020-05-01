@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane  prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.kundeController.NyttKjopController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="nyttKjopBakgrunn" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.kundeController.NyttKjopController">
    <children>
       <TreeTableView fx:id="tabell" layoutX="28.0" layoutY="70.0" onMousePressed="#valgtKomponent" prefHeight="442.0" prefWidth="425.0">
         <columns>
@@ -23,7 +23,7 @@
             <TreeTableColumn fx:id="coPris" prefWidth="134.5" resizable="false" text="Pris" />
         </columns>
       </TreeTableView>
-      <Button layoutX="240.0" layoutY="523.0" mnemonicParsing="false" onAction="#leggTilIHandekurv" prefHeight="49.0" prefWidth="213.0" text="Legg valgt vare i handlekurv">
+      <Button layoutX="243.0" layoutY="545.0" mnemonicParsing="false" onAction="#leggTilIHandekurv" prefHeight="37.0" prefWidth="213.0" text="Legg valgt vare i handlekurv">
          <font>
             <Font size="15.0" />
          </font></Button>
@@ -32,17 +32,17 @@
 
       <TableView fx:id="tableHandekurv" layoutX="480.0" layoutY="308.0" prefHeight="206.0" prefWidth="364.0">
         <columns>
-            <TableColumn prefWidth="124.5" text="Komponent">
+            <TableColumn editable="false" prefWidth="124.5" sortable="false" text="Komponent">
                 <cellValueFactory>
                     <PropertyValueFactory property="Type" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn prefWidth="124.5" text="Varenavn">
+            <TableColumn editable="false" prefWidth="124.5" sortable="false" text="Varenavn">
                 <cellValueFactory>
-                    <PropertyValueFactory property="Navn" />
+                    <PropertyValueFactory property="MerkeOgModell" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="coHandlekurvPris" prefWidth="123.0" text="Pris (kr)">
+            <TableColumn fx:id="coHandlekurvPris" editable="false" prefWidth="123.0" sortable="false" text="Pris (kr)">
                 <cellValueFactory>
                     <PropertyValueFactory property="Pris" />
                 </cellValueFactory>
@@ -50,13 +50,13 @@
         </columns>
       </TableView>
 
-      <Label layoutX="480.0" layoutY="54.0" prefHeight="37.0" prefWidth="270.0" text="Informasjon om valgt komponent:">
+      <Label layoutX="481.0" layoutY="74.0" prefHeight="37.0" prefWidth="270.0" text="Informasjon om valgt komponent:">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
 
-      <Button layoutX="870.0" layoutY="523.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="99.0" text="Fullfør kjøp">
+      <Button layoutX="872.0" layoutY="545.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="99.0" text="Fullfør kjøp">
          <font>
             <Font size="15.0" />
          </font>
@@ -79,17 +79,22 @@
         </columns>
       </TableView>
       <Button layoutX="870.0" layoutY="381.0" mnemonicParsing="false" onAction="#slettHandlekurvAction" prefHeight="30.0" prefWidth="99.0" text="Slett alle varer" />
-      <Label layoutX="28.0" layoutY="29.0" prefHeight="37.0" prefWidth="278.0" text="Tilgjengelige komponenter:">
+      <Label layoutX="28.0" layoutY="16.0" prefHeight="37.0" prefWidth="278.0" text="Nytt kjøp:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="28.0" layoutY="541.0" mnemonicParsing="false" onAction="#tilbakeAction" prefHeight="31.0" prefWidth="76.0" text="Tilbake">
+      <Button layoutX="30.0" layoutY="548.0" mnemonicParsing="false" onAction="#tilbakeAction" prefHeight="37.0" prefWidth="76.0" text="Tilbake">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Label layoutX="480.0" layoutY="269.0" prefHeight="37.0" prefWidth="270.0" text="Handlekurv:">
+      <Label layoutX="480.0" layoutY="265.0" prefHeight="37.0" prefWidth="270.0" text="Handlekurv:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTotalpris" layoutX="678.0" layoutY="556.0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

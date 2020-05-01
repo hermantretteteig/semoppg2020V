@@ -3,7 +3,7 @@ package data;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
-import models.HandlekurvVare;
+import models.komponent.Komponent;
 import models.NyttKjopKomponentinfoView;
 import models.komponent.*;
 

@@ -9,20 +9,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.LogginnController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="brukerLoggInnBakgrunn" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.LogginnController">
    <children>
       <TabPane layoutX="-1.0" prefHeight="600.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Bruker">
             <content>
-              <AnchorPane  minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="brukerLoggInnBakgrunn" stylesheets="@../../style/logginn.css">
                      <children>
-                        <PasswordField  layoutX="426.0" layoutY="264.0" />
-                        <TextField layoutX="426.0" layoutY="214.0" />
-                        <Label layoutX="426.0" layoutY="194.0" prefHeight="17.0" prefWidth="77.0" text="Brukernavn:" />
-                        <Label layoutX="426.0" layoutY="246.0" prefHeight="17.0" prefWidth="77.0" text="Passord:" />
-                        <Button layoutX="426.0" layoutY="308.0" mnemonicParsing="false" onAction="#logginn" prefHeight="25.0" prefWidth="150.0" text="Logg inn" />
-                        <Button layoutX="425.0" layoutY="352.0" mnemonicParsing="false" onAction="#nyBruker" prefHeight="25.0" prefWidth="150.0" text="Ny kunde" />
+                        <PasswordField layoutX="418.0" layoutY="276.0" prefHeight="25.0" prefWidth="156.0" />
+                        <TextField layoutX="418.0" layoutY="226.0" prefHeight="25.0" prefWidth="156.0" />
+                        <Label layoutX="418.0" layoutY="207.0" prefHeight="17.0" prefWidth="77.0" text="Brukernavn:" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <Label layoutX="418.0" layoutY="257.0" prefHeight="17.0" prefWidth="77.0" text="Passord:" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <Button layoutX="419.0" layoutY="315.0" mnemonicParsing="false" onAction="#logginn" prefHeight="25.0" prefWidth="156.0" text="Logg inn" />
+                        <Button layoutX="418.0" layoutY="359.0" mnemonicParsing="false" onAction="#nyBruker" prefHeight="25.0" prefWidth="156.0" text="Ny kunde" />
                         <Label layoutX="34.0" layoutY="28.0" prefHeight="52.0" prefWidth="300.0" text="Logg inn som bruker">
                            <font>
                               <Font name="System Bold" size="21.0" />
@@ -33,23 +39,28 @@
             </content>
           </Tab>
           <Tab text="Administrator">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                    <children>
-                        <PasswordField layoutX="426.0" layoutY="264.0" />
-                        <TextField layoutX="426.0" layoutY="214.0" />
-                        <Label layoutX="426.0" layoutY="194.0" prefHeight="17.0" prefWidth="77.0" text="Brukernavn:" />
-                        <Label layoutX="426.0" layoutY="246.0" prefHeight="17.0" prefWidth="77.0" text="Passord:" />
-                        <Button layoutX="426.0" layoutY="308.0" mnemonicParsing="false" onAction="#adminLoggInnAction" prefHeight="25.0" prefWidth="150.0" text="Logg inn" />
-                        <Label layoutX="34.0" layoutY="28.0" prefHeight="52.0" prefWidth="300.0" text="Logg inn som administrator">
-                           <font>
-                              <Font name="System Bold" size="21.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="34.0" layoutY="489.0" prefHeight="56.0" prefWidth="150.0" text="Brukernavn: admin&#10;Passord: passord123" wrapText="true" />
-                    </children>
-                </AnchorPane>
-            </content>
+              <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="adminLoggInnBakgrunn" stylesheets="@../../style/logginn.css">
+                      <children>
+                          <PasswordField layoutX="418.0" layoutY="276.0" prefHeight="25.0" prefWidth="156.0" />
+                          <TextField layoutX="418.0" layoutY="226.0" prefHeight="25.0" prefWidth="156.0" />
+                          <Label layoutX="418.0" layoutY="207.0" prefHeight="17.0" prefWidth="77.0" text="Brukernavn:" textFill="WHITE">
+                              <font>
+                                  <Font name="System Bold" size="12.0" />
+                              </font></Label>
+                          <Label layoutX="418.0" layoutY="257.0" prefHeight="17.0" prefWidth="77.0" text="Passord:" textFill="WHITE">
+                              <font>
+                                  <Font name="System Bold" size="12.0" />
+                              </font></Label>
+                          <Button layoutX="419.0" layoutY="315.0" mnemonicParsing="false" onAction="#logginn" prefHeight="25.0" prefWidth="156.0" text="Logg inn" />
+                          <Label layoutX="34.0" layoutY="28.0" prefHeight="52.0" prefWidth="300.0" text="Logg inn som administrator">
+                              <font>
+                                  <Font name="System Bold" size="21.0" />
+                              </font>
+                          </Label>
+                      </children>
+                  </AnchorPane>
+              </content>
           </Tab>
         </tabs>
       </TabPane>

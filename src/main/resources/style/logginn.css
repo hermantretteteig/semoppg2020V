@@ -1,10 +1,16 @@
 
 
-
-.button{
-    -fx-background-image: url("https://aksello.no/wp-content/uploads/3298c929109382f3a4c4329b144f0a2d.png");
+.brukerLoggInnBakgrunn{
+    -fx-background-image: url("https://i.imgur.com/PCimwAA.png");
     -fx-background-position: center center;
-    -fx-font-weight: 600p;
-    -fx-text-fill: white;
+    -fx-background-size: 100%;
 }
+
+.adminLoggInnBakgrunn{
+    -fx-background-image: url("https://i.imgur.com/PCimwAA.png");
+    -fx-background-position: center center;
+    -fx-background-size: 100%;
+}
+
+
 

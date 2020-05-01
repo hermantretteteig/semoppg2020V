@@ -1,0 +1,21 @@
+
+
+.nyttKjopBakgrunn{
+    -fx-background-image: url("https://i.imgur.com/rQiQVgR.png");
+    -fx-background-position: center center;
+    -fx-background-size: 100%;
+}
+
+/*
+.button{
+     -fx-background-color: #7FB2F0;
+     -fx-background-position: center center;
+     -fx-text-fill: #35478C;
+ }
+
+.button:hover{
+    -fx-background-color: #16193B;
+    -fx-background-position: center center;
+    -fx-text-fill: #35478C;
+}*/
+

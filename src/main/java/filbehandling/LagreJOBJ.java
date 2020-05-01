@@ -1,7 +1,6 @@
 package filbehandling;
 
 import javafx.collections.ObservableList;
-import models.brukere.Bruker;
 import models.komponent.Datamaskin;
 import models.komponent.Komponent;
 
@@ -10,7 +9,6 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class LagreJOBJ extends LagreFil {
 

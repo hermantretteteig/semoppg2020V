@@ -1,6 +1,5 @@
 package filbehandling;
 
-import data.KomponentData;
 import models.komponent.Datamaskin;
 import models.komponent.Komponent;
 
@@ -11,7 +10,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 
 public class LesJOBJ extends LesFil {
     @Override
@@ -39,10 +37,6 @@ public class LesJOBJ extends LesFil {
             Object object = oin.readObject();
             ArrayList<Komponent> komponenter;
             komponenter = (ArrayList<Komponent>) object;
-            //TESTING
-            for(Komponent enKomponent: komponenter){
-                System.out.println(enKomponent);
-            }
             return komponenter;
 
         } catch (IOException e) {

@@ -1,14 +1,5 @@
 package models.Tore;
 
-import filbehandling.DatamaskinFormatter;
-import filbehandling.LagreCSV;
-import models.komponent.*;
-import filbehandling.LagreJOBJ;
-import filbehandling.LesJOBJ;
-
-import java.io.File;
-import java.util.UUID;
-
 public class Test {
     public static void main(String[] args) throws ClassNotFoundException {
         //Lagringsenhet  lagringsenhet = new Lagringsenhet("Samsung", 1000, "1234", "evo8000", "SSD", 500, "1000", "3000");

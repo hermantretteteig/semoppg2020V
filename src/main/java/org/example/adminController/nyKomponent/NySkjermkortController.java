@@ -1,10 +1,13 @@
 package org.example.adminController.nyKomponent;
 
 
+import data.KomponentData;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import models.komponent.Komponent;
+import models.komponent.Skjermkort;
 import org.example.App;
 import validering.BokstaverCheck;
 import validering.LengeCheck;
@@ -36,37 +39,42 @@ public class NySkjermkortController {
         lblModellFeil.setText("");
         lblPrisFeil.setText("");
 
+
         //Validerer Varenummer
 
 
         //Validerer Varemerke
-        if(BokstaverCheck.bokstavercheck(txtVaremerke.getText()) == false){
+        if(!BokstaverCheck.bokstavercheck(txtVaremerke.getText())){
             lblVaremerkeFeil.setText("Må kunne inneholde bokstaver");
         }
 
         //Validerer Modell
-        if(LengeCheck.lengdeCheck(txtModell.getText()) == false){
+        if(!LengeCheck.lengdeCheck(txtModell.getText())){
             lblModellFeil.setText("Må inneholde minst 2 bokstaver");
         }
 
         //Validerer Pris
-        if(TallCheck.tallcheck(txtPris.getText()) == false){
+        if(!TallCheck.tallcheck(txtPris.getText())){
             lblPrisFeil.setText("Må inneholde kun tall");
         }
         double pris = Double.parseDouble(txtPris.getText());
 
         //Validerer klokkehastighet
-        if(TallCheck.tallcheck(txtKlokkehastighet.getText()) == false) {
+        if(!TallCheck.tallcheck(txtKlokkehastighet.getText())) {
             lblKlokkehastighetFeil.setText("Må kun inneholde tall");
         }
 
         //Validerer Minne
-        if(TallCheck.tallcheck(txtMinne.getText()) == false) {
+        if(!TallCheck.tallcheck(txtMinne.getText())) {
             lblMinneFeil.setText("Må kun inneholde tall");
         }
 
-        //Skjermkort nySkjermkortsenhet = new Skjermkort();
-        //KomponentData.leggTilKomponent(nySkjermkort);
+        Skjermkort nyttSkjermkort = new Skjermkort(txtVaremerke.getText(),
+                txtModell.getText(),
+                Double.parseDouble(txtPris.getText()),
+                Double.parseDouble(txtKlokkehastighet.getText()),
+                Integer.parseInt(txtMinne.getText()));
+        KomponentData.leggTilKomponent(nyttSkjermkort);
 
         App.setRoot("adminView/nyKomponentView/nyKomponent");
     }

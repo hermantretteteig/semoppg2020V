@@ -2,13 +2,12 @@ package models.kjop;
 
 import data.Eksempeldata;
 import data.HandlekurvData;
+import data.OrdeData;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.chart.PieChart;
 import models.brukere.Kunde;
 import models.komponent.Datamaskin;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -36,6 +35,7 @@ public class Ordre {
 
 
         Ordre nyOrdre = new Ordre("1234", naa.format(dato), Eksempeldata.enKunde(), HandlekurvData.getSumHandlkurv(), HandlekurvData.genererDatamaskinAvHandlekurv());
+        OrdeData.leggTilOrdre(nyOrdre);
         HandlekurvData.getHandekurv().clear();
     }
 

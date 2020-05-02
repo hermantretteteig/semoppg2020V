@@ -7,7 +7,10 @@ import filbehandling.Traad;
 import javafx.collections.ObservableList;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
@@ -16,6 +19,7 @@ import models.komponent.Komponent;
 import org.example.App;
 
 import java.io.File;
+import java.util.Optional;
 
 import static data.KomponentData.getAlleKomponenter;
 
@@ -37,43 +41,60 @@ public class DashboardAdminController {
 
     @FXML
     public void hentFilAction() {
-        //Filbane.
-        File filBane = new File(System.getProperty("user.home"), "Datamaskinkonfigurering/komponenter");
-        //Lager filbanen om den ikke allerede eksisterer.
-        //TODO kan vel fjerne denne.
-        if (!filBane.exists()) {
-            filBane.mkdirs();
-        }
-        //Oppretter FileChooser
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Velg fil");
-        //TODO try catch?
-        fileChooser.setInitialDirectory(filBane);
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JOBJ Filer", "*.jobj")
-        );
+        ButtonType fortsett = new ButtonType("Fortsett", ButtonBar.ButtonData.OK_DONE);
+        ButtonType avbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Alert alert = new Alert(Alert.AlertType.WARNING, "", fortsett, avbryt);
+        alert.setTitle("Hent fil");
+        alert.setHeaderText("Alle endringer som ikke er lagret vil bli slettet.");
+        alert.setContentText("Er du sikker på at du vil fortsette?");
 
-        //Åpner filechooser og henter data hvis fil er valgt
-        Stage stage = (Stage) adminPanel.getScene().getWindow();
-        File file = fileChooser.showOpenDialog(stage);
+
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+
+        if(alert.getResult().getButtonData().isDefaultButton()==true) {
+
+
+            //Filbane.
+            File filBane = new File(System.getProperty("user.home"), "Datamaskinkonfigurering/komponenter");
+            //Lager filbanen om den ikke allerede eksisterer.
+            //TODO kan vel fjerne denne.
+            if (!filBane.exists()) {
+                filBane.mkdirs();
+            }
+            //Oppretter FileChooser
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Velg fil");
+            //TODO try catch?
+            fileChooser.setInitialDirectory(filBane);
+            fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JOBJ Filer", "*.jobj")
+            );
+
+            //Åpner filechooser og henter data hvis fil er valgt
+            Stage stage = (Stage) adminPanel.getScene().getWindow();
+            File file = fileChooser.showOpenDialog(stage);
         /*if(file != null){
             LesJOBJ lesJOBJ = new LesJOBJ();
             lesJOBJ.lesKomponent(file.getAbsolutePath());
         }*/
-        if(file != null){
-            traad = new Traad(file.getAbsolutePath());
-            Thread thread = new Thread(traad);
-            traad.setOnSucceeded(this::threadDone);
-            traad.setOnFailed(this::threadFailed);
-            //btnNyttKomponent.setDisable(true);
-            gridpane.setDisable(true);
-            //btnHentFil.setDisable(true);
-            thread.start();
+            if (file != null) {
+                traad = new Traad(file.getAbsolutePath());
+                Thread thread = new Thread(traad);
+                traad.setOnSucceeded(this::threadDone);
+                traad.setOnFailed(this::threadFailed);
+                //btnNyttKomponent.setDisable(true);
+                gridpane.setDisable(true);
+                //btnHentFil.setDisable(true);
+                thread.start();
+            }
+            ObservableList<Komponent> komponenter = KomponentData.getAlleKomponenter();
+            for (Komponent komponent : komponenter) {
+                System.out.println("---------------------------");
+                System.out.println(komponent);
+            }
         }
-        ObservableList<Komponent> komponenter = KomponentData.getAlleKomponenter();
-        for(Komponent komponent : komponenter){
-            System.out.println("---------------------------");
-            System.out.println(komponent);
-        }
+
 
     }
 

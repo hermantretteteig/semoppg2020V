@@ -40,7 +40,7 @@ public AnchorPane kundePanel;
         File file = fileChooser.showSaveDialog(stage);
         if(file != null) {
             LagreCSV lagre = new LagreCSV();
-            lagre.lagreDatamaskin(Eksempeldata.GenererEksempeldata(), file.getAbsolutePath());
+            //lagre.lagreDatamaskin(Eksempeldata.GenererEksempeldata(), file.getAbsolutePath());
         }
     }
 

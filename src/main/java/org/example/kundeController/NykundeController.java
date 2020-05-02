@@ -49,42 +49,60 @@ public class NykundeController {
         lblEpostFeil.setText("");
 
 
+        /*
+
+        Jeg prøde å korte ned noen feilmeldinger Salem, ettersom de ble veldig lange for GUI-et.
+        Se også TO DO-lenger ned
+
+        Herman
+        02.05.2020 : 14:21
+
+         */
+
+        String fornavn = txtFornavn.getText();
+        String etternavn = txtEtternavn.getText();
+        String brukernavn = txtBrukernavn.getText();
+        String passord = txtPassord.getText();
+        String gjentePassord = txtGjentaPassord.getText();
+        String epost = txtEpost.getText();
+
+
         //Validerer fornavn
-        if (BokstaverCheck.bokstavercheck(txtFornavn.getText()) == false) {
-            lblFornavnFeil.setText("Fornavn må kunne inneholde bokstaver");
+        if (BokstaverCheck.bokstavercheck(fornavn) == false) {
+            lblFornavnFeil.setText("Fornavn er ugyldig");
         }
 
         //Validerer etternavn
-        if (BokstaverCheck.bokstavercheck(txtEtternavn.getText()) == false) {
-            lblEtternavnFeil.setText("Etternavn må kun inneholde bokstaver");
+        if (BokstaverCheck.bokstavercheck(etternavn) == false) {
+            lblEtternavnFeil.setText("Fornavn er ugyldig");
         }
 
         //Validerer brukernavn
-        if (LengeCheck.lengdeCheck(txtBrukernavn.getText()) == false) {
+        if (LengeCheck.lengdeCheck(brukernavn) == false) {
             lblBrukernavnFeil.setText("Må inneholde minst to tegn.");
         }
 
         //Validerer passord
-        if (PassordCheck.passordchecker(txtPassord.getText()) == false) {
-            lblPassordFeil.setText("Passord må inneholde:" + "Små og store bokstaver, minst 8 tegn og tall ");
+        if (PassordCheck.passordchecker(passord) == false) {
+            lblPassordFeil.setText("Må være små og store bokstaver, minst 8 tegn og tall.");
         }
 
         //Validerer gjentatt passord
-        if (PassordValCheck.passordValCheck(txtGjentaPassord.getText(), txtPassord.getText()) == false) {
+        if (PassordValCheck.passordValCheck(gjentePassord, passord) == false) {
             lblGjentaPassordFeil.setText("Passordene er ulike.");
         }
 
         //Validerer epost
-        if (EpostCheck.epostchecker(txtEpost.getText()) == false) {
+        if (EpostCheck.epostchecker(epost) == false) {
             lblEpostFeil.setText("Eposen er ugyldig.");
         }
 
-        //Bruker nyKunde  =  new Bruker(txtFornavn.getText(), txtEtternavn.getText(), txtBrukernavn.getText(), txtPassord.getText());
-        //KundeData.leggTilBruker(nyKunde);
 
-        //App.setRoot("adminView/nyBrukerView/nyBruker");
-
-
+        //TODO KODEN UNDER MÅ BARE KJØRES HVIS INPUT ER GYLDIG, FIKSER DU DET SALEM?
+        Kunde nyKunde = new Kunde(fornavn, etternavn, brukernavn, passord, epost);
+        KundeData.leggTilKunde(nyKunde);
+        Stage stage = (Stage) avslutt.getScene().getWindow();
+        stage.close();
 
     }
 

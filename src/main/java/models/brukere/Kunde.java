@@ -2,13 +2,15 @@ package models.brukere;
 
 import javafx.beans.property.SimpleStringProperty;
 
+import java.util.UUID;
+
 public class Kunde extends Bruker {
     private transient SimpleStringProperty kundenummer;
     private transient SimpleStringProperty epost;
 
-    public Kunde(String fornavn, String etternavn, String brukernavn, String passord, String kundenummer, String epost) {
+    public Kunde(String fornavn, String etternavn, String brukernavn, String passord, String epost) {
         super(fornavn, etternavn, brukernavn, passord);
-        this.kundenummer = new SimpleStringProperty(kundenummer);
+        this.kundenummer = new SimpleStringProperty(genererKundenr());
         this.epost = new SimpleStringProperty(epost);
     }
 
@@ -26,5 +28,11 @@ public class Kunde extends Bruker {
 
     public void setEpost(String epost) {
         this.epost.set(epost);
+    }
+
+
+    private String genererKundenr() {
+        UUID varenr = UUID.randomUUID();
+        return varenr.toString();
     }
 }

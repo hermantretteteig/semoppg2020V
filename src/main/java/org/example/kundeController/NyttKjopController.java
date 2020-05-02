@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
 import javafx.util.converter.DoubleStringConverter;
+import models.kjop.Ordre;
 import models.komponent.Komponent;
 import org.example.App;
 
@@ -87,6 +88,25 @@ public class NyttKjopController {
     }
 
     @FXML
+    public void fullforKjopAction() {
+        if(HandlekurvData.getHandekurv().size()<=5){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Konfigurasjonsfeil");
+            alert.setHeaderText("Du har ikke konfigurert en hel datamaskin.");
+            alert.setContentText("Du mangeler "+(6-HandlekurvData.getHandekurv().size())+" komponenter.");
+            alert.showAndWait();
+        }
+        else{
+            Ordre.genererOrdre();
+        }
+
+
+    }
+
+
+
+
+    @FXML
     public void leggTilIHandekurv(){
         Komponent valgtKomponent = tabell.getSelectionModel().getSelectedItem().getValue();
         //Komponent nyVare = new Komponent(valgtKomponent.getVarenr(), (valgtKomponent.getVaremerke()+" "+valgtKomponent.getModell()), valgtKomponent.getPris(), valgtKomponent.getClass().getSimpleName());
@@ -94,7 +114,7 @@ public class NyttKjopController {
         boolean duplikat = false;
 
         for(Komponent enKomponent : HandlekurvData.getHandekurv()){
-            if(enKomponent.getClass().getSimpleName().equals(valgtKomponent.getClass().getSimpleName()) && enKomponent.getPris()!=0){
+            if(enKomponent.getClass().getSimpleName().equals(valgtKomponent.getClass().getSimpleName())){
                 enKomponent = tabell.getSelectionModel().getSelectedItem().getValue();
                 duplikat = true;
                 break;

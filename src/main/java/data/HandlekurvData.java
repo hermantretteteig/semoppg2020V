@@ -2,8 +2,9 @@ package data;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.TableView;
-import models.komponent.Komponent;
+import models.komponent.*;
 
 public class HandlekurvData {
     private static ObservableList<Komponent> handekurv = FXCollections.observableArrayList();
@@ -23,6 +24,41 @@ public class HandlekurvData {
 
     public static void setSumHandlkurv(Double sumHandlkurv) {
         HandlekurvData.sumHandlkurv = sumHandlkurv;
+    }
+
+
+
+    public static Datamaskin genererDatamaskinAvHandlekurv(){
+        Lagringsenhet nyLagringsenhet = null;
+        Mus nyMus = null;
+        Prosessor nyProsessor = null;
+        Skjerm nySkjerm = null;
+        Skjermkort nySkjermkort = null;
+        Tastatur nyTastatur = null;
+
+        for(Komponent enVare : handekurv){
+            if(enVare.getClass().getSimpleName()=="Lagringsenhet"){
+                nyLagringsenhet = (Lagringsenhet) enVare;
+            }
+            if(enVare.getClass().getSimpleName()=="Mus"){
+                nyMus = (Mus) enVare;
+            }
+            if(enVare.getClass().getSimpleName()=="Prosessor"){
+                nyProsessor = (Prosessor) enVare;
+            }
+            if(enVare.getClass().getSimpleName()=="Skjerm"){
+                nySkjerm = (Skjerm) enVare;
+            }
+            if(enVare.getClass().getSimpleName()=="Skjermkort"){
+                nySkjermkort = (Skjermkort) enVare;
+            }
+            if(enVare.getClass().getSimpleName()=="Tastatur"){
+                nyTastatur = (Tastatur) enVare;
+            }
+        }
+
+        Datamaskin nyDatamaskin = new Datamaskin(nyProsessor, nySkjermkort, nyLagringsenhet, nySkjerm, nyMus, nyTastatur);
+        return nyDatamaskin;
     }
 
     public void hentKomponenttype(TableView tv){

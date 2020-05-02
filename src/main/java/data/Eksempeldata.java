@@ -2,24 +2,23 @@ package data;
 
 import filbehandling.DatamaskinFormatter;
 import filbehandling.LagreCSV;
+import models.brukere.Kunde;
 import models.komponent.*;
 
 import java.io.IOException;
 
 public class Eksempeldata {
 
+    //Skal fjernes
+    public static Kunde enKunde(){
+        return new Kunde("Ole", "Hansen", "olehasen", "hemmelig", "ole.hansen@online.no");
+    }
+
     public static void GenererEksempeldata() {
 
-
-        Lagringsenhet tomStandardLagrinsingsenhetIHandekurv = new Lagringsenhet("", "", 0, "", 0, "", "");
-        Mus tomStandardMusIHandekurv = new Mus ("", "", "", 0, false, "");
-        Prosessor tomStandardProsessorIHandekurv = new Prosessor("", "", "", 0, 0, 0);
-        Skjerm tomStandardSkjerIHandekurv = new Skjerm("", "", "", 0, 0, 0, false);
-        Skjermkort tomStandardSkjermkortIHandekurv = new Skjermkort("", "", "", 0, 0, 0);
-        Tastatur tomStandardTastaturIHandekurv = new Tastatur("", "", "", 0, false, false);
-
-        HandlekurvData.getHandekurv().addAll(tomStandardTastaturIHandekurv, tomStandardSkjermkortIHandekurv, tomStandardSkjerIHandekurv, tomStandardLagrinsingsenhetIHandekurv, tomStandardMusIHandekurv, tomStandardProsessorIHandekurv);
-
+        Kunde nyKunde1 = new Kunde("Ole", "Hansen", "olehasen", "hemmelig",  "ole.hansen@online.no");
+        Kunde nyKunde2 = new Kunde("Stian", "Ludviksen", "stianlud", "hemmelig", "stian.lud@online.no");
+        KundeData.getKunder().addAll(nyKunde1, nyKunde2);
 
         Lagringsenhet lagringsenhetEn = new Lagringsenhet(
                 "Samsung",

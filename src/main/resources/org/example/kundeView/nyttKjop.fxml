@@ -50,13 +50,13 @@
         </columns>
       </TableView>
 
-      <Label layoutX="481.0" layoutY="74.0" prefHeight="37.0" prefWidth="270.0" text="Informasjon om valgt komponent:">
+      <Label layoutX="481.0" layoutY="74.0" prefHeight="37.0" prefWidth="270.0" text="Detaljer om valgt komponent:">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
 
-      <Button layoutX="872.0" layoutY="545.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="99.0" text="Fullfør kjøp">
+      <Button layoutX="872.0" layoutY="545.0" mnemonicParsing="false" onAction="#fullforKjopAction" prefHeight="37.0" prefWidth="99.0" text="Fullfør kjøp">
          <font>
             <Font size="15.0" />
          </font>

@@ -13,12 +13,12 @@ public class Datamaskin implements Serializable {
     private Tastatur tastatur;
 
 
-    public Datamaskin(Lagringsenhet lagringsenhet, Mus mus, Prosessor prosessor, Skjerm skjerm, Skjermkort skjermkort, Tastatur tastatur) {
+    public Datamaskin(Prosessor prosessor, Skjermkort skjermkort, Lagringsenhet lagringsenhet,  Skjerm skjerm, Mus mus, Tastatur tastatur) {
+        this.prosessor = prosessor;
+        this.skjermkort = skjermkort;
         this.lagringsenhet = lagringsenhet;
         this.skjerm = skjerm;
         this.mus = mus;
-        this.prosessor = prosessor;
-        this.skjermkort = skjermkort;
         this.tastatur = tastatur;
     }
 

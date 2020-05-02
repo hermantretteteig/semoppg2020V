@@ -23,23 +23,11 @@ public class LagreCSV extends LagreFil {
 
     }
 
-    public void lagreDatamaskin(Datamaskin datamaskin, String filnavn) throws IOException {
-        Path path = Paths.get(filnavn);
-
-        String ut = formaterDatamaskin(datamaskin);
-
+    public void lagreDatamaskin(Datamaskin datamaskin, String filnavn){
         try {
-            Files.write(path, ut.getBytes());
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
+            Files.write(Paths.get(filnavn), formaterDatamaskin(datamaskin).getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-
-        /*private Lagringsenhet lagringsenhet;
-    private Skjerm skjerm;
-    private Mus mus;
-    private Prosessor prosessor;
-    private Skjermkort skjermkort;
-    private Tastatur tastatur;*/
 }

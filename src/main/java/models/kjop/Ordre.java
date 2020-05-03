@@ -2,14 +2,16 @@ package models.kjop;
 
 import data.Eksempeldata;
 import data.HandlekurvData;
-import data.OrdeData;
+import data.OrdreData;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.chart.PieChart;
 import models.brukere.Kunde;
 import models.komponent.Datamaskin;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 public class Ordre {
     private SimpleStringProperty ordrenumer;
@@ -18,25 +20,34 @@ public class Ordre {
     private SimpleDoubleProperty totalsum;
     private Datamaskin datamaskin;
 
-    public Ordre(String ordrenumer, String kjopsdato, Kunde kunde, double totalsum, Datamaskin datamaskin) {
-        this.ordrenumer = new SimpleStringProperty(ordrenumer);
+    public Ordre(String kjopsdato, Kunde kunde, Datamaskin datamaskin) {
+        this.ordrenumer = new SimpleStringProperty(genererOrdrenr());
         this.kjopsdato = new SimpleStringProperty(kjopsdato);
         this.kunde = kunde;
-        this.totalsum = new SimpleDoubleProperty(totalsum);
+        this.totalsum = new SimpleDoubleProperty(genererDatamaskinpris(datamaskin));
         this.datamaskin = datamaskin;
     }
 
-    public static void genererOrdre() {
+    public double genererDatamaskinpris(Datamaskin enDatamaskin){
+        return enDatamaskin.getLagringsenhet().getPris()+enDatamaskin.getMus().getPris()+
+                enDatamaskin.getProsessor().getPris()+enDatamaskin.getSkjerm().getPris()+
+                enDatamaskin.getSkjermkort().getPris()+enDatamaskin.getTastatur().getPris();
 
-        //TODO fikse ordrenummer for orde
+    }
 
+    public static void genererOrdreAvHandlekurv() {
         SimpleDateFormat naa = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date dato = new Date();
 
-
-        Ordre nyOrdre = new Ordre("1234", naa.format(dato), Eksempeldata.enKunde(), HandlekurvData.getSumHandlkurv(), HandlekurvData.genererDatamaskinAvHandlekurv());
-        OrdeData.leggTilOrdre(nyOrdre);
+        Ordre nyOrdre = new Ordre(naa.format(dato), Eksempeldata.enKunde(), HandlekurvData.genererDatamaskinAvHandlekurv());
+        OrdreData.leggTilOrdre(nyOrdre);
         HandlekurvData.getHandekurv().clear();
+
+    }
+
+    private static String genererOrdrenr() {
+        UUID ordrenr = UUID.randomUUID();
+        return ordrenr.toString();
     }
 
     public String getOrdrenumer() {

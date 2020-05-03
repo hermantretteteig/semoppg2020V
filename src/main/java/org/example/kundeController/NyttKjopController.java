@@ -13,6 +13,8 @@ import models.kjop.Ordre;
 import models.komponent.Komponent;
 import org.example.App;
 
+import java.io.IOException;
+
 public class NyttKjopController {
 
     //public TreeTableColumn coPris;
@@ -88,7 +90,7 @@ public class NyttKjopController {
     }
 
     @FXML
-    public void fullforKjopAction() {
+    public void fullforKjopAction() throws IOException {
         if(HandlekurvData.getHandekurv().size()<=5){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Konfigurasjonsfeil");
@@ -97,7 +99,22 @@ public class NyttKjopController {
             alert.showAndWait();
         }
         else{
-            Ordre.genererOrdre();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Fullfør kjøp");
+            alert.setHeaderText("Du er i ferd med å fullføre kjøpet.\nVil du fortsette?");
+            alert.showAndWait();
+            if(alert.getResult().getButtonData().isDefaultButton()==true){
+                Ordre.genererOrdreAvHandlekurv();
+                HandlekurvData.setSumHandlkurv(0.0);
+
+                Alert info = new Alert(Alert.AlertType.INFORMATION);
+                info.setTitle("Kjøp registert");
+                info.setHeaderText("Ditt kjøp er registert.");
+                info.showAndWait();
+                App.setRoot("kundeView/dashboardKunde");
+            }
+
+
         }
 
 
@@ -124,7 +141,7 @@ public class NyttKjopController {
             duplikater(valgtKomponent);
         }
 
-        if(duplikat==false) {
+        if(duplikat==false && valgtKomponent.getPris()!=0.0) {
             HandlekurvData.nyVare(valgtKomponent);
             tableHandekurv.refresh();
         }

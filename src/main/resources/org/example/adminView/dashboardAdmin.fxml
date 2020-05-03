@@ -46,7 +46,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="btnLagreFil" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#eksportFilAction" prefHeight="65.0" prefWidth="300.0" text="Eksporter fil (JOBJ)" GridPane.rowIndex="2">
+            <Button fx:id="btnLagreFil" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#eksportFilAction" prefHeight="65.0" prefWidth="300.0" text="Eksporter til fil (JOBJ)" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>
@@ -73,7 +73,7 @@
                   <Insets bottom="80.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="btnHentFil" alignment="CENTER" mnemonicParsing="false" onAction="#hentFilAction" prefHeight="65.0" prefWidth="300.0" text="Hent fil (JOBJ)" textAlignment="CENTER" GridPane.rowIndex="2">
+            <Button fx:id="btnHentFil" alignment="CENTER" mnemonicParsing="false" onAction="#hentFilAction" prefHeight="65.0" prefWidth="300.0" text="Hent fra fil (JOBJ)" textAlignment="CENTER" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>

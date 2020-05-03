@@ -37,22 +37,22 @@ public class HandlekurvData {
         Tastatur nyTastatur = null;
 
         for(Komponent enVare : handekurv){
-            if(enVare.getClass().getSimpleName()=="Lagringsenhet"){
+            if(enVare.getClass().getSimpleName().equals("Lagringsenhet")){
                 nyLagringsenhet = (Lagringsenhet) enVare;
             }
-            if(enVare.getClass().getSimpleName()=="Mus"){
+            if(enVare.getClass().getSimpleName().equals("Mus")){
                 nyMus = (Mus) enVare;
             }
-            if(enVare.getClass().getSimpleName()=="Prosessor"){
+            if(enVare.getClass().getSimpleName().equals("Prosessor")){
                 nyProsessor = (Prosessor) enVare;
             }
-            if(enVare.getClass().getSimpleName()=="Skjerm"){
+            if(enVare.getClass().getSimpleName().equals("Skjerm")){
                 nySkjerm = (Skjerm) enVare;
             }
-            if(enVare.getClass().getSimpleName()=="Skjermkort"){
+            if(enVare.getClass().getSimpleName().equals("Skjermkort")){
                 nySkjermkort = (Skjermkort) enVare;
             }
-            if(enVare.getClass().getSimpleName()=="Tastatur"){
+            if(enVare.getClass().getSimpleName().equals("Tastatur")){
                 nyTastatur = (Tastatur) enVare;
             }
         }
@@ -70,6 +70,7 @@ public class HandlekurvData {
         sumHandlkurv = sumHandlkurv + nyVare.getPris();
 
     }
+
 
     public static void slettType(String varetype){
         Komponent slettVare = null;

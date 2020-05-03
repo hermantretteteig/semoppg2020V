@@ -20,7 +20,7 @@ public class DashboardKundeController {
 @FXML
 public AnchorPane kundePanel;
 
-    public void lagreAction() throws IOException {
+    public void eksporterFilAction() {
         //TODO lage DatamaskinData for å hente kunde kjøp for lagring.
         File filBane = new File(System.getProperty("user.home"), "Datamaskinkonfigurering/komponenter");
         //Lager filbanen om den ikke allerede eksisterer.
@@ -44,12 +44,18 @@ public AnchorPane kundePanel;
         }
     }
 
+    public void hentFilAction() {
+
+    }
+
+
+
     public void nyttKjopAction() throws IOException {
         App.setRoot("kundeView/nyttKjop");
     }
 
-    public void tidligereKjopAction(){
-
+    public void tidligereKjopAction() throws IOException{
+        App.setRoot("kundeView/tidligereKjop");
     }
 
     @FXML

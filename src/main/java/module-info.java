@@ -8,6 +8,7 @@ module org.example {
     opens models.komponent to javafx.base;
     opens org.example.adminController.endreKomponent to javafx.fxml;
     opens models to javafx.fxml;
+    opens models.kjop to javafx.fxml;
 
     exports org.example;
     exports org.example.kundeController;
@@ -16,6 +17,7 @@ module org.example {
     exports org.example.adminController.endreKomponent;
     exports models.komponent;
     exports models;
+    exports models.kjop;
 
 
 

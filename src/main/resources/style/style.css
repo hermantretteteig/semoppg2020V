@@ -1,10 +1,19 @@
 
 
 .nyttKjopBakgrunn{
-    -fx-background-image: url("https://i.imgur.com/rQiQVgR.png");
+    -fx-background-image: url(../bakgrunner/nyttKjopBakgrunn.png);
     -fx-background-position: center center;
     -fx-background-size: 100%;
 }
+
+.endreKomponentBakgrunn{
+    -fx-background-image: url(../bakgrunner/RiktigEndreKomponentFerdig.png);
+    -fx-background-position: center center;
+    -fx-background-size: 100%;
+}
+
+
+
 
 /*
 .button{

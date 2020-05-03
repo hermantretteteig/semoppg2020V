@@ -12,8 +12,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.endreKomponent.EndreKomponentController">
-   <ChoiceBox fx:id="choKomponentvelger" layoutX="78.0" layoutY="92.0" onAction="#hentAction" prefHeight="25.0" prefWidth="142.0">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="endreKomponentBakgrunn" stylesheets="@../../../../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.endreKomponent.EndreKomponentController">
+   <ChoiceBox fx:id="choKomponentvelger" layoutX="78.0" layoutY="94.0" onAction="#hentAction" prefHeight="25.0" prefWidth="142.0">
         <items>
             <FXCollections fx:factory="observableArrayList">
                 <String fx:value="Lagringsenhet" />
@@ -27,11 +27,11 @@
     </ChoiceBox>
 
 
-      <Button layoutX="24.0" layoutY="561.0" mnemonicParsing="false" onAction="#tilbakeAction" text="Tilbake" />
+      <Button layoutX="20.0" layoutY="561.0" mnemonicParsing="false" onAction="#tilbakeAction" text="Tilbake" />
 
 
 
-      <TableView fx:id="tableView" editable="true" layoutX="20.0" layoutY="136.0" prefHeight="394.0" prefWidth="960.0">
+      <TableView fx:id="tableView" editable="true" layoutX="20.0" layoutY="167.0" prefHeight="374.0" prefWidth="960.0">
          <columns>
 
      <!--GENERELLE FOR ALLE-->
@@ -194,14 +194,19 @@
          </columns>
 
       </TableView>
-   <Label layoutX="20.0" layoutY="30.0" prefHeight="52.0" prefWidth="360.0" text="Endre komponenter">
+   <Label layoutX="20.0" layoutY="21.0" prefHeight="52.0" prefWidth="360.0" text="Endre komponenter" textFill="WHITE">
       <font>
          <Font name="System Bold" size="26.0" />
       </font>
    </Label>
-   <Label layoutX="20.0" layoutY="94.0" text="Filtrer:">
+   <Label layoutX="20.0" layoutY="96.0" text="Filtrer:" textFill="WHITE">
       <font>
-         <Font size="15.0" />
+         <Font name="System Bold" size="15.0" />
+      </font>
+   </Label>
+   <Label layoutX="20.0" layoutY="146.0" text="Dobbeltklikk på en celle for å gjør endringer.">
+      <font>
+         <Font name="System Bold" size="12.0" />
       </font>
    </Label>
 

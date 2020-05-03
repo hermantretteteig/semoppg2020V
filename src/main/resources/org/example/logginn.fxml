@@ -17,8 +17,10 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="brukerLoggInnBakgrunn" stylesheets="@../../style/logginn.css">
                      <children>
-                        <PasswordField layoutX="418.0" layoutY="276.0" prefHeight="25.0" prefWidth="156.0" />
                         <TextField layoutX="418.0" layoutY="226.0" prefHeight="25.0" prefWidth="156.0" />
+                        <PasswordField layoutX="418.0" layoutY="276.0" prefHeight="25.0" prefWidth="156.0" />
+                        <Button layoutX="419.0" layoutY="315.0" mnemonicParsing="false" onAction="#logginn" prefHeight="25.0" prefWidth="156.0" text="Logg inn" />
+                        <Button layoutX="418.0" layoutY="359.0" mnemonicParsing="false" onAction="#nyBruker" prefHeight="25.0" prefWidth="156.0" text="Ny kunde" />
                         <Label layoutX="418.0" layoutY="207.0" prefHeight="17.0" prefWidth="77.0" text="Brukernavn:" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -27,8 +29,6 @@
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font></Label>
-                        <Button layoutX="419.0" layoutY="315.0" mnemonicParsing="false" onAction="#logginn" prefHeight="25.0" prefWidth="156.0" text="Logg inn" />
-                        <Button layoutX="418.0" layoutY="359.0" mnemonicParsing="false" onAction="#nyBruker" prefHeight="25.0" prefWidth="156.0" text="Ny kunde" />
                         <Label layoutX="34.0" layoutY="28.0" prefHeight="52.0" prefWidth="300.0" text="Logg inn som bruker">
                            <font>
                               <Font name="System Bold" size="21.0" />
@@ -42,8 +42,9 @@
               <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="adminLoggInnBakgrunn" stylesheets="@../../style/logginn.css">
                       <children>
-                          <PasswordField layoutX="418.0" layoutY="276.0" prefHeight="25.0" prefWidth="156.0" />
                           <TextField layoutX="418.0" layoutY="226.0" prefHeight="25.0" prefWidth="156.0" />
+                          <PasswordField layoutX="418.0" layoutY="276.0" prefHeight="25.0" prefWidth="156.0" />
+                          <Button layoutX="419.0" layoutY="315.0" mnemonicParsing="false" onAction="#adminLoggInnAction" prefHeight="25.0" prefWidth="156.0" text="Logg inn" />
                           <Label layoutX="418.0" layoutY="207.0" prefHeight="17.0" prefWidth="77.0" text="Brukernavn:" textFill="WHITE">
                               <font>
                                   <Font name="System Bold" size="12.0" />
@@ -52,12 +53,12 @@
                               <font>
                                   <Font name="System Bold" size="12.0" />
                               </font></Label>
-                          <Button layoutX="419.0" layoutY="315.0" mnemonicParsing="false" onAction="#adminLoggInnAction" prefHeight="25.0" prefWidth="156.0" text="Logg inn" />
                           <Label layoutX="34.0" layoutY="28.0" prefHeight="52.0" prefWidth="300.0" text="Logg inn som administrator">
                               <font>
                                   <Font name="System Bold" size="21.0" />
                               </font>
                           </Label>
+                          <Label layoutX="34.0" layoutY="489.0" prefHeight="56.0" prefWidth="150.0" text="Brukernavn: admin&#10;Passord: passord123" wrapText="true" />
                       </children>
                   </AnchorPane>
               </content>

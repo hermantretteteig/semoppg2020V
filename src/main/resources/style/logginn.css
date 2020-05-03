@@ -1,13 +1,13 @@
 
 
 .brukerLoggInnBakgrunn{
-    -fx-background-image: url("https://i.imgur.com/PCimwAA.png");
+    -fx-background-image: url("../bakgrunner/BrukerLoggInnFerdig.PNG");
     -fx-background-position: center center;
     -fx-background-size: 100%;
 }
 
 .adminLoggInnBakgrunn{
-    -fx-background-image: url("https://i.imgur.com/PCimwAA.png");
+    -fx-background-image: url("../bakgrunner/BrukerLoggInnFerdig.PNG");
     -fx-background-position: center center;
     -fx-background-size: 100%;
 }

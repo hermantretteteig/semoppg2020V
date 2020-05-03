@@ -2,10 +2,13 @@ package data;
 
 import filbehandling.DatamaskinFormatter;
 import filbehandling.LagreCSV;
+import javafx.scene.chart.PieChart;
 import models.brukere.Kunde;
+import models.kjop.Ordre;
 import models.komponent.*;
 
 import java.io.IOException;
+import java.util.Date;
 
 public class Eksempeldata {
 
@@ -108,9 +111,6 @@ public class Eksempeldata {
                 false,
                 false);
 
-
-
-
         //Legger alle komponenete til i lista
         KomponentData.getAlleKomponenter().addAll(
                 lagringsenhetEn,
@@ -126,10 +126,17 @@ public class Eksempeldata {
                 tastatur1,
                 tastatur2);
 
-        for(Komponent enKomponent : KomponentData.getAlleKomponenter()){
-            System.out.println("Pris: "+enKomponent.getPris()+"\nVarenr: "+
-                    enKomponent.getVarenr()+"\nModell: "+enKomponent.getModell()+"\nVaremerke: "+enKomponent.getVaremerke()+"\n\n");
+        Datamaskin nyDatamaskin1 = new Datamaskin(prosessor1, skjermkort2, lagringsenhetEn, skjerm1, toMus, tastatur1);
+        Datamaskin nyDatamaskin2 = new Datamaskin(prosessor2, skjermkort1, lagringsenhetTo, skjerm1, musEn, tastatur2);
 
-        }
+        Ordre nyOrdre1 = new Ordre("04/02/2020 13:21:00", nyKunde1, nyDatamaskin1);
+        Ordre nyOrdre2 = new Ordre("04/02/2020 22:03:03", nyKunde2, nyDatamaskin2);
+
+        ValgtOrdreSinDatamaskinData.leggTil(lagringsenhetEn);
+
+
+        OrdreData.leggTilOrdre(nyOrdre1);
+        OrdreData.leggTilOrdre(nyOrdre2);
+
         }
 }

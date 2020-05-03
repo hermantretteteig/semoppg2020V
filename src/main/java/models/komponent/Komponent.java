@@ -73,7 +73,7 @@ public class Komponent implements Serializable {
         return varemerke.get()+" "+modell.get();
     }
 
-    //Bruker i handlekurv
+    //Bruker i handlekurv og tidligere kjøp
     public String getType() {
         return Komponent.super.getClass().getSimpleName();
     }

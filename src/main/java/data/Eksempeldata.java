@@ -1,14 +1,8 @@
 package data;
 
-import filbehandling.DatamaskinFormatter;
-import filbehandling.LagreCSV;
-import javafx.scene.chart.PieChart;
 import models.brukere.Kunde;
 import models.kjop.Ordre;
 import models.komponent.*;
-
-import java.io.IOException;
-import java.util.Date;
 
 public class Eksempeldata {
 
@@ -19,8 +13,8 @@ public class Eksempeldata {
 
     public static void GenererEksempeldata() {
 
-        Kunde nyKunde1 = new Kunde("Ole", "Hansen", "olehasen", "hemmelig",  "ole.hansen@online.no");
-        Kunde nyKunde2 = new Kunde("Stian", "Ludviksen", "stianlud", "hemmelig", "stian.lud@online.no");
+        Kunde nyKunde1 = new Kunde("Ole", "Hansen", "olehasen", "hemmelig", "eksempelKunde1",  "ole.hansen@online.no");
+        Kunde nyKunde2 = new Kunde("Stian", "Ludviksen", "stianlud", "hemmelig", "eksempelKunde1", "stian.lud@online.no");
         KundeData.getKunder().addAll(nyKunde1, nyKunde2);
 
         Lagringsenhet lagringsenhetEn = new Lagringsenhet(

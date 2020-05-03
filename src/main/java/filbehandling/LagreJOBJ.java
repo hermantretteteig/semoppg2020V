@@ -12,7 +12,6 @@ import java.util.List;
 
 public class LagreJOBJ extends LagreFil {
 
-    @Override
     public void lagreKomponent(ObservableList<Komponent> komponenter, String filnavn) {
         List<Komponent> liste = new ArrayList<>(komponenter);
 
@@ -30,7 +29,6 @@ public class LagreJOBJ extends LagreFil {
         }
     }
 
-    @Override
     public void lagreDatamaskin(ObservableList<Datamaskin> datamaskiner, String filnavn) {
         List<Datamaskin> liste = new ArrayList<>(datamaskiner);
 

@@ -1,6 +1,7 @@
 package org.example.kundeController;
 
 import data.Eksempeldata;
+import data.OrdreData;
 import filbehandling.LagreCSV;
 import filbehandling.LagreJOBJ;
 import filbehandling.LesCSV;
@@ -40,12 +41,31 @@ public AnchorPane kundePanel;
         File file = fileChooser.showSaveDialog(stage);
         if(file != null) {
             LagreCSV lagre = new LagreCSV();
-            //lagre.lagreDatamaskin(Eksempeldata.GenererEksempeldata(), file.getAbsolutePath());
+            lagre.lagreOrdre(OrdreData.getOrdreListe(), file.getAbsolutePath());
         }
     }
 
-    public void hentFilAction() {
+    public void hentFilAction() throws IOException{
+        //TODO lage DatamaskinData for å hente kunde kjøp for lagring.
+        File filBane = new File(System.getProperty("user.home"), "Datamaskinkonfigurering/komponenter");
+        //Lager filbanen om den ikke allerede eksisterer.
+        if (!filBane.exists()) {
+            filBane.mkdirs();
+        }
 
+        //Oppretter filechooser
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Velg filplassering");
+        //TODO try catch?
+        fileChooser.setInitialDirectory(filBane);
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("CSV Filer", "*.csv"));
+
+        //Åpner filechooser og henter data
+        Stage stage = (Stage) kundePanel.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
+        if(file != null) {
+            OrdreData.setAlleOrdre(LesCSV.lesOrdre(file.getAbsolutePath()));
+        }
     }
 
 

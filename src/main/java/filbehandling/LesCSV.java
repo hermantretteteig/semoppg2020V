@@ -1,6 +1,8 @@
 package filbehandling;
 
-import filbehandling.Parse.ParseKomponenter;
+import filbehandling.Parse.ParseKomponenterGammel;
+import filbehandling.Parse.ParseOrdre;
+import models.kjop.Ordre;
 import models.komponent.*;
 
 import java.io.BufferedReader;
@@ -26,7 +28,7 @@ public class LesCSV {
 
 
             while((linje = reader.readLine()) != null) {
-                komponenter.add(ParseKomponenter.parseKomponent(linje));
+                komponenter.add(ParseKomponenterGammel.parseKomponent(linje));
             }
             datamaskin = new Datamaskin(
                     (Prosessor) komponenter.get(0),
@@ -37,5 +39,20 @@ public class LesCSV {
                     (Tastatur) komponenter.get(5));
         }
         return datamaskin;
+    }
+
+    public static ArrayList<Ordre> lesOrdre(String path) throws IOException{
+        ArrayList<Ordre> ordreListe = new ArrayList<>();
+
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get(path))) {
+            reader.readLine();
+            String linje;
+
+            while ((linje = reader.readLine()) != null) {
+
+                ordreListe.add(ParseOrdre.parseOrdre(linje));
+            }
+        }
+        return ordreListe;
     }
 }

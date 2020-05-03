@@ -5,11 +5,23 @@ import javafx.collections.ObservableList;
 import models.brukere.Kunde;
 import models.komponent.Komponent;
 
+import java.util.ArrayList;
+
 public class KundeData {
     private static ObservableList<Kunde> kunder = FXCollections.observableArrayList();
 
-    public static ObservableList<Kunde> getKunder() {
+    static ObservableList<Kunde> getKunder() {
         return kunder;
+    }
+
+    public static Kunde getKunde(String kundenr){
+        Kunde kunde = null;
+        for (Kunde enKunde : kunder) {
+            if (kundenr.equals(enKunde.getKundenummer())) {
+                kunde = enKunde;
+            }
+        }
+        return kunde;
     }
 
     public static void setKunder(ObservableList<Kunde> kunder) {

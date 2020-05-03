@@ -1,13 +1,11 @@
-package filbehandling;
+package filbehandling.Formatter;
 
 import models.komponent.*;
 
-public class DatamaskinFormatter {
-    public static String DELIMITER = ";";
+class DatamaskinFormatter {
 
-     static String formaterDatamaskin(Datamaskin datamaskin){
-         return String.join(System.lineSeparator(),
-                 formaterProsessor(datamaskin.getProsessor()),
+    static String formaterDatamaskin2(Datamaskin datamaskin){
+         return String.join(";",formaterProsessor(datamaskin.getProsessor()),
                  formaterSkjermkort(datamaskin.getSkjermkort()),
                  formaterLageringsenhet(datamaskin.getLagringsenhet()),
                  formaterSkjerm(datamaskin.getSkjerm()),

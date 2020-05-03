@@ -12,7 +12,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class LesJOBJ extends LesFil {
-    @Override
     public void lesDatamaskin(Path path) throws ClassNotFoundException {
         try (InputStream in = Files.newInputStream(path);
              ObjectInputStream oin = new ObjectInputStream(in))
@@ -27,9 +26,7 @@ public class LesJOBJ extends LesFil {
         }
     }
 
-    @Override
-    public ArrayList<Komponent> lesKomponent(String filnavn) throws ClassNotFoundException {
-
+    ArrayList<Komponent> lesKomponent(String filnavn) throws ClassNotFoundException {
         Path path = Paths.get(filnavn);
         try (InputStream in = Files.newInputStream(path);
              ObjectInputStream oin = new ObjectInputStream(in))

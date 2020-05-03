@@ -4,7 +4,7 @@ import models.komponent.*;
 
 import java.io.IOException;
 
-public class ParseKomponenter {
+public class ParseKomponenterGammel {
     private static String feilHeltall = "kan ikke formateres som ett heltall.";
     private static String feilDesimaltall = "kan ikke formateres som ett desimaltall.";
     private static String feilBoolean = "kan ikke formateres som true eller false";

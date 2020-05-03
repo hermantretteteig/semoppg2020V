@@ -1,31 +1,19 @@
 package filbehandling;
 
-import javafx.collections.ObservableList;
-import models.komponent.Datamaskin;
-import models.komponent.Komponent;
+import models.kjop.Ordre;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
-import static filbehandling.DatamaskinFormatter.formaterDatamaskin;
+import static filbehandling.Formatter.OrdreFormatter.formaterOrdre;
 
 public class LagreCSV extends LagreFil {
 
-    @Override
-    public void lagreKomponent(ObservableList<Komponent> komponenter, String filnavn) {
-
-    }
-
-    @Override
-    public void lagreDatamaskin(ObservableList<Datamaskin> datamaskiner, String filnavn) {
-
-    }
-
-    public void lagreDatamaskin(Datamaskin datamaskin, String filnavn){
+    public void lagreOrdre(ArrayList<Ordre> ordre, String filnavn){
         try {
-            Files.write(Paths.get(filnavn), formaterDatamaskin(datamaskin).getBytes());
+            Files.write(Paths.get(filnavn), formaterOrdre(ordre).getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }

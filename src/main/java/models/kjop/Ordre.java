@@ -2,6 +2,7 @@ package models.kjop;
 
 import data.Eksempeldata;
 import data.HandlekurvData;
+import data.KundeData;
 import data.OrdreData;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -10,6 +11,7 @@ import models.brukere.Kunde;
 import models.komponent.Datamaskin;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
@@ -20,6 +22,7 @@ public class Ordre {
     private SimpleDoubleProperty totalsum;
     private Datamaskin datamaskin;
 
+    //Konstruktør for oppretting av nytt objekt.
     public Ordre(String kjopsdato, Kunde kunde, Datamaskin datamaskin) {
         this.ordrenumer = new SimpleStringProperty(genererOrdrenr());
         this.kjopsdato = new SimpleStringProperty(kjopsdato);
@@ -27,8 +30,17 @@ public class Ordre {
         this.totalsum = new SimpleDoubleProperty(genererDatamaskinpris(datamaskin));
         this.datamaskin = datamaskin;
     }
+    //Konstruktør for henting av ordre fra fil.
+    public Ordre(String ordrenumer, String kjopsdato, Kunde kunde, Double totalsum, Datamaskin datamaskin) {
+        this.ordrenumer = new SimpleStringProperty(ordrenumer);
+        this.kjopsdato = new SimpleStringProperty(kjopsdato);
+        this.kunde = kunde;
+        this.totalsum = new SimpleDoubleProperty(totalsum);
+        this.datamaskin = datamaskin;
+    }
 
-    public double genererDatamaskinpris(Datamaskin enDatamaskin){
+
+    private double genererDatamaskinpris(Datamaskin enDatamaskin){
         return enDatamaskin.getLagringsenhet().getPris()+enDatamaskin.getMus().getPris()+
                 enDatamaskin.getProsessor().getPris()+enDatamaskin.getSkjerm().getPris()+
                 enDatamaskin.getSkjermkort().getPris()+enDatamaskin.getTastatur().getPris();

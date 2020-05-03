@@ -8,9 +8,17 @@ public class Kunde extends Bruker {
     private transient SimpleStringProperty kundenummer;
     private transient SimpleStringProperty epost;
 
+    //Konstruktør for oppretting av ny kunde
     public Kunde(String fornavn, String etternavn, String brukernavn, String passord, String epost) {
         super(fornavn, etternavn, brukernavn, passord);
         this.kundenummer = new SimpleStringProperty(genererKundenr());
+        this.epost = new SimpleStringProperty(epost);
+    }
+
+    //Konstruktør for oppretting av kunde fra eksempeldata
+    public Kunde(String fornavn, String etternavn, String brukernavn, String passord, String kundenummer, String epost) {
+        super(fornavn, etternavn, brukernavn, passord);
+        this.kundenummer = new SimpleStringProperty(kundenummer);
         this.epost = new SimpleStringProperty(epost);
     }
 
@@ -30,9 +38,8 @@ public class Kunde extends Bruker {
         this.epost.set(epost);
     }
 
-
     private String genererKundenr() {
-        UUID varenr = UUID.randomUUID();
-        return varenr.toString();
+        UUID kundenr = UUID.randomUUID();
+        return kundenr.toString();
     }
 }

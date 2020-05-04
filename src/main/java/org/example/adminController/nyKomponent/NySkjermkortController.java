@@ -45,6 +45,7 @@ public class NySkjermkortController {
 
         String varemerke = txtVaremerke.getText();
         String klokkehastighet = txtKlokkehastighet.getText();
+        double pris = Double.parseDouble(txtPris.getText());
         String minne = txtMinne.getText();
         String modell = txtModell.getText();
 
@@ -86,9 +87,8 @@ public class NySkjermkortController {
             check5 = false;
         }
 
-        Skjermkort nyttSkjermkort = new Skjermkort(txtVaremerke.getText(),
-                txtModell.getText(),
-                Double.parseDouble(txtPris.getText()),
+        Skjermkort nyttSkjermkort = new Skjermkort(varemerke,
+                modell, pris,
                 Double.parseDouble(txtKlokkehastighet.getText()),
                 Integer.parseInt(txtMinne.getText()));
         if (check1 && check2 && check3 && check4 && check5){

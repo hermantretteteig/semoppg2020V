@@ -1,11 +1,13 @@
 package org.example.adminController.nyKomponent;
 
+import data.KomponentData;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import logikk.NyKomponentAlert;
+import models.komponent.Prosessor;
 import org.example.App;
 import validering.BokstaverCheck;
 import validering.LengeCheck;
@@ -84,12 +86,14 @@ public class NyProsessorController {
             lblKlokkehastighetFeil.setText("Må inneholde kun tall");
             check5 = false;
         }
-        //Må fylles ut!!
-        //Prosessor nyProsessor = new Prosessor();
+
+        Prosessor nyProsessor = new Prosessor(varemerke, modell, pris,
+                Integer.parseInt(kjerner),
+                Double.parseDouble(klokkehastighet));
         if (check1 && check2 && check3 && check4 && check5){
-            //KomponentData.leggTilKomponent(nyProsessor);
-            //Stage stage = (Stage) avslutt.getScene().getWindow();
-            //stage.close();
+            KomponentData.leggTilKomponent(nyProsessor);
+            Stage stage = (Stage) avslutt.getScene().getWindow();
+            stage.close();
         }
         //NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
 

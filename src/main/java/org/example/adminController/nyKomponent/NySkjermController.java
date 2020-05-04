@@ -95,7 +95,8 @@ public class NySkjermController {
 
 
         //!!!Må fylles ut
-        //Skjerm nySkjerm = new Skjerm();
+        //Skjerm nySkjerm = new Skjerm(varemerke, modell, pris,
+          //      hoyde, bredde, cho4K.getValue());
         if (check1 && check2 && check3 && check4 && check5){
             //KomponentData.leggTilKomponent(nySkjerm);
             //Stage stage = (Stage) avslutt.getScene().getWindow();

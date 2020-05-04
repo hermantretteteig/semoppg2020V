@@ -1,9 +1,7 @@
 package org.example.kundeController;
 
-import data.Eksempeldata;
 import data.OrdreData;
 import filbehandling.LagreCSV;
-import filbehandling.LagreJOBJ;
 import filbehandling.LesCSV;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
@@ -13,8 +11,6 @@ import org.example.App;
 
 import java.io.File;
 import java.io.IOException;
-
-import static data.KomponentData.getAlleKomponenter;
 
 public class DashboardKundeController {
 

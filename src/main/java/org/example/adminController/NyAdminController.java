@@ -45,6 +45,12 @@ public class NyAdminController {
         lblPassordFeil.setText("");
         lblGjentaPassordFeil.setText("");
 
+        String fornavn = txtFornavn.getText();
+        String etternavn = txtEtternavn.getText();
+        String brukernavn = txtBrukernavn.getText();
+        String passord = txtPassord.getText();
+        String gjentePassord = txtGjentaPassord.getText();
+
         //Validerer fornavn
         if(BokstaverCheck.bokstavercheck(txtFornavn.getText()) == false){
             lblFornavnFeil.setText("Fornavn må kunne inneholde bokstaver");
@@ -70,8 +76,11 @@ public class NyAdminController {
             lblGjentaPassordFeil.setText("Passordene er ulike.");
         }
 
-        //Admin nyAdmin = new Admin(txtFornavn.getText(), txtEtternavn.getText(), txtBrukernavn.getText(), txtPassord.getText());
-        //AdminData.leggTilBruker(nyAdmin);
+        Admin nyAdmin = new Admin(fornavn, etternavn, brukernavn, passord);
+        AdminData.leggTilAdmin(nyAdmin);
+
+        Stage stage = (Stage) avslutt.getScene().getWindow();
+        stage.close();
 
         //App.setRoot("Adminview/nyAdminView/nyAdmin");
 

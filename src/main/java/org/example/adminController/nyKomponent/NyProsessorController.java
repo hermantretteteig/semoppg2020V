@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import logikk.NyKomponentAlert;
 import org.example.App;
 import validering.BokstaverCheck;
 import validering.LengeCheck;
@@ -64,6 +65,8 @@ public class NyProsessorController {
 
         //Prosessor nyProsessor = new Prosessor();
         //KomponentData.leggTilKomponent(nyProsessor);
+
+        NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
 
         //Rooter tilslutt til oversiktview
         //App.setRoot("adminView/nyKomponentView/nyKomponent");

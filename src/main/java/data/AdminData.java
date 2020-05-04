@@ -3,18 +3,29 @@ package data;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.brukere.Admin;
-import models.brukere.Kunde;
-
 
 public class AdminData {
-        private static ObservableList<Admin> adminer = FXCollections.observableArrayList();
+    private static ObservableList<Admin> admins = FXCollections.observableArrayList();
 
-        public static ObservableList<Admin> getAdminer() {
-        return adminer;
+    static ObservableList<Admin> getAdminer() {
+        return admins;
     }
 
-        public static void leggTilAdmin(Admin nyAdmin){
-            adminer.add(nyAdmin);
+    public static Admin getAdmin(String adminnr){
+        Admin admin = null;
+        for (Admin enAdmin : admins) {
+            if (adminnr.equals(enAdmin.getAdminnummer())) {
+                admin = enAdmin;
+            }
+        }
+        return admin;
     }
 
+    public static void setAdmins(ObservableList<Admin> Admins) {
+        AdminData.admins = admins;
+    }
+
+    public static void leggTilAdmin(Admin nyAdmin){
+        admins.add(nyAdmin);
+    }
 }

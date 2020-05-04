@@ -27,6 +27,7 @@ public class Kunde extends Bruker {
     }
 
     public void setKundenummer(String kundenummer) {
+
         this.kundenummer.set(kundenummer);
     }
 

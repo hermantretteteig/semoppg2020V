@@ -47,37 +47,52 @@ public class NyAdminController {
         String etternavn = txtEtternavn.getText();
         String brukernavn = txtBrukernavn.getText();
         String passord = txtPassord.getText();
-        String gjentePassord = txtGjentaPassord.getText();
+        String gjentaPassord = txtGjentaPassord.getText();
+
+        boolean check1 = true;
+        boolean check2 = true;
+        boolean check3 = true;
+        boolean check4 = true;
+        boolean check5 = true;
+        boolean check6 = true;
+
 
         //Validerer fornavn
-        if(BokstaverCheck.bokstavercheck(txtFornavn.getText()) == false){
+        if(BokstaverCheck.bokstavercheck(fornavn) == false){
             lblFornavnFeil.setText("Fornavn");
+            check1 = false;
         }
 
         //Validerer etternavn
-        if(BokstaverCheck.bokstavercheck(txtEtternavn.getText()) == false){
+        if(BokstaverCheck.bokstavercheck(etternavn) == false){
             lblEtternavnFeil.setText("Etternavn er ugyldig");
+            check1 = false;
         }
 
         //Validerer brukernavn
-        if(LengeCheck.lengdeCheck(txtBrukernavn.getText()) == false){
+        if(LengeCheck.lengdeCheck(brukernavn) == false){
             lblBrukernavnFeil.setText("Må inneholde minst to tegn.");
+            check1 = false;
         }
 
         //Validerer passord
-        if(PassordCheck.passordchecker(txtPassord.getText()) == false){
+        if(PassordCheck.passordchecker(passord) == false){
             lblPassordFeil.setText("Små og store bokstaver, minst 8 tegn og tall ");
+            check1 = false;
         }
 
         //Validerer gjentatt passord
-        if(PassordValCheck.passordValCheck(txtGjentaPassord.getText(), txtPassord.getText()) == false){
+        if(PassordValCheck.passordValCheck(gjentaPassord, passord) == false){
             lblGjentaPassordFeil.setText("Passordene er ulike.");
+            check1 = false;
         }
 
         Admin nyAdmin = new Admin(fornavn, etternavn, brukernavn, passord);
-        AdminData.leggTilAdmin(nyAdmin);
-        //Stage stage = (Stage) avslutt.getScene().getWindow();
-        //stage.close();
+        if (check1 == true && check2 == true && check3 == true && check4 == true && check5 == true && check6 == true){
+            AdminData.leggTilAdmin(nyAdmin);
+            Stage stage = (Stage) avslutt.getScene().getWindow();
+            stage.close();
+        }
 
         //App.setRoot("Adminview/nyAdminView/nyAdmin");
 

@@ -51,43 +51,56 @@ public class NykundeController {
         String gjentaPassord = txtGjentaPassord.getText();
         String epost = txtEpost.getText();
 
+        boolean check1 = true;
+        boolean check2 = true;
+        boolean check3 = true;
+        boolean check4 = true;
+        boolean check5 = true;
+        boolean check6 = true;
+
 
         //Validerer fornavn
         if (BokstaverCheck.bokstavercheck(fornavn) == false) {
             lblFornavnFeil.setText("Fornavn er ugyldig");
+            check1 = false;
         }
 
         //Validerer etternavn
         if (BokstaverCheck.bokstavercheck(etternavn) == false) {
             lblEtternavnFeil.setText("Fornavn er ugyldig");
+            check2 = false;
         }
 
         //Validerer brukernavn
         if (LengeCheck.lengdeCheck(brukernavn) == false) {
             lblBrukernavnFeil.setText("Må inneholde minst to tegn.");
-        }
-
-        //Validerer passord
-        if (PassordCheck.passordchecker(passord) == false) {
-            lblPassordFeil.setText("Må være små og store bokstaver, minst 8 tegn og tall.");
-        }
-
-        //Validerer gjentatt passord
-        if (PassordValCheck.passordValCheck(gjentaPassord, passord) == false) {
-            lblGjentaPassordFeil.setText("Passordene er ulike.");
+            check3 = false;
         }
 
         //Validerer epost
         if (EpostCheck.epostchecker(epost) == false) {
             lblEpostFeil.setText("Eposen er ugyldig.");
+            check6 = false;
         }
 
+        //Validerer passord
+        if (PassordCheck.passordchecker(passord) == false) {
+            lblPassordFeil.setText("Må være små og store bokstaver, minst 8 tegn og tall.");
+            check4 = false;
+        }
 
-        //TODO KODEN UNDER MÅ BARE KJØRES HVIS INPUT ER GYLDIG, FIKSER DU DET SALEM?
+        //Validerer gjentatt passord
+        if (PassordValCheck.passordValCheck(gjentaPassord, passord) == false) {
+            lblGjentaPassordFeil.setText("Passordene er ulike.");
+            check5 = false;
+        }
+
         Kunde nyKunde = new Kunde(fornavn, etternavn, brukernavn, passord, epost);
-        KundeData.leggTilKunde(nyKunde);
-        //Stage stage = (Stage) avslutt.getScene().getWindow();
-        //stage.close();
+        if (check1 == true && check2 == true && check3 == true && check4 == true && check5 == true && check6 == true){
+            KundeData.leggTilKunde(nyKunde);
+            Stage stage = (Stage) avslutt.getScene().getWindow();
+            stage.close();
+        }
 
         //App.setRoot("Adminview/nyAdminView/nyAdmin");
 

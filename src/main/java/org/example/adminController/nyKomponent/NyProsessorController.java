@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import logikk.NyKomponentAlert;
 import org.example.App;
 import validering.BokstaverCheck;
@@ -25,8 +26,12 @@ public class NyProsessorController {
     public TextField txtKlokkehastighet;
 
 
+    @FXML private javafx.scene.control.Button registrer;
+    @FXML private javafx.scene.control.Button avslutt;
+
+
     @FXML
-    public void leggTilAction() throws Exception{
+    public void leggTilAction(){
 
         lblVaremerkeFeil.setText("");
         lblModellFeil.setText("");
@@ -34,41 +39,60 @@ public class NyProsessorController {
         lblKjernerFeil.setText("");
         lblKlokkehastighetFeil.setText("");
 
+        String varemerke = txtVaremerke.getText();
+        String modell = txtModell.getText();
+        double pris = Double.parseDouble(txtPris.getText());
+        String kjerner = txtKjerner.getText();
+        String klokkehastighet = txtKlokkehastighet.getText();
+
+        boolean check1 = true;
+        boolean check2 = true;
+        boolean check3 = true;
+        boolean check4 = true;
+        boolean check5 = true;
+
+
         //Validerer Varenummer
 
 
         //Validerer Varemerke
-        if(BokstaverCheck.bokstavercheck(txtVaremerke.getText()) == false){
+        if(BokstaverCheck.bokstavercheck(varemerke) == false){
             lblVaremerkeFeil.setText("Må kunne inneholde bokstaver");
+            check1 = false;
         }
 
         //Validerer Modell
-        if(LengeCheck.lengdeCheck(txtModell.getText()) == false){
+        if(LengeCheck.lengdeCheck(modell) == false){
             lblModellFeil.setText("Må inneholde minst 2 bokstaver");
+            check2 = false;
         }
 
         //Validerer Pris
         if(TallCheck.tallcheck(txtPris.getText()) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
+            check3 = false;
         }
-        double pris = Double.parseDouble(txtPris.getText());
 
         //Validerer Kjerner
-        if(TallCheck.tallcheck(txtKjerner.getText()) == false){
+        if(TallCheck.tallcheck(kjerner) == false){
             lblKjernerFeil.setText("Må inneholde kun tall");
+            check4 = false;
         }
 
         //Validerer Klokkehastighet
-        if(TallCheck.tallcheck(txtKlokkehastighet.getText()) == false){
+        if(TallCheck.tallcheck(klokkehastighet) == false){
             lblKlokkehastighetFeil.setText("Må inneholde kun tall");
+            check5 = false;
         }
-
+        //Må fylles ut!!
         //Prosessor nyProsessor = new Prosessor();
-        //KomponentData.leggTilKomponent(nyProsessor);
+        if(check1 == true && check2 == true && check3 == true && check4 == true && check5 == true) {
+            //KomponentData.leggTilKomponent(nyProsessor);
+            //Stage stage = (Stage) avslutt.getScene().getWindow();
+            //stage.close();
+        }
+        //NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
 
-        NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
-
-        //Rooter tilslutt til oversiktview
         //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 

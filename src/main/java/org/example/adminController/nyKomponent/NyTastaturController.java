@@ -1,74 +1,96 @@
 package org.example.adminController.nyKomponent;
 
+import data.KomponentData;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import models.komponent.Tastatur;
 import org.example.App;
 import validering.*;
 
 public class NyTastaturController {
 
-    public Label lblVarenummerfeil;
     public Label lblVaremerkeFeil;
     public Label lblModellFeil;
     public Label lblPrisFeil;
     public Label lblNumpadFeil;
     public Label lblTrodlos;
 
-    public TextField txtVarenummer;
     public TextField txtVaremerke;
     public TextField txtModell;
     public TextField txtPris;
     public ChoiceBox choNumpad;
     public ChoiceBox choTrodlos;
 
-
+    @FXML private javafx.scene.control.Button registrer;
+    @FXML private javafx.scene.control.Button avslutt;
 
     @FXML
     public void leggTilAction() {
 
-        lblVarenummerfeil.setText("");
         lblVaremerkeFeil.setText("");
         lblModellFeil.setText("");
         lblPrisFeil.setText("");
         lblNumpadFeil.setText("");
         lblTrodlos.setText("");
 
+        String varemerke = txtVaremerke.getText();
+        String modell = txtModell.getText();
+        double pris = Double.parseDouble(txtPris.getText());
+
+        //Må lage en for numpad og trodøs også?
+
+
+        boolean check1 = true;
+        boolean check2 = true;
+        boolean check3 = true;
+        boolean check4 = true;
+        boolean check5 = true;
+
         //Validerer Varenummer
 
-
         //Validerer Varemerke
-        if(BokstaverCheck.bokstavercheck(txtVaremerke.getText()) == false){
+        if(BokstaverCheck.bokstavercheck(varemerke) == false){
             lblVaremerkeFeil.setText("Må kunne inneholde bokstaver");
+            check1 = false;
         }
 
         //Validerer Modell
-        if(LengeCheck.lengdeCheck(txtModell.getText()) == false){
+        if(LengeCheck.lengdeCheck(modell) == false){
             lblModellFeil.setText("Må inneholde minst 2 bokstaver");
+            check2 = false;
         }
 
         //Validerer Pris
         if(TallCheck.tallcheck(txtPris.getText()) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
+            check3 = false;
         }
-        double pris = Double.parseDouble(txtPris.getText());
 
         //Validerer Numpad
         if(choNumpad.getValue() == null) {
             lblNumpadFeil.setText("Må fylles ut");
+            check4 = false;
         }
 
         //Validerer Trådløs
         if(choTrodlos.getValue() == null) {
             lblNumpadFeil.setText("Må fylles ut");
+            check5 = false;
         }
 
-        //Tastatur nyTastatur = new Tastatur();
-        //KomponentData.leggTilKomponent(nyTastatur);
+        //!!!!Trenger hjelp med utfyllingen av denne
 
-        //Rooter tilslutt til oversiktview
+        /*Tastatur nyTastatur = new Tastatur(varemerke,
+                modell, pris, choNumpad, choTrodlos));
+        if(check1 == true && check2 == true && check3 == true && check4 == true && check5 == true) {
+            KomponentData.leggTilKomponent(nyTastatur);
+            Stage stage = (Stage) avslutt.getScene().getWindow();
+            stage.close();
+        }
+         */
         //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 

@@ -25,6 +25,8 @@ public class NyMusController {
     public ChoiceBox choTrodlos;
     public ColorPicker colFarge;
 
+    @FXML private javafx.scene.control.Button registrer;
+    @FXML private javafx.scene.control.Button avslutt;
 
     @FXML
     public void leggTilAction() throws Exception{
@@ -35,34 +37,50 @@ public class NyMusController {
         lblTrodlosFeil.setText("");
         lblFargeFeil.setText("");
 
+        String varemerke = txtVaremerke.getText();
+        String modell = txtModell.getText();
+        double pris = Double.parseDouble(txtPris.getText());
+        //Lage to til for trådløs og fargevelger?
+
+        boolean check1 = true;
+        boolean check2 = true;
+        boolean check3 = true;
+        boolean check4 = true;
+        boolean check5 = true;
+
+
         //Validerer varenummer?
 
         //Validerer Varemerke
-        if(BokstaverCheck.bokstavercheck(txtVaremerke.getText()) == false){
+        if(BokstaverCheck.bokstavercheck(varemerke) == false){
             lblVaremerkeFeil.setText("Må kunne inneholde bokstaver");
+            check1 = false;
+
         }
 
         //Validerer Modell
-        if(LengeCheck.lengdeCheck(txtModell.getText()) == false){
+        if(LengeCheck.lengdeCheck(modell) == false){
             lblModellFeil.setText("Må inneholde minst 2 bokstaver");
+            check2 = false;
         }
 
         //Validerer Pris
         if(TallCheck.tallcheck(txtPris.getText()) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
+            check3 = false;
         }
-        double pris = Double.parseDouble(txtPris.getText());
-
 
         if(choTrodlos.getValue() == null) {
             lblTrodlosFeil.setText("Må fylles ut");
+            check4 = false;
         }
 
         //Mus nyMus = new Mus("2300", txtVaremerke.getText(), txtModell.getText(), Integer.parseInt(txtPris.getText()), trodlos, colFarge.getValue().toString());
-        //KomponentData.leggTilKomponent(nyMus);
+        if(check1 == true && check2 == true && check3 == true && check4 == true && check5 == true) {
+            //KomponentData.leggTilKomponent(nyMus);
 
-        //NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
-
+            //NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
+        }
         //Rooter tilslutt til oversiktview
         //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }

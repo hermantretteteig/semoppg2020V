@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import models.komponent.Komponent;
 import models.komponent.Skjermkort;
 import org.example.App;
@@ -30,8 +31,11 @@ public class NySkjermkortController {
     @FXML
     public AnchorPane skjermkortPanel;
 
+    @FXML private javafx.scene.control.Button registrer;
+    @FXML private javafx.scene.control.Button avslutt;
+
     @FXML
-    public void leggTilAction() throws Exception{
+    public void leggTilAction() throws Exception {
 
         lblVaremerkeFeil.setText("");
         lblKlokkehastighetFeil.setText("");
@@ -39,34 +43,47 @@ public class NySkjermkortController {
         lblModellFeil.setText("");
         lblPrisFeil.setText("");
 
+        String varemerke = txtVaremerke.getText();
+        String klokkehastighet = txtKlokkehastighet.getText();
+        String minne = txtMinne.getText();
+        String modell = txtModell.getText();
+
+        boolean check1 = true;
+        boolean check2 = true;
+        boolean check3 = true;
+        boolean check4 = true;
+        boolean check5 = true;
 
         //Validerer Varenummer
 
-
         //Validerer Varemerke
-        if(!BokstaverCheck.bokstavercheck(txtVaremerke.getText())){
+        if (BokstaverCheck.bokstavercheck(varemerke) == false) {
             lblVaremerkeFeil.setText("Må kunne inneholde bokstaver");
+            check1 = false;
         }
 
         //Validerer Modell
-        if(!LengeCheck.lengdeCheck(txtModell.getText())){
+        if (LengeCheck.lengdeCheck(modell) == false) {
             lblModellFeil.setText("Må inneholde minst 2 bokstaver");
+            check2 = false;
         }
 
         //Validerer Pris
-        if(!TallCheck.tallcheck(txtPris.getText())){
+        if (TallCheck.tallcheck(txtPris.getText()) == false) {
             lblPrisFeil.setText("Må inneholde kun tall");
+            check3 = false;
         }
-        double pris = Double.parseDouble(txtPris.getText());
 
         //Validerer klokkehastighet
-        if(!TallCheck.tallcheck(txtKlokkehastighet.getText())) {
+        if (TallCheck.tallcheck(klokkehastighet) == false) {
             lblKlokkehastighetFeil.setText("Må kun inneholde tall");
+            check4 = false;
         }
 
         //Validerer Minne
-        if(!TallCheck.tallcheck(txtMinne.getText())) {
+        if (TallCheck.tallcheck(minne) == false) {
             lblMinneFeil.setText("Må kun inneholde tall");
+            check5 = false;
         }
 
         Skjermkort nyttSkjermkort = new Skjermkort(txtVaremerke.getText(),
@@ -74,11 +91,14 @@ public class NySkjermkortController {
                 Double.parseDouble(txtPris.getText()),
                 Double.parseDouble(txtKlokkehastighet.getText()),
                 Integer.parseInt(txtMinne.getText()));
-        KomponentData.leggTilKomponent(nyttSkjermkort);
+        if (check1 == true && check2 == true && check3 == true && check4 == true && check5 == true) {
+            KomponentData.leggTilKomponent(nyttSkjermkort);
+            Stage stage = (Stage) avslutt.getScene().getWindow();
+            stage.close();
 
-        App.setRoot("adminView/nyKomponentView/nyKomponent");
+        }
+        //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
-
     @FXML
     public void avsluttAction() throws Exception{
         App.setRoot("adminView/nyKomponentView/nyKomponent");

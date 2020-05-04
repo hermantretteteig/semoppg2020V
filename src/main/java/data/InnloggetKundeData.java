@@ -3,7 +3,7 @@ package data;
 import models.brukere.Admin;
 import models.brukere.Kunde;
 
-public class InnloggetBrukerData {
+public class InnloggetKundeData {
     private static Kunde innloggetKunde = null;
     private static Admin innloggetAdmin = null;
 

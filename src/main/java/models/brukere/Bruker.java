@@ -19,6 +19,10 @@ public class Bruker implements Serializable {
         this.passord = new SimpleStringProperty(passord);
     }
 
+    public SimpleStringProperty getSSPFornavn(){
+        return this.fornavn;
+    }
+
     public String getFornavn() {
         return fornavn.get();
     }

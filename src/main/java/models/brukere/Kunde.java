@@ -31,6 +31,8 @@ public class Kunde extends Bruker {
         this.kundenummer.set(kundenummer);
     }
 
+
+
     public String getEpost() {
         return epost.get();
     }

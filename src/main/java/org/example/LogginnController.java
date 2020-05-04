@@ -2,7 +2,7 @@ package org.example;
 
 import java.io.IOException;
 
-import data.InnloggetBrukerData;
+import data.InnloggetKundeData;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -27,7 +27,7 @@ public class LogginnController  {
     @FXML
     private void logginn() throws IOException {
 
-         if(InnloggetBrukerData.loggInnKunde(txtKundeBrukernavn.getText(), txtKundePassord.getText())==false){
+         if(InnloggetKundeData.loggInnKunde(txtKundeBrukernavn.getText(), txtKundePassord.getText())!=false){
              lblBrukerFeil.setText("Ugyldig brukernavn/passord");
          }
          else{
@@ -37,7 +37,7 @@ public class LogginnController  {
 
     @FXML
     private void adminLoggInnAction() throws IOException {
-        if(InnloggetBrukerData.loggInnAdmin(txtAdminBrukernavn.getText(), txtAdminPassord.getText())==false){
+        if(InnloggetKundeData.loggInnAdmin(txtAdminBrukernavn.getText(), txtAdminPassord.getText())!=false){
             lblAdminFeil.setText("Ugyldig brukernavn/passord");
         }
         else{

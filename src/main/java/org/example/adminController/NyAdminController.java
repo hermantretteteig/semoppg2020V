@@ -2,8 +2,6 @@ package org.example.adminController;
 
 import data.AdminData;
 import models.brukere.Admin;
-import models.brukere.Bruker;
-import org.example.App;
 import validering.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -53,12 +51,12 @@ public class NyAdminController {
 
         //Validerer fornavn
         if(BokstaverCheck.bokstavercheck(txtFornavn.getText()) == false){
-            lblFornavnFeil.setText("Fornavn må kunne inneholde bokstaver");
+            lblFornavnFeil.setText("Fornavn");
         }
 
         //Validerer etternavn
         if(BokstaverCheck.bokstavercheck(txtEtternavn.getText()) == false){
-            lblEtternavnFeil.setText("Etternavn må kun inneholde bokstaver");
+            lblEtternavnFeil.setText("Etternavn er ugyldig");
         }
 
         //Validerer brukernavn
@@ -68,7 +66,7 @@ public class NyAdminController {
 
         //Validerer passord
         if(PassordCheck.passordchecker(txtPassord.getText()) == false){
-            lblPassordFeil.setText("Passord må inneholde:" + "Små og store bokstaver, minst 8 tegn og tall ");
+            lblPassordFeil.setText("Små og store bokstaver, minst 8 tegn og tall ");
         }
 
         //Validerer gjentatt passord
@@ -78,15 +76,12 @@ public class NyAdminController {
 
         Admin nyAdmin = new Admin(fornavn, etternavn, brukernavn, passord);
         AdminData.leggTilAdmin(nyAdmin);
-
-        Stage stage = (Stage) avslutt.getScene().getWindow();
-        stage.close();
+        //Stage stage = (Stage) avslutt.getScene().getWindow();
+        //stage.close();
 
         //App.setRoot("Adminview/nyAdminView/nyAdmin");
-
 
         //Stage stage = (Stage) registrer.getScene().getWindow();
         //stage.close();
     }
 }
-

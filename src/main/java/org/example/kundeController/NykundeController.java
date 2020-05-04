@@ -1,9 +1,7 @@
 package org.example.kundeController;
 
 import data.KundeData;
-import models.brukere.Bruker;
 import models.brukere.Kunde;
-import org.example.App;
 import validering.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -27,10 +25,8 @@ public class NykundeController {
     public PasswordField txtPassord;
 
 
-
     @FXML private javafx.scene.control.Button registrer;
     @FXML private javafx.scene.control.Button avslutt;
-
 
     @FXML
     private void avsluttAction(){
@@ -47,17 +43,6 @@ public class NykundeController {
         lblPassordFeil.setText("");
         lblGjentaPassordFeil.setText("");
         lblEpostFeil.setText("");
-
-
-        /*
-
-        Jeg prøde å korte ned noen feilmeldinger Salem, ettersom de ble veldig lange for GUI-et.
-        Se også TO DO-lenger ned
-
-        Herman
-        02.05.2020 : 14:21
-
-         */
 
         String fornavn = txtFornavn.getText();
         String etternavn = txtEtternavn.getText();
@@ -101,11 +86,12 @@ public class NykundeController {
         //TODO KODEN UNDER MÅ BARE KJØRES HVIS INPUT ER GYLDIG, FIKSER DU DET SALEM?
         Kunde nyKunde = new Kunde(fornavn, etternavn, brukernavn, passord, epost);
         KundeData.leggTilKunde(nyKunde);
-        Stage stage = (Stage) avslutt.getScene().getWindow();
-        stage.close();
+        //Stage stage = (Stage) avslutt.getScene().getWindow();
+        //stage.close();
 
+        //App.setRoot("Adminview/nyAdminView/nyAdmin");
+
+        //Stage stage = (Stage) registrer.getScene().getWindow();
+        //stage.close();
     }
-
-    //Stage stage = (Stage) registrer.getScene().getWindow();
-    //stage.close();
 }

@@ -3,9 +3,6 @@ package data;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.brukere.Kunde;
-import models.komponent.Komponent;
-
-import java.util.ArrayList;
 
 public class KundeData {
     private static ObservableList<Kunde> kunder = FXCollections.observableArrayList();

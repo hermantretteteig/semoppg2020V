@@ -63,7 +63,7 @@ public class NykundeController {
         String etternavn = txtEtternavn.getText();
         String brukernavn = txtBrukernavn.getText();
         String passord = txtPassord.getText();
-        String gjentePassord = txtGjentaPassord.getText();
+        String gjentaPassord = txtGjentaPassord.getText();
         String epost = txtEpost.getText();
 
 
@@ -88,7 +88,7 @@ public class NykundeController {
         }
 
         //Validerer gjentatt passord
-        if (PassordValCheck.passordValCheck(gjentePassord, passord) == false) {
+        if (PassordValCheck.passordValCheck(gjentaPassord, passord) == false) {
             lblGjentaPassordFeil.setText("Passordene er ulike.");
         }
 

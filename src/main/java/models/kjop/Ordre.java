@@ -1,17 +1,14 @@
 package models.kjop;
 
-import data.Eksempeldata;
+import data.EksempelData;
 import data.HandlekurvData;
-import data.KundeData;
 import data.OrdreData;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.chart.PieChart;
 import models.brukere.Kunde;
 import models.komponent.Datamaskin;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
@@ -51,7 +48,7 @@ public class Ordre {
         SimpleDateFormat naa = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date dato = new Date();
 
-        Ordre nyOrdre = new Ordre(naa.format(dato), Eksempeldata.enKunde(), HandlekurvData.genererDatamaskinAvHandlekurv());
+        Ordre nyOrdre = new Ordre(naa.format(dato), EksempelData.enKunde(), HandlekurvData.genererDatamaskinAvHandlekurv());
         OrdreData.leggTilOrdre(nyOrdre);
         HandlekurvData.getHandekurv().clear();
 

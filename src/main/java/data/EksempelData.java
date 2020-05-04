@@ -1,10 +1,11 @@
 package data;
 
+import models.brukere.Admin;
 import models.brukere.Kunde;
 import models.kjop.Ordre;
 import models.komponent.*;
 
-public class Eksempeldata {
+public class EksempelData {
 
     //Skal fjernes
     public static Kunde enKunde(){
@@ -12,6 +13,12 @@ public class Eksempeldata {
     }
 
     public static void GenererEksempeldata() {
+
+        //Legger til noen eksempel admin også
+
+        Admin nyAdmin1 = new Admin("Emil", "Fredriksen", "emilfre", "hemmelig", "eksempelAdmin1", "emil.fre@online.no");
+        Admin nyAdmin2 = new Admin("Henrik", "Moe", "henrikmoe", "hemmelig", "eksempelAdmin2", "henrik.moe@online.no");
+        AdminData.getAdmins().addAll(nyAdmin1, nyAdmin2);
 
         Kunde nyKunde1 = new Kunde("Ole", "Hansen", "olehasen", "hemmelig", "eksempelKunde1",  "ole.hansen@online.no");
         Kunde nyKunde2 = new Kunde("Stian", "Ludviksen", "stianlud", "hemmelig", "eksempelKunde1", "stian.lud@online.no");

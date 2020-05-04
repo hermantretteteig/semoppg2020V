@@ -1,10 +1,13 @@
 package org.example.adminController.nyKomponent;
 
+import data.KomponentData;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import logikk.NyKomponentAlert;
+import models.komponent.Lagringsenhet;
 import org.example.App;
 import validering.BokstaverCheck;
 import validering.LengeCheck;
@@ -27,9 +30,8 @@ public class NyLagringsenhetController {
     public TextField txtPris;
     public ChoiceBox choFormat;
     public TextField txtStorrelse;
-    public TextField txtLagringskapasitet;
-    public TextField txtSkrivehastighet;
     public TextField txtLesehastighet;
+    public TextField txtSkrivehastighet;
 
     @FXML
     public void leggTilAction() throws Exception{
@@ -39,7 +41,6 @@ public class NyLagringsenhetController {
         lblPrisFeil.setText("");
         lblFormatFeil.setText("");
         lblStorrelseFeil.setText("");
-        lblLagringsenhetFeil.setText("");
         lblLesehastighetFeil.setText("");
         lblSkrivehastighetFeil.setText("");
 
@@ -77,18 +78,17 @@ public class NyLagringsenhetController {
             lblSkrivehastighetFeil.setText("Må inneholde kun tall");
         }
 
+
         //Validerer Format
         if(choFormat.getValue() == null){
             lblFormatFeil.setText("Må fylles ut");
         }
 
-        //Lagringsenhet nyLagringsenhet = new Lagringsenhet();
+        //Lagringsenhet nyLagringsenhet = new Lagringsenhet(txtVaremerke.getText(), txtModell.getText(), txtPris.getText(), txtStorrelse.getText(), txtLesehastighet.getText(), txtSkrivehastighet.getText());
         //KomponentData.leggTilKomponent(nyLagringsenhet);
+        //NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
 
-        //Rooter tilslutt til oversiktview
-
-        //Hvis felter ok:
-        //App.setRoot("adminView/nyKomponentView/nyKomponent");
+        App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 
     @FXML

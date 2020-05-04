@@ -25,7 +25,7 @@ public class OrdreFormatter {
             ut.append(String.join(";",
                     ordre.getOrdrenumer(),
                     ordre.getKjopsdato(),
-                    ordre.getKunde().getKundenummer(),
+                    ordre.getKundenr(),
                     String.valueOf(ordre.getTotalsum()),
                     formaterDatamaskin2(ordre.getDatamaskin()) + "\n"
             ));

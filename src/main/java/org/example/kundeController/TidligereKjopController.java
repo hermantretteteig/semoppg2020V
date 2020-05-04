@@ -3,8 +3,11 @@ package org.example.kundeController;
 import data.OrdreData;
 import data.NyttKjopKomponentinfoViewData;
 import data.ValgtOrdreSinDatamaskinData;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.util.Callback;
 import models.kjop.Ordre;
 import models.komponent.Komponent;
 import org.example.App;
@@ -17,6 +20,8 @@ public class TidligereKjopController {
     public TableView<Ordre> ordre;
     public TableView komponentinfo;
     public TableView<Komponent> valgtDatamaskin;
+
+
 
     private NyttKjopKomponentinfoViewData collection1 = new NyttKjopKomponentinfoViewData();
     private ValgtOrdreSinDatamaskinData collection2 = new ValgtOrdreSinDatamaskinData();
@@ -54,15 +59,10 @@ public class TidligereKjopController {
         collection3.hentAlleOrdre(ordre);
 
 
-        /*coVaremerke.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Komponent, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Komponent, String> param) {
-                return param.getValue().getValue().getSSPVaremerke();
-            }
-        });
 
 
 
+/*
         coModell.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Komponent, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Komponent, String> param) {

@@ -1,5 +1,6 @@
 package models.kjop;
-import data.Eksempeldata;
+import data.InnloggetKundeData;
+import eksempeldata.Eksempeldata;
 import data.HandlekurvData;
 import data.OrdreData;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -14,23 +15,23 @@ import java.util.UUID;
 public class Ordre {
     private SimpleStringProperty ordrenumer;
     private SimpleStringProperty kjopsdato;
-    private Kunde kunde;
+    private SimpleStringProperty kundenr;
     private SimpleDoubleProperty totalsum;
     private Datamaskin datamaskin;
 
     //Konstruktør for oppretting av nytt objekt.
-    public Ordre(String kjopsdato, Kunde kunde, Datamaskin datamaskin) {
+    public Ordre(String kjopsdato, String kundenr, Datamaskin datamaskin) {
         this.ordrenumer = new SimpleStringProperty(genererOrdrenr());
         this.kjopsdato = new SimpleStringProperty(kjopsdato);
-        this.kunde = kunde;
+        this.kundenr = new SimpleStringProperty(kundenr);
         this.totalsum = new SimpleDoubleProperty(genererDatamaskinpris(datamaskin));
         this.datamaskin = datamaskin;
     }
     //Konstruktør for henting av ordre fra fil.
-    public Ordre(String ordrenumer, String kjopsdato, Kunde kunde, Double totalsum, Datamaskin datamaskin) {
+    public Ordre(String ordrenumer, String kjopsdato, String kundenr, Double totalsum, Datamaskin datamaskin) {
         this.ordrenumer = new SimpleStringProperty(ordrenumer);
         this.kjopsdato = new SimpleStringProperty(kjopsdato);
-        this.kunde = kunde;
+        this.kundenr = new SimpleStringProperty(kundenr);
         this.totalsum = new SimpleDoubleProperty(totalsum);
         this.datamaskin = datamaskin;
     }
@@ -43,11 +44,12 @@ public class Ordre {
 
     }
 
+    //TODO KUTT METODE, LEGG HELLER INN I ORDREKONSTRUKTØREN
     public static void genererOrdreAvHandlekurv() {
         SimpleDateFormat naa = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date dato = new Date();
 
-        Ordre nyOrdre = new Ordre(naa.format(dato), Eksempeldata.enKunde(), HandlekurvData.genererDatamaskinAvHandlekurv());
+        Ordre nyOrdre = new Ordre(naa.format(dato), InnloggetKundeData.getInnloggetKunde().getKundenummer(), HandlekurvData.genererDatamaskinAvHandlekurv());
         OrdreData.leggTilOrdre(nyOrdre);
         HandlekurvData.getHandekurv().clear();
 
@@ -82,12 +84,12 @@ public class Ordre {
         this.kjopsdato.set(kjopsdato);
     }
 
-    public Kunde getKunde() {
-        return kunde;
+    public String getKundenr() {
+        return kundenr.get();
     }
 
-    public void setKunde(Kunde kunde) {
-        this.kunde = kunde;
+    public void setKundnr(String kundenr) {
+        this.kundenr.set(kundenr);
     }
 
     public double getTotalsum() {

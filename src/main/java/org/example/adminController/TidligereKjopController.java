@@ -1,10 +1,27 @@
 package org.example.adminController;
 
-import data.NyttKjopKomponentinfoViewData;
-import data.OrdreData;
-import data.ValgtOrdreSinDatamaskinData;
+import data.*;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TreeTableColumn;
+import javafx.util.Callback;
+import models.brukere.Kunde;
+import models.kjop.Ordre;
+import models.komponent.Komponent;
+import org.example.App;
+
+import data.OrdreData;
+import data.NyttKjopKomponentinfoViewData;
+import data.ValgtOrdreSinDatamaskinData;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.util.Callback;
 import models.kjop.Ordre;
 import models.komponent.Komponent;
 import org.example.App;
@@ -14,6 +31,9 @@ public class TidligereKjopController {
     public TableView<Ordre> ordre;
     public TableView komponentinfo;
     public TableView<Komponent> valgtDatamaskin;
+
+    @FXML
+    public TableColumn coKunde;
 
     private NyttKjopKomponentinfoViewData collection1 = new NyttKjopKomponentinfoViewData();
     private ValgtOrdreSinDatamaskinData collection2 = new ValgtOrdreSinDatamaskinData();
@@ -40,13 +60,29 @@ public class TidligereKjopController {
 
     @FXML
     public void tilbakeAction() throws Exception {
-        App.setRoot("kundeView/dashboardKunde");
+        App.setRoot("adminView/dashboardAdmin");
     }
 
 
     public void initialize() {
         collection1.hentKomponentinfo(komponentinfo);
         alleOrdre.hentAlleOrdre(ordre);
+
+
+
+
+    coKunde.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordre, String>,
+            ObservableValue<String>>() {
+        @Override
+        public ObservableValue<String> call(TableColumn.CellDataFeatures<Ordre, String> data){
+            // new SimpleStringProperty(data.getValue().getKundenr());
+            Kunde valgtKunde = KundeData.getKunde(data.getValue().getKundenr());
+
+            return new SimpleStringProperty(valgtKunde.getFornavn()+" "+valgtKunde.getEtternavn());
+        }
+    });
+
+
     }
 
 }

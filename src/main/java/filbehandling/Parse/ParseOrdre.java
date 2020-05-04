@@ -24,7 +24,7 @@ public class ParseOrdre {
         String kundenr = split[2];
         Double totalsum = ParseVariabler.parseDesimaltall(split[3], feilDesimaltall);
 
-        return new Ordre(ordrenummer, kjopsdato, KundeData.getKunde(kundenr), totalsum, parseDatamaskin(linje));
+        return new Ordre(ordrenummer, kjopsdato, kundenr, totalsum, parseDatamaskin(linje));
     }
 
 

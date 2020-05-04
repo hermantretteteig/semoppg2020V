@@ -1,7 +1,7 @@
 package org.example;
 
 
-import data.Eksempeldata;
+import eksempeldata.Eksempeldata;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

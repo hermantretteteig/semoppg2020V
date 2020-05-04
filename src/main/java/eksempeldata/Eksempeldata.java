@@ -1,5 +1,6 @@
-package data;
+package eksempeldata;
 
+import data.*;
 import models.brukere.Admin;
 import models.brukere.Kunde;
 import models.kjop.Ordre;
@@ -15,7 +16,7 @@ public class Eksempeldata {
     public static void GenererEksempeldata() {
 
         Kunde nyKunde1 = new Kunde("Ole", "Hansen", "olehansen", "passord123", "eksempelKunde1",  "ole.hansen@online.no");
-        Kunde nyKunde2 = new Kunde("Stian", "Ludviksen", "stianlud", "hemmelig", "eksempelKunde1", "stian.lud@online.no");
+        Kunde nyKunde2 = new Kunde("Stian", "Ludviksen", "stianlud", "hemmelig", "eksempelKunde2", "stian.lud@online.no");
         KundeData.getKunder().addAll(nyKunde1, nyKunde2);
 
         Admin nyAdmin = new Admin("Adim", "Amid", "admin", "passord123");
@@ -127,8 +128,8 @@ public class Eksempeldata {
         Datamaskin nyDatamaskin1 = new Datamaskin(prosessor1, skjermkort2, lagringsenhetEn, skjerm1, toMus, tastatur1);
         Datamaskin nyDatamaskin2 = new Datamaskin(prosessor2, skjermkort1, lagringsenhetTo, skjerm1, musEn, tastatur2);
 
-        Ordre nyOrdre1 = new Ordre("12/02/2017 13:21:00", nyKunde1, nyDatamaskin1);
-        Ordre nyOrdre2 = new Ordre("03/11/2019 22:03:03", nyKunde2, nyDatamaskin2);
+        Ordre nyOrdre1 = new Ordre("12/02/2017 13:21:00", nyKunde1.getKundenummer(), nyDatamaskin1);
+        Ordre nyOrdre2 = new Ordre("03/11/2019 22:03:03", nyKunde2.getKundenummer(), nyDatamaskin2);
 
         ValgtOrdreSinDatamaskinData.leggTil(lagringsenhetEn);
 

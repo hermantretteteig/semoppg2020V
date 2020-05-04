@@ -76,7 +76,7 @@ public class NyttKjopController {
         }
 
 
-        alleKomponener.getChildren().setAll(lagringsenheter, mus, prosssor, skjermer, skjermkort, tastaturer);
+        alleKomponener.getChildren().setAll(prosssor, skjermkort, lagringsenheter, skjermer, mus, tastaturer);
 
         alleKomponener.setExpanded(true);
         lagringsenheter.setExpanded(true);

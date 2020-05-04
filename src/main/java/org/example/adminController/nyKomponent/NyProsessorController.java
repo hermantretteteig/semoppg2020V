@@ -56,8 +56,8 @@ public class NyProsessorController {
 
 
         //Validerer Varemerke
-        if(BokstaverCheck.bokstavercheck(varemerke) == false){
-            lblVaremerkeFeil.setText("Må kunne inneholde bokstaver");
+        if(LengeCheck.lengdeCheck(varemerke) == false){
+            lblVaremerkeFeil.setText("Må inneholde minst 2 bokstaver");
             check1 = false;
         }
 
@@ -86,7 +86,7 @@ public class NyProsessorController {
         }
         //Må fylles ut!!
         //Prosessor nyProsessor = new Prosessor();
-        if(check1 == true && check2 == true && check3 == true && check4 == true && check5 == true) {
+        if (check1 && check2 && check3 && check4 && check5){
             //KomponentData.leggTilKomponent(nyProsessor);
             //Stage stage = (Stage) avslutt.getScene().getWindow();
             //stage.close();

@@ -52,8 +52,8 @@ public class NyMusController {
         //Validerer varenummer?
 
         //Validerer Varemerke
-        if(BokstaverCheck.bokstavercheck(varemerke) == false){
-            lblVaremerkeFeil.setText("Må kunne inneholde bokstaver");
+        if(LengeCheck.lengdeCheck(varemerke) == false){
+            lblVaremerkeFeil.setText("Må inneholde minst 2 bokstaver");
             check1 = false;
 
         }
@@ -76,7 +76,7 @@ public class NyMusController {
         }
 
         //Mus nyMus = new Mus("2300", txtVaremerke.getText(), txtModell.getText(), Integer.parseInt(txtPris.getText()), trodlos, colFarge.getValue().toString());
-        if(check1 == true && check2 == true && check3 == true && check4 == true && check5 == true) {
+        if (check1 && check2 && check3 && check4 && check5){
             //KomponentData.leggTilKomponent(nyMus);
 
             //NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());

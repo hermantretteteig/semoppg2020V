@@ -52,8 +52,8 @@ public class NyTastaturController {
         //Validerer Varenummer
 
         //Validerer Varemerke
-        if(BokstaverCheck.bokstavercheck(varemerke) == false){
-            lblVaremerkeFeil.setText("Må kunne inneholde bokstaver");
+        if(LengeCheck.lengdeCheck(varemerke) == false){
+            lblVaremerkeFeil.setText("Må inneholde minst 2 bokstaver");
             check1 = false;
         }
 
@@ -83,14 +83,14 @@ public class NyTastaturController {
 
         //!!!!Trenger hjelp med utfyllingen av denne
 
-        /*Tastatur nyTastatur = new Tastatur(varemerke,
-                modell, pris, choNumpad, choTrodlos));
-        if(check1 == true && check2 == true && check3 == true && check4 == true && check5 == true) {
-            KomponentData.leggTilKomponent(nyTastatur);
-            Stage stage = (Stage) avslutt.getScene().getWindow();
-            stage.close();
+        //Tastatur nyTastatur = new Tastatur(varemerke,
+          //      modell, pris, choNumpad, choTrodlos));
+        if(check1 && check2 && check3 && check4 && check5) {
+           // KomponentData.leggTilKomponent(nyTastatur);
+            //Stage stage = (Stage) avslutt.getScene().getWindow();
+            //stage.close();
         }
-         */
+
         //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 

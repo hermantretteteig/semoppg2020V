@@ -96,7 +96,7 @@ public class NykundeController {
         }
 
         Kunde nyKunde = new Kunde(fornavn, etternavn, brukernavn, passord, epost);
-        if (check1 == true && check2 == true && check3 == true && check4 == true && check5 == true && check6 == true){
+        if (check1 && check2 && check3 && check4 && check5 && check6) {
             KundeData.leggTilKunde(nyKunde);
             Stage stage = (Stage) avslutt.getScene().getWindow();
             stage.close();

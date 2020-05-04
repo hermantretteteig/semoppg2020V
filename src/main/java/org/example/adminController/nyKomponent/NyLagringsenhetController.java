@@ -65,8 +65,8 @@ public class NyLagringsenhetController {
 
 
         //Validerer Varemerke
-        if(BokstaverCheck.bokstavercheck(varemerke) == false){
-            lblVaremerkeFeil.setText("Må kunne inneholde bokstaver");
+        if(LengeCheck.lengdeCheck(varemerke) == false){
+            lblVaremerkeFeil.setText("Må inneholde minst 2 bokstaver");
             check1 = false;
         }
 
@@ -107,7 +107,7 @@ public class NyLagringsenhetController {
         }
 
         //Lagringsenhet nyLagringsenhet = new Lagringsenhet(txtVaremerke.getText(), txtModell.getText(), txtPris.getText(), txtStorrelse.getText(), txtLesehastighet.getText(), txtSkrivehastighet.getText());
-        if(check1 == true && check2 == true && check3 == true && check4 == true && check5 == true) {
+        if (check1 && check2 && check3 && check4 && check5 && check6){
             //KomponentData.leggTilKomponent(nyLagringsenhet);
             //NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
         }

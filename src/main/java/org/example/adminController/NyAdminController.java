@@ -88,7 +88,7 @@ public class NyAdminController {
         }
 
         Admin nyAdmin = new Admin(fornavn, etternavn, brukernavn, passord);
-        if (check1 == true && check2 == true && check3 == true && check4 == true && check5 == true && check6 == true){
+        if (check1 && check2 && check3 && check4 && check5 && check6){
             AdminData.leggTilAdmin(nyAdmin);
             Stage stage = (Stage) avslutt.getScene().getWindow();
             stage.close();

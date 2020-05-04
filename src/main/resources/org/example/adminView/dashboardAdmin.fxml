@@ -36,15 +36,21 @@
                   <Insets left="100.0" />
                </GridPane.margin>
             </Label>
-            <Button fx:id="btnNyttKomponent" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#nyKomponentAction" prefHeight="150.0" prefWidth="300.0" text="Ny komponent" GridPane.rowIndex="1">
+            <Button fx:id="btnNyttKomponent" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#nyKomponentAction" prefHeight="65.0" prefWidth="300.0" text="Ny komponent" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
+               <GridPane.margin>
+                  <Insets bottom="80.0" />
+               </GridPane.margin>
             </Button>
-            <Button fx:id="btnEndreKomponent" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#endreKomponentAction" prefHeight="150.0" prefWidth="300.0" text="Endre komponenter" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="btnEndreKomponent" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#endreKomponentAction" prefHeight="65.0" prefWidth="300.0" text="Endre komponenter" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
+               <GridPane.margin>
+                  <Insets top="80.0" />
+               </GridPane.margin>
             </Button>
             <Button fx:id="btnLagreFil" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#eksportFilAction" prefHeight="65.0" prefWidth="300.0" text="Eksporter til fil (JOBJ)" GridPane.rowIndex="2">
                <font>
@@ -84,6 +90,38 @@
                   <Insets top="80.0" />
                </GridPane.margin>
             </Button>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#tidligerKjopAction" prefHeight="150.0" prefWidth="300.0" text="Tidligere kjøp" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Label alignment="TOP_LEFT" contentDisplay="TOP" text="Komponenter:" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="100.0" top="15.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" contentDisplay="TOP" text="Annet" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="100.0" top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="TOP_LEFT" contentDisplay="TOP" text="Filbehandling" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="100.0" top="5.0" />
+               </GridPane.margin>
+            </Label>
          </children>
       </GridPane>
    </children>

@@ -129,6 +129,13 @@ public class DashboardAdminController {
         App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 
+    public void tidligerKjopAction() throws Exception{
+        App.setRoot("adminView/tidligereKjop");
+    }
+
+
+
+
     @FXML
     public void nyAdminAction() throws Exception{
         App.nyttLiteVindu("adminView/nyAdmin", "Legg til ny administrator", 344, 374);

@@ -1,18 +1,11 @@
 package org.example.kundeController;
 
 import data.OrdreData;
-import data.KomponentData;
 import data.NyttKjopKomponentinfoViewData;
 import data.ValgtOrdreSinDatamaskinData;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.Callback;
-import javafx.util.converter.DoubleStringConverter;
-import models.NyttKjopKomponentinfoView;
 import models.kjop.Ordre;
-import models.komponent.Datamaskin;
 import models.komponent.Komponent;
 import org.example.App;
 
@@ -58,7 +51,7 @@ public class TidligereKjopController {
 
 
         collection1.hentKomponentinfo(komponentinfo);
-        collection3.hentKomponenttype(ordre);
+        collection3.hentAlleOrdre(ordre);
 
 
         /*coVaremerke.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Komponent, String>, ObservableValue<String>>() {

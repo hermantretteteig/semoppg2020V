@@ -2,10 +2,21 @@ package org.example;
 
 import java.io.IOException;
 
-import data.KomponentData;
+import data.InnloggetBrukerData;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 public class LogginnController  {
+
+    @FXML
+    public Label lblBrukerFeil;
+    public Label lblAdminFeil;
+    public TextField txtKundeBrukernavn;
+    public PasswordField txtKundePassord;
+    public TextField txtAdminBrukernavn;
+    public PasswordField txtAdminPassord;
 
     @FXML
     private void nyBruker() throws IOException {
@@ -15,25 +26,23 @@ public class LogginnController  {
 
     @FXML
     private void logginn() throws IOException {
-         /*
 
-        TRY/CATCH HER SOM SØRGER FOR AT BRUKEREN BARE FÅR LOGGET INN HVIS PASSORD OG BRUKERNAVN ER GYLDIG
-
-         */
-
-        App.setRoot("kundeView/dashboardKunde");
+         if(InnloggetBrukerData.loggInnKunde(txtKundeBrukernavn.getText(), txtKundePassord.getText())==false){
+             lblBrukerFeil.setText("Ugyldig brukernavn/passord");
+         }
+         else{
+             App.setRoot("kundeView/dashboardKunde");
+         }
     }
 
     @FXML
     private void adminLoggInnAction() throws IOException {
-
-         /*
-
-        TRY/CATCH HER SOM SØRGER FOR AT ADMIN BARE FÅR LOGGET INN HVIS PASSORD OG BRUKERNAVN ER GYLDIG
-
-         */
-
-        App.setRoot("adminView/dashboardAdmin");
+        if(InnloggetBrukerData.loggInnAdmin(txtAdminBrukernavn.getText(), txtAdminPassord.getText())==false){
+            lblAdminFeil.setText("Ugyldig brukernavn/passord");
+        }
+        else{
+            App.setRoot("adminView/dashboardAdmin");
+        }
     }
 
 

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class KundeData {
     private static ObservableList<Kunde> kunder = FXCollections.observableArrayList();
 
-    static ObservableList<Kunde> getKunder() {
+    public static ObservableList<Kunde> getKunder() {
         return kunder;
     }
 

@@ -31,10 +31,6 @@ public class App extends Application {
         //Legger in eksepeldata
         Eksempeldata.GenererEksempeldata();
 
-
-        //System.out.println("\n\n\n-----\n"+KomponentData.hentMedVarenummer("100").getVaremerke());
-
-
         hovedscene = new Scene(loadFXML("logginn"));
         stage.setScene(hovedscene);
         stage.setTitle("Datamaskinkonfiguering");
@@ -44,7 +40,6 @@ public class App extends Application {
         Image ikoner = new Image("ikoner/Gnome-computer.png");
         stage.getIcons().add(ikoner);
 
-
     }
 
     public static void setRoot(String fxml) throws IOException {
@@ -52,10 +47,8 @@ public class App extends Application {
 
     }
 
-
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        System.out.println("Filbane: "+App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 

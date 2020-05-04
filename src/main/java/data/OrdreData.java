@@ -27,7 +27,7 @@ public class OrdreData {
         OrdreData.ordre = FXCollections.observableArrayList(ordre);
     }
 
-    public void hentKomponenttype(TableView tv) {
+    public void hentAlleOrdre(TableView tv) {
         tv.setItems(ordre);
     }
     }

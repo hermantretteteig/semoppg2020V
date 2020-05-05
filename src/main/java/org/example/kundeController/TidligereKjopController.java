@@ -56,7 +56,7 @@ public class TidligereKjopController {
 
 
         collection1.hentKomponentinfo(komponentinfo);
-        collection3.hentAlleOrdre(ordre);
+        collection3.hentKundensOrdre(ordre);
 
 
 

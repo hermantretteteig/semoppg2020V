@@ -26,7 +26,7 @@ public class App extends Application {
     private static Scene registrerScene;
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, CloneNotSupportedException {
         //Legger in eksepeldata
         Eksempeldata.GenererEksempeldata();
 

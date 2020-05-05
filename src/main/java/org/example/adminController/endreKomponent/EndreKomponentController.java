@@ -1,5 +1,7 @@
 package org.example.adminController.endreKomponent;
 
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
 import validering.LengeCheck;
 import validering.ValiKomponent;
 import data.KomponentData;
@@ -257,26 +259,26 @@ public class EndreKomponentController {
         {
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Tastatur, Boolean> event)
             {
-                return event.getValue().getBpTrodlos();}
+                return new SimpleBooleanProperty(event.getValue().getTrodlos());}
         });
 
         coNumpad.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Tastatur,Boolean>, ObservableValue<Boolean>>()
         {
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Tastatur, Boolean> event)
             {
-                return event.getValue().getBpNumpad();}
+                return new SimpleBooleanProperty(event.getValue().getNumpad());}
         });
         co4K.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Skjerm,Boolean>, ObservableValue<Boolean>>()
         {
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Skjerm, Boolean> event)
             {
-                return event.getValue().getBpMin4K();}
+                return new SimpleBooleanProperty(event.getValue().getMin4K());}
         });
         coMusTrodlos.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Mus,Boolean>, ObservableValue<Boolean>>()
         {
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Mus, Boolean> event)
             {
-                return event.getValue().getBpMusTrodlos();}
+                return new SimpleBooleanProperty(event.getValue().getTrodlos());}
         });
 
 

@@ -1,5 +1,6 @@
 package org.example.kundeController;
 
+import data.InnloggetBrukerData;
 import data.OrdreData;
 import filbehandling.LagreCSV;
 import filbehandling.LesCSV;
@@ -76,7 +77,7 @@ public AnchorPane kundePanel;
 
     @FXML
     public void loggUtAction() throws Exception{
-        //kode som avslutter session
+        InnloggetBrukerData.loggUtKunde();
         App.setRoot("loggInn");
 
     }

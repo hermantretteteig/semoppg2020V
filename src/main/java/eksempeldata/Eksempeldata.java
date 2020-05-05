@@ -21,7 +21,14 @@ public class Eksempeldata {
 
         Kunde nyKunde1 = new Kunde("Ole", "Hansen", "olehansen", "passord123", "eksempelKunde1",  "ole.hansen@online.no");
         Kunde nyKunde2 = new Kunde("Stian", "Ludviksen", "stianlud", "hemmelig", "eksempelKunde2", "stian.lud@online.no");
-        KundeData.getKunder().addAll(nyKunde1, nyKunde2);
+        Kunde nyKunde3 = new Kunde("Entotre", "Firefemseks", "123", "123", "eksempelKunde3", "123@online.no");
+
+
+
+        KundeData.getKunder().addAll(nyKunde1, nyKunde2, nyKunde3);
+
+        //TODO må fjernes før levering
+        InnloggetBrukerData.loggInnKunde("olehansen", "passord123");
 
         Admin nyAdmin = new Admin("Adim", "Amid", "admin", "passord123");
         AdminData.leggTilAdmin(nyAdmin);

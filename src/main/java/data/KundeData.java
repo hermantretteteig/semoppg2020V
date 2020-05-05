@@ -2,6 +2,7 @@ package data;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
 import models.brukere.Kunde;
 
 public class KundeData {
@@ -19,6 +20,10 @@ public class KundeData {
             }
         }
         return kunde;
+    }
+
+    public void hentAlleKunder(TableView tv) {
+        tv.setItems(kunder);
     }
 
     public static void setKunder(ObservableList<Kunde> kunder) {

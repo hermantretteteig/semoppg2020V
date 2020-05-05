@@ -1,14 +1,13 @@
 package org.example.adminController;
 
+import data.InnloggetBrukerData;
 import data.KomponentData;
 import filbehandling.LagreJOBJ;
-import filbehandling.LesJOBJ;
 import filbehandling.Traad;
 import javafx.collections.ObservableList;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
@@ -147,8 +146,15 @@ public class DashboardAdminController {
     }
 
     @FXML
+    public void endreKundeAction() throws Exception{
+        App.setRoot("adminView/endreKunde");
+    }
+
+
+
+    @FXML
     public void loggUtAction() throws Exception{
-        //kode som avslutter session
+        InnloggetBrukerData.loggUtAdmin();
 
         App.setRoot("loggInn");
 

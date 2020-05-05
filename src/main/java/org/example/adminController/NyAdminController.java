@@ -78,7 +78,7 @@ public class NyAdminController {
 
         //Validerer passord
         if(PassordCheck.passordchecker(passord) == false){
-            lblPassordFeil.setText("Må være små og store bokstaver, minst 8 tegn og tall ");
+            lblPassordFeil.setText("Må være små og store bokstaver, minst 8 tegn og tall.");
             check1 = false;
         }
 

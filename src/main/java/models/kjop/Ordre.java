@@ -1,11 +1,9 @@
 package models.kjop;
-import data.InnloggetKundeData;
-import eksempeldata.Eksempeldata;
+import data.InnloggetBrukerData;
 import data.HandlekurvData;
 import data.OrdreData;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
-import models.brukere.Kunde;
 import models.komponent.Datamaskin;
 
 import java.text.SimpleDateFormat;
@@ -55,7 +53,7 @@ public class Ordre implements Cloneable{
         SimpleDateFormat naa = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date dato = new Date();
 
-        Ordre nyOrdre = new Ordre(naa.format(dato), InnloggetKundeData.getInnloggetKunde().getKundenummer(), HandlekurvData.genererDatamaskinAvHandlekurv());
+        Ordre nyOrdre = new Ordre(naa.format(dato), InnloggetBrukerData.getInnloggetKunde().getKundenummer(), HandlekurvData.genererDatamaskinAvHandlekurv());
         OrdreData.leggTilOrdre(nyOrdre);
         HandlekurvData.getHandekurv().clear();
 

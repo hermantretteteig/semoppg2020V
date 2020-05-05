@@ -6,6 +6,7 @@ module org.example {
     opens org.example.kundeController to javafx.fxml;
     opens org.example.adminController to javafx.fxml;
     opens models.komponent to javafx.base;
+    opens models.brukere to javafx.base;
     opens org.example.adminController.endreKomponent to javafx.fxml;
     opens models to javafx.fxml;
     opens models.kjop to javafx.fxml;

@@ -4,22 +4,24 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 import models.kjop.Ordre;
-import models.komponent.Komponent;
 
 import java.util.ArrayList;
 
 public class OrdreData {
     private static ObservableList<Ordre> ordre = FXCollections.observableArrayList();
+    private static ObservableList<Ordre> kundensOrdre = FXCollections.observableArrayList();
+
 
     public static ObservableList<Ordre> getOrdre() {
         return ordre;
     }
 
-    public static ArrayList<Ordre> getOrdreListe(){
+
+    public static ArrayList<Ordre> getOrdreListe() {
         return new ArrayList<>(ordre);
     }
 
-    public static void leggTilOrdre(Ordre nyOrdre){
+    public static void leggTilOrdre(Ordre nyOrdre) {
         ordre.add(nyOrdre);
     }
 
@@ -30,5 +32,26 @@ public class OrdreData {
     public void hentAlleOrdre(TableView tv) {
         tv.setItems(ordre);
     }
+
+
+    public void hentKundensOrdre(TableView tv) {
+
+        ObservableList<Ordre> kundensOrdre = FXCollections.observableArrayList();
+
+        for(Ordre ordre : ordre){
+            /*System.out.println(ordre.getKundenr());
+            System.out.println(InnloggetKundeData.getInnloggetKunde().getKundenummer());*/
+
+            if(ordre.getKundenr().equals(InnloggetBrukerData.getInnloggetKunde().getKundenummer())){
+                kundensOrdre.add(ordre);
+            }
+        }
+        tv.setItems(kundensOrdre);
+
+
+
     }
+}
+
+
 

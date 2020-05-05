@@ -44,7 +44,7 @@ public class NySkjermController {
         lblPrisFeil.setText("");
         lblHoydeFeil.setText("");
         lblBreddeFeil.setText("");
-        lbl4KFeil.setText("");
+        //lbl4KFeil.setText("");
 
         String varemerke = txtVaremerke.getText();
         String modell = txtModell.getText();

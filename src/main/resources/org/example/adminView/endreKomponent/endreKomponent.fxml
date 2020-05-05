@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.control.cell.TextFieldTableCell?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="endreKomponentBakgrunn" stylesheets="@../../../../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.endreKomponent.EndreKomponentController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="endreKomponentBakgrunn" stylesheets="@../../../../style/style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.endreKomponent.EndreKomponentController">
    <ChoiceBox fx:id="choKomponentvelger" layoutX="78.0" layoutY="94.0" onAction="#hentAction" prefHeight="25.0" prefWidth="142.0">
         <items>
             <FXCollections fx:factory="observableArrayList">
@@ -45,7 +40,7 @@
                  <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
          </TableColumn>
-         <TableColumn onEditCommit="#ModellEdit" prefWidth="100.0" text="Modell">
+         <TableColumn onEditCommit="#ModellEdit" prefWidth="100.0" text="Varemerke">
              <cellValueFactory>
                  <PropertyValueFactory property="Modell" />
              </cellValueFactory>
@@ -53,7 +48,7 @@
                  <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
          </TableColumn>
-         <TableColumn fx:id="coPris" onEditCommit="#PrisEdit" prefWidth="100.0" text="Pris (kr)">
+         <TableColumn fx:id="coPris" onEditCommit="#PrisEdit" prefWidth="100.0" text="Modell">
              <cellValueFactory>
                  <PropertyValueFactory property="Pris" />
              </cellValueFactory>
@@ -61,7 +56,7 @@
                  <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
          </TableColumn>
-         <TableColumn onEditCommit="#VareMerkeEdit" prefWidth="100.0" text="Varemerke">
+         <TableColumn onEditCommit="#VareMerkeEdit" prefWidth="100.0" text="Pris (kr)">
              <cellValueFactory>
                  <PropertyValueFactory property="Varemerke" />
              </cellValueFactory>

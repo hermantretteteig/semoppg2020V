@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="skjermkortPanel" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.nyKomponent.NyLagringsenhetController">
+<AnchorPane fx:id="skjermkortPanel" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.nyKomponent.NyLagringsenhetController">
    <children>
-      <GridPane prefHeight="600.0" prefWidth="1000.0">
+      <GridPane layoutX="21.0" prefHeight="600.0" prefWidth="1000.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -75,7 +67,7 @@
                   <Insets left="60.0" top="-10.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Format:" GridPane.rowIndex="4">
+            <Label prefHeight="21.0" prefWidth="72.0" text="Numpad:" GridPane.rowIndex="4">
                <font>
                   <Font size="15.0" />
                </font>
@@ -83,23 +75,7 @@
                   <Insets left="60.0" top="-10.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Lagringskapasitet:" GridPane.rowIndex="5">
-               <font>
-                  <Font size="15.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="60.0" top="-10.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Lesehastighet:" GridPane.rowIndex="6">
-               <font>
-                  <Font size="15.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="60.0" top="-10.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Skrivehastighet:" GridPane.rowIndex="7">
+            <Label text="Trådløs:" GridPane.rowIndex="5">
                <font>
                   <Font size="15.0" />
                </font>
@@ -120,32 +96,6 @@
             <TextField fx:id="txtPris" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="160.0" top="-10.0" />
-               </GridPane.margin>
-            </TextField>
-            <ChoiceBox fx:id="choFormat" prefHeight="25.0" prefWidth="196.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets left="60.0" top="-10.0" />
-               </GridPane.margin>
-               <items>
-                  <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="SSD" />
-                     <String fx:value="HDD" />
-                  </FXCollections>
-               </items>
-            </ChoiceBox>
-            <TextField id="minne" fx:id="txtLagringskapasitet" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="60.0" top="-10.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField id="minne" fx:id="txtLesehastighet" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets left="60.0" top="-10.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField id="minne" fx:id="txtSkrivehastighet" GridPane.columnIndex="1" GridPane.rowIndex="7">
-               <GridPane.margin>
-                  <Insets left="60.0" top="-10.0" />
                </GridPane.margin>
             </TextField>
             <Label fx:id="lblVaremerkeFeil" textFill="#dd0000" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
@@ -207,7 +157,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label text="GB." GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <Label GridPane.columnIndex="2" GridPane.rowIndex="6">
                <font>
                   <Font size="15.0" />
                </font>
@@ -215,22 +165,19 @@
                   <Insets bottom="10.0" left="7.0" />
                </GridPane.margin>
             </Label>
-            <Label text="MB/s" GridPane.columnIndex="2" GridPane.rowIndex="6">
-               <font>
-                  <Font size="15.0" />
-               </font>
+            <CheckBox mnemonicParsing="false" prefHeight="0.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
-                  <Insets bottom="10.0" left="7.0" />
+                  <Insets />
                </GridPane.margin>
-            </Label>
-            <Label text="MB/s" GridPane.columnIndex="2" GridPane.rowIndex="7">
-               <font>
-                  <Font size="15.0" />
-               </font>
+               <padding>
+                  <Insets left="120.0" />
+               </padding>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
-                  <Insets bottom="10.0" left="7.0" />
+                  <Insets left="120.0" />
                </GridPane.margin>
-            </Label>
+            </CheckBox>
          </children>
       </GridPane>
    </children>

@@ -118,6 +118,6 @@ public class NyLagringsenhetController {
             stage.close();
             NyKomponentAlert.visBekreftelse(varemerke, modell);
         }
-        App.setRoot("adminView/nyKomponentView/nyKomponent");
+        //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 }

@@ -1,5 +1,6 @@
 package org.example.adminController.endreKomponent;
 
+import validering.LengeCheck;
 import validering.ValiKomponent;
 import data.KomponentData;
 import javafx.beans.value.ObservableValue;
@@ -96,7 +97,6 @@ public class EndreKomponentController {
 
 
     public void VareMerkeEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-
         event.getRowValue().setVaremerke(event.getNewValue());
     }
 

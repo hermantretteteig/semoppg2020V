@@ -92,7 +92,7 @@ public class NyMusController {
             stage.close();
             NyKomponentAlert.visBekreftelse(varemerke, modell);
         }
-        //Rooter tilslutt til oversiktview
+
         //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 }

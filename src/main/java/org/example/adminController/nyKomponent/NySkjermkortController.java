@@ -31,24 +31,26 @@ public class NySkjermkortController {
     @FXML public javafx.scene.control.Button avslutt;
 
     @FXML
-    public void avsluttAction() throws Exception{
-        App.setRoot("adminView/nyKomponentView/nyKomponent");
+    public void avsluttAction() {
+        Stage stage = (Stage) avslutt.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
-    public void leggTilAction() throws Exception {
+    public void leggTilAction(){
 
         lblVaremerkeFeil.setText("");
-        lblKlokkehastighetFeil.setText("");
-        lblMinneFeil.setText("");
         lblModellFeil.setText("");
         lblPrisFeil.setText("");
+        lblKlokkehastighetFeil.setText("");
+        lblMinneFeil.setText("");
 
         String varemerke = txtVaremerke.getText();
-        String klokkehastighet = txtKlokkehastighet.getText();
-        double pris = Double.parseDouble(txtPris.getText());
-        String minne = txtMinne.getText();
         String modell = txtModell.getText();
+        String pris = txtPris.getText();
+        String klokkehastighet = txtKlokkehastighet.getText();
+        String minne = txtMinne.getText();
+
 
         boolean check1 = true;
         boolean check2 = true;
@@ -71,7 +73,7 @@ public class NySkjermkortController {
         }
 
         //Validerer Pris
-        if (TallCheck.tallcheck(txtPris.getText()) == false) {
+        if (TallCheck.tallcheck(pris) == false) {
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
@@ -89,8 +91,10 @@ public class NySkjermkortController {
         }
 
         Skjermkort nyttSkjermkort = new Skjermkort(varemerke,
-                modell, pris, Double.parseDouble(txtKlokkehastighet.getText()),
-                Integer.parseInt(txtMinne.getText()));
+                modell,
+                Double.parseDouble(pris),
+                Double.parseDouble(klokkehastighet),
+                Integer.parseInt(minne));
 
         if (check1 && check2 && check3 && check4 && check5){
             KomponentData.leggTilKomponent(nyttSkjermkort);

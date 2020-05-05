@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class Lagringsenhet extends Komponent{
+public class Lagringsenhet extends Komponent implements Cloneable{
     //Nedtreksliste med alle de ulike formatene (HDD, hybrid, SSD)
     private transient SimpleStringProperty format;
     private transient SimpleIntegerProperty gb;
@@ -33,6 +33,10 @@ public class Lagringsenhet extends Komponent{
         this.skriveHastighet = new SimpleStringProperty(skriveHastighet);
     }
 
+    /*public Lagringsenhet clone() throws CloneNotSupportedException
+    {
+        return (Lagringsenhet) super.clone();
+    }*/
 
     public String getFormat() {
         return format.get();
@@ -66,7 +70,7 @@ public class Lagringsenhet extends Komponent{
         this.skriveHastighet.set(skriveHastighet);
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Lagringsenhet{" +
                 "format='" + format + '\'' +
@@ -74,7 +78,7 @@ public class Lagringsenhet extends Komponent{
                 ", leseHastighet='" + leseHastighet + '\'' +
                 ", skriveHastighet='" + skriveHastighet + '\'' +
                 '}';
-    }
+    }*/
 
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();

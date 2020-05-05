@@ -41,14 +41,6 @@ public class Prosessor extends Komponent {
         this.klokkehastighet = new SimpleDoubleProperty(klokkehastighet);
     }
 
-    @Override
-    public String toString() {
-        return "Prosessor{" +
-                "antallKjerner=" + antallKjerner +
-                ", klokkehastighet=" + klokkehastighet +
-                '}';
-    }
-
     private void writeObject(ObjectOutputStream out) throws IOException {
 
         out.defaultWriteObject();

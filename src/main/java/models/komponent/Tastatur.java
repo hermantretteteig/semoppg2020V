@@ -47,14 +47,6 @@ public class Tastatur extends Komponent{
         this.numpad = new SimpleBooleanProperty(numpad);
     }
 
-    @Override
-    public String toString() {
-        return "Tastatur{" +
-                "trodlos=" + trodlos +
-                ", numpad=" + numpad +
-                '}';
-    }
-
     private void writeObject(ObjectOutputStream out)
             throws IOException {
 

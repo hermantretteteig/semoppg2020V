@@ -58,15 +58,6 @@ public class Skjerm extends Komponent {
         this.min4k = new SimpleBooleanProperty(min4k);
     }
 
-    @Override
-    public String toString() {
-        return "Skjerm{" +
-                "pixelBredde=" + pixelBredde +
-                ", pixelHoyde=" + pixelHoyde +
-                ", min4k=" + min4k +
-                '}';
-    }
-
     private void writeObject(ObjectOutputStream out) throws IOException {
 
         out.defaultWriteObject();

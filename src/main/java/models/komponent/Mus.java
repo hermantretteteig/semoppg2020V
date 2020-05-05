@@ -42,14 +42,6 @@ public class Mus extends Komponent {
         this.farge = new SimpleStringProperty(farge);
     }
 
-    @Override
-    public String toString() {
-        return "Mus{" +
-                "trodlos=" + trodlos +
-                ", farge='" + farge + '\'' +
-                '}';
-    }
-
     private void writeObject(ObjectOutputStream out) throws IOException {
 
         out.defaultWriteObject();

@@ -1,10 +1,14 @@
 package eksempeldata;
 
 import data.*;
+import filbehandling.Formatter.DatamaskinFormatter;
+import filbehandling.Formatter.OrdreFormatter;
 import models.brukere.Admin;
 import models.brukere.Kunde;
 import models.kjop.Ordre;
 import models.komponent.*;
+
+import java.util.Formatter;
 
 public class Eksempeldata {
 
@@ -13,7 +17,7 @@ public class Eksempeldata {
         return new Kunde("Ole", "Hansen", "olehasen", "hemmelig", "ole.hansen@online.no");
     }
 
-    public static void GenererEksempeldata() {
+    public static void GenererEksempeldata() throws CloneNotSupportedException {
 
         Kunde nyKunde1 = new Kunde("Ole", "Hansen", "olehansen", "passord123", "eksempelKunde1",  "ole.hansen@online.no");
         Kunde nyKunde2 = new Kunde("Stian", "Ludviksen", "stianlud", "hemmelig", "eksempelKunde2", "stian.lud@online.no");
@@ -130,12 +134,54 @@ public class Eksempeldata {
 
         Ordre nyOrdre1 = new Ordre("12/02/2017 13:21:00", nyKunde1.getKundenummer(), nyDatamaskin1);
         Ordre nyOrdre2 = new Ordre("03/11/2019 22:03:03", nyKunde2.getKundenummer(), nyDatamaskin2);
+        //Her ser du hvordan du kloner. Kan også gjøres med datamaskin eller komponent.
+        Ordre nyOrdre3 = nyOrdre1.Clone();
+
 
         ValgtOrdreSinDatamaskinData.leggTil(lagringsenhetEn);
 
 
         OrdreData.leggTilOrdre(nyOrdre1);
         OrdreData.leggTilOrdre(nyOrdre2);
+
+        String ut1 = OrdreFormatter.formaterOrdre2(nyOrdre1);
+        String ut2 = OrdreFormatter.formaterOrdre2(nyOrdre3);
+
+        System.out.println(ut1);
+        System.out.println();
+        System.out.println(ut2);
+
+        System.out.println();
+        System.out.println(nyOrdre1);
+        System.out.println(nyOrdre3);
+
+        System.out.println();
+        System.out.println(nyOrdre1.getDatamaskin());
+        System.out.println(nyOrdre3.getDatamaskin());
+
+        System.out.println();
+        System.out.println(nyOrdre1.getDatamaskin().getProsessor());
+        System.out.println(nyOrdre3.getDatamaskin().getProsessor());
+
+        System.out.println();
+        System.out.println(nyOrdre1.getDatamaskin().getSkjermkort());
+        System.out.println(nyOrdre3.getDatamaskin().getSkjermkort());
+
+        System.out.println();
+        System.out.println(nyOrdre1.getDatamaskin().getLagringsenhet());
+        System.out.println(nyOrdre3.getDatamaskin().getLagringsenhet());
+
+        System.out.println();
+        System.out.println(nyOrdre1.getDatamaskin().getSkjerm());
+        System.out.println(nyOrdre3.getDatamaskin().getSkjerm());
+
+        System.out.println();
+        System.out.println(nyOrdre1.getDatamaskin().getMus());
+        System.out.println(nyOrdre3.getDatamaskin().getMus());
+
+        System.out.println();
+        System.out.println(nyOrdre1.getDatamaskin().getTastatur());
+        System.out.println(nyOrdre3.getDatamaskin().getTastatur());
 
         }
 }

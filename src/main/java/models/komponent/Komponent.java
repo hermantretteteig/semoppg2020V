@@ -12,7 +12,7 @@ import java.util.UUID;
 
 
 //Superklasse som alle andre varer arver fra.
-public class Komponent implements Serializable {
+public class Komponent implements Serializable, Cloneable{
     private static final long serialVersionUID = 2;
 
     private transient SimpleStringProperty varenr;
@@ -34,6 +34,10 @@ public class Komponent implements Serializable {
         this.varemerke = new SimpleStringProperty(varemerke);
         this.modell = new SimpleStringProperty(modell);
         this.pris = new SimpleDoubleProperty(pris);
+    }
+
+    public Komponent clone() throws CloneNotSupportedException {
+        return (Komponent) super.clone();
     }
 
     public String getModell() {

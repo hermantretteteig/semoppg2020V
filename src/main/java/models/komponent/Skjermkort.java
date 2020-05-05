@@ -41,14 +41,6 @@ public class Skjermkort extends Komponent{
         this.minne = new SimpleIntegerProperty(minne);
     }
 
-    @Override
-    public String toString() {
-        return "Skjermkort{" +
-                "klokkehastighet=" + klokkehastighet +
-                ", minne=" + minne +
-                '}';
-    }
-
     private void writeObject(ObjectOutputStream out) throws IOException {
 
         out.defaultWriteObject();

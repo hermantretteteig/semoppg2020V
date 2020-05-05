@@ -2,7 +2,7 @@ package models.komponent;
 
 import java.io.Serializable;
 
-public class Datamaskin implements Serializable {
+public class Datamaskin implements Serializable, Cloneable {
     private static final long serialVersionUID = 1;
 
     private Lagringsenhet lagringsenhet;
@@ -20,6 +20,17 @@ public class Datamaskin implements Serializable {
         this.skjerm = skjerm;
         this.mus = mus;
         this.tastatur = tastatur;
+    }
+
+    public Datamaskin clone() throws CloneNotSupportedException {
+        Datamaskin datamaskin = (Datamaskin) super.clone();
+        datamaskin.prosessor = (Prosessor) this.prosessor.clone();
+        datamaskin.skjermkort = (Skjermkort) this.skjermkort.clone();
+        datamaskin.lagringsenhet = (Lagringsenhet) this.lagringsenhet.clone();
+        datamaskin.skjerm = (Skjerm) this.skjerm.clone();
+        datamaskin.mus = (Mus) this.mus.clone();
+        datamaskin.tastatur = (Tastatur) this.tastatur.clone();
+        return datamaskin;
     }
 
     public Lagringsenhet getLagringsenhet() {
@@ -70,7 +81,7 @@ public class Datamaskin implements Serializable {
         this.tastatur = tastatur;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Datamaskin{" +
                 "lagringsenhet=" + lagringsenhet +
@@ -80,6 +91,6 @@ public class Datamaskin implements Serializable {
                 ", skjermkort=" + skjermkort +
                 ", tastatur=" + tastatur +
                 '}';
-    }
+    }*/
 
 }

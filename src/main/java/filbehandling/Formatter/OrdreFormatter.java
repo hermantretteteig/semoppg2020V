@@ -4,7 +4,7 @@ import models.kjop.Ordre;
 
 import java.util.ArrayList;
 
-import static filbehandling.Formatter.DatamaskinFormatter.formaterDatamaskin2;
+import static filbehandling.Formatter.DatamaskinFormatter.formaterDatamaskin;
 
 public class OrdreFormatter {
     private static final String ordreHead = String.join(";","Ordrenummer", "Kjopsdato", "Kundenummer", "Totalsum");
@@ -27,10 +27,22 @@ public class OrdreFormatter {
                     ordre.getKjopsdato(),
                     ordre.getKundenr(),
                     String.valueOf(ordre.getTotalsum()),
-                    formaterDatamaskin2(ordre.getDatamaskin()) + "\n"
+                    formaterDatamaskin(ordre.getDatamaskin()) + "\n"
             ));
 
         }
+        return ut.toString();
+    }
+
+    public static String formaterOrdre2(Ordre ordre){
+        StringBuilder ut = new StringBuilder();
+
+            ut.append(String.join(";",
+                    ordre.getOrdrenumer(),
+                    ordre.getKjopsdato(),
+                    ordre.getKundenr(),
+                    String.valueOf(ordre.getTotalsum()),
+                    formaterDatamaskin(ordre.getDatamaskin()) + "\n"));
         return ut.toString();
     }
 

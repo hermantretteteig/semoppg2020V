@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-public class Ordre {
+public class Ordre implements Cloneable{
     private SimpleStringProperty ordrenumer;
     private SimpleStringProperty kjopsdato;
     private SimpleStringProperty kundenr;
@@ -34,6 +34,12 @@ public class Ordre {
         this.kundenr = new SimpleStringProperty(kundenr);
         this.totalsum = new SimpleDoubleProperty(totalsum);
         this.datamaskin = datamaskin;
+    }
+
+    public Ordre Clone() throws CloneNotSupportedException {
+        Ordre ordre = (Ordre) super.clone();
+        ordre.datamaskin = (Datamaskin) this.datamaskin.clone();
+        return ordre;
     }
 
 

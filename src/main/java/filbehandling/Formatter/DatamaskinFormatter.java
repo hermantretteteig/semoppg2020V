@@ -2,15 +2,15 @@ package filbehandling.Formatter;
 
 import models.komponent.*;
 
-class DatamaskinFormatter {
+public class DatamaskinFormatter {
 
-    static String formaterDatamaskin2(Datamaskin datamaskin){
-         return String.join(";",formaterProsessor(datamaskin.getProsessor()),
-                 formaterSkjermkort(datamaskin.getSkjermkort()),
-                 formaterLageringsenhet(datamaskin.getLagringsenhet()),
-                 formaterSkjerm(datamaskin.getSkjerm()),
-                 formaterMus(datamaskin.getMus()),
-                 formaterTastatur(datamaskin.getTastatur()));
+    public static String formaterDatamaskin(Datamaskin datamaskin){
+        return String.join(";",formaterProsessor(datamaskin.getProsessor()),
+                formaterSkjermkort(datamaskin.getSkjermkort()),
+                formaterLageringsenhet(datamaskin.getLagringsenhet()),
+                formaterSkjerm(datamaskin.getSkjerm()),
+                formaterMus(datamaskin.getMus()),
+                formaterTastatur(datamaskin.getTastatur()));
     }
 
     private static String formaterKomponent(Komponent komponent){

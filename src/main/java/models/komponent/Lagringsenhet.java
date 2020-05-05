@@ -33,11 +33,6 @@ public class Lagringsenhet extends Komponent implements Cloneable{
         this.skriveHastighet = new SimpleStringProperty(skriveHastighet);
     }
 
-    /*public Lagringsenhet clone() throws CloneNotSupportedException
-    {
-        return (Lagringsenhet) super.clone();
-    }*/
-
     public String getFormat() {
         return format.get();
     }
@@ -69,17 +64,7 @@ public class Lagringsenhet extends Komponent implements Cloneable{
     public void setSkriveHastighet(String skriveHastighet) {
         this.skriveHastighet.set(skriveHastighet);
     }
-
-    /*@Override
-    public String toString() {
-        return "Lagringsenhet{" +
-                "format='" + format + '\'' +
-                ", gb=" + gb +
-                ", leseHastighet='" + leseHastighet + '\'' +
-                ", skriveHastighet='" + skriveHastighet + '\'' +
-                '}';
-    }*/
-
+    
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
 

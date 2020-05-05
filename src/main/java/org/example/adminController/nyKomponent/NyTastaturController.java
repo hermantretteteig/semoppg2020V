@@ -6,6 +6,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import logikk.NyKomponentAlert;
 import models.komponent.Tastatur;
 import org.example.App;
 import validering.*;
@@ -28,6 +29,11 @@ public class NyTastaturController {
     @FXML private javafx.scene.control.Button avslutt;
 
     @FXML
+    public void avsluttAction() throws Exception{
+        App.setRoot("adminView/nyKomponentView/nyKomponent");
+    }
+
+    @FXML
     public void leggTilAction() {
 
         lblVaremerkeFeil.setText("");
@@ -40,9 +46,6 @@ public class NyTastaturController {
         String modell = txtModell.getText();
         double pris = Double.parseDouble(txtPris.getText());
 
-        //Må lage en for numpad og trodøs også?
-
-
         boolean check1 = true;
         boolean check2 = true;
         boolean check3 = true;
@@ -50,6 +53,7 @@ public class NyTastaturController {
         boolean check5 = true;
 
         //Validerer Varenummer
+
 
         //Validerer Varemerke
         if(LengeCheck.lengdeCheck(varemerke) == false){
@@ -75,27 +79,31 @@ public class NyTastaturController {
             check4 = false;
         }
 
+        boolean numpad = false;
+        if(choNumpad.getValue().equals("Ja")){
+            numpad = true;
+        }
+
+
         //Validerer Trådløs
         if(choTrodlos.getValue() == null) {
             lblNumpadFeil.setText("Må fylles ut");
             check5 = false;
         }
-
-        //!!!!Trenger hjelp med utfyllingen av denne
-
-        //Tastatur nyTastatur = new Tastatur(varemerke,
-          //  modell, pris, choNumpad, choTrodlos);
-        if(check1 && check2 && check3 && check4 && check5) {
-           // KomponentData.leggTilKomponent(nyTastatur);
-            //Stage stage = (Stage) avslutt.getScene().getWindow();
-            //stage.close();
+        boolean trodlos = false;
+        if(choTrodlos.getValue().equals("Ja")){
+            trodlos = true;
         }
 
-        //App.setRoot("adminView/nyKomponentView/nyKomponent");
-    }
+        Tastatur nyTastatur = new Tastatur(varemerke,
+           modell, pris, trodlos, numpad);
 
-    @FXML
-    public void avsluttAction() throws Exception{
-        App.setRoot("adminView/nyKomponentView/nyKomponent");
+        if(check1 && check2 && check3 && check4 && check5) {
+           KomponentData.leggTilKomponent(nyTastatur);
+           NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
+           Stage stage = (Stage) avslutt.getScene().getWindow();
+           stage.close();
+        }
+        //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 }

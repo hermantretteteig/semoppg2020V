@@ -59,7 +59,7 @@ public class NyAdminController {
 
         //Validerer fornavn
         if(BokstaverCheck.bokstavercheck(fornavn) == false){
-            lblFornavnFeil.setText("Fornavn");
+            lblFornavnFeil.setText("Fornavn er ugyldig");
             check1 = false;
         }
 
@@ -77,7 +77,7 @@ public class NyAdminController {
 
         //Validerer passord
         if(PassordCheck.passordchecker(passord) == false){
-            lblPassordFeil.setText("Små og store bokstaver, minst 8 tegn og tall ");
+            lblPassordFeil.setText("Må være små og store bokstaver, minst 8 tegn og tall ");
             check1 = false;
         }
 

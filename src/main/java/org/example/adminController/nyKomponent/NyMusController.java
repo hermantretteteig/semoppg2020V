@@ -1,15 +1,17 @@
 package org.example.adminController.nyKomponent;
 
+import data.KomponentData;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import logikk.NyKomponentAlert;
+import models.komponent.Mus;
 import org.example.App;
-import validering.BokstaverCheck;
 import validering.LengeCheck;
 import validering.TallCheck;
-
 
 public class NyMusController {
 
@@ -27,6 +29,11 @@ public class NyMusController {
 
     @FXML private javafx.scene.control.Button registrer;
     @FXML private javafx.scene.control.Button avslutt;
+
+    @FXML
+    public void avsluttAction() throws Exception{
+        App.setRoot("adminView/nyKomponentView/nyKomponent");
+    }
 
     @FXML
     public void leggTilAction() throws Exception{
@@ -69,24 +76,24 @@ public class NyMusController {
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
-
+        //Validerer Trodlos
         if(choTrodlos.getValue() == null) {
             lblTrodlosFeil.setText("Må fylles ut");
             check4 = false;
         }
+        boolean trodlos = false;
+        if(choTrodlos.getValue().equals("Ja")) {
+            trodlos = true;
+        }
 
-        //Mus nyMus = new Mus("2300", txtVaremerke.getText(), txtModell.getText(), Integer.parseInt(txtPris.getText()), trodlos, colFarge.getValue().toString());
+        Mus nyMus = new Mus(varemerke, modell, pris, trodlos, colFarge.getValue().toString());
         if (check1 && check2 && check3 && check4 && check5){
-            //KomponentData.leggTilKomponent(nyMus);
-
-            //NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
+            KomponentData.leggTilKomponent(nyMus);
+            NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
+            Stage stage = (Stage) avslutt.getScene().getWindow();
+            stage.close();
         }
         //Rooter tilslutt til oversiktview
         //App.setRoot("adminView/nyKomponentView/nyKomponent");
-    }
-
-    @FXML
-    public void avsluttAction() throws Exception{
-        App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 }

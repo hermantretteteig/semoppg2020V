@@ -5,11 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import logikk.NyKomponentAlert;
 import models.komponent.Lagringsenhet;
 import org.example.App;
-import validering.BokstaverCheck;
 import validering.LengeCheck;
 import validering.TallCheck;
 
@@ -33,6 +32,14 @@ public class NyLagringsenhetController {
     public TextField txtLesehastighet;
     public TextField txtSkrivehastighet;
 
+    @FXML private javafx.scene.control.Button registrer;
+    @FXML private javafx.scene.control.Button avslutt;
+
+    @FXML
+    public void avsluttAction() throws Exception{
+        App.setRoot("adminView/nyKomponentView/nyKomponent");
+    }
+
     @FXML
     public void leggTilAction() throws Exception{
 
@@ -47,7 +54,6 @@ public class NyLagringsenhetController {
         String varemerke = txtVaremerke.getText();
         String modell = txtModell.getText();
         double pris = Double.parseDouble(txtPris.getText());
-        //Lage en for format også?
         String storrelse  = txtStorrelse.getText();
         String lesehastighet = txtLesehastighet.getText();
         String skrivehastighet = txtSkrivehastighet.getText();
@@ -59,7 +65,6 @@ public class NyLagringsenhetController {
         boolean check5 = true;
         boolean check6 = true;
         boolean check7 = true;
-
 
         //Validerer Varenummer
 
@@ -106,16 +111,13 @@ public class NyLagringsenhetController {
             check7 = false;
         }
 
-        //Lagringsenhet nyLagringsenhet = new Lagringsenhet(txtVaremerke.getText(), txtModell.getText(), txtPris.getText(), txtStorrelse.getText(), txtLesehastighet.getText(), txtSkrivehastighet.getText());
+        Lagringsenhet nyLagringsenhet = new Lagringsenhet(varemerke, modell, pris, choFormat.getValue().toString(), Integer.parseInt(storrelse), lesehastighet, skrivehastighet);
         if (check1 && check2 && check3 && check4 && check5 && check6){
-            //KomponentData.leggTilKomponent(nyLagringsenhet);
-            //NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
+            KomponentData.leggTilKomponent(nyLagringsenhet);
+            NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
+            Stage stage = (Stage) avslutt.getScene().getWindow();
+            stage.close();
         }
-        App.setRoot("adminView/nyKomponentView/nyKomponent");
-    }
-
-    @FXML
-    public void avsluttAction() throws Exception{
         App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 }

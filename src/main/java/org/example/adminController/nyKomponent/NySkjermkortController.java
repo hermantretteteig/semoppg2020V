@@ -7,10 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import models.komponent.Komponent;
+import logikk.NyKomponentAlert;
 import models.komponent.Skjermkort;
 import org.example.App;
-import validering.BokstaverCheck;
 import validering.LengeCheck;
 import validering.TallCheck;
 
@@ -28,11 +27,13 @@ public class NySkjermkortController {
     public TextField txtKlokkehastighet;
     public TextField txtMinne;
 
-    @FXML
-    public AnchorPane skjermkortPanel;
-
     @FXML private javafx.scene.control.Button registrer;
     @FXML private javafx.scene.control.Button avslutt;
+
+    @FXML
+    public void avsluttAction() throws Exception{
+        App.setRoot("adminView/nyKomponentView/nyKomponent");
+    }
 
     @FXML
     public void leggTilAction() throws Exception {
@@ -88,19 +89,15 @@ public class NySkjermkortController {
         }
 
         Skjermkort nyttSkjermkort = new Skjermkort(varemerke,
-                modell, pris,
-                Double.parseDouble(txtKlokkehastighet.getText()),
+                modell, pris, Double.parseDouble(txtKlokkehastighet.getText()),
                 Integer.parseInt(txtMinne.getText()));
+
         if (check1 && check2 && check3 && check4 && check5){
             KomponentData.leggTilKomponent(nyttSkjermkort);
+            NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
             Stage stage = (Stage) avslutt.getScene().getWindow();
             stage.close();
-
         }
         //App.setRoot("adminView/nyKomponentView/nyKomponent");
-    }
-    @FXML
-    public void avsluttAction() throws Exception{
-        App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 }

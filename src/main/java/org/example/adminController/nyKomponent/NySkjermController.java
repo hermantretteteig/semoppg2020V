@@ -1,13 +1,14 @@
 package org.example.adminController.nyKomponent;
 
+import data.KomponentData;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import logikk.NyKomponentAlert;
 import models.komponent.Skjerm;
 import org.example.App;
-import validering.BokstaverCheck;
 import validering.LengeCheck;
 import validering.TallCheck;
 
@@ -31,6 +32,11 @@ public class NySkjermController {
     @FXML private javafx.scene.control.Button avslutt;
 
     @FXML
+    public void avsluttAction() throws Exception{
+        App.setRoot("adminView/nyKomponentView/nyKomponent");
+    }
+
+    @FXML
     public void leggTilAction() throws Exception{
 
         lblVaremerkeFeil.setText("");
@@ -45,8 +51,6 @@ public class NySkjermController {
         double pris = Double.parseDouble(txtPris.getText());
         String hoyde = txtHoyde.getText();
         String bredde = txtBredde.getText();
-
-        //Må lage en for 4k også?
 
         boolean check1 = true;
         boolean check2 = true;
@@ -94,20 +98,15 @@ public class NySkjermController {
         }
 
 
-        //!!!Må fylles ut
-        //Skjerm nySkjerm = new Skjerm(varemerke, modell, pris,
-          //      hoyde, bredde, cho4K.getValue());
+        Skjerm nySkjerm = new Skjerm(varemerke, modell, pris,
+                 Integer.parseInt(hoyde), Integer.parseInt(bredde));
+
         if (check1 && check2 && check3 && check4 && check5){
-            //KomponentData.leggTilKomponent(nySkjerm);
-            //Stage stage = (Stage) avslutt.getScene().getWindow();
-            //stage.close();
+            KomponentData.leggTilKomponent(nySkjerm);
+            NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
+            Stage stage = (Stage) avslutt.getScene().getWindow();
+            stage.close();
         }
-
         //App.setRoot("adminView/nyKomponentView/nyKomponent");
-    }
-
-    @FXML
-    public void avsluttAction() throws Exception{
-        App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 }

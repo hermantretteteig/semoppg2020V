@@ -83,7 +83,7 @@
                         <Font size="10.0" />
                     </font>
                 </Label>
-                <Label fx:id="lblBrukernavnFeil" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="169.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <Label fx:id="lblBrukernavnFeil" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="192.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                     <GridPane.margin>
                         <Insets right="24.0" top="40.0" />
                     </GridPane.margin>
@@ -91,15 +91,15 @@
                         <Font size="10.0" />
                     </font>
                 </Label>
-                <Label fx:id="lblPassordFeil" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="205.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <Label fx:id="lblPassordFeil" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="373.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                     <GridPane.margin>
-                        <Insets right="24.0" top="40.0" />
+                        <Insets left="-200.0" right="24.0" top="40.0" />
                     </GridPane.margin>
                     <font>
                         <Font size="10.0" />
                     </font>
                 </Label>
-                <Label fx:id="lblGjentaPassordFeil" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="173.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                <Label fx:id="lblGjentaPassordFeil" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="373.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
                     <GridPane.margin>
                         <Insets right="24.0" top="40.0" />
                     </GridPane.margin>

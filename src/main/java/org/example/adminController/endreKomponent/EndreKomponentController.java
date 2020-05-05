@@ -96,6 +96,7 @@ public class EndreKomponentController {
 
 
     public void VareMerkeEdit(TableColumn.CellEditEvent<Komponent, String> event) {
+
         event.getRowValue().setVaremerke(event.getNewValue());
     }
 

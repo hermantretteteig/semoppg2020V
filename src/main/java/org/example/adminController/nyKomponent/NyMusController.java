@@ -27,8 +27,8 @@ public class NyMusController {
     public ChoiceBox choTrodlos;
     public ColorPicker colFarge;
 
-    @FXML private javafx.scene.control.Button registrer;
-    @FXML private javafx.scene.control.Button avslutt;
+    @FXML public javafx.scene.control.Button registrer;
+    @FXML public javafx.scene.control.Button avslutt;
 
     @FXML
     public void avsluttAction() throws Exception{
@@ -47,7 +47,6 @@ public class NyMusController {
         String varemerke = txtVaremerke.getText();
         String modell = txtModell.getText();
         double pris = Double.parseDouble(txtPris.getText());
-        //Lage to til for trådløs og fargevelger?
 
         boolean check1 = true;
         boolean check2 = true;
@@ -89,9 +88,9 @@ public class NyMusController {
         Mus nyMus = new Mus(varemerke, modell, pris, trodlos, colFarge.getValue().toString());
         if (check1 && check2 && check3 && check4 && check5){
             KomponentData.leggTilKomponent(nyMus);
-            NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
             Stage stage = (Stage) avslutt.getScene().getWindow();
             stage.close();
+            NyKomponentAlert.visBekreftelse(varemerke, modell);
         }
         //Rooter tilslutt til oversiktview
         //App.setRoot("adminView/nyKomponentView/nyKomponent");

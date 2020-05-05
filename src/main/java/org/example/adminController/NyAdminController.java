@@ -1,6 +1,7 @@
 package org.example.adminController;
 
 import data.AdminData;
+import logikk.NyAdminAlert;
 import models.brukere.Admin;
 import validering.*;
 import javafx.fxml.FXML;
@@ -92,11 +93,9 @@ public class NyAdminController {
             AdminData.leggTilAdmin(nyAdmin);
             Stage stage = (Stage) avslutt.getScene().getWindow();
             stage.close();
+            NyAdminAlert.visBekreftelse(brukernavn);
         }
 
         //App.setRoot("Adminview/nyAdminView/nyAdmin");
-
-        //Stage stage = (Stage) registrer.getScene().getWindow();
-        //stage.close();
     }
 }

@@ -25,11 +25,13 @@ public class NyTastaturController {
     public ChoiceBox choNumpad;
     public ChoiceBox choTrodlos;
 
-    @FXML private javafx.scene.control.Button registrer;
-    @FXML private javafx.scene.control.Button avslutt;
+    @FXML public javafx.scene.control.Button registrer;
+    @FXML public javafx.scene.control.Button avslutt;
 
     @FXML
     public void avsluttAction() throws Exception{
+        Stage stage = (Stage) avslutt.getScene().getWindow();
+        stage.close();
         App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 
@@ -78,7 +80,6 @@ public class NyTastaturController {
             lblNumpadFeil.setText("Må fylles ut");
             check4 = false;
         }
-
         boolean numpad = false;
         if(choNumpad.getValue().equals("Ja")){
             numpad = true;
@@ -100,9 +101,9 @@ public class NyTastaturController {
 
         if(check1 && check2 && check3 && check4 && check5) {
            KomponentData.leggTilKomponent(nyTastatur);
-           NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
            Stage stage = (Stage) avslutt.getScene().getWindow();
            stage.close();
+           NyKomponentAlert.visBekreftelse(varemerke, modell);
         }
         //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }

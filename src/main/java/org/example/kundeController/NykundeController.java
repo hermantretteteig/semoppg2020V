@@ -1,6 +1,8 @@
 package org.example.kundeController;
 
 import data.KundeData;
+import logikk.NyKomponentAlert;
+import logikk.NyKundeAlert;
 import models.brukere.Kunde;
 import validering.*;
 import javafx.fxml.FXML;
@@ -100,6 +102,7 @@ public class NykundeController {
             KundeData.leggTilKunde(nyKunde);
             Stage stage = (Stage) avslutt.getScene().getWindow();
             stage.close();
+            NyKundeAlert.visBekreftelse(brukernavn);
         }
 
         //App.setRoot("Adminview/nyAdminView/nyAdmin");

@@ -32,8 +32,8 @@ public class NyLagringsenhetController {
     public TextField txtLesehastighet;
     public TextField txtSkrivehastighet;
 
-    @FXML private javafx.scene.control.Button registrer;
-    @FXML private javafx.scene.control.Button avslutt;
+    @FXML public javafx.scene.control.Button registrer;
+    @FXML public javafx.scene.control.Button avslutt;
 
     @FXML
     public void avsluttAction() throws Exception{
@@ -112,11 +112,11 @@ public class NyLagringsenhetController {
         }
 
         Lagringsenhet nyLagringsenhet = new Lagringsenhet(varemerke, modell, pris, choFormat.getValue().toString(), Integer.parseInt(storrelse), lesehastighet, skrivehastighet);
-        if (check1 && check2 && check3 && check4 && check5 && check6){
+        if (check1 && check2 && check3 && check4 && check5 && check6 && check7){
             KomponentData.leggTilKomponent(nyLagringsenhet);
-            NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
             Stage stage = (Stage) avslutt.getScene().getWindow();
             stage.close();
+            NyKomponentAlert.visBekreftelse(varemerke, modell);
         }
         App.setRoot("adminView/nyKomponentView/nyKomponent");
     }

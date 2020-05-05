@@ -28,8 +28,8 @@ public class NySkjermController {
     public TextField txtBredde;
     public ChoiceBox cho4K;
 
-    @FXML private javafx.scene.control.Button registrer;
-    @FXML private javafx.scene.control.Button avslutt;
+    @FXML public javafx.scene.control.Button registrer;
+    @FXML public  javafx.scene.control.Button avslutt;
 
     @FXML
     public void avsluttAction() throws Exception{
@@ -103,9 +103,9 @@ public class NySkjermController {
 
         if (check1 && check2 && check3 && check4 && check5){
             KomponentData.leggTilKomponent(nySkjerm);
-            NyKomponentAlert.visBekreftelse(txtVaremerke.getText(), txtModell.getText());
             Stage stage = (Stage) avslutt.getScene().getWindow();
             stage.close();
+            NyKomponentAlert.visBekreftelse(varemerke, modell);
         }
         //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }

@@ -106,8 +106,5 @@ public class NykundeController {
         }
 
         //App.setRoot("Adminview/nyAdminView/nyAdmin");
-
-        //Stage stage = (Stage) registrer.getScene().getWindow();
-        //stage.close();
     }
 }

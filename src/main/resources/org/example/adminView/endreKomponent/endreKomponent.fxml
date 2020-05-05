@@ -40,7 +40,7 @@
                  <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
          </TableColumn>
-         <TableColumn onEditCommit="#ModellEdit" prefWidth="100.0" text="Varemerke">
+         <TableColumn onEditCommit="#ModellEdit" prefWidth="100.0" text="Modell">
              <cellValueFactory>
                  <PropertyValueFactory property="Modell" />
              </cellValueFactory>
@@ -48,7 +48,7 @@
                  <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
          </TableColumn>
-         <TableColumn fx:id="coPris" onEditCommit="#PrisEdit" prefWidth="100.0" text="Modell">
+         <TableColumn fx:id="coPris" onEditCommit="#PrisEdit" prefWidth="100.0" text="Pris (kr)">
              <cellValueFactory>
                  <PropertyValueFactory property="Pris" />
              </cellValueFactory>
@@ -56,7 +56,7 @@
                  <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
          </TableColumn>
-         <TableColumn onEditCommit="#VareMerkeEdit" prefWidth="100.0" text="Pris (kr)">
+         <TableColumn onEditCommit="#VareMerkeEdit" prefWidth="100.0" text="Varemerke">
              <cellValueFactory>
                  <PropertyValueFactory property="Varemerke" />
              </cellValueFactory>

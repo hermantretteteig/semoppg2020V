@@ -3,6 +3,7 @@ package org.example.adminController.endreKomponent;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import validering.LengeCheck;
+import validering.TallCheck;
 import validering.ValiKomponent;
 import data.KomponentData;
 import javafx.beans.value.ObservableValue;
@@ -99,17 +100,25 @@ public class EndreKomponentController {
 
 
     public void VareMerkeEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        event.getRowValue().setVaremerke(event.getNewValue());
+        if(nyFeil("For kort varemerkenavn. Minst to tegn", LengeCheck.lengdeCheck(event.getNewValue())) == true) {
+            event.getRowValue().setVaremerke(event.getNewValue());
+            tableView.refresh();
+        }
     }
 
-    public void PrisEdit(TableColumn.CellEditEvent<Komponent, Double> event) {
-        event.getRowValue().setPris(event.getNewValue());
+    public void PrisEdit(TableColumn.CellEditEvent<Komponent, String> event) {
+        if(TallCheck.tallcheck(event.getNewValue()) == true) {
+            event.getRowValue().setPris(Double.parseDouble(event.getNewValue()));
+            tableView.refresh();
+        }
     }
 
     public void ModellEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        event.getRowValue().setModell(event.getNewValue());
+        if(nyFeil("For kort modelnavn. Minst to tegn", LengeCheck.lengdeCheck(event.getNewValue())) == true) {
+            event.getRowValue().setModell(event.getNewValue());
+            tableView.refresh();
+        }
     }
-
 
     //Tastatur
     public void NumpadEdit(TableColumn.CellEditEvent<Komponent, Boolean> event) {
@@ -125,16 +134,25 @@ public class EndreKomponentController {
         ((Lagringsenhet) event.getRowValue()).setFormat(event.getNewValue());
     }
 
-    public void GbEdit(TableColumn.CellEditEvent<Komponent, Integer> event) {
-        ((Lagringsenhet) event.getRowValue()).setGb(event.getNewValue());
+    public void GbEdit(TableColumn.CellEditEvent<Komponent, String> event) {
+        if(nyFeil("Må kun inneholde tall", TallCheck.tallcheck(event.getNewValue())) == true) {
+            ((Lagringsenhet) event.getRowValue()).setGb(Integer.parseInt(event.getNewValue()));
+            tableView.refresh();
+        }
     }
 
     public void SkrivehastighetEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        ((Lagringsenhet) event.getRowValue()).setSkriveHastighet(event.getNewValue());
+        if(nyFeil("Må kun inneholde tall", TallCheck.tallcheck(event.getNewValue())) == true) {
+            ((Lagringsenhet) event.getRowValue()).setSkriveHastighet(event.getNewValue());
+            tableView.refresh();
+        }
     }
 
     public void LesehastighetEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        ((Lagringsenhet) event.getRowValue()).setLeseHastighet(event.getNewValue());
+        if(nyFeil("Må kun inneholde tall", TallCheck.tallcheck(event.getNewValue())) == true) {
+            ((Lagringsenhet) event.getRowValue()).setLeseHastighet(event.getNewValue());
+            tableView.refresh();
+        }
     }
 
     //Mus
@@ -147,12 +165,18 @@ public class EndreKomponentController {
     }
 
     //Prosessor
-    public void KjernerEdit(TableColumn.CellEditEvent<Komponent, Integer> event) {
-        ((Prosessor) event.getRowValue()).setAntallKjerner(event.getNewValue());
+    public void KjernerEdit(TableColumn.CellEditEvent<Komponent, String> event) {
+        if(nyFeil("Må kun inneholde tall", TallCheck.tallcheck(event.getNewValue())) == true) {
+            ((Prosessor) event.getRowValue()).setAntallKjerner(Integer.parseInt(event.getNewValue()));
+            tableView.refresh();
+        }
     }
 
-    public void KlokkehastgihetEdit(TableColumn.CellEditEvent<Komponent, Double> event) {
-        ((Prosessor) event.getRowValue()).setKlokkehastighet(event.getNewValue());
+    public void KlokkehastgihetEdit(TableColumn.CellEditEvent<Komponent, String> event) {
+        if(nyFeil("Må kun inneholde tall", TallCheck.tallcheck(event.getNewValue())) == true) {
+            ((Prosessor) event.getRowValue()).setKlokkehastighet(Double.parseDouble(event.getNewValue()));
+            tableView.refresh();
+        }
     }
 
     //Skjerm
@@ -167,12 +191,19 @@ public class EndreKomponentController {
     }
 
     //Skjermkort
-    public void SkKlokkehastgihetEdit(TableColumn.CellEditEvent<Komponent, Double> event) {
-        ((Skjermkort) event.getRowValue()).setKlokkehastighet(event.getNewValue());
+    public void SkKlokkehastgihetEdit(TableColumn.CellEditEvent<Komponent, String> event) {
+        if(nyFeil("Må kun inneholde tall", TallCheck.tallcheck(event.getNewValue())) == true) {
+            ((Skjermkort) event.getRowValue()).setKlokkehastighet(Double.parseDouble(event.getNewValue()));
+            tableView.refresh();
+
+        }
     }
 
-    public void MinneEdit(TableColumn.CellEditEvent<Komponent, Integer> event) {
-        ((Skjermkort) event.getRowValue()).setMinne(event.getNewValue());
+    public void MinneEdit(TableColumn.CellEditEvent<Komponent, String> event) {
+        if(nyFeil("Må kun inneholde tall", TallCheck.tallcheck(event.getNewValue())) == true) {
+            ((Skjermkort) event.getRowValue()).setMinne(Integer.parseInt(event.getNewValue()));
+            tableView.refresh();
+        }
     }
 
     public void SkjulAlleEkstrakolonner() {

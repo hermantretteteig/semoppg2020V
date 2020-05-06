@@ -107,6 +107,14 @@
                   <Insets left="160.0" top="-10.0" />
                </GridPane.margin>
             </TextField>
+            <Label text="kr." GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="7.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
             <ChoiceBox fx:id="choTrodlos" prefHeight="25.0" prefWidth="196.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="60.0" top="-10.0" />
@@ -118,14 +126,14 @@
                   </FXCollections>
                </items>
             </ChoiceBox>
-            <Label text="kr." GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <ColorPicker fx:id="colFarge" prefHeight="25.0" prefWidth="194.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <opaqueInsets>
+                  <Insets left="60.0" />
+               </opaqueInsets>
                <GridPane.margin>
-                  <Insets bottom="10.0" left="7.0" />
+                  <Insets left="60.0" top="-10.0" />
                </GridPane.margin>
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
+            </ColorPicker>
             <Label fx:id="lblVaremerkeFeil" textFill="#dd0000" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="32.0" />
@@ -167,14 +175,6 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <ColorPicker fx:id="colFarge" prefHeight="25.0" prefWidth="194.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <opaqueInsets>
-                  <Insets left="60.0" />
-               </opaqueInsets>
-               <GridPane.margin>
-                  <Insets left="60.0" top="-10.0" />
-               </GridPane.margin>
-            </ColorPicker>
          </children>
       </GridPane>
    </children>

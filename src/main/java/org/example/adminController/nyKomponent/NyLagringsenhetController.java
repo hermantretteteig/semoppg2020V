@@ -19,7 +19,6 @@ public class NyLagringsenhetController {
     public Label lblPrisFeil;
     public Label lblFormatFeil;
     public Label lblStorrelseFeil;
-    public Label lblLagringsenhetFeil;
     public Label lblLesehastighetFeil;
     public Label lblSkrivehastighetFeil;
 
@@ -42,7 +41,6 @@ public class NyLagringsenhetController {
 
     @FXML
     public void leggTilAction() throws Exception{
-
         lblVaremerkeFeil.setText("");
         lblModellFeil.setText("");
         lblPrisFeil.setText("");
@@ -53,7 +51,7 @@ public class NyLagringsenhetController {
 
         String varemerke = txtVaremerke.getText();
         String modell = txtModell.getText();
-        double pris = Double.parseDouble(txtPris.getText());
+        String pris = txtPris.getText();
         String storrelse  = txtStorrelse.getText();
         String lesehastighet = txtLesehastighet.getText();
         String skrivehastighet = txtSkrivehastighet.getText();
@@ -82,7 +80,7 @@ public class NyLagringsenhetController {
         }
 
         //Validerer Pris
-        if(TallCheck.tallcheck(txtPris.getText()) == false){
+        if(TallCheck.tallcheck(pris) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
@@ -111,13 +109,15 @@ public class NyLagringsenhetController {
             check7 = false;
         }
 
-        Lagringsenhet nyLagringsenhet = new Lagringsenhet(varemerke, modell, pris, choFormat.getValue().toString(), Integer.parseInt(storrelse), lesehastighet, skrivehastighet);
+        Lagringsenhet nyLagringsenhet = new Lagringsenhet(varemerke,
+                modell, Double.parseDouble(pris),
+                choFormat.getValue().toString(),
+                Integer.parseInt(storrelse),
+                lesehastighet, skrivehastighet);
         if (check1 && check2 && check3 && check4 && check5 && check6 && check7){
             KomponentData.leggTilKomponent(nyLagringsenhet);
-            Stage stage = (Stage) avslutt.getScene().getWindow();
-            stage.close();
+            App.setRoot("adminView/nyKomponentView/nyKomponent");
             NyKomponentAlert.visBekreftelse(varemerke, modell);
         }
-        //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 }

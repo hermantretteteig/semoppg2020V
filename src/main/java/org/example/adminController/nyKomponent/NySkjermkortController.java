@@ -1,17 +1,15 @@
 package org.example.adminController.nyKomponent;
 
-
 import data.KomponentData;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import logikk.NyKomponentAlert;
 import models.komponent.Skjermkort;
 import org.example.App;
 import validering.LengeCheck;
 import validering.TallCheck;
+import java.io.IOException;
 
 public class NySkjermkortController {
 
@@ -31,13 +29,12 @@ public class NySkjermkortController {
     @FXML public javafx.scene.control.Button avslutt;
 
     @FXML
-    public void avsluttAction() {
-        Stage stage = (Stage) avslutt.getScene().getWindow();
-        stage.close();
+    public void avsluttAction() throws IOException {
+        App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 
     @FXML
-    public void leggTilAction(){
+    public void leggTilAction() throws IOException {
 
         lblVaremerkeFeil.setText("");
         lblModellFeil.setText("");
@@ -98,10 +95,8 @@ public class NySkjermkortController {
 
         if (check1 && check2 && check3 && check4 && check5){
             KomponentData.leggTilKomponent(nyttSkjermkort);
-            Stage stage = (Stage) avslutt.getScene().getWindow();
-            stage.close();
+            App.setRoot("adminView/nyKomponentView/nyKomponent");
             NyKomponentAlert.visBekreftelse(varemerke, modell);
         }
-        //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 }

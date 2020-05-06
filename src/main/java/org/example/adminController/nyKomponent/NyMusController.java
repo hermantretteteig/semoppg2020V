@@ -46,7 +46,7 @@ public class NyMusController {
 
         String varemerke = txtVaremerke.getText();
         String modell = txtModell.getText();
-        double pris = Double.parseDouble(txtPris.getText());
+        String pris = txtPris.getText();
 
         boolean check1 = true;
         boolean check2 = true;
@@ -71,7 +71,7 @@ public class NyMusController {
         }
 
         //Validerer Pris
-        if(TallCheck.tallcheck(txtPris.getText()) == false){
+        if(TallCheck.tallcheck(pris) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
@@ -85,14 +85,12 @@ public class NyMusController {
             trodlos = true;
         }
 
-        Mus nyMus = new Mus(varemerke, modell, pris, trodlos, colFarge.getValue().toString());
+        Mus nyMus = new Mus(varemerke, modell,
+                Double.parseDouble(pris), trodlos, colFarge.getValue().toString());
         if (check1 && check2 && check3 && check4 && check5){
             KomponentData.leggTilKomponent(nyMus);
-            Stage stage = (Stage) avslutt.getScene().getWindow();
-            stage.close();
+            App.setRoot("adminView/nyKomponentView/nyKomponent");
             NyKomponentAlert.visBekreftelse(varemerke, modell);
         }
-
-        //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 }

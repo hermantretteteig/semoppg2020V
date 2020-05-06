@@ -11,6 +11,8 @@ import org.example.App;
 import validering.LengeCheck;
 import validering.TallCheck;
 
+import java.io.IOException;
+
 public class NyProsessorController {
 
     public Label lblVaremerkeFeil;
@@ -35,7 +37,7 @@ public class NyProsessorController {
     }
 
     @FXML
-    public void leggTilAction(){
+    public void leggTilAction() throws IOException {
 
         lblVaremerkeFeil.setText("");
         lblModellFeil.setText("");
@@ -45,7 +47,7 @@ public class NyProsessorController {
 
         String varemerke = txtVaremerke.getText();
         String modell = txtModell.getText();
-        double pris = Double.parseDouble(txtPris.getText());
+        String pris = txtPris.getText();
         String kjerner = txtKjerner.getText();
         String klokkehastighet = txtKlokkehastighet.getText();
 
@@ -71,7 +73,7 @@ public class NyProsessorController {
         }
 
         //Validerer Pris
-        if(TallCheck.tallcheck(txtPris.getText()) == false){
+        if(TallCheck.tallcheck(pris) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
@@ -88,16 +90,15 @@ public class NyProsessorController {
             check5 = false;
         }
 
-        Prosessor nyProsessor = new Prosessor(varemerke, modell, pris,
+        Prosessor nyProsessor = new Prosessor(varemerke, modell,
+                Double.parseDouble(pris),
                 Integer.parseInt(kjerner),
                 Double.parseDouble(klokkehastighet));
 
         if (check1 && check2 && check3 && check4 && check5){
             KomponentData.leggTilKomponent(nyProsessor);
-            Stage stage = (Stage) avslutt.getScene().getWindow();
-            stage.close();
+            App.setRoot("adminView/nyKomponentView/nyKomponent");
             NyKomponentAlert.visBekreftelse(varemerke, modell);
         }
-        //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 }

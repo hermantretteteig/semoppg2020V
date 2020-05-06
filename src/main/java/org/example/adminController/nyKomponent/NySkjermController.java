@@ -12,6 +12,8 @@ import org.example.App;
 import validering.LengeCheck;
 import validering.TallCheck;
 
+import java.io.IOException;
+
 public class NySkjermController {
 
     public Label lblVaremerkeFeil;
@@ -37,18 +39,17 @@ public class NySkjermController {
     }
 
     @FXML
-    public void leggTilAction() throws Exception{
+    public void leggTilAction() throws IOException{
 
         lblVaremerkeFeil.setText("");
         lblModellFeil.setText("");
         lblPrisFeil.setText("");
         lblHoydeFeil.setText("");
         lblBreddeFeil.setText("");
-        //lbl4KFeil.setText("");
 
         String varemerke = txtVaremerke.getText();
         String modell = txtModell.getText();
-        double pris = Double.parseDouble(txtPris.getText());
+        String pris = txtPris.getText();
         String hoyde = txtHoyde.getText();
         String bredde = txtBredde.getText();
 
@@ -74,7 +75,7 @@ public class NySkjermController {
         }
 
         //Validerer Pris
-        if(TallCheck.tallcheck(txtPris.getText()) == false){
+        if(TallCheck.tallcheck(pris) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
@@ -91,22 +92,13 @@ public class NySkjermController {
             check5 = false;
         }
 
-
-        //Validerer 4K
-        if(cho4K.getValue() == null) {
-            lbl4KFeil.setText("Må fylles ut");
-        }
-
-
-        Skjerm nySkjerm = new Skjerm(varemerke, modell, pris,
+        Skjerm nySkjerm = new Skjerm(varemerke, modell, Double.parseDouble(pris),
                  Integer.parseInt(hoyde), Integer.parseInt(bredde));
 
         if (check1 && check2 && check3 && check4 && check5){
             KomponentData.leggTilKomponent(nySkjerm);
-            Stage stage = (Stage) avslutt.getScene().getWindow();
-            stage.close();
+            App.setRoot("adminView/nyKomponentView/nyKomponent");
             NyKomponentAlert.visBekreftelse(varemerke, modell);
         }
-        //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 }

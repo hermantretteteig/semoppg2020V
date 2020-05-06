@@ -5,11 +5,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import logikk.NyKomponentAlert;
 import models.komponent.Tastatur;
 import org.example.App;
 import validering.*;
+import java.io.IOException;
 
 public class NyTastaturController {
 
@@ -17,7 +17,7 @@ public class NyTastaturController {
     public Label lblModellFeil;
     public Label lblPrisFeil;
     public Label lblNumpadFeil;
-    public Label lblTrodlos;
+    public Label lblTrodlosFeil;
 
     public TextField txtVaremerke;
     public TextField txtModell;
@@ -29,24 +29,21 @@ public class NyTastaturController {
     @FXML public javafx.scene.control.Button avslutt;
 
     @FXML
-    public void avsluttAction() throws Exception{
-        Stage stage = (Stage) avslutt.getScene().getWindow();
-        stage.close();
+    public void avsluttAction() throws IOException {
         App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 
     @FXML
-    public void leggTilAction() {
+    public void leggTilAction() throws IOException {
 
         lblVaremerkeFeil.setText("");
         lblModellFeil.setText("");
         lblPrisFeil.setText("");
-        lblNumpadFeil.setText("");
-        lblTrodlos.setText("");
+
 
         String varemerke = txtVaremerke.getText();
         String modell = txtModell.getText();
-        double pris = Double.parseDouble(txtPris.getText());
+        String pris = txtPris.getText();
 
         boolean check1 = true;
         boolean check2 = true;
@@ -70,13 +67,13 @@ public class NyTastaturController {
         }
 
         //Validerer Pris
-        if(TallCheck.tallcheck(txtPris.getText()) == false){
+        if(TallCheck.tallcheck(pris) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
 
         //Validerer Numpad
-        if(choNumpad.getValue() == null) {
+        if(choNumpad.getValue().equals(null)) {
             lblNumpadFeil.setText("Må fylles ut");
             check4 = false;
         }
@@ -87,8 +84,8 @@ public class NyTastaturController {
 
 
         //Validerer Trådløs
-        if(choTrodlos.getValue() == null) {
-            lblNumpadFeil.setText("Må fylles ut");
+        if(choTrodlos.getValue().equals(null)) {
+            lblTrodlosFeil.setText("Må fylles ut");
             check5 = false;
         }
         boolean trodlos = false;
@@ -97,14 +94,12 @@ public class NyTastaturController {
         }
 
         Tastatur nyTastatur = new Tastatur(varemerke,
-           modell, pris, trodlos, numpad);
+           modell, Double.parseDouble(pris), trodlos, numpad);
 
         if(check1 && check2 && check3 && check4 && check5) {
            KomponentData.leggTilKomponent(nyTastatur);
-           Stage stage = (Stage) avslutt.getScene().getWindow();
-           stage.close();
+           App.setRoot("adminView/nyKomponentView/nyKomponent");
            NyKomponentAlert.visBekreftelse(varemerke, modell);
         }
-        //App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 }

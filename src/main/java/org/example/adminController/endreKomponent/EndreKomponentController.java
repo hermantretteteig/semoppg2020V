@@ -1,10 +1,8 @@
 package org.example.adminController.endreKomponent;
 
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
 import validering.LengeCheck;
 import validering.TallCheck;
-import validering.ValiKomponent;
 import data.KomponentData;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -55,6 +53,9 @@ public class EndreKomponentController {
 
     private KomponentData collection = new KomponentData();
 
+
+
+
     @FXML
     public void tilbakeAction() throws Exception {
         App.setRoot("adminView/dashboardAdmin");
@@ -74,7 +75,7 @@ public class EndreKomponentController {
         coGb.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         coKjerner.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         coKlokkehastighet.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        coBredde.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        coBredde.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertConverterer()));
         coHoyde.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         coSkKlokkehastighet.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         coMinne.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
@@ -160,13 +161,14 @@ public class EndreKomponentController {
         ((Mus) event.getRowValue()).setTrodlos(event.getNewValue());
     }
 
-    public void FargeEdit(TableColumn.CellEditEvent<Komponent, String> event) {
+    public void FargeEdit(TableColumn.CellEditEvent<Komponent, String> event){
         ((Mus) event.getRowValue()).setFarge(event.getNewValue());
     }
 
     //Prosessor
     public void KjernerEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if(nyFeil("Må kun inneholde tall", TallCheck.tallcheck(event.getNewValue())) == true) {
+
+        if (nyFeil("Må kun inneholde tall", TallCheck.tallcheck(event.getNewValue())) == true) {
             ((Prosessor) event.getRowValue()).setAntallKjerner(Integer.parseInt(event.getNewValue()));
             tableView.refresh();
         }
@@ -186,7 +188,12 @@ public class EndreKomponentController {
     }
 
     public void BreddeEdit(TableColumn.CellEditEvent<Komponent, Integer> event) {
-        ((Skjerm) event.getRowValue()).setPixelBredde(event.getNewValue());
+        if(nyFeil("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
+            ((Skjerm) event.getRowValue()).setPixelBredde(event.getNewValue());
+        }
+        else{
+            ((Skjerm) event.getRowValue()).setPixelBredde(event.getOldValue());
+        }
         tableView.refresh();
     }
 
@@ -325,6 +332,16 @@ public class EndreKomponentController {
         co4K.setCellFactory( CheckBoxTableCell.forTableColumn(co4K) );
         coMusTrodlos.setCellFactory( CheckBoxTableCell.forTableColumn(coMusTrodlos) );
 
+    }
+
+    public static class EgendefinertConverterer extends IntegerStringConverter {
+        @Override
+        public Integer fromString(String innputverdi) {
+            if(TallCheck.tallcheck(innputverdi)==true){
+                return Integer.parseInt(innputverdi);
+            }
+            return -1;
+        }
     }
 }
 

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="403.0" maxWidth="398.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.kundeController.EndreKundeKundeController">
+   <children>
+      <GridPane layoutX="32.0" layoutY="35.0" prefHeight="436.0" prefWidth="516.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="17.0" prefWidth="108.0" text="Endre passord:" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="20.0" top="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtFornavn" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="42.0" />
+               </GridPane.margin></TextField>
+            <TextField fx:id="txtEtternavn" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="42.0" />
+               </GridPane.margin></TextField>
+            <TextField fx:id="txtEpost" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="42.0" />
+               </GridPane.margin></TextField>
+            <TextField fx:id="txtBrukernavn" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="42.0" />
+               </GridPane.margin></TextField>
+            <PasswordField fx:id="txtPassord" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="42.0" />
+               </GridPane.margin></PasswordField>
+            <PasswordField fx:id="txtGjentaPassord" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="42.0" />
+               </GridPane.margin></PasswordField>
+            <Label text="Gjenta nytt passord:" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Nytt passord:" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Brukernavn:" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label prefHeight="17.0" prefWidth="62.0" text="Etternavn:" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Fornavn:" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="lblFornavnFeil" alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="15.0" prefWidth="190.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="24.0" top="40.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Label>
+            <Label fx:id="lblEtternavnFeil" alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="17.0" prefWidth="190.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets right="24.0" top="40.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblBrukernavnFeil" alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="17.0" prefWidth="190.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets right="24.0" top="40.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPassordFeil" alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="15.0" prefWidth="190.0" text="&#10;" textFill="#dd0000" textOverrun="CLIP" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets right="24.0" top="40.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Label>
+            <Label fx:id="lblGjentaPassordFeil" alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="17.0" prefWidth="190.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets right="24.0" top="40.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label prefHeight="17.0" prefWidth="62.0" text="Epost:" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="lblEpostFeil" alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="17.0" prefWidth="190.0" textFill="#dd0000" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="24.0" top="40.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+      </GridPane>
+      <Label layoutX="51.0" layoutY="44.0" prefHeight="38.0" prefWidth="410.0" text="Endre dine kundeopplysninger">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="registrer" layoutX="361.0" layoutY="512.0" mnemonicParsing="false" onAction="#registrerAction" prefHeight="30.0" prefWidth="82.0" text="Lagre">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="avslutt" layoutX="51.0" layoutY="512.0" mnemonicParsing="false" onAction="#avsluttAction" prefHeight="30.0" prefWidth="82.0" text="Tilbake">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label fx:id="lblFeil" layoutX="51.0" layoutY="463.0" textFill="#d60000">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

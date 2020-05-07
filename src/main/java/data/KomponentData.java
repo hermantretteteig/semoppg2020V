@@ -29,12 +29,36 @@ public class KomponentData {
 
     public void hentKomponenttype(TableView tv, String enhet) {
         ObservableList<Komponent> utvalgteLagrinsenheter = FXCollections.observableArrayList();
+
+        if(enhet.equals("Vis alle")){
+            utvalgteLagrinsenheter = alleKomponenter;
+        }
+
         for(Komponent enKomponent : alleKomponenter){
             if(enKomponent.getClass().getSimpleName().equals(enhet)){
                 utvalgteLagrinsenheter.add(enKomponent);
             }
         }
         tv.setItems(utvalgteLagrinsenheter);
+    }
+
+    public void sorterEtterPris(TableView tv, int prisFra, int prisTil, String enhet){
+        ObservableList<Komponent> returListe = FXCollections.observableArrayList();
+        for(Komponent enKomponent : alleKomponenter){
+            //Sjekker om prisen er innenfor grensene
+            if(enKomponent.getPris()>=prisFra && enKomponent.getPris()<=prisTil){
+                //Sjekker om brukeren har valgt "Vis alle", og hvis ja legger til objektet i lista
+                if(enhet.equals("Vis alle")){
+                    returListe.add(enKomponent);
+                }
+                //Sjekker om komponenten er lik komponenttypen som er valgt i valgboksen
+                if(enKomponent.getClass().getSimpleName().equals(enhet)){
+                    returListe.add(enKomponent);
+                }
+
+            }
+        }
+        tv.setItems(returListe);
     }
 
     /*public static void slettMedVarenummer(String varenummer){

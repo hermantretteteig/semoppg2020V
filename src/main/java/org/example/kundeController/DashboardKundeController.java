@@ -74,6 +74,10 @@ public AnchorPane kundePanel;
         App.setRoot("kundeView/tidligereKjop");
     }
 
+    public void endreKundeinformasjonAction() throws IOException{
+        App.setRoot("kundeView/endreKundeinfoKunde");
+    }
+
     @FXML
     public void loggUtAction() throws Exception{
         InnloggetBrukerData.loggUtKunde();

@@ -1,6 +1,7 @@
 package org.example.adminController.endreKomponent;
 
 import javafx.beans.property.SimpleBooleanProperty;
+import logikk.Advarsel;
 import validering.LengeCheck;
 import validering.TallCheck;
 import data.KomponentData;
@@ -16,6 +17,8 @@ import models.komponent.*;
 import org.example.App;
 
 import  javafx.scene.control.cell.TextFieldTableCell;
+
+import java.nio.charset.IllegalCharsetNameException;
 
 public class EndreKomponentController {
 
@@ -46,9 +49,19 @@ public class EndreKomponentController {
     public TableColumn coBredde;
     public TableColumn co4K;
 
+    //Type
+    public TableColumn coType;
+
     //Skjermkort
     public TableColumn coSkKlokkehastighet;
     public TableColumn coMinne;
+
+
+    //Filtrering
+    public TextField txtPrisFra;
+    public TextField txtPrisTil;
+
+
 
 
     private KomponentData collection = new KomponentData();
@@ -58,11 +71,32 @@ public class EndreKomponentController {
 
     @FXML
     public void tilbakeAction() throws Exception {
-        App.setRoot("adminView/dashboardAdmin");
+        App.setRoot("adminview/dashboardAdmin");
+
+
+    }
+
+    @FXML
+    public void filtrerAction(){
+        if(TallCheck.tallcheck(txtPrisFra.getText())==false || TallCheck.tallcheck(txtPrisTil.getText()) == false){
+            Advarsel.informasjonsAlert("Ugyldige verdier", "Prisene er ikke gyldig", "Prøv på nytt!");
+        }
+        else {
+            int prisFra = Integer.parseInt(txtPrisFra.getText());
+            int prisTil = Integer.parseInt(txtPrisTil.getText());
+            collection.sorterEtterPris(tableView, prisFra, prisTil, choKomponentvelger.getValue().toString());
+        }
+    }
+
+    @FXML
+    public void fjernFilterAction(){
+        collection.hentKomponenttype(tableView, choKomponentvelger.getValue().toString());
     }
 
     @FXML
     public void hentAction() throws Exception {
+        txtPrisFra.setText("");
+        txtPrisTil.setText("");
         SkjulAlleEkstrakolonner();
         collection.hentKomponenttype(tableView, choKomponentvelger.getValue().toString());
         visEkstrakolonner(choKomponentvelger.getValue().toString());
@@ -79,6 +113,7 @@ public class EndreKomponentController {
         coHoyde.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertIntegerConverterer()));
         coSkKlokkehastighet.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertDoubleConverter()));
         coMinne.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertIntegerConverterer()));
+
 
         LagBindingFraDataTilTabell();
 
@@ -261,6 +296,9 @@ public class EndreKomponentController {
         //Skjermkort
         coSkKlokkehastighet.setVisible(false);
         coMinne.setVisible(false);
+
+        //Type
+        coType.setVisible(false);
     }
 
     public void visEkstrakolonner(String type) {
@@ -292,6 +330,9 @@ public class EndreKomponentController {
             case "Skjermkort":
                 coSkKlokkehastighet.setVisible(true);
                 coMinne.setVisible(true);
+                break;
+            case "Vis alle":
+                coType.setVisible(true);
                 break;
             default:
         }

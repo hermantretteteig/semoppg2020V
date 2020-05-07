@@ -27,25 +27,28 @@ public class LogginnController  {
     @FXML
     private void logginn() throws IOException {
 
-        //TODO det som er kommentert ut må fjernes før levering
-         //if(InnloggetBrukerData.loggInnKunde(txtKundeBrukernavn.getText(), txtKundePassord.getText())==false){
+         if(InnloggetBrukerData.loggInnKunde(txtKundeBrukernavn.getText(), txtKundePassord.getText())==true){
+             App.setRoot("kundeView/dashboardKunde");
+         }
+         else{
              lblBrukerFeil.setText("Ugyldig brukernavn/passord");
+
+             //TODO linja under må fjernes før levering
              App.setRoot("kundeView/dashboardKunde");
-         //}
-         //else{
-             App.setRoot("kundeView/dashboardKunde");
-         //}
+
+         }
     }
 
     @FXML
     private void adminLoggInnAction() throws IOException {
-        if(InnloggetBrukerData.loggInnAdmin(txtAdminBrukernavn.getText(), txtAdminPassord.getText())==false){
+        if(InnloggetBrukerData.loggInnAdmin(txtAdminBrukernavn.getText(), txtAdminPassord.getText())==true){
+            App.setRoot("adminView/dashboardAdmin");
+
+        }
+        else{
             lblAdminFeil.setText("Ugyldig brukernavn/passord");
 
             //TODO linja under må fjernes før levering
-            App.setRoot("adminView/dashboardAdmin");
-        }
-        else{
             App.setRoot("adminView/dashboardAdmin");
         }
     }

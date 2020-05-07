@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.control.cell.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.cell.TextFieldTableCell?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="endreKomponentBakgrunn" stylesheets="@../../../../style/style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.endreKomponent.EndreKomponentController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="endreKomponentBakgrunn" stylesheets="@../../../../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.endreKomponent.EndreKomponentController">
    <ChoiceBox fx:id="choKomponentvelger" layoutX="78.0" layoutY="94.0" onAction="#hentAction" prefHeight="25.0" prefWidth="142.0">
         <items>
             <FXCollections fx:factory="observableArrayList">
@@ -17,6 +23,7 @@
                 <String fx:value="Prosessor" />
                 <String fx:value="Skjerm" />
                 <String fx:value="Skjermkort" />
+                <String fx:value="Vis alle" />
             </FXCollections>
         </items>
     </ChoiceBox>
@@ -32,6 +39,16 @@
      <!--GENERELLE FOR ALLE-->
      <!--GENERELLE FOR ALLE-->
      <!--GENERELLE FOR ALLE-->
+
+         <TableColumn fx:id="coType" editable="false" prefWidth="100.0" text="Type">
+             <cellValueFactory>
+                 <PropertyValueFactory property="Type" />
+             </cellValueFactory>
+             <cellFactory>
+                 <TextFieldTableCell fx:factory="forTableColumn" />
+             </cellFactory>
+         </TableColumn>
+
          <TableColumn editable="false" prefWidth="100.0" text="Varenummer">
          <cellValueFactory>
             <PropertyValueFactory property="Varenr" />
@@ -199,11 +216,25 @@
          <Font name="System Bold" size="15.0" />
       </font>
    </Label>
-   <Label layoutX="20.0" layoutY="146.0" text="Dobbeltklikk på en celle for å gjør endringer.">
+   <Label layoutX="20.0" layoutY="146.0" text="Dobbeltklikk på en celle for å gjør endringer. Trykk på kolonnene for å sortere.">
       <font>
          <Font name="System Bold" size="12.0" />
       </font>
    </Label>
+   <Label layoutX="340.0" layoutY="96.0" text="Vis kun komponenter med pris fra kr." textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="15.0" />
+      </font>
+   </Label>
+   <TextField fx:id="txtPrisFra" layoutX="611.0" layoutY="94.0" prefHeight="25.0" prefWidth="72.0" />
+   <TextField fx:id="txtPrisTil" layoutX="734.0" layoutY="94.0" prefHeight="25.0" prefWidth="72.0" />
+   <Label layoutX="690.0" layoutY="96.0" text="til kr." textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="15.0" />
+      </font>
+   </Label>
+   <Button layoutX="828.0" layoutY="94.0" mnemonicParsing="false" onAction="#filtrerAction" text="Filtrer pris" />
+   <Button layoutX="910.0" layoutY="94.0" mnemonicParsing="false" onAction="#fjernFilterAction" text="Fjern filter" />
 
 
 

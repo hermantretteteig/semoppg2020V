@@ -83,7 +83,6 @@ public class Komponent implements Serializable, Cloneable{
     }
 
 
-
     public String getVaremerke() {
         return varemerke.get();
     }

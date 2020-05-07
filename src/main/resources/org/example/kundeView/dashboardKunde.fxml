@@ -51,10 +51,13 @@
                   <Insets bottom="80.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loggUtAction" prefHeight="150.0" prefWidth="300.0" text="Logg ut" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loggUtAction" prefHeight="65.0" prefWidth="300.0" text="Logg ut" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>
+               <GridPane.margin>
+                  <Insets top="80.0" />
+               </GridPane.margin>
             </Button>
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#hentFilAction" prefHeight="65.0" prefWidth="300.0" text="Hent fra fil (CSV)" GridPane.rowIndex="2">
                <font>
@@ -62,6 +65,14 @@
                </font>
                <GridPane.margin>
                   <Insets top="80.0" />
+               </GridPane.margin>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#endreKundeinformasjonAction" prefHeight="65.0" prefWidth="300.0" text="Endre kundeopplysninger" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="80.0" />
                </GridPane.margin>
             </Button>
          </children>

@@ -42,7 +42,7 @@ public class KomponentData {
         tv.setItems(utvalgteLagrinsenheter);
     }
 
-    public void sorterEtterPris(TableView tv, int prisFra, int prisTil, String enhet){
+    public void sorterEtterPris(TableView tv, double prisFra, double prisTil, String enhet){
         ObservableList<Komponent> returListe = FXCollections.observableArrayList();
         for(Komponent enKomponent : alleKomponenter){
             //Sjekker om prisen er innenfor grensene

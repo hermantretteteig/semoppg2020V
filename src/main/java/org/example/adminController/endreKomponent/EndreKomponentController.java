@@ -82,8 +82,8 @@ public class EndreKomponentController {
             Advarsel.informasjonsAlert("Ugyldige verdier", "Prisene er ikke gyldig", "Prøv på nytt!");
         }
         else {
-            int prisFra = Integer.parseInt(txtPrisFra.getText());
-            int prisTil = Integer.parseInt(txtPrisTil.getText());
+            double prisFra = Double.parseDouble(txtPrisFra.getText());
+            double prisTil = Double.parseDouble(txtPrisTil.getText());
             collection.sorterEtterPris(tableView, prisFra, prisTil, choKomponentvelger.getValue().toString());
         }
     }

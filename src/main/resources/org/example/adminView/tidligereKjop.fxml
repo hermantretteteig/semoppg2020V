@@ -10,22 +10,22 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="nyttKjopBakgrunn" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.TidligereKjopController">
    <children>
-      <TableView fx:id="ordre" layoutX="28.0" layoutY="106.0" onMousePressed="#valgtOrdre" prefHeight="173.0" prefWidth="594.0">
+      <TableView fx:id="ordre" layoutX="28.0" layoutY="106.0" onMousePressed="#valgtOrdre" prefHeight="420.0" prefWidth="472.0">
         <columns>
-            <TableColumn fx:id="coKunde" editable="false" maxWidth="152.0" minWidth="152.0" prefWidth="152.0" resizable="false" text="Kunde">
+            <TableColumn fx:id="coKunde" editable="false" maxWidth="152.0" minWidth="100.0" prefWidth="118.5" resizable="false" text="Kunde">
 
             </TableColumn>
-            <TableColumn editable="false" maxWidth="152.0" minWidth="152.0" prefWidth="152.0" resizable="false" text="Ordrenr">
+            <TableColumn editable="false" maxWidth="204.0" minWidth="98.0" prefWidth="111.5" resizable="false" text="Ordrenr">
                 <cellValueFactory>
                     <PropertyValueFactory property="Ordrenumer" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn editable="false" maxWidth="152.0" minWidth="152.0" prefWidth="152.0" resizable="false" text="Kjopsdato">
+            <TableColumn editable="false" maxWidth="247.5" minWidth="132.5" prefWidth="132.5" resizable="false" text="Kjopsdato">
                 <cellValueFactory>
                     <PropertyValueFactory property="Kjopsdato" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn editable="false" maxWidth="114.0" minWidth="114.0" prefWidth="114.0" resizable="false" text="Totalsum">
+            <TableColumn editable="false" maxWidth="225.0" minWidth="81.0" prefWidth="96.5" resizable="false" text="Totalsum">
                 <cellValueFactory>
                     <PropertyValueFactory property="Totalsum" />
                 </cellValueFactory>
@@ -33,7 +33,7 @@
         </columns>
       </TableView>
 
-      <TableView fx:id="valgtDatamaskin" layoutX="28.0" layoutY="326.0" onMousePressed="#valgtKomponent" prefHeight="187.0" prefWidth="425.0">
+      <TableView fx:id="valgtDatamaskin" layoutX="523.0" layoutY="106.0" onMousePressed="#valgtKomponent" prefHeight="187.0" prefWidth="425.0">
         <columns>
             <TableColumn prefWidth="110.0" resizable="false" text="Komponent">
                 <cellValueFactory>
@@ -58,14 +58,14 @@
         </columns>
       </TableView>
 
-      <Label layoutX="484.0" layoutY="282.0" prefHeight="37.0" prefWidth="270.0" text="Detaljer om valgt komponent:">
+      <Label layoutX="523.0" layoutY="298.0" prefHeight="37.0" prefWidth="270.0" text="Detaljer om valgt komponent:">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
 
 
-       <TableView fx:id="komponentinfo" layoutX="483.0" layoutY="299.0" prefHeight="222.0" prefWidth="483.0" stylesheets="@../../../style/komponentinfotabell.css" visible="false">
+       <TableView fx:id="komponentinfo" layoutX="525.0" layoutY="313.0" prefHeight="208.0" prefWidth="425.0" stylesheets="@../../../style/komponentinfotabell.css" visible="false">
         <columns>
             <TableColumn editable="false" maxWidth="180.0" minWidth="180.0" prefWidth="180.0" sortable="false" text="">
                 <cellValueFactory>
@@ -102,7 +102,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="28.0" layoutY="282.0" prefHeight="37.0" prefWidth="270.0" text="Komponenter i ordren:">
+      <Label layoutX="523.0" layoutY="74.0" prefHeight="37.0" prefWidth="270.0" text="Komponenter i ordren:">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

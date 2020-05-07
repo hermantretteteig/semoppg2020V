@@ -71,14 +71,14 @@ public class EndreKomponentController {
 
     public void initialize() {
         //Konverterer double og integer til string, slik at disse verdiene kan bli endres i tekstfelt
-        coPris.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        coGb.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        coKjerner.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        coKlokkehastighet.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        coBredde.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertConverterer()));
-        coHoyde.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        coSkKlokkehastighet.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        coMinne.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        coPris.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertDoubleConverter()));
+        coGb.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertIntegerConverterer()));
+        coKjerner.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertIntegerConverterer()));
+        coKlokkehastighet.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertDoubleConverter()));
+        coBredde.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertIntegerConverterer()));
+        coHoyde.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertIntegerConverterer()));
+        coSkKlokkehastighet.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertDoubleConverter()));
+        coMinne.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertIntegerConverterer()));
 
         LagBindingFraDataTilTabell();
 
@@ -107,11 +107,14 @@ public class EndreKomponentController {
         }
     }
 
-    public void PrisEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if(TallCheck.tallcheck(event.getNewValue()) == true) {
-            event.getRowValue().setPris(Double.parseDouble(event.getNewValue()));
-            tableView.refresh();
+    public void PrisEdit(TableColumn.CellEditEvent<Komponent, Double> event) {
+        if(nyFeil("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
+            event.getRowValue().setPris(event.getNewValue());
         }
+        else {
+            event.getRowValue().setPris(event.getOldValue());
+        }
+        tableView.refresh();
     }
 
     public void ModellEdit(TableColumn.CellEditEvent<Komponent, String> event) {
@@ -135,11 +138,14 @@ public class EndreKomponentController {
         ((Lagringsenhet) event.getRowValue()).setFormat(event.getNewValue());
     }
 
-    public void GbEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if(nyFeil("Må kun inneholde tall", TallCheck.tallcheck(event.getNewValue())) == true) {
-            ((Lagringsenhet) event.getRowValue()).setGb(Integer.parseInt(event.getNewValue()));
-            tableView.refresh();
+    public void GbEdit(TableColumn.CellEditEvent<Komponent, Integer> event) {
+        if(nyFeil("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
+            ((Lagringsenhet) event.getRowValue()).setGb(event.getNewValue());
         }
+        else{
+            ((Lagringsenhet) event.getRowValue()).setGb(event.getOldValue());
+        }
+        tableView.refresh();
     }
 
     public void SkrivehastighetEdit(TableColumn.CellEditEvent<Komponent, String> event) {
@@ -166,24 +172,34 @@ public class EndreKomponentController {
     }
 
     //Prosessor
-    public void KjernerEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-
-        if (nyFeil("Må kun inneholde tall", TallCheck.tallcheck(event.getNewValue())) == true) {
-            ((Prosessor) event.getRowValue()).setAntallKjerner(Integer.parseInt(event.getNewValue()));
-            tableView.refresh();
+    public void KjernerEdit(TableColumn.CellEditEvent<Komponent, Integer> event) {
+        if(nyFeil("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
+            ((Prosessor) event.getRowValue()).setAntallKjerner(event.getNewValue());
         }
+        else{
+            ((Prosessor) event.getRowValue()).setAntallKjerner(event.getOldValue());
+        }
+        tableView.refresh();
     }
 
-    public void KlokkehastgihetEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if(nyFeil("Må kun inneholde tall", TallCheck.tallcheck(event.getNewValue())) == true) {
-            ((Prosessor) event.getRowValue()).setKlokkehastighet(Double.parseDouble(event.getNewValue()));
-            tableView.refresh();
+    public void KlokkehastgihetEdit(TableColumn.CellEditEvent<Komponent, Double> event) {
+        if(nyFeil("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
+            ((Prosessor) event.getRowValue()).setKlokkehastighet(event.getNewValue());
         }
+        else{
+            ((Prosessor) event.getRowValue()).setKlokkehastighet(event.getOldValue());
+        }
+        tableView.refresh();
     }
 
     //Skjerm
     public void HoydeEdit(TableColumn.CellEditEvent<Komponent, Integer> event) {
-        ((Skjerm) event.getRowValue()).setPixelHoyde(event.getNewValue());
+        if(nyFeil("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
+            ((Skjerm) event.getRowValue()).setPixelHoyde(event.getNewValue());
+        }
+        else{
+            ((Skjerm) event.getRowValue()).setPixelHoyde(event.getOldValue());
+        }
         tableView.refresh();
     }
 
@@ -198,19 +214,24 @@ public class EndreKomponentController {
     }
 
     //Skjermkort
-    public void SkKlokkehastgihetEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if(nyFeil("Må kun inneholde tall", TallCheck.tallcheck(event.getNewValue())) == true) {
-            ((Skjermkort) event.getRowValue()).setKlokkehastighet(Double.parseDouble(event.getNewValue()));
-            tableView.refresh();
-
+    public void SkKlokkehastgihetEdit(TableColumn.CellEditEvent<Komponent, Double> event) {
+        if(nyFeil("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
+            ((Skjermkort) event.getRowValue()).setKlokkehastighet(event.getNewValue());
         }
+        else{
+            ((Skjermkort) event.getRowValue()).setKlokkehastighet(event.getOldValue());
+        }
+        tableView.refresh();
     }
 
-    public void MinneEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if(nyFeil("Må kun inneholde tall", TallCheck.tallcheck(event.getNewValue())) == true) {
-            ((Skjermkort) event.getRowValue()).setMinne(Integer.parseInt(event.getNewValue()));
-            tableView.refresh();
+    public void MinneEdit(TableColumn.CellEditEvent<Komponent, Integer> event) {
+        if(nyFeil("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
+            ((Skjermkort) event.getRowValue()).setMinne(event.getNewValue());
         }
+        else{
+            ((Skjermkort) event.getRowValue()).setMinne(event.getOldValue());
+        }
+        tableView.refresh();
     }
 
     public void SkjulAlleEkstrakolonner() {
@@ -334,13 +355,23 @@ public class EndreKomponentController {
 
     }
 
-    public static class EgendefinertConverterer extends IntegerStringConverter {
+    public static class EgendefinertIntegerConverterer extends IntegerStringConverter {
         @Override
         public Integer fromString(String innputverdi) {
             if(TallCheck.tallcheck(innputverdi)==true){
                 return Integer.parseInt(innputverdi);
             }
             return -1;
+        }
+    }
+
+    public static class EgendefinertDoubleConverter extends DoubleStringConverter {
+        @Override
+        public Double fromString(String innputverdi) {
+            if(TallCheck.tallcheck(innputverdi)==true) {
+                return Double.parseDouble(innputverdi);
+            }
+            return -1.0;
         }
     }
 }

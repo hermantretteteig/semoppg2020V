@@ -9,9 +9,9 @@ import java.util.ArrayList;
 
 import static filbehandling.Formatter.OrdreFormatter.formaterOrdre;
 
-public class LagreCSV extends LagreFil {
+public class LagreCSV {
 
-    public void lagreOrdre(ArrayList<Ordre> ordre, String filnavn){
+    public static void lagreOrdre(ArrayList<Ordre> ordre, String filnavn){
         try {
             Files.write(Paths.get(filnavn), formaterOrdre(ordre).getBytes());
         } catch (IOException e) {

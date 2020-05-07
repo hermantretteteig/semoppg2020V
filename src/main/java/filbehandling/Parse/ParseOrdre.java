@@ -1,10 +1,7 @@
 package filbehandling.Parse;
 
-import data.KundeData;
 import models.kjop.Ordre;
 import models.komponent.*;
-
-import java.io.IOException;
 
 public class ParseOrdre {
     private static final String feilHeltall = "kan ikke formateres som ett heltall.";
@@ -80,7 +77,7 @@ public class ParseOrdre {
                 minne);
     }
 
-        private static Lagringsenhet parseLagringsenhet(String linje){
+    private static Lagringsenhet parseLagringsenhet(String linje){
             String[] split = linje.split(";");
 
         Komponent komponent = parseKomponentSuper(linje, 19, 20, 21, 22);

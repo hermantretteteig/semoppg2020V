@@ -19,7 +19,7 @@ public class ValgtOrdreSinDatamaskinData {
         tv.setItems(datamaskinen);
     }
 
-    public static void leggTil(Komponent nyDatamaskin) {
-        datamaskinen.add(nyDatamaskin);
+    public static void leggTil(Komponent nyKomponent) {
+        datamaskinen.add(nyKomponent);
     }
 }

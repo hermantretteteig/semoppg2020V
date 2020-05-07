@@ -16,10 +16,9 @@ public class Traad extends Task<ArrayList<Komponent>> {
 
     @Override
     protected ArrayList<Komponent> call() throws InterruptedException {
-        LesJOBJ lesFil = new LesJOBJ();
         try{
             Thread.sleep(5000);
-            KomponentData.setAlleKomponenter(lesFil.lesKomponent(filnavn));
+            KomponentData.setAlleKomponenter(LesJOBJ.lesListe(filnavn));
             //TODO feilhåndtering
         } catch (ClassNotFoundException e) {
 

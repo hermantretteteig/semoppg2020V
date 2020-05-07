@@ -13,7 +13,7 @@ public class Test {
 
 
 
-        LagreJOBJ lagre = new LagreJOBJ();
+        lagreListe lagre = new lagreListe();
         //lagre.lagreKomponent(skjermkort, "nvidia.jobj");
         //lagre.lagreDatamaskin(datamaskin, "datamaskin1.jobj");
 
@@ -21,7 +21,7 @@ public class Test {
         //Path path = Paths.get("datamaskin1.jobj");
 
         //Path path2 = Paths.get("nvidia.jobj");
-        //les.lesKomponent(path2);
+        //les.lesListe(path2);
 
         try {
 

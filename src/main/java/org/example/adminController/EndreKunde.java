@@ -19,6 +19,7 @@ import javafx.util.converter.IntegerStringConverter;
 import models.brukere.Kunde;
 import models.komponent.*;
 import org.example.App;
+import validering.BokstaverCheck;
 import validering.EpostCheck;
 import validering.LengeCheck;
 import validering.PassordCheck;
@@ -52,13 +53,13 @@ public class EndreKunde {
 
 
         public void FornavnEdit(TableColumn.CellEditEvent<Kunde, String> event) {
-            if(nyFeil("For kort fornavn. Minst to tegn", LengeCheck.lengdeCheck(event.getNewValue()))==true){
+            if(nyFeil("Må kun inneholde bokstaver", BokstaverCheck.bokstavercheck(event.getNewValue()))==true){
             event.getRowValue().setFornavn(event.getNewValue()); }
             tableView.refresh();
         }
 
         public void EtternavnEdit(TableColumn.CellEditEvent<Kunde, String> event) {
-            if(nyFeil("For kort etternavn. Minst to tegn", LengeCheck.lengdeCheck(event.getNewValue()))==true){
+            if(nyFeil("Må kun inneholde bokstaver", BokstaverCheck.bokstavercheck(event.getNewValue()))==true){
             event.getRowValue().setEtternavn(event.getNewValue()); }
             tableView.refresh();
         }
@@ -80,8 +81,6 @@ public class EndreKunde {
             event.getRowValue().setEpost(event.getNewValue()); }
             tableView.refresh();
         }
-
-
 
 
         public static boolean nyFeil(String msg, Boolean feil){

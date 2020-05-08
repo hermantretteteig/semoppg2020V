@@ -88,7 +88,7 @@ public class NyAdminController {
             lblGjentaPassordFeil.setText("Passordene er ulike.");
             check1 = false;
         }
-        
+
 
         Admin nyAdmin = new Admin(fornavn, etternavn, brukernavn, passord);
         if (check1 && check2 && check3 && check4 && check5 && check6){

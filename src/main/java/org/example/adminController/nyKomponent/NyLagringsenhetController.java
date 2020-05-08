@@ -5,12 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import logikk.NyKomponentAlert;
 import models.komponent.Lagringsenhet;
 import org.example.App;
+import validering.DesimaltallCheck;
 import validering.LengeCheck;
-import validering.TallCheck;
+import validering.HeltallCheck;
 
 public class NyLagringsenhetController {
 
@@ -80,25 +80,25 @@ public class NyLagringsenhetController {
         }
 
         //Validerer Pris
-        if(TallCheck.tallcheck(pris) == false){
+        if(DesimaltallCheck.desimaltallCheck(pris) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
 
         //Valderer Størrelse
-        if(TallCheck.tallcheck(storrelse) == false){
+        if(HeltallCheck.heltallCheck(storrelse) == false){
             lblStorrelseFeil.setText("Må inneholde kun tall");
             check4 = false;
         }
 
         //Validerer Lesehastighet
-        if(TallCheck.tallcheck(lesehastighet) == false){
+        if(HeltallCheck.heltallCheck(lesehastighet) == false){
             lblLesehastighetFeil.setText("Må inneholde kun tall");
             check5 = false;
         }
 
         //Validerer Skrivehastighet
-        if(TallCheck.tallcheck(skrivehastighet) == false) {
+        if(HeltallCheck.heltallCheck(skrivehastighet) == false) {
             lblSkrivehastighetFeil.setText("Må inneholde kun tall");
             check6 = false;
         }
@@ -119,5 +119,7 @@ public class NyLagringsenhetController {
             App.setRoot("adminView/nyKomponentView/nyKomponent");
             NyKomponentAlert.visBekreftelse(varemerke, modell);
         }
+
+
     }
 }

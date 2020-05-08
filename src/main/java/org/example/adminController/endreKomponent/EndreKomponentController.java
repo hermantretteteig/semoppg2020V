@@ -2,8 +2,9 @@ package org.example.adminController.endreKomponent;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import logikk.Advarsel;
+import validering.DesimaltallCheck;
 import validering.LengeCheck;
-import validering.TallCheck;
+import validering.HeltallCheck;
 import data.KomponentData;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -17,8 +18,6 @@ import models.komponent.*;
 import org.example.App;
 
 import  javafx.scene.control.cell.TextFieldTableCell;
-
-import java.nio.charset.IllegalCharsetNameException;
 
 public class EndreKomponentController {
 
@@ -78,7 +77,7 @@ public class EndreKomponentController {
 
     @FXML
     public void filtrerAction(){
-        if(TallCheck.tallcheck(txtPrisFra.getText())==false || TallCheck.tallcheck(txtPrisTil.getText()) == false){
+        if(DesimaltallCheck.desimaltallCheck(txtPrisFra.getText())==false || DesimaltallCheck.desimaltallCheck(txtPrisTil.getText()) == false){
             Advarsel.informasjonsAlert("Ugyldige verdier", "Prisene er ikke gyldig", "Prøv på nytt!");
         }
         else {
@@ -184,14 +183,14 @@ public class EndreKomponentController {
     }
 
     public void SkrivehastighetEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if(nyFeil("Må kun inneholde tall", TallCheck.tallcheck(event.getNewValue())) == true) {
+        if(nyFeil("Må kun inneholde tall", HeltallCheck.heltallCheck(event.getNewValue())) == true) {
             ((Lagringsenhet) event.getRowValue()).setSkriveHastighet(event.getNewValue());
             tableView.refresh();
         }
     }
 
     public void LesehastighetEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if(nyFeil("Må kun inneholde tall", TallCheck.tallcheck(event.getNewValue())) == true) {
+        if(nyFeil("Må kun inneholde tall", HeltallCheck.heltallCheck(event.getNewValue())) == true) {
             ((Lagringsenhet) event.getRowValue()).setLeseHastighet(event.getNewValue());
             tableView.refresh();
         }
@@ -399,7 +398,7 @@ public class EndreKomponentController {
     public static class EgendefinertIntegerConverterer extends IntegerStringConverter {
         @Override
         public Integer fromString(String innputverdi) {
-            if(TallCheck.tallcheck(innputverdi)==true){
+            if(HeltallCheck.heltallCheck(innputverdi)==true){
                 return Integer.parseInt(innputverdi);
             }
             return -1;
@@ -409,7 +408,7 @@ public class EndreKomponentController {
     public static class EgendefinertDoubleConverter extends DoubleStringConverter {
         @Override
         public Double fromString(String innputverdi) {
-            if(TallCheck.tallcheck(innputverdi)==true) {
+            if(HeltallCheck.heltallCheck(innputverdi)==true) {
                 return Double.parseDouble(innputverdi);
             }
             return -1.0;

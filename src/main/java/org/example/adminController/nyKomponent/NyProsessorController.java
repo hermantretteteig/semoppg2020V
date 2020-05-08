@@ -4,12 +4,12 @@ import data.KomponentData;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import logikk.NyKomponentAlert;
 import models.komponent.Prosessor;
 import org.example.App;
 import validering.LengeCheck;
-import validering.TallCheck;
+import validering.DesimaltallCheck;
+import validering.HeltallCheck;
 
 import java.io.IOException;
 
@@ -73,19 +73,19 @@ public class NyProsessorController {
         }
 
         //Validerer Pris
-        if(TallCheck.tallcheck(pris) == false){
+        if(DesimaltallCheck.desimaltallCheck(pris) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
 
         //Validerer Kjerner
-        if(TallCheck.tallcheck(kjerner) == false){
+        if(HeltallCheck.heltallCheck(kjerner) == false){
             lblKjernerFeil.setText("Må inneholde kun tall");
             check4 = false;
         }
 
         //Validerer Klokkehastighet
-        if(TallCheck.tallcheck(klokkehastighet) == false){
+        if(DesimaltallCheck.desimaltallCheck(klokkehastighet) == false){
             lblKlokkehastighetFeil.setText("Må inneholde kun tall");
             check5 = false;
         }

@@ -6,12 +6,12 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import logikk.NyKomponentAlert;
 import models.komponent.Mus;
 import org.example.App;
+import validering.DesimaltallCheck;
 import validering.LengeCheck;
-import validering.TallCheck;
+import validering.HeltallCheck;
 
 public class NyMusController {
 
@@ -71,7 +71,7 @@ public class NyMusController {
         }
 
         //Validerer Pris
-        if(TallCheck.tallcheck(pris) == false){
+        if(DesimaltallCheck.desimaltallCheck(pris) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }

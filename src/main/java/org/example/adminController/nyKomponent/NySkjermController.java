@@ -5,12 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import logikk.NyKomponentAlert;
 import models.komponent.Skjerm;
 import org.example.App;
+import validering.DesimaltallCheck;
 import validering.LengeCheck;
-import validering.TallCheck;
+import validering.HeltallCheck;
 
 import java.io.IOException;
 
@@ -75,19 +75,19 @@ public class NySkjermController {
         }
 
         //Validerer Pris
-        if(TallCheck.tallcheck(pris) == false){
+        if(DesimaltallCheck.desimaltallCheck(pris) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
 
         //Validerer Bredde
-        if(TallCheck.tallcheck(bredde) == false){
+        if(HeltallCheck.heltallCheck(bredde) == false){
             lblBreddeFeil.setText("Må inneholde kun tall");
             check4 = false;
         }
 
         //Validerer Høyde
-        if(TallCheck.tallcheck(hoyde) == false){
+        if(HeltallCheck.heltallCheck(hoyde) == false){
             lblHoydeFeil.setText("Må inneholde kun tall");
             check5 = false;
         }

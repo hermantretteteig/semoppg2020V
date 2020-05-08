@@ -7,8 +7,9 @@ import javafx.scene.control.TextField;
 import logikk.NyKomponentAlert;
 import models.komponent.Skjermkort;
 import org.example.App;
+import validering.DesimaltallCheck;
 import validering.LengeCheck;
-import validering.TallCheck;
+import validering.HeltallCheck;
 import java.io.IOException;
 
 public class NySkjermkortController {
@@ -70,19 +71,19 @@ public class NySkjermkortController {
         }
 
         //Validerer Pris
-        if (TallCheck.tallcheck(pris) == false) {
+        if (DesimaltallCheck.desimaltallCheck(pris) == false) {
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
 
         //Validerer klokkehastighet
-        if (TallCheck.tallcheck(klokkehastighet) == false) {
+        if (DesimaltallCheck.desimaltallCheck(klokkehastighet) == false) {
             lblKlokkehastighetFeil.setText("Må kun inneholde tall");
             check4 = false;
         }
 
         //Validerer Minne
-        if (TallCheck.tallcheck(minne) == false) {
+        if (HeltallCheck.heltallCheck(minne) == false) {
             lblMinneFeil.setText("Må kun inneholde tall");
             check5 = false;
         }

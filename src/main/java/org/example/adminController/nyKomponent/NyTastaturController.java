@@ -67,7 +67,7 @@ public class NyTastaturController {
         }
 
         //Validerer Pris
-        if(TallCheck.tallcheck(pris) == false){
+        if(DesimaltallCheck.desimaltallCheck(pris) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }

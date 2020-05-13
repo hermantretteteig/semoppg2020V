@@ -12,6 +12,7 @@ public class KundeData {
         return kunder;
     }
 
+    //Metode som finner kunden ut fra kundenummer
     public static Kunde getKunde(String kundenr){
         Kunde kunde = null;
         for (Kunde enKunde : kunder) {

@@ -1,10 +1,8 @@
 package org.example.adminController;
 
 import data.InnloggetBrukerData;
-import data.KomponentData;
 import filbehandling.LagreJOBJ;
 import filbehandling.Traad;
-import javafx.collections.ObservableList;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -12,16 +10,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import models.komponent.Komponent;
 import org.example.App;
 
 import java.io.File;
-import java.util.Optional;
 
-import static data.KomponentData.getAlleKomponenter;
+import static data.KomponentData.getKomponenter;
 
 public class DashboardAdminController {
 
@@ -112,7 +107,7 @@ public class DashboardAdminController {
             File file = opprettFilechooser("Velg filbane").showSaveDialog(stage);
 
             if (file != null) {
-                LagreJOBJ.lagreListe(getAlleKomponenter(), file.getAbsolutePath());
+                LagreJOBJ.lagreListe(getKomponenter(), file.getAbsolutePath());
             }
         }
     }

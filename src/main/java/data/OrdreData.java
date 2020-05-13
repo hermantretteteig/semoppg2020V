@@ -8,19 +8,22 @@ import models.kjop.Ordre;
 import java.util.ArrayList;
 
 public class OrdreData {
-    private static ObservableList<Ordre> ordre = FXCollections.observableArrayList();
-    private static ObservableList<Ordre> kundensOrdre = FXCollections.observableArrayList();
+    public static void setOrdre(ObservableList<Ordre> ordre) {
+        OrdreData.ordre = ordre;
+    }
 
+    private static ObservableList<Ordre> ordre = FXCollections.observableArrayList();
 
     public static ObservableList<Ordre> getOrdre() {
         return ordre;
     }
 
-
+    //Brukes til lagring til tekstfil.
     public static ArrayList<Ordre> getOrdreListe() {
         return new ArrayList<>(ordre);
     }
 
+    //Legger til en ny ordre
     public static void leggTilOrdre(Ordre nyOrdre) {
         ordre.add(nyOrdre);
     }
@@ -29,19 +32,16 @@ public class OrdreData {
         OrdreData.ordre = FXCollections.observableArrayList(ordre);
     }
 
+    //Henter listen over alle ordre og sender denne til tabellviewt.
     public void hentAlleOrdre(TableView tv) {
         tv.setItems(ordre);
     }
 
-
+    //Henter ordrene til den innlogget kunden, og legger dette til viewet.
     public void hentKundensOrdre(TableView tv) {
-
         ObservableList<Ordre> kundensOrdre = FXCollections.observableArrayList();
 
         for(Ordre ordre : ordre){
-            /*System.out.println(ordre.getKundenr());
-            System.out.println(InnloggetKundeData.getInnloggetKunde().getKundenummer());*/
-
             if(ordre.getKundenr().equals(InnloggetBrukerData.getInnloggetKunde().getKundenummer())){
                 kundensOrdre.add(ordre);
             }

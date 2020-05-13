@@ -1,6 +1,7 @@
 package org.example.adminController;
 
 import data.AdminData;
+import logikk.Advarsel;
 import logikk.NyAdminAlert;
 import models.brukere.Admin;
 import models.brukere.Bruker;
@@ -95,7 +96,7 @@ public class NyAdminController {
             AdminData.leggTilAdmin(nyAdmin);
             Stage stage = (Stage) avslutt.getScene().getWindow();
             stage.close();
-            NyAdminAlert.visBekreftelse(brukernavn);
+            //Advarsel.informasjonsAlert(brukernavn);
         }
 
         //App.setRoot("Adminview/nyAdminView/nyAdmin");

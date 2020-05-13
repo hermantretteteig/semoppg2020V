@@ -83,7 +83,7 @@ public class EndreKomponentController {
         else {
             double prisFra = Double.parseDouble(txtPrisFra.getText());
             double prisTil = Double.parseDouble(txtPrisTil.getText());
-            collection.sorterEtterPris(tableView, prisFra, prisTil, choKomponentvelger.getValue().toString());
+            collection.filtrerPris(tableView, prisFra, prisTil, choKomponentvelger.getValue().toString());
         }
     }
 

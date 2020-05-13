@@ -42,7 +42,6 @@ public class Kunde extends Bruker {
     }
 
     private String genererKundenr() {
-        UUID kundenr = UUID.randomUUID();
-        return kundenr.toString();
+        return UUID.randomUUID().toString();
     }
 }

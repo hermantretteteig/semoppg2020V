@@ -6,28 +6,21 @@ import javafx.scene.control.TableView;
 import models.komponent.*;
 
 public class HandlekurvData {
-    private static ObservableList<Komponent> handekurv = FXCollections.observableArrayList();
-    private static Double sumHandlkurv = 0.0;
+    private static ObservableList<Komponent> handlekurv = FXCollections.observableArrayList();
+    private static Double sumHandlekurv = 0.0;
 
-    public static ObservableList<Komponent> getHandekurv() {
-        return handekurv;
+    public static ObservableList<Komponent> getHandlekurv() {
+        return handlekurv;
+    }
+    public static Double getSumHandlekurv() {
+        return sumHandlekurv;
+    }
+    public static void setSumHandlekurv(Double sumHandlekurv) {
+        HandlekurvData.sumHandlekurv = sumHandlekurv;
     }
 
-    public static void setHandekurv(ObservableList<Komponent> handekurv) {
-        HandlekurvData.handekurv = handekurv;
-    }
-
-    public static Double getSumHandlkurv() {
-        return sumHandlkurv;
-    }
-
-    public static void setSumHandlkurv(Double sumHandlkurv) {
-        HandlekurvData.sumHandlkurv = sumHandlkurv;
-    }
-
-
-
-    public static Datamaskin genererDatamaskinAvHandlekurv(){
+    //Ut av komponentene som er lagt til i handlekurven opprettes det en datamaskin.
+    public static Datamaskin genererDatamaskinAvHandlekurv() throws CloneNotSupportedException {
         Lagringsenhet nyLagringsenhet = null;
         Mus nyMus = null;
         Prosessor nyProsessor = null;
@@ -35,7 +28,13 @@ public class HandlekurvData {
         Skjermkort nySkjermkort = null;
         Tastatur nyTastatur = null;
 
-        for(Komponent enVare : handekurv){
+        /*
+        Metoden går igjennom listen av komponenter som ligger i handlekurven. Simpelnavnet til komponentene bestemmer hvilken
+        komponent som skal castes og videre legges til i konstruktøren til datamaskinobjektet.
+         */
+
+
+        for(Komponent enVare : handlekurv){
             if(enVare.getClass().getSimpleName().equals("Lagringsenhet")){
                 nyLagringsenhet = (Lagringsenhet) enVare;
             }
@@ -56,31 +55,38 @@ public class HandlekurvData {
             }
         }
 
-        Datamaskin nyDatamaskin = new Datamaskin(nyProsessor, nySkjermkort, nyLagringsenhet, nySkjerm, nyMus, nyTastatur);
+        //Datamaskinen generet fra handlekurven klones til en ny datamaskin
+        Datamaskin nyDatamaskin = new Datamaskin(nyProsessor, nySkjermkort, nyLagringsenhet, nySkjerm, nyMus, nyTastatur).clone();
         return nyDatamaskin;
     }
 
+    public static void setHandlekurv(ObservableList<Komponent> handlekurv) {
+        HandlekurvData.handlekurv = handlekurv;
+    }
+
+    //Henter handlekurven til tabellen
     public void hentKomponenttype(TableView tv){
-        tv.setItems(handekurv);
+        tv.setItems(handlekurv);
     }
 
+    //Legger til ny komponent i handlekurven
     public static void nyVare(Komponent nyVare){
-        handekurv.add(nyVare);
-        sumHandlkurv = sumHandlkurv + nyVare.getPris();
-
+        handlekurv.add(nyVare);
+        //Summerer inn komonentens pris
+        sumHandlekurv += nyVare.getPris();
     }
 
 
-    public static void slettType(String varetype){
+    public static void slettKomponent(String varetype){
         Komponent slettVare = null;
-        for(Komponent enVare : handekurv){
+        for(Komponent enVare : handlekurv){
             if(varetype.equals(enVare.getClass().getSimpleName())){
                 slettVare = enVare;
-                //break;
             }
         }
-        sumHandlkurv = sumHandlkurv - slettVare.getPris();
-        handekurv.remove(slettVare);
+        //Trekker fra prisen til komponenten i totalprisen
+        sumHandlekurv -= slettVare.getPris();
+        handlekurv.remove(slettVare);
 
     }
 }

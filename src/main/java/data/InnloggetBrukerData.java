@@ -16,16 +16,20 @@ public class InnloggetBrukerData {
     }
 
     public static boolean loggInnKunde(String brukernavn, String passord){
+        //Sjekker om kunden er registrert i listen, ved å kontrollere at brukernavn eksitrerer
+        // og tilhørende passord er riktig.
         for(Kunde enKunde : KundeData.getKunder()){
-            if(enKunde.getPassord().equals(passord)&&enKunde.getBrukernavn().equals(brukernavn)){
+            if(enKunde.getPassord().equals(passord) && enKunde.getBrukernavn().equals(brukernavn)){
                 innloggetKunde = enKunde;
                 return true;
             }
-            }
+        }
         return false;
     }
 
     public static boolean loggInnAdmin(String brukernavn, String passord){
+        //Sjekker om administratoren er registrert i listen, ved å kontrollere at brukernavn eksitrerer
+        // og tilhørende passord er riktig.
         for(Admin enAdmin : AdminData.getAdminer()){
             if(enAdmin.getPassord().equals(passord)&&enAdmin.getBrukernavn().equals(brukernavn)){
                 innloggetAdmin = enAdmin;

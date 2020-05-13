@@ -49,13 +49,13 @@ public class Ordre implements Cloneable{
     }
 
     //TODO KUTT METODE, LEGG HELLER INN I ORDREKONSTRUKTØREN
-    public static void genererOrdreAvHandlekurv() {
+    public static void genererOrdreAvHandlekurv() throws CloneNotSupportedException {
         SimpleDateFormat naa = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date dato = new Date();
 
         Ordre nyOrdre = new Ordre(naa.format(dato), InnloggetBrukerData.getInnloggetKunde().getKundenummer(), HandlekurvData.genererDatamaskinAvHandlekurv());
         OrdreData.leggTilOrdre(nyOrdre);
-        HandlekurvData.getHandekurv().clear();
+        HandlekurvData.getHandlekurv().clear();
 
     }
 

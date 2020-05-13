@@ -1,33 +1,30 @@
 package eksempeldata;
 
 import data.*;
-import filbehandling.Formatter.DatamaskinFormatter;
-import filbehandling.Formatter.OrdreFormatter;
 import models.brukere.Admin;
 import models.brukere.Kunde;
 import models.kjop.Ordre;
 import models.komponent.*;
 
-import java.util.Formatter;
+/*
+Denne filen genrerer eksempeldata som gjør det enklere å illustrere funksjonaliteten til programmet.
+ */
 
 public class Eksempeldata {
 
-    //Skal fjernes
+    //TODO Skal fjernes
     public static Kunde enKunde(){
         return new Kunde("Ole", "Hansen", "olehasen", "hemmelig", "ole.hansen@online.no");
     }
 
     public static void GenererEksempeldata() {
 
-        Kunde nyKunde1 = new Kunde("Ole", "Hansen", "olehansen", "passord123", "eksempelKunde1",  "ole.hansen@online.no");
-        Kunde nyKunde2 = new Kunde("Stian", "Ludviksen", "stianlud", "hemmelig", "eksempelKunde2", "stian.lud@hotmail.com");
-        Kunde nyKunde3 = new Kunde("Entotre", "Firefemseks", "123", "123", "eksempelKunde3", "123entotre@live.com");
-        Kunde nyKunde4 = new Kunde("Kunde", "Kundesen", "KundeKundesen", "Kundser345", "eksempelKunde4", "kunde@kundesen.no");
-        Kunde nyKunde5 = new Kunde("Morten", "Hansen", "mortenhansen", "Passord45", "eksempelKunde5", "mortenhansen@gmail.com");
-        Kunde nyKunde6 = new Kunde("Oliver", "Hansen", "oliverhansen", "OliHans90", "eksempelKunde6", "oliver.hansen@online.no");
-
-
-
+        Kunde nyKunde1 = new Kunde("Ole", "Hansen", "olehansen", "passord123", "edf60e08-9b08-442c-b07d-b6bf2bb7670d",  "ole.hansen@online.no");
+        Kunde nyKunde2 = new Kunde("Stian", "Ludviksen", "stianlud", "hemmelig", "d393e84c-0dd3-401c-a63e-5895eaef0b00", "stian.lud@hotmail.com");
+        Kunde nyKunde3 = new Kunde("Entotre", "Firefemseks", "123", "123", "8ef47a17-380f-4707-af18-da38d238ae8c", "123entotre@live.com");
+        Kunde nyKunde4 = new Kunde("Kunde", "Kundesen", "KundeKundesen", "Kundser345", "34d29c9e-8d8e-40b3-a68c-9921c8647e07", "kunde@kundesen.no");
+        Kunde nyKunde5 = new Kunde("Morten", "Hansen", "mortenhansen", "Passord45", "ba784046-e4fe-4fdf-ab7e-638674630f72", "mortenhansen@gmail.com");
+        Kunde nyKunde6 = new Kunde("Oliver", "Hansen", "oliverhansen", "OliHans90", "22e91143-3cd4-4a45-a92e-a5ddbd33c220", "oliver.hansen@online.no");
         KundeData.getKunder().addAll(nyKunde1, nyKunde2, nyKunde3, nyKunde4, nyKunde5, nyKunde6);
 
         //TODO må fjernes før levering
@@ -216,7 +213,7 @@ public class Eksempeldata {
 
 
         //Legger alle komponenete til i lista
-        KomponentData.getAlleKomponenter().addAll(
+        KomponentData.getKomponenter().addAll(
                 lagringsenhetEn,
                 lagringsenhetTo,
                 lagringsenhet3,
@@ -277,10 +274,6 @@ public class Eksempeldata {
         Ordre nyOrdre15 = new Ordre("19/02/2020 14:23:43", nyKunde1.getKundenummer(), nyDatamaskin15);
         Ordre nyOrdre16 = new Ordre("15/03/2017 10:44:45", nyKunde3.getKundenummer(), nyDatamaskin16);
         Ordre nyOrdre17 = new Ordre("25/07/2016 17:23:10", nyKunde6.getKundenummer(), nyDatamaskin17);
-
-
-        ValgtOrdreSinDatamaskinData.leggTil(lagringsenhetEn);
-
 
         OrdreData.leggTilOrdre(nyOrdre1);
         OrdreData.leggTilOrdre(nyOrdre2);

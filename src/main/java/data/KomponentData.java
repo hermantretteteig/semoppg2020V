@@ -1,50 +1,62 @@
 package data;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TreeTableView;
 import models.komponent.Komponent;
-import models.komponent.Lagringsenhet;
-import models.komponent.Tastatur;
 
 import java.util.ArrayList;
 
 public class KomponentData {
-    private static ObservableList<Komponent> alleKomponenter = FXCollections.observableArrayList();
+    private static ObservableList<Komponent> komponenter = FXCollections.observableArrayList();
 
-    public static ObservableList<Komponent> getAlleKomponenter() {
-        return alleKomponenter;
+    //Metode som henter alle komponentene i listen
+    public static ObservableList<Komponent> getKomponenter() {
+        return komponenter;
     }
 
-    public static void setAlleKomponenter(ArrayList<Komponent> alleKomponenter) {
-        KomponentData.alleKomponenter = FXCollections.observableArrayList(alleKomponenter);
+    public static void setKomponenter(ArrayList<Komponent> komponenter) {
+        KomponentData.komponenter = FXCollections.observableArrayList(komponenter);
     }
 
+    //Legger til en ny komponent når dette opprettes
     public static void leggTilKomponent(Komponent nyKomponent){
-        alleKomponenter.add(nyKomponent);
+        komponenter.add(nyKomponent);
     }
 
+    public static void setAlleKomponenter(ObservableList<Komponent> alleKomponenter) {
+        KomponentData.komponenter = alleKomponenter;
+    }
 
+    /*
+    Brukes i viewt til endre komponenter. Metoden filtrerer ut de komponetenene som ikke samvarer med den
+    komponenten brukeren ønsker å vise i viewt.
+     */
     public void hentKomponenttype(TableView tv, String enhet) {
-        ObservableList<Komponent> utvalgteLagrinsenheter = FXCollections.observableArrayList();
+        ObservableList<Komponent> valgtKomponent = FXCollections.observableArrayList();
 
+        //Hvis brukeren har valgt valget "Vis alle" skal alle komponentene hentes til viewet.
         if(enhet.equals("Vis alle")){
-            utvalgteLagrinsenheter = alleKomponenter;
+            valgtKomponent = komponenter;
         }
 
-        for(Komponent enKomponent : alleKomponenter){
+        //Går igjennom listen over komponentene og filtrerer ut de som ikke samsvarer med komponenten brukeren har valgt
+        for(Komponent enKomponent : komponenter){
             if(enKomponent.getClass().getSimpleName().equals(enhet)){
-                utvalgteLagrinsenheter.add(enKomponent);
+                valgtKomponent.add(enKomponent);
             }
         }
-        tv.setItems(utvalgteLagrinsenheter);
+        tv.setItems(valgtKomponent);
     }
 
-    public void sorterEtterPris(TableView tv, double prisFra, double prisTil, String enhet){
+    /*
+    Metoden fungerer i stor grad likt som metoden over. Forskjellen er at metoden også tar hensyn til at prisen til
+    komponenten skal være innenfor to grenseverdier.
+    */
+
+    public void filtrerPris(TableView tv, double prisFra, double prisTil, String enhet){
         ObservableList<Komponent> returListe = FXCollections.observableArrayList();
-        for(Komponent enKomponent : alleKomponenter){
+        for(Komponent enKomponent : komponenter){
             //Sjekker om prisen er innenfor grensene
             if(enKomponent.getPris()>=prisFra && enKomponent.getPris()<=prisTil){
                 //Sjekker om brukeren har valgt "Vis alle", og hvis ja legger til objektet i lista
@@ -60,12 +72,4 @@ public class KomponentData {
         }
         tv.setItems(returListe);
     }
-
-    /*public static void slettMedVarenummer(String varenummer){
-        for (Komponent enKomponent : alleKomponenter){
-            if(enKomponent.getVarenr().get().equals(varenummer)){
-                alleKomponenter.remove(enKomponent);
-            }
-        }
-    }*/
-    }
+}

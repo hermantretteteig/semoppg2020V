@@ -53,7 +53,7 @@ public class NyttKjopController {
         TreeItem<models.komponent.Komponent> alleKomponener = new TreeItem<>(new models.komponent.Komponent("", "Komponenter", "", 0));
 
         //TreeItem<Komponent> skjerm = new TreeItem<>();
-        for(models.komponent.Komponent enKompoent : KomponentData.getAlleKomponenter()){
+        for(models.komponent.Komponent enKompoent : KomponentData.getKomponenter()){
 
             if(enKompoent.getClass().getSimpleName().equals("Lagringsenhet")){
                 lagringsenheter.getChildren().add(new TreeItem<>(enKompoent));
@@ -90,12 +90,12 @@ public class NyttKjopController {
     }
 
     @FXML
-    public void fullforKjopAction() throws IOException {
-        if(HandlekurvData.getHandekurv().size()<=5){
+    public void fullforKjopAction() throws IOException, CloneNotSupportedException {
+        if(HandlekurvData.getHandlekurv().size()<=5){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Konfigurasjonsfeil");
             alert.setHeaderText("Du har ikke konfigurert en hel datamaskin.");
-            alert.setContentText("Du mangeler "+(6-HandlekurvData.getHandekurv().size())+" komponenter.");
+            alert.setContentText("Du mangeler "+(6-HandlekurvData.getHandlekurv().size())+" komponenter.");
             alert.showAndWait();
         }
         else{
@@ -105,7 +105,7 @@ public class NyttKjopController {
             alert.showAndWait();
             if(alert.getResult().getButtonData().isDefaultButton()==true){
                 Ordre.genererOrdreAvHandlekurv();
-                HandlekurvData.setSumHandlkurv(0.0);
+                HandlekurvData.setSumHandlekurv(0.0);
 
                 Alert info = new Alert(Alert.AlertType.INFORMATION);
                 info.setTitle("Kjøp registert");
@@ -130,7 +130,7 @@ public class NyttKjopController {
 
         boolean duplikat = false;
 
-        for(Komponent enKomponent : HandlekurvData.getHandekurv()){
+        for(Komponent enKomponent : HandlekurvData.getHandlekurv()){
             if(enKomponent.getClass().getSimpleName().equals(valgtKomponent.getClass().getSimpleName())){
                 enKomponent = tabell.getSelectionModel().getSelectedItem().getValue();
                 duplikat = true;
@@ -145,7 +145,7 @@ public class NyttKjopController {
             HandlekurvData.nyVare(valgtKomponent);
             tableHandekurv.refresh();
         }
-        lblTotalpris.setText("Totalpris: "+ HandlekurvData.getSumHandlkurv());
+        lblTotalpris.setText("Totalpris: "+ HandlekurvData.getSumHandlekurv());
 
     }
 
@@ -156,7 +156,7 @@ public class NyttKjopController {
         alert.setContentText("");
         alert.showAndWait();
         if(alert.getResult().getButtonData().isDefaultButton()==true){
-            HandlekurvData.slettType(nyVare.getClass().getSimpleName());
+            HandlekurvData.slettKomponent(nyVare.getClass().getSimpleName());
             HandlekurvData.nyVare(nyVare);
             tableHandekurv.refresh();
         }
@@ -179,10 +179,10 @@ public class NyttKjopController {
         alert.setContentText("Slettingen kan ikke angres");
         alert.showAndWait();
         if(alert.getResult().getButtonData().isDefaultButton()==true){
-            HandlekurvData.getHandekurv().clear();
-            HandlekurvData.setSumHandlkurv(0.0);
+            HandlekurvData.getHandlekurv().clear();
+            HandlekurvData.setSumHandlekurv(0.0);
             tableHandekurv.refresh();
-            lblTotalpris.setText("Totalpris: "+ HandlekurvData.getSumHandlkurv());
+            lblTotalpris.setText("Totalpris: "+ HandlekurvData.getSumHandlekurv());
         }
 
     }
@@ -195,15 +195,15 @@ public class NyttKjopController {
     @FXML
     public void slettValgtVareAction(){
         Komponent slettVare = (Komponent) tableHandekurv.getSelectionModel().getSelectedItem();
-        HandlekurvData.getHandekurv().remove(slettVare);
-        HandlekurvData.setSumHandlkurv(HandlekurvData.getSumHandlkurv() - slettVare.getPris());
-        lblTotalpris.setText("Totalpris: "+ HandlekurvData.getSumHandlkurv());
+        HandlekurvData.getHandlekurv().remove(slettVare);
+        HandlekurvData.setSumHandlekurv(HandlekurvData.getSumHandlekurv() - slettVare.getPris());
+        lblTotalpris.setText("Totalpris: "+ HandlekurvData.getSumHandlekurv());
         tableHandekurv.refresh();
     }
 
 
     public void initialize() {
-        lblTotalpris.setText("Totalpris: "+ HandlekurvData.getSumHandlkurv());
+        lblTotalpris.setText("Totalpris: "+ HandlekurvData.getSumHandlekurv());
         coHandlekurvPris.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
 
         collection.hentKomponenttype(tableHandekurv);

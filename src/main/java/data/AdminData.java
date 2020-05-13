@@ -11,6 +11,7 @@ public class AdminData {
         return admins;
     }
 
+    //TODO fjerne?
     public static Admin getAdmin(String adminnr){
         Admin admin = null;
         for (Admin enAdmin : admins) {
@@ -21,11 +22,11 @@ public class AdminData {
         return admin;
     }
 
-    public static void setAdmins(ObservableList<Admin> Admins) {
-        AdminData.admins = admins;
-    }
-
     public static void leggTilAdmin(Admin nyAdmin){
         admins.add(nyAdmin);
+    }
+
+    public static void setAdmins(ObservableList<Admin> admins) {
+        AdminData.admins = admins;
     }
 }

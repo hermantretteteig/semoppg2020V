@@ -162,6 +162,22 @@
                   <Insets />
                </opaqueInsets>
             </Label>
+            <Label text="GHz." GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="7.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Gb." GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="7.0" />
+               </GridPane.margin>
+            </Label>
          </children>
       </GridPane>
    </children>

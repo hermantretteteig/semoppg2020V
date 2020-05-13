@@ -27,7 +27,7 @@ public class NyLagringsenhetController {
     public TextField txtModell;
     public TextField txtPris;
     public ChoiceBox choFormat;
-    public TextField txtStorrelse;
+    public TextField txtLagringskapasitet;
     public TextField txtLesehastighet;
     public TextField txtSkrivehastighet;
 
@@ -52,7 +52,7 @@ public class NyLagringsenhetController {
         String varemerke = txtVaremerke.getText();
         String modell = txtModell.getText();
         String pris = txtPris.getText();
-        String storrelse  = txtStorrelse.getText();
+        String storrelse  = txtLagringskapasitet.getText();
         String lesehastighet = txtLesehastighet.getText();
         String skrivehastighet = txtSkrivehastighet.getText();
 
@@ -109,17 +109,22 @@ public class NyLagringsenhetController {
             check7 = false;
         }
 
-        Lagringsenhet nyLagringsenhet = new Lagringsenhet(varemerke,
-                modell, Double.parseDouble(pris),
-                choFormat.getValue().toString(),
-                Integer.parseInt(storrelse),
-                lesehastighet, skrivehastighet);
+
         if (check1 && check2 && check3 && check4 && check5 && check6 && check7){
+            Lagringsenhet nyLagringsenhet = new Lagringsenhet(varemerke,
+                    modell, Double.parseDouble(pris),
+                    choFormat.getValue().toString(),
+                    Integer.parseInt(storrelse),
+                    lesehastighet, skrivehastighet);
             KomponentData.leggTilKomponent(nyLagringsenhet);
             App.setRoot("adminView/nyKomponentView/nyKomponent");
             NyKomponentAlert.visBekreftelse(varemerke, modell);
         }
 
 
+    }
+
+    public void initialize() {
+        choFormat.setValue("SSD 2.5");
     }
 }

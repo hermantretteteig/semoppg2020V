@@ -88,13 +88,14 @@ public class NySkjermkortController {
             check5 = false;
         }
 
-        Skjermkort nyttSkjermkort = new Skjermkort(varemerke,
-                modell,
-                Double.parseDouble(pris),
-                Double.parseDouble(klokkehastighet),
-                Integer.parseInt(minne));
+
 
         if (check1 && check2 && check3 && check4 && check5){
+            Skjermkort nyttSkjermkort = new Skjermkort(varemerke,
+                    modell,
+                    Double.parseDouble(pris),
+                    Double.parseDouble(klokkehastighet),
+                    Integer.parseInt(minne));
             KomponentData.leggTilKomponent(nyttSkjermkort);
             App.setRoot("adminView/nyKomponentView/nyKomponent");
             NyKomponentAlert.visBekreftelse(varemerke, modell);

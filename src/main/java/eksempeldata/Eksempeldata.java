@@ -40,7 +40,7 @@ public class Eksempeldata {
                 "Samsung",
                 "2000",
                 2490,
-                "SSD",
+                "SSD 2.5",
                 512,
                 "1250",
                 "2150");
@@ -49,7 +49,7 @@ public class Eksempeldata {
                 "Apple",
                 "Ultra",
                 9490,
-                "SSD",
+                "SSD 2.5",
                 512,
                 "2456",
                 "2134");
@@ -59,14 +59,14 @@ public class Eksempeldata {
                 "Super",
                 499,
                 true,
-                "#F2F2F2");
+                "Svart");
 
         Mus toMus = new Mus(
                 "Apple",
                 "Rask",
                 699,
                 true,
-                "#000000");
+                "Hvit");
 
         Prosessor prosessor1 = new Prosessor(
                 "AMD",
@@ -130,7 +130,7 @@ public class Eksempeldata {
                 "Samsung",
                 "2000",
                 2490,
-                "SDD",
+                "SSD 2.5",
                 254,
                 "895",
                 "560");
@@ -149,14 +149,14 @@ public class Eksempeldata {
                 "Arc",
                 599,
                 true,
-                "#F2F2F2");
+                "Brun");
 
         Mus mus4 = new Mus(
                 "Asus",
                 "Rog",
                 1390,
                 false,
-                "#000000");
+                "Rød");
 
         Prosessor prosessor3 = new Prosessor(
                 "Intel",

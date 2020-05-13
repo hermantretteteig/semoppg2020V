@@ -33,7 +33,7 @@
         </columns>
       </TableView>
 
-      <TableView fx:id="valgtDatamaskin" layoutX="523.0" layoutY="106.0" onMousePressed="#valgtKomponent" prefHeight="187.0" prefWidth="425.0">
+      <TableView fx:id="valgtDatamaskin" layoutX="523.0" layoutY="106.0" onMousePressed="#valgtKomponent" prefHeight="181.0" prefWidth="425.0">
         <columns>
             <TableColumn prefWidth="110.0" resizable="false" text="Komponent">
                 <cellValueFactory>

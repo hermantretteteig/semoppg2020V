@@ -75,7 +75,6 @@ public class TidligereKjopController {
             ObservableValue<String>>() {
         @Override
         public ObservableValue<String> call(TableColumn.CellDataFeatures<Ordre, String> data){
-            // new SimpleStringProperty(data.getValue().getKundenr());
             Kunde valgtKunde = KundeData.getKunde(data.getValue().getKundenr());
 
             return new SimpleStringProperty(valgtKunde.getFornavn()+" "+valgtKunde.getEtternavn());

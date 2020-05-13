@@ -90,12 +90,13 @@ public class NyProsessorController {
             check5 = false;
         }
 
-        Prosessor nyProsessor = new Prosessor(varemerke, modell,
-                Double.parseDouble(pris),
-                Integer.parseInt(kjerner),
-                Double.parseDouble(klokkehastighet));
 
         if (check1 && check2 && check3 && check4 && check5){
+            Prosessor nyProsessor = new Prosessor(varemerke, modell,
+                    Double.parseDouble(pris),
+                    Integer.parseInt(kjerner),
+                    Double.parseDouble(klokkehastighet));
+
             KomponentData.leggTilKomponent(nyProsessor);
             App.setRoot("adminView/nyKomponentView/nyKomponent");
             NyKomponentAlert.visBekreftelse(varemerke, modell);

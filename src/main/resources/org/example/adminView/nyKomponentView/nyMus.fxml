@@ -126,14 +126,23 @@
                   </FXCollections>
                </items>
             </ChoiceBox>
-            <ColorPicker fx:id="colFarge" prefHeight="25.0" prefWidth="194.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <opaqueInsets>
-                  <Insets left="60.0" />
-               </opaqueInsets>
+            <ChoiceBox fx:id="choFarge" prefHeight="25.0" prefWidth="196.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="60.0" top="-10.0" />
                </GridPane.margin>
-            </ColorPicker>
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Grå" />
+                     <String fx:value="Svart" />
+                     <String fx:value="Blå" />
+                     <String fx:value="Brun" />
+                     <String fx:value="Rose" />
+                     <String fx:value="Hvit" />
+                     <String fx:value="Oransje" />
+                     <String fx:value="Rød" />
+                  </FXCollections>
+               </items>
+            </ChoiceBox>
             <Label fx:id="lblVaremerkeFeil" textFill="#dd0000" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="32.0" />

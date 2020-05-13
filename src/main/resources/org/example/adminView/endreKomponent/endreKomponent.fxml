@@ -143,7 +143,7 @@
                      <TextFieldTableCell fx:factory="forTableColumn" />
                  </cellFactory>
              </TableColumn>
-             <TableColumn fx:id="coKlokkehastighet" onEditCommit="#KlokkehastgihetEdit" prefWidth="115.0" text="Klokkehastighet (GHz)">
+             <TableColumn fx:id="coKlokkehastighet" onEditCommit="#KlokkehastgihetEdit" prefWidth="145.0" text="Klokkehastighet (GHz)">
                  <cellValueFactory>
                      <PropertyValueFactory property="Klokkehastighet" />
                  </cellValueFactory>

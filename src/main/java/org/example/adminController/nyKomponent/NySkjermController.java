@@ -92,10 +92,11 @@ public class NySkjermController {
             check5 = false;
         }
 
-        Skjerm nySkjerm = new Skjerm(varemerke, modell, Double.parseDouble(pris),
-                 Integer.parseInt(hoyde), Integer.parseInt(bredde));
+
 
         if (check1 && check2 && check3 && check4 && check5){
+            Skjerm nySkjerm = new Skjerm(varemerke, modell, Double.parseDouble(pris),
+                    Integer.parseInt(hoyde), Integer.parseInt(bredde));
             KomponentData.leggTilKomponent(nySkjerm);
             App.setRoot("adminView/nyKomponentView/nyKomponent");
             NyKomponentAlert.visBekreftelse(varemerke, modell);

@@ -24,8 +24,9 @@ public class NyMusController {
     public TextField txtVaremerke;
     public TextField txtModell;
     public TextField txtPris;
+
     public ChoiceBox choTrodlos;
-    public ColorPicker colFarge;
+    public ChoiceBox choFarge;
 
     @FXML public javafx.scene.control.Button registrer;
     @FXML public javafx.scene.control.Button avslutt;
@@ -85,12 +86,19 @@ public class NyMusController {
             trodlos = true;
         }
 
-        Mus nyMus = new Mus(varemerke, modell,
-                Double.parseDouble(pris), trodlos, colFarge.getValue().toString());
         if (check1 && check2 && check3 && check4 && check5){
+            Mus nyMus = new Mus(varemerke, modell, Double.parseDouble(pris), trodlos, choFarge.getValue().toString());
             KomponentData.leggTilKomponent(nyMus);
             App.setRoot("adminView/nyKomponentView/nyKomponent");
             NyKomponentAlert.visBekreftelse(varemerke, modell);
         }
+
+
+
+    }
+
+    public void initialize() {
+        choFarge.setValue("Grå");
+        choTrodlos.setValue("Ja");
     }
 }

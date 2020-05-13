@@ -93,13 +93,19 @@ public class NyTastaturController {
             trodlos = true;
         }
 
-        Tastatur nyTastatur = new Tastatur(varemerke,
-           modell, Double.parseDouble(pris), trodlos, numpad);
+
 
         if(check1 && check2 && check3 && check4 && check5) {
+            Tastatur nyTastatur = new Tastatur(varemerke,
+                    modell, Double.parseDouble(pris), trodlos, numpad);
            KomponentData.leggTilKomponent(nyTastatur);
            App.setRoot("adminView/nyKomponentView/nyKomponent");
            NyKomponentAlert.visBekreftelse(varemerke, modell);
         }
+    }
+
+    public void initialize() {
+        choNumpad.setValue("Nei");
+        choTrodlos.setValue("Ja");
     }
 }

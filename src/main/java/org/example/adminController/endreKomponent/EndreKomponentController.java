@@ -390,6 +390,7 @@ public class EndreKomponentController {
         coFormat.setCellFactory(ComboBoxTableCell.<Lagringsenhet, String>forTableColumn("SSD 2.5", "SDD M.2", "SSD mSATA", "HDD"));
         coNumpad.setCellFactory( CheckBoxTableCell.forTableColumn(coNumpad) );
         coTrodlos.setCellFactory( CheckBoxTableCell.forTableColumn(coTrodlos) );
+        coFarge.setCellFactory(ComboBoxTableCell.<Lagringsenhet, String>forTableColumn("Grå", "Svart", "Blå", "Brun", "Rose", "Hvit", "Oransje", "Rød"));
         co4K.setCellFactory( CheckBoxTableCell.forTableColumn(co4K) );
         coMusTrodlos.setCellFactory( CheckBoxTableCell.forTableColumn(coMusTrodlos) );
 

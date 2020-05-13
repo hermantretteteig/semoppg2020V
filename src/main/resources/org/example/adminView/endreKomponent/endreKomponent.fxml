@@ -175,7 +175,7 @@
              <!--SKJERM SLUTT-->
 
              <!--SKJERMKORT-->
-             <TableColumn fx:id="coSkKlokkehastighet" onEditCommit="#SkKlokkehastgihetEdit" prefWidth="115.0" text="Klokkehastighet (GHz)">
+             <TableColumn fx:id="coSkKlokkehastighet" onEditCommit="#SkKlokkehastgihetEdit" prefWidth="145.0" text="Klokkehastighet (MHz)">
                  <cellValueFactory>
                      <PropertyValueFactory property="Klokkehastighet" />
                  </cellValueFactory>

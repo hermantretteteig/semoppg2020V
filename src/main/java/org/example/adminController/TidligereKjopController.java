@@ -26,6 +26,9 @@ import models.kjop.Ordre;
 import models.komponent.Komponent;
 import org.example.App;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class TidligereKjopController {
     @FXML
     public TableView<Ordre> ordre;
@@ -34,6 +37,7 @@ public class TidligereKjopController {
 
     @FXML
     public TableColumn coKunde;
+    public TableColumn coDato;
 
     private NyttKjopKomponentinfoViewData collection1 = new NyttKjopKomponentinfoViewData();
     private ValgtOrdreSinDatamaskinData collection2 = new ValgtOrdreSinDatamaskinData();
@@ -68,8 +72,21 @@ public class TidligereKjopController {
         collection1.hentKomponentinfo(komponentinfo);
         alleOrdre.hentAlleOrdre(ordre);
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-
+        /*coDato.setCellFactory(tc -> new TableCell<Ordre, String>() {
+            @Override
+            protected void updateItem(String date, boolean empty) {
+                System.out.println(date);
+                LocalDate today = LocalDate.parse(date, formatter);
+                super.updateItem(date, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    setText(formatter.format(today));
+                }
+            }
+        });*/
 
     coKunde.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordre, String>,
             ObservableValue<String>>() {

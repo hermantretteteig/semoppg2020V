@@ -162,7 +162,7 @@
                   <Insets />
                </opaqueInsets>
             </Label>
-            <Label text="GHz." GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <Label text="MHz." GridPane.columnIndex="2" GridPane.rowIndex="4">
                <font>
                   <Font size="15.0" />
                </font>

@@ -69,18 +69,18 @@ public class Eksempeldata {
                 "Hvit");
 
         Prosessor prosessor1 = new Prosessor(
-                "AMD",
+                "Intel",
                 "i5",
                 4599,
-                12,
-                1200);
+                8,
+                2.3);
 
         Prosessor prosessor2 = new Prosessor(
                 "Intel",
                 "i7",
                 6099,
                 12,
-                2400);
+                3.2);
 
         Skjerm skjerm1 = new Skjerm(
                 "LG",
@@ -90,7 +90,7 @@ public class Eksempeldata {
                 720);
 
         Skjerm skjerm2 = new Skjerm(
-                "LG",
+                "Acer",
                 "Ultra 4K",
                 5499,
                 3840,
@@ -162,8 +162,8 @@ public class Eksempeldata {
                 "Intel",
                 "i9",
                 7599,
-                18,
-                4.4);
+                12,
+                3.6);
 
         Prosessor prosessor4 = new Prosessor(
                 "Intel",
@@ -180,7 +180,7 @@ public class Eksempeldata {
                 1440);
 
         Skjerm skjerm4 = new Skjerm(
-                "LG",
+                "AOC",
                 "Simpel 22",
                 2560,
                 1920,
@@ -265,10 +265,10 @@ public class Eksempeldata {
         Ordre nyOrdre3 = new Ordre("12/04/2020 14:23:27", nyKunde3.getKundenummer(), nyDatamaskin3);
         Ordre nyOrdre4 = new Ordre("02/01/2020 10:34:38", nyKunde4.getKundenummer(), nyDatamaskin4);
         Ordre nyOrdre5 = new Ordre("04/03/2019 07:12:32", nyKunde1.getKundenummer(), nyDatamaskin5);
-        Ordre nyOrdre6 = new Ordre("12/04/2016 08:52:57", nyKunde2.getKundenummer(), nyDatamaskin6);
-        Ordre nyOrdre7 = new Ordre("25/09/2018 23:34:26", nyKunde3.getKundenummer(), nyDatamaskin7);
-        Ordre nyOrdre8 = new Ordre("03/03/2018 00:54:25", nyKunde4.getKundenummer(), nyDatamaskin8);
-        Ordre nyOrdre9 = new Ordre("28/02/2020 09:15:33", nyKunde1.getKundenummer(), nyDatamaskin9);
+        Ordre nyOrdre6 = new Ordre("12-10-2016", nyKunde2.getKundenummer(), nyDatamaskin6);
+        Ordre nyOrdre7 = new Ordre("25-11-2018", nyKunde3.getKundenummer(), nyDatamaskin7);
+        Ordre nyOrdre8 = new Ordre("12-12-2018", nyKunde4.getKundenummer(), nyDatamaskin8);
+        Ordre nyOrdre9 = new Ordre("28-10-2020", nyKunde1.getKundenummer(), nyDatamaskin9);
         Ordre nyOrdre10 = new Ordre("12/03/2020 15:43:44", nyKunde2.getKundenummer(), nyDatamaskin10);
         Ordre nyOrdre11 = new Ordre("30/08/2012 18:34:25", nyKunde5.getKundenummer(), nyDatamaskin11);
         Ordre nyOrdre12 = new Ordre("18/09/2017 23:45:32", nyKunde6.getKundenummer(), nyDatamaskin12);
@@ -299,6 +299,5 @@ public class Eksempeldata {
         OrdreData.leggTilOrdre(nyOrdre15);
         OrdreData.leggTilOrdre(nyOrdre16);
         OrdreData.leggTilOrdre(nyOrdre17);
-
         }
 }

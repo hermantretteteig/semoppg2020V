@@ -20,7 +20,7 @@
                     <PropertyValueFactory property="Ordrenumer" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn editable="false" maxWidth="247.5" minWidth="132.5" prefWidth="132.5" resizable="false" text="Kjopsdato">
+            <TableColumn fx:id="coDato" editable="false" maxWidth="247.5" minWidth="132.5" prefWidth="132.5" resizable="false" text="Kjopsdato">
                 <cellValueFactory>
                     <PropertyValueFactory property="Kjopsdato" />
                 </cellValueFactory>

@@ -135,14 +135,18 @@ public class EndreKomponentController {
 
 
     public void VareMerkeEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if(nyFeil("For kort varemerkenavn. Minst to tegn", LengeCheck.lengdeCheck(event.getNewValue())) == true) {
+        if(valider("For kort varemerkenavn. Minst to tegn", LengeCheck.lengdeCheck(event.getNewValue())) == true) {
             event.getRowValue().setVaremerke(event.getNewValue());
-            tableView.refresh();
         }
+        else {
+                event.getRowValue().setVaremerke(event.getOldValue());
+            }
+        tableView.refresh();
+
     }
 
     public void PrisEdit(TableColumn.CellEditEvent<Komponent, Double> event) {
-        if(nyFeil("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
+        if(valider("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
             event.getRowValue().setPris(event.getNewValue());
         }
         else {
@@ -152,10 +156,13 @@ public class EndreKomponentController {
     }
 
     public void ModellEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if(nyFeil("For kort modelnavn. Minst to tegn", LengeCheck.lengdeCheck(event.getNewValue())) == true) {
+        if(valider("For kort modelnavn. Minst to tegn", LengeCheck.lengdeCheck(event.getNewValue())) == true) {
             event.getRowValue().setModell(event.getNewValue());
-            tableView.refresh();
         }
+        else {
+            event.getRowValue().setModell(event.getOldValue());
+        }
+        tableView.refresh();
     }
 
     //Tastatur
@@ -173,7 +180,7 @@ public class EndreKomponentController {
     }
 
     public void GbEdit(TableColumn.CellEditEvent<Komponent, Integer> event) {
-        if(nyFeil("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
+        if(valider("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
             ((Lagringsenhet) event.getRowValue()).setGb(event.getNewValue());
         }
         else{
@@ -183,17 +190,23 @@ public class EndreKomponentController {
     }
 
     public void SkrivehastighetEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if(nyFeil("Må kun inneholde tall", HeltallCheck.heltallCheck(event.getNewValue())) == true) {
+        if(valider("Må kun inneholde tall", HeltallCheck.heltallCheck(event.getNewValue())) == true) {
             ((Lagringsenhet) event.getRowValue()).setSkriveHastighet(event.getNewValue());
-            tableView.refresh();
         }
+        else{
+            ((Lagringsenhet) event.getRowValue()).setSkriveHastighet(event.getOldValue());
+        }
+        tableView.refresh();
     }
 
     public void LesehastighetEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if(nyFeil("Må kun inneholde tall", HeltallCheck.heltallCheck(event.getNewValue())) == true) {
+        if(valider("Må kun inneholde tall", HeltallCheck.heltallCheck(event.getNewValue())) == true) {
             ((Lagringsenhet) event.getRowValue()).setLeseHastighet(event.getNewValue());
-            tableView.refresh();
         }
+        else{
+            ((Lagringsenhet) event.getRowValue()).setLeseHastighet(event.getOldValue());
+        }
+        tableView.refresh();
     }
 
     //Mus
@@ -207,7 +220,7 @@ public class EndreKomponentController {
 
     //Prosessor
     public void KjernerEdit(TableColumn.CellEditEvent<Komponent, Integer> event) {
-        if(nyFeil("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
+        if(valider("Må kun inneholde tall", event.getNewValue()!=-1)) {
             ((Prosessor) event.getRowValue()).setAntallKjerner(event.getNewValue());
         }
         else{
@@ -217,7 +230,7 @@ public class EndreKomponentController {
     }
 
     public void KlokkehastgihetEdit(TableColumn.CellEditEvent<Komponent, Double> event) {
-        if(nyFeil("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
+        if(valider("Må kun inneholde tall", event.getNewValue()!=-1)) {
             ((Prosessor) event.getRowValue()).setKlokkehastighet(event.getNewValue());
         }
         else{
@@ -228,7 +241,7 @@ public class EndreKomponentController {
 
     //Skjerm
     public void HoydeEdit(TableColumn.CellEditEvent<Komponent, Integer> event) {
-        if(nyFeil("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
+        if(valider("Må kun inneholde tall", event.getNewValue()!=-1)) {
             ((Skjerm) event.getRowValue()).setPixelHoyde(event.getNewValue());
         }
         else{
@@ -238,7 +251,7 @@ public class EndreKomponentController {
     }
 
     public void BreddeEdit(TableColumn.CellEditEvent<Komponent, Integer> event) {
-        if(nyFeil("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
+        if(valider("Må kun inneholde tall", event.getNewValue() != -1)) {
             ((Skjerm) event.getRowValue()).setPixelBredde(event.getNewValue());
         }
         else{
@@ -249,7 +262,7 @@ public class EndreKomponentController {
 
     //Skjermkort
     public void SkKlokkehastgihetEdit(TableColumn.CellEditEvent<Komponent, Double> event) {
-        if(nyFeil("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
+        if(valider("Må kun inneholde tall", event.getNewValue() != -1)) {
             ((Skjermkort) event.getRowValue()).setKlokkehastighet(event.getNewValue());
         }
         else{
@@ -259,7 +272,7 @@ public class EndreKomponentController {
     }
 
     public void MinneEdit(TableColumn.CellEditEvent<Komponent, Integer> event) {
-        if(nyFeil("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
+        if(valider("Må kun inneholde tall", event.getNewValue()!=-1)) {
             ((Skjermkort) event.getRowValue()).setMinne(event.getNewValue());
         }
         else{
@@ -337,7 +350,7 @@ public class EndreKomponentController {
         }
     }
 
-    public static boolean nyFeil(String msg, Boolean feil){
+    public static boolean valider(String msg, Boolean feil){
         if (feil == false) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Wooops!");

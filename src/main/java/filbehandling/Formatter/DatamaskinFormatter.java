@@ -2,8 +2,12 @@ package filbehandling.Formatter;
 
 import models.komponent.*;
 
-public class DatamaskinFormatter {
+/*
+Formaterer komponenter/datamaskin for skriving til tekstfil.
+ */
 
+public class DatamaskinFormatter {
+    //Metode som kaller alle metodene for formattering av komponenter.
     public static String formaterDatamaskin(Datamaskin datamaskin){
         return String.join(";",formaterProsessor(datamaskin.getProsessor()),
                 formaterSkjermkort(datamaskin.getSkjermkort()),
@@ -13,6 +17,7 @@ public class DatamaskinFormatter {
                 formaterTastatur(datamaskin.getTastatur()));
     }
 
+    //Metoder for å formatere hvert enkelt komponent
     private static String formaterKomponent(Komponent komponent){
         return String.join(";",
                 komponent.getClass().getSimpleName(),

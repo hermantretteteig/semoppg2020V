@@ -9,18 +9,20 @@ public class ParseOrdre {
     private static final String feilBoolean = "kan ikke formateres som true eller false";
 
     public static Ordre parseOrdre(String linje){
+        //Deler opp linjer i tekstfilen der hvor tekstfilen inneholder semikolon (";").
         String[] split = linje.split(";");
 
+        //Hvis en linje ikke inneholder 49 splitter kastes en InvalidOrdreFormatException.
         if(split.length != 49){
             //TODO feilhåndtering
             //Eksempel: InvalidOrdreFormatException("Må bruke semicolon ; for å separere data.");
         }
-
+        //Organiserer arrayet for å skrives til objekt.
         String ordrenummer = split[0];
         String kjopsdato = split[1];
         String kundenr = split[2];
         Double totalsum = ParseVariabler.parseDesimaltall(split[3], feilDesimaltall);
-
+        //Legger til verdiene fra split arrayet i nytt Ordre objekt.
         return new Ordre(ordrenummer, kjopsdato, kundenr, totalsum, parseDatamaskin(linje));
     }
 
@@ -36,6 +38,7 @@ public class ParseOrdre {
         );
     }
 
+    //Formatterer data fra tekstfil til komponent sin superklasse.
     private static Komponent parseKomponentSuper(String linje, int i, int j, int k, int l){
         String[] split = linje.split(";");
         //TODO validere at varenr, er på riktig format.
@@ -47,6 +50,7 @@ public class ParseOrdre {
         return new Komponent(vareNr, varemerke, modell, pris);
     }
 
+    //Formatterer data fra tekstfil til prosessor.
     private static Prosessor parseProsessor(String linje){
         String[] split = linje.split(";");
 
@@ -61,7 +65,7 @@ public class ParseOrdre {
                 kjerner,
                 klokkehastighet);
     }
-
+    //Formatterer data fra tekstfil til skjermkort.
     private static Skjermkort parseSkjermkort(String linje){
         String[] split = linje.split(";");
 
@@ -76,7 +80,7 @@ public class ParseOrdre {
                 klokkehastighet,
                 minne);
     }
-
+    //Formatterer data fra tekstfil til lagringsenhet.
     private static Lagringsenhet parseLagringsenhet(String linje){
             String[] split = linje.split(";");
 
@@ -96,6 +100,7 @@ public class ParseOrdre {
                 skriveHastighet);
     }
 
+    //Formatterer data fra tekstfil til skjerm.
     private static Skjerm parseSkjerm(String linje) {
         String[] split = linje.split(";");
 
@@ -113,6 +118,7 @@ public class ParseOrdre {
                 min4k);
     }
 
+    //Formatterer data fra tekstfil til mus.
     private static Mus parseMus(String linje){
         String[] split = linje.split(";");
 
@@ -128,6 +134,7 @@ public class ParseOrdre {
                 farge);
     }
 
+    //Formatterer data fra tekstfil til tastatur.
     private static Tastatur parseTastatur(String linje){
         String[] split = linje.split(";");
 

@@ -1,9 +1,7 @@
 package filbehandling.Formatter;
 
 import models.kjop.Ordre;
-
 import java.util.ArrayList;
-
 import static filbehandling.Formatter.DatamaskinFormatter.formaterDatamaskin;
 
 public class OrdreFormatter {
@@ -18,6 +16,8 @@ public class OrdreFormatter {
 
     private static final String head = String.join(";", ordreHead, prosessorHead, skjermkortHead, lagringsenhetHead, skjermHead, musHead, tastaturHead);
 
+
+    //Går igjennom ordreliste for å formataere hver orddre for skriving til fil.
     public static String formaterOrdre(ArrayList<Ordre> ordreListe){
         StringBuilder ut = new StringBuilder(head + "\n");
 
@@ -31,18 +31,6 @@ public class OrdreFormatter {
             ));
 
         }
-        return ut.toString();
-    }
-
-    public static String formaterOrdre2(Ordre ordre){
-        StringBuilder ut = new StringBuilder();
-
-            ut.append(String.join(";",
-                    ordre.getOrdrenumer(),
-                    ordre.getKjopsdato(),
-                    ordre.getKundenr(),
-                    String.valueOf(ordre.getTotalsum()),
-                    formaterDatamaskin(ordre.getDatamaskin()) + "\n"));
         return ut.toString();
     }
 

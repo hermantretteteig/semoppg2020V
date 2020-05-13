@@ -1,9 +1,7 @@
 package filbehandling;
 
-import filbehandling.Parse.ParseKomponenterGammel;
 import filbehandling.Parse.ParseOrdre;
 import models.kjop.Ordre;
-import models.komponent.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;

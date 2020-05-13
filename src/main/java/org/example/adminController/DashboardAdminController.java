@@ -78,6 +78,7 @@ public class DashboardAdminController {
 
     }
 
+
     private FileChooser opprettFilechooser(String string){
         //Forhåndsvalgt ilbane: C:\Users\brukernavn\Datamaskinkonfigurering\komponenter
         File filBane = new File(System.getProperty("user.home"), "Datamaskinkonfigurering/komponenter");

@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.UUID;
 
 
-//Superklasse som alle andre varer arver fra.
+//ListerForFilbehandling som alle andre varer arver fra.
 public class Komponent implements Serializable, Cloneable{
     private static final long serialVersionUID = 2;
 

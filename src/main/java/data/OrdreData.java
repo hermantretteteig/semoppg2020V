@@ -18,8 +18,8 @@ public class OrdreData {
         return ordre;
     }
 
-    //Brukes til lagring til tekstfil.
-    public static ArrayList<Ordre> getOrdreListe() {
+    //Metode som henter alle ordre i listen og returnerer som arraylist
+    public static ArrayList<Ordre> getOrdreArray() {
         return new ArrayList<>(ordre);
     }
 

@@ -10,6 +10,25 @@ import java.util.ArrayList;
 
 public class LesJOBJ {
 
+    //Metode for å hente fra fil
+    public static ListerForFilbehandling lesListerForFilbehandling(String filnavn) throws ClassNotFoundException {
+        Path path = Paths.get(filnavn);
+        try (InputStream in = Files.newInputStream(path);
+             ObjectInputStream oin = new ObjectInputStream(in))
+        {
+            Object object = oin.readObject();
+            ListerForFilbehandling listerForFilbehandling;
+            listerForFilbehandling = (ListerForFilbehandling) object;
+            return listerForFilbehandling;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //Todo fiks returverdi/ feilhåndtering
+        return null;
+    }
+
+
     //Generisk metode for å hente ArrayLister med forskjellige typer, fra fil
     public static <T> ArrayList<T> lesListe(String filnavn) throws ClassNotFoundException {
         Path path = Paths.get(filnavn);

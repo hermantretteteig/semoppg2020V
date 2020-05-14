@@ -6,16 +6,22 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import models.komponent.Datamaskin;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-public class Ordre implements Cloneable{
-    private SimpleStringProperty ordrenumer;
-    private SimpleStringProperty kjopsdato;
-    private SimpleStringProperty kundenr;
-    private SimpleDoubleProperty totalsum;
-    private Datamaskin datamaskin;
+public class Ordre implements Cloneable, Serializable {
+    private static final long serialVersionUID = 1;
+
+    private transient SimpleStringProperty ordrenumer;
+    private transient SimpleStringProperty kjopsdato;
+    private transient SimpleStringProperty kundenr;
+    private transient SimpleDoubleProperty totalsum;
+    private transient Datamaskin datamaskin;
 
     //Konstruktør for oppretting av nytt objekt.
     public Ordre(String kjopsdato, String kundenr, Datamaskin datamaskin) {
@@ -114,6 +120,26 @@ public class Ordre implements Cloneable{
 
     public void setDatamaskin(Datamaskin datamaskin) {
         this.datamaskin = datamaskin;
+    }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        out.defaultWriteObject();
+
+        out.writeObject(ordrenumer.get());
+        out.writeObject(kjopsdato.get());
+        out.writeObject(kundenr.get());
+        out.writeObject(totalsum.get());
+        out.writeObject(datamaskin);
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+
+        ordrenumer = new SimpleStringProperty((String) in.readObject());
+        kjopsdato = new SimpleStringProperty((String) in.readObject());
+        kundenr = new SimpleStringProperty((String) in.readObject());
+        totalsum = new SimpleDoubleProperty((Double) in.readObject());
+        datamaskin = (Datamaskin) in.readObject();
     }
 }
 

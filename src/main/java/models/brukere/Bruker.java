@@ -1,7 +1,11 @@
 package models.brukere;
 
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Bruker implements Serializable {
@@ -53,5 +57,23 @@ public class Bruker implements Serializable {
 
     public void setPassord(String passord) {
         this.passord.set(passord);
+    }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        out.defaultWriteObject();
+
+        out.writeObject(fornavn.get());
+        out.writeObject(etternavn.get());
+        out.writeObject(brukernavn.get());
+        out.writeObject(passord.get());
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+
+        fornavn = new SimpleStringProperty((String) in.readObject());
+        etternavn = new SimpleStringProperty((String) in.readObject());
+        brukernavn = new SimpleStringProperty((String) in.readObject());
+        passord = new SimpleStringProperty((String) in.readObject());
     }
 }

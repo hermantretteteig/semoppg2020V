@@ -2,6 +2,9 @@ package models.brukere;
 
 import javafx.beans.property.SimpleStringProperty;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.UUID;
 
 public class Kunde extends Bruker {
@@ -31,8 +34,6 @@ public class Kunde extends Bruker {
         this.kundenummer.set(kundenummer);
     }
 
-
-
     public String getEpost() {
         return epost.get();
     }
@@ -43,5 +44,19 @@ public class Kunde extends Bruker {
 
     private String genererKundenr() {
         return UUID.randomUUID().toString();
+    }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        out.defaultWriteObject();
+
+        out.writeObject(kundenummer.get());
+        out.writeObject(epost.get());
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+
+        kundenummer = new SimpleStringProperty((String) in.readObject());
+        epost = new SimpleStringProperty((String) in.readObject());
     }
 }

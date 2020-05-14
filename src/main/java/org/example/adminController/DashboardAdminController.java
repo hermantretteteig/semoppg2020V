@@ -1,6 +1,7 @@
 package org.example.adminController;
 
-import data.InnloggetBrukerData;
+import data.*;
+import filbehandling.ListerForFilbehandling;
 import filbehandling.LagreJOBJ;
 import filbehandling.Traad;
 import javafx.concurrent.WorkerStateEvent;
@@ -15,8 +16,6 @@ import javafx.stage.Stage;
 import org.example.App;
 
 import java.io.File;
-
-import static data.KomponentData.getKomponenter;
 
 public class DashboardAdminController {
 
@@ -75,7 +74,7 @@ public class DashboardAdminController {
 
 
     private FileChooser opprettFilechooser(String string){
-        //Forhåndsvalgt ilbane: C:\Users\brukernavn\Datamaskinkonfigurering\komponenter
+        //Forhåndsvalgt filbane: C:\Users\brukernavn\Datamaskinkonfigurering\komponenter
         File filBane = new File(System.getProperty("user.home"), "Datamaskinkonfigurering/komponenter");
         //Lager filbanen om den ikke allerede eksisterer.
         //TODO putte denne i en try catch, og lage en alternativ løsning.
@@ -107,7 +106,8 @@ public class DashboardAdminController {
             File file = opprettFilechooser("Velg filbane").showSaveDialog(stage);
 
             if (file != null) {
-                LagreJOBJ.lagreListe(getKomponenter(), file.getAbsolutePath());
+                ListerForFilbehandling listerForFilbehandling = new ListerForFilbehandling();
+                LagreJOBJ.lagreListerForFilbehandling(listerForFilbehandling, file.getAbsolutePath());
             }
         }
     }
@@ -115,7 +115,7 @@ public class DashboardAdminController {
     private void hentFil(){
         //Åpner filechooser
         Stage stage = (Stage) adminPanel.getScene().getWindow();
-        File file = opprettFilechooser("Velg fil").showSaveDialog(stage);
+        File file = opprettFilechooser("Velg fil").showOpenDialog(stage);
 
         if (file != null) {
             traad = new Traad(file.getAbsolutePath());

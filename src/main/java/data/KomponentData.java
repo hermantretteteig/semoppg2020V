@@ -15,16 +15,21 @@ public class KomponentData {
         return komponenter;
     }
 
-    public static void setKomponenter(ArrayList<Komponent> komponenter) {
-        KomponentData.komponenter = FXCollections.observableArrayList(komponenter);
+    //Metode som henter alle komponentene i listen og returnerer som arraylist
+    public static ArrayList<Komponent> getKomponentArray() {
+        return new ArrayList<>(komponenter);
     }
+
+    /*public static void setKomponenter(ArrayList<Komponent> komponenter) {
+        KomponentData.komponenter = FXCollections.observableArrayList(komponenter);
+    }*/
 
     //Legger til en ny komponent når dette opprettes
     public static void leggTilKomponent(Komponent nyKomponent){
         komponenter.add(nyKomponent);
     }
 
-    public static void setAlleKomponenter(ObservableList<Komponent> alleKomponenter) {
+    public static void setKomponenter(ObservableList<Komponent> alleKomponenter) {
         KomponentData.komponenter = alleKomponenter;
     }
 

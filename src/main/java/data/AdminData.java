@@ -3,12 +3,20 @@ package data;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import models.brukere.Admin;
+import models.komponent.Komponent;
+
+import java.util.ArrayList;
 
 public class AdminData {
     private static ObservableList<Admin> admins = FXCollections.observableArrayList();
 
-    static ObservableList<Admin> getAdminer() {
+    public static ObservableList<Admin> getAdmins() {
         return admins;
+    }
+
+    //Metode som henter alle komponentene i listen og returnerer som arraylist
+    public static ArrayList<Admin> getAdminArray() {
+        return new ArrayList<>(admins);
     }
 
     //TODO fjerne?
@@ -28,5 +36,9 @@ public class AdminData {
 
     public static void setAdmins(ObservableList<Admin> admins) {
         AdminData.admins = admins;
+    }
+
+    public static void setAlleAdmins(ArrayList<Admin> admins) {
+        AdminData.admins = FXCollections.observableArrayList(admins);
     }
 }

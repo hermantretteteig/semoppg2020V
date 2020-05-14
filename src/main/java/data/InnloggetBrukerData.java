@@ -30,7 +30,7 @@ public class InnloggetBrukerData {
     public static boolean loggInnAdmin(String brukernavn, String passord){
         //Sjekker om administratoren er registrert i listen, ved å kontrollere at brukernavn eksitrerer
         // og tilhørende passord er riktig.
-        for(Admin enAdmin : AdminData.getAdminer()){
+        for(Admin enAdmin : AdminData.getAdmins()){
             if(enAdmin.getPassord().equals(passord)&&enAdmin.getBrukernavn().equals(brukernavn)){
                 innloggetAdmin = enAdmin;
                 return true;

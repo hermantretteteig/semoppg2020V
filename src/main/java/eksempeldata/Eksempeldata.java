@@ -30,7 +30,7 @@ public class Eksempeldata {
         //TODO må fjernes før levering
         InnloggetBrukerData.loggInnKunde("olehansen", "passord123");
 
-        Admin nyAdmin = new Admin("Adim", "Amid", "admin", "passord123");
+        Admin nyAdmin = new Admin("Adim", "Amid", "admin", "passord123", "edf60e08-9b08-442c-b07d-b6bf2bb7670c");
         AdminData.leggTilAdmin(nyAdmin);
 
         Lagringsenhet lagringsenhetEn = new Lagringsenhet(

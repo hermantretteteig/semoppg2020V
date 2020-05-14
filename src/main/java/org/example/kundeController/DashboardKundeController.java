@@ -37,7 +37,7 @@ public AnchorPane kundePanel;
         Stage stage = (Stage) kundePanel.getScene().getWindow();
         File file = fileChooser.showSaveDialog(stage);
         if(file != null) {
-            LagreCSV.lagreOrdre(OrdreData.getOrdreListe(), file.getAbsolutePath());
+            LagreCSV.lagreOrdre(OrdreData.getOrdreArray(), file.getAbsolutePath());
         }
     }
 

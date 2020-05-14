@@ -1,5 +1,11 @@
 package models.komponent;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Datamaskin implements Serializable, Cloneable {
@@ -81,16 +87,26 @@ public class Datamaskin implements Serializable, Cloneable {
         this.tastatur = tastatur;
     }
 
-    /*@Override
-    public String toString() {
-        return "Datamaskin{" +
-                "lagringsenhet=" + lagringsenhet +
-                ", skjerm=" + skjerm +
-                ", mus=" + mus +
-                ", prosessor=" + prosessor +
-                ", skjermkort=" + skjermkort +
-                ", tastatur=" + tastatur +
-                '}';
-    }*/
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        out.defaultWriteObject();
+
+        out.writeObject(lagringsenhet);
+        out.writeObject(skjerm);
+        out.writeObject(mus);
+        out.writeObject(prosessor);
+        out.writeObject(skjermkort);
+        out.writeObject(tastatur);
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+
+        lagringsenhet = (Lagringsenhet) in.readObject();
+        skjerm = (Skjerm) in.readObject();
+        mus = (Mus) in.readObject();
+        prosessor = (Prosessor) in.readObject();
+        skjermkort = (Skjermkort) in.readObject();
+        tastatur = (Tastatur) in.readObject();
+    }
 
 }

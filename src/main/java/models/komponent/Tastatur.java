@@ -47,8 +47,7 @@ public class Tastatur extends Komponent{
         this.numpad = new SimpleBooleanProperty(numpad);
     }
 
-    private void writeObject(ObjectOutputStream out)
-            throws IOException {
+    private void writeObject(ObjectOutputStream out) throws IOException {
 
         out.defaultWriteObject();
         out.writeObject(trodlos.get());

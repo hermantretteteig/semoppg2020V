@@ -3,7 +3,8 @@ package org.example.adminController;
 import data.InnloggetBrukerData;
 import filbehandling.LagreJOBJ;
 import filbehandling.ListerForFilbehandling;
-import filbehandling.Traad;
+import filbehandling.Traader.TraadHentingAvFil;
+import filbehandling.Traader.TraadLagringAvFil;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -17,8 +18,6 @@ import org.example.App;
 
 import java.io.File;
 
-import static data.KomponentData.getKomponenter;
-
 public class DashboardAdminController {
 
     @FXML
@@ -27,7 +26,8 @@ public class DashboardAdminController {
     public Button btnNyttKomponent, btnEndreKomponent, btnLagreFil, btnHentFil,
                   btnEndreKunde, btnTidligereKjop ,btnNyAdmin, btnLoggUt;
 
-    private Traad traad;
+
+    private TraadLagringAvFil traadLagringAvFil;
 
     @FXML
     public void hentFilAction() {
@@ -47,9 +47,6 @@ public class DashboardAdminController {
     public void tidligerKjopAction() throws Exception{
         App.setRoot("adminView/tidligereKjop");
     }
-
-
-
 
     @FXML
     public void nyAdminAction() throws Exception{
@@ -93,14 +90,22 @@ public class DashboardAdminController {
     }
 
     private void lagreFil(){
-            //Åpner filechooser og eksporterer data
-            Stage stage = (Stage) adminPanel.getScene().getWindow();
-            File file = opprettFilechooser("Velg filbane").showSaveDialog(stage);
-            //Sjekker at filobjektet ikke er tomt.
-            if (file != null) {
-                ListerForFilbehandling lff = new ListerForFilbehandling();
-                LagreJOBJ.lagreListerForFilbehandling(lff, file.getAbsolutePath());
-            }
+        //Åpner filechooser og eksporterer data
+        Stage stage = (Stage) adminPanel.getScene().getWindow();
+        File file = opprettFilechooser("Velg filbane").showSaveDialog(stage);
+        TraadLagringAvFil traad;
+
+        //Sjekker at filobjektet ikke er tomt.
+        if (file != null) {
+            traad = new TraadLagringAvFil(file.getAbsolutePath());
+            Thread thread = new Thread(traad);
+            traad.setOnSucceeded(this::traadFerdigLagreFil);
+            traad.setOnFailed(this::traadFeiletLagreFil);
+            setDisable(true);
+            thread.start();
+            /*ListerForFilbehandling lff = new ListerForFilbehandling();
+            LagreJOBJ.lagreListerForFilbehandling(lff, file.getAbsolutePath());*/
+        }
     }
 
     private void hentFil(){
@@ -117,12 +122,14 @@ public class DashboardAdminController {
             //Åpner filechooser
             Stage stage = (Stage) adminPanel.getScene().getWindow();
             File file = opprettFilechooser("Velg fil").showOpenDialog(stage);
+            TraadHentingAvFil traad;
+
             //Sjekker at filobjektet ikke er tomt.
             if (file != null) {
-                traad = new Traad(file.getAbsolutePath());
+                traad = new TraadHentingAvFil(file.getAbsolutePath());
                 Thread thread = new Thread(traad);
-                traad.setOnSucceeded(this::traadFerdig);
-                traad.setOnFailed(this::traadFeilet);
+                traad.setOnSucceeded(this::traadFerdigHentFil);
+                traad.setOnFailed(this::traadFeiletHentFil);
                 setDisable(true);
                 thread.start();
             }
@@ -141,7 +148,8 @@ public class DashboardAdminController {
         btnLoggUt.setDisable(bool);
     }
 
-    private void traadFerdig(WorkerStateEvent event) {
+    //Metode med dialogvindu, som kjøres når tråden som kjøres ved henting av fil utføres riktig.
+    private void traadFerdigHentFil(WorkerStateEvent event) {
         ButtonType fortsett = new ButtonType("Fortsett", ButtonBar.ButtonData.CANCEL_CLOSE);
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "", fortsett);
         alert.setTitle("Henting av fil");
@@ -152,7 +160,8 @@ public class DashboardAdminController {
         setDisable(false);
     }
 
-    private void traadFeilet(WorkerStateEvent event) {
+    //Metode med dialogvindu, som kjøres når tråden som kjøres ved henting av fil feiler
+    private void traadFeiletHentFil(WorkerStateEvent event) {
         ButtonType avbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
         Alert alert = new Alert(Alert.AlertType.ERROR, "", avbryt);
         alert.setTitle("Henting av fil feilet");
@@ -162,4 +171,30 @@ public class DashboardAdminController {
 
         setDisable(false);
     }
+
+    //Metode med dialogvindu, som kjøres når tråden som kjøres ved lagring av fil utføres riktig.
+    private void traadFerdigLagreFil(WorkerStateEvent event) {
+        ButtonType fortsett = new ButtonType("Fortsett", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "", fortsett);
+        alert.setTitle("Lagring av fil");
+        alert.setHeaderText("Filen ble lagret.");
+        alert.setContentText("Trykk på knappen for å fortsette.");
+        alert.showAndWait();
+
+        setDisable(false);
+    }
+
+    //Metode med dialogvindu, som kjøres når tråden som kjøres ved lagring av fil feiler.
+    private void traadFeiletLagreFil(WorkerStateEvent event) {
+        ButtonType avbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Alert alert = new Alert(Alert.AlertType.ERROR, "", avbryt);
+        alert.setTitle("Lagring av fil feilet");
+        alert.setHeaderText("Lagring av fil mislyktes");
+        alert.setContentText("Trykk på knappen for å avbryte.");
+        alert.showAndWait();
+
+        setDisable(false);
+    }
+
+
 }

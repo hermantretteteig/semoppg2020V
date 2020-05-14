@@ -61,7 +61,9 @@ public class ListerForFilbehandling implements Serializable {
         KomponentData.setKomponenter(FXCollections.observableArrayList(komponenter));
     }
 
-
+    /*
+      Tilpasset metode for å kunne serialisere SimpleProperties, da det ikke støttes som standard.
+    */
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
 
@@ -71,6 +73,9 @@ public class ListerForFilbehandling implements Serializable {
         out.writeObject(komponenter);
     }
 
+    /*
+      Tilpasset metode for å kunne serialisere SimpleProperties, da det ikke støttes som standard.
+    */
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
 

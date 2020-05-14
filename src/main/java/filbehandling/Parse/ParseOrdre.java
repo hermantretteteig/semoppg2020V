@@ -1,5 +1,8 @@
 package filbehandling.Parse;
 
+import exceptions.InvalidBooleanFormatException;
+import exceptions.InvalidNumberFormatException;
+import exceptions.InvalidOrdreFormatException;
 import models.kjop.Ordre;
 import models.komponent.*;
 
@@ -8,26 +11,25 @@ public class ParseOrdre {
     private static final String feilDesimaltall = "kan ikke formateres som ett desimaltall.";
     private static final String feilBoolean = "kan ikke formateres som true eller false";
 
-    public static Ordre parseOrdre(String linje){
+    public static Ordre parseOrdre(String linje) throws InvalidOrdreFormatException {
         //Deler opp linjer i tekstfilen der hvor tekstfilen inneholder semikolon (";").
         String[] split = linje.split(";");
 
         //Hvis en linje ikke inneholder 49 splitter kastes en InvalidOrdreFormatException.
         if(split.length != 49){
-            //TODO feilhåndtering
-            //Eksempel: InvalidOrdreFormatException("Må bruke semicolon ; for å separere data.");
+            throw new InvalidOrdreFormatException("Maa bruke semicolon ; for aa separere data.");
         }
         //Organiserer arrayet for å skrives til objekt.
         String ordrenummer = split[0];
         String kjopsdato = split[1];
         String kundenr = split[2];
-        Double totalsum = ParseVariabler.parseDesimaltall(split[3], feilDesimaltall);
+        Double totalsum = ParseVariabler.parseDesimaltall(split[3], "Totalsum " + feilDesimaltall);
         //Legger til verdiene fra split arrayet i nytt Ordre objekt.
         return new Ordre(ordrenummer, kjopsdato, kundenr, totalsum, parseDatamaskin(linje));
     }
 
 
-    private static Datamaskin parseDatamaskin(String linje){
+    private static Datamaskin parseDatamaskin(String linje) throws InvalidNumberFormatException, InvalidBooleanFormatException {
         return new Datamaskin(
                 parseProsessor(linje),
                 parseSkjermkort(linje),
@@ -39,9 +41,8 @@ public class ParseOrdre {
     }
 
     //Formatterer data fra tekstfil til komponent sin superklasse.
-    private static Komponent parseKomponentSuper(String linje, int i, int j, int k, int l){
+    private static Komponent parseKomponentSuper(String linje, int i, int j, int k, int l) throws InvalidNumberFormatException {
         String[] split = linje.split(";");
-        //TODO validere at varenr, er på riktig format.
         String vareNr = split[i];
         String varemerke = split[j];
         String modell = split[k];
@@ -51,7 +52,7 @@ public class ParseOrdre {
     }
 
     //Formatterer data fra tekstfil til prosessor.
-    private static Prosessor parseProsessor(String linje){
+    private static Prosessor parseProsessor(String linje) throws InvalidNumberFormatException {
         String[] split = linje.split(";");
 
         Komponent komponent = parseKomponentSuper(linje, 5, 6, 7, 8);
@@ -66,7 +67,7 @@ public class ParseOrdre {
                 klokkehastighet);
     }
     //Formatterer data fra tekstfil til skjermkort.
-    private static Skjermkort parseSkjermkort(String linje){
+    private static Skjermkort parseSkjermkort(String linje) throws InvalidNumberFormatException {
         String[] split = linje.split(";");
 
         Komponent komponent = parseKomponentSuper(linje, 12, 13 , 14, 15);
@@ -81,7 +82,7 @@ public class ParseOrdre {
                 minne);
     }
     //Formatterer data fra tekstfil til lagringsenhet.
-    private static Lagringsenhet parseLagringsenhet(String linje){
+    private static Lagringsenhet parseLagringsenhet(String linje) throws InvalidNumberFormatException {
             String[] split = linje.split(";");
 
         Komponent komponent = parseKomponentSuper(linje, 19, 20, 21, 22);
@@ -101,12 +102,12 @@ public class ParseOrdre {
     }
 
     //Formatterer data fra tekstfil til skjerm.
-    private static Skjerm parseSkjerm(String linje) {
+    private static Skjerm parseSkjerm(String linje) throws InvalidNumberFormatException, InvalidBooleanFormatException {
         String[] split = linje.split(";");
 
         Komponent komponent = parseKomponentSuper(linje, 28, 29, 30, 31);
         int pixelBredde = ParseVariabler.parseHeltall(split[32], "Pixelbredden " + feilHeltall);
-        int pixelHoyde = ParseVariabler.parseHeltall(split[33], "Pixelhøyden " + feilHeltall);
+        int pixelHoyde = ParseVariabler.parseHeltall(split[33], "Pixelhoyden " + feilHeltall);
         boolean min4k = ParseVariabler.parseBoolean(split[34], "Min4k " + feilBoolean);
 
         return new Skjerm(komponent.getVarenr(),
@@ -119,11 +120,11 @@ public class ParseOrdre {
     }
 
     //Formatterer data fra tekstfil til mus.
-    private static Mus parseMus(String linje){
+    private static Mus parseMus(String linje) throws InvalidNumberFormatException, InvalidBooleanFormatException {
         String[] split = linje.split(";");
 
         Komponent komponent = parseKomponentSuper(linje, 36, 37, 38, 39);
-        boolean trodlos = ParseVariabler.parseBoolean(split[40], "Trådløs " + feilBoolean);
+        boolean trodlos = ParseVariabler.parseBoolean(split[40], "Traadlos " + feilBoolean);
         String farge = split[41];
 
         return new Mus(komponent.getVarenr(),
@@ -135,11 +136,11 @@ public class ParseOrdre {
     }
 
     //Formatterer data fra tekstfil til tastatur.
-    private static Tastatur parseTastatur(String linje){
+    private static Tastatur parseTastatur(String linje) throws InvalidNumberFormatException, InvalidBooleanFormatException {
         String[] split = linje.split(";");
 
         Komponent komponent = parseKomponentSuper(linje, 43, 44, 45, 46);
-        boolean trodlos = ParseVariabler.parseBoolean(split[47], "Trådløs " + feilBoolean);
+        boolean trodlos = ParseVariabler.parseBoolean(split[47], "Traadlos " + feilBoolean);
         boolean numpad = ParseVariabler.parseBoolean(split[48], "Numpad " + feilBoolean);
         return new Tastatur(komponent.getVarenr(),
                 komponent.getVaremerke(),

@@ -1,39 +1,42 @@
 package filbehandling.Parse;
 
 
-//TODO feilhåndtering
+import exceptions.InvalidBooleanFormatException;
+import exceptions.InvalidNumberFormatException;
+
+
 public class ParseVariabler {
 
-    public static int parseHeltall(String tall, String feilmelding){
-        int heltall = 0; //Fjern "=0" når feilhåndtering er på plass.
+    static int parseHeltall(String tall, String feilmelding) throws InvalidNumberFormatException {
+        int heltall;
         try {
             heltall = Integer.parseInt(tall);
         }
         catch (NumberFormatException e){
-            //eks: Throw InvalidKomponentFormatException(Feilmelding);
+            throw new InvalidNumberFormatException(feilmelding);
         }
         return heltall;
     }
 
-    public static double parseDesimaltall(String tall, String feilmelding){
-        double desimalTall = 0; //Fjern "=0" når feilhåndtering er på plass.
+    static double parseDesimaltall(String tall, String feilmelding) throws InvalidNumberFormatException {
+        double desimalTall;
         try{
             desimalTall = Double.parseDouble(tall);
         }
         catch (NumberFormatException e){
-            //eks: Throw InvalidKomponentFormatException(Feilmelding);
+            throw new InvalidNumberFormatException(feilmelding);
         }
         return desimalTall;
     }
 
-    public static boolean parseBoolean(String string, String feilmelding){
-        boolean bol = false;
-        try {
-            bol = Boolean.parseBoolean(string);
-        }
-        catch (IllegalArgumentException e){
-            //Throw InvalidKomponentFormatException(Feilmelding);
-        }
+    static boolean parseBoolean(String string, String feilmelding) throws InvalidBooleanFormatException {
+        boolean bol;
+            if(string.equals("true")){
+                bol = true;
+            }else if(string.equals("false")){
+                bol = false;
+            }else throw new InvalidBooleanFormatException(feilmelding);
+
         return bol;
     }
 }

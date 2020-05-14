@@ -1,8 +1,7 @@
 package org.example.adminController;
 
 import data.InnloggetBrukerData;
-import filbehandling.LagreJOBJ;
-import filbehandling.ListerForFilbehandling;
+import filbehandling.Alerts.JobjAlerts;
 import filbehandling.Traader.TraadHentingAvFil;
 import filbehandling.Traader.TraadLagringAvFil;
 import javafx.concurrent.WorkerStateEvent;
@@ -48,6 +47,9 @@ public class DashboardAdminController {
         App.setRoot("adminView/tidligereKjop");
     }
 
+
+
+
     @FXML
     public void nyAdminAction() throws Exception{
         App.nyttLiteVindu("adminView/nyAdmin", "Legg til ny administrator", 344, 374);
@@ -74,17 +76,18 @@ public class DashboardAdminController {
 
     private FileChooser opprettFilechooser(String string){
         //Forhåndsvalgt ilbane: C:\Users\brukernavn\Datamaskinkonfigurering\komponenter
-        File filBane = new File(System.getProperty("user.home"), "Datamaskinkonfigurering/komponenter");
-        //Lager filbanen om den ikke allerede eksisterer.
-        //TODO putte denne i en try catch, og lage en alternativ løsning.
-        if (!filBane.exists()) {
-            filBane.mkdirs();
-        }
+        File filBane = new File(System.getProperty("user.home"), "Datamaskinkonfigurering");
         //Oppretter filechooser
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(string);
-        //TODO try catch?
-        fileChooser.setInitialDirectory(filBane);
+
+        //Lager filbanen om den ikke allerede eksisterer, og setter filechooser sin filbane til denne.
+        if (!filBane.exists()) {
+            filBane.mkdirs();
+            fileChooser.setInitialDirectory(filBane);
+        }else{
+            fileChooser.setInitialDirectory(filBane);
+        }
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JOBJ Filer", "*.jobj"));
         return fileChooser;
     }
@@ -93,6 +96,7 @@ public class DashboardAdminController {
         //Åpner filechooser og eksporterer data
         Stage stage = (Stage) adminPanel.getScene().getWindow();
         File file = opprettFilechooser("Velg filbane").showSaveDialog(stage);
+
         TraadLagringAvFil traad;
 
         //Sjekker at filobjektet ikke er tomt.
@@ -103,8 +107,6 @@ public class DashboardAdminController {
             traad.setOnFailed(this::traadFeiletLagreFil);
             setDisable(true);
             thread.start();
-            /*ListerForFilbehandling lff = new ListerForFilbehandling();
-            LagreJOBJ.lagreListerForFilbehandling(lff, file.getAbsolutePath());*/
         }
     }
 
@@ -148,51 +150,27 @@ public class DashboardAdminController {
         btnLoggUt.setDisable(bool);
     }
 
-    //Metode med dialogvindu, som kjøres når tråden som kjøres ved henting av fil utføres riktig.
+    //Metode som kjøres når tråden som kjøres ved henting av fil utføres riktig.
     private void traadFerdigHentFil(WorkerStateEvent event) {
-        ButtonType fortsett = new ButtonType("Fortsett", ButtonBar.ButtonData.CANCEL_CLOSE);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "", fortsett);
-        alert.setTitle("Henting av fil");
-        alert.setHeaderText("Filen ble hentet.");
-        alert.setContentText("Trykk på knappen for å fortsette.");
-        alert.showAndWait();
-
+        JobjAlerts.suksessLagreFil();
         setDisable(false);
     }
 
-    //Metode med dialogvindu, som kjøres når tråden som kjøres ved henting av fil feiler
+    //Metode som kjøres når tråden som kjøres ved henting av fil feiler
     private void traadFeiletHentFil(WorkerStateEvent event) {
-        ButtonType avbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
-        Alert alert = new Alert(Alert.AlertType.ERROR, "", avbryt);
-        alert.setTitle("Henting av fil feilet");
-        alert.setHeaderText("Henting av fil mislyktes");
-        alert.setContentText("Trykk på knappen for å avbryte.");
-        alert.showAndWait();
-
+        JobjAlerts.feiletHentFil();
         setDisable(false);
     }
 
-    //Metode med dialogvindu, som kjøres når tråden som kjøres ved lagring av fil utføres riktig.
+    //Metode som kjøres når tråden som kjøres ved lagring av fil utføres riktig.
     private void traadFerdigLagreFil(WorkerStateEvent event) {
-        ButtonType fortsett = new ButtonType("Fortsett", ButtonBar.ButtonData.CANCEL_CLOSE);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "", fortsett);
-        alert.setTitle("Lagring av fil");
-        alert.setHeaderText("Filen ble lagret.");
-        alert.setContentText("Trykk på knappen for å fortsette.");
-        alert.showAndWait();
-
+        JobjAlerts.suksessLagreFil();
         setDisable(false);
     }
 
-    //Metode med dialogvindu, som kjøres når tråden som kjøres ved lagring av fil feiler.
+    //Metode som kjøres når tråden som kjøres ved lagring av fil feiler
     private void traadFeiletLagreFil(WorkerStateEvent event) {
-        ButtonType avbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
-        Alert alert = new Alert(Alert.AlertType.ERROR, "", avbryt);
-        alert.setTitle("Lagring av fil feilet");
-        alert.setHeaderText("Lagring av fil mislyktes");
-        alert.setContentText("Trykk på knappen for å avbryte.");
-        alert.showAndWait();
-
+        JobjAlerts.feiletHentFil();
         setDisable(false);
     }
 

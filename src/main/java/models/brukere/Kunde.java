@@ -22,7 +22,6 @@ public class Kunde extends Bruker {
         this.epost = new SimpleStringProperty(epost);
     }
 
-    //TODO erstatte metoden i eksdata med den orginale?
     //Konstruktør for oppretting av kunde fra eksempeldata
     public Kunde(String fornavn, String etternavn, String brukernavn, String passord, String kundenummer, String epost) {
         super(fornavn, etternavn, brukernavn, passord);

@@ -63,8 +63,6 @@ public AnchorPane kundePanel;
         }
     }
 
-
-
     public void nyttKjopAction() throws IOException {
         App.setRoot("kundeView/nyttKjop");
     }
@@ -94,8 +92,8 @@ public AnchorPane kundePanel;
         //Lager filbanen om den ikke allerede eksisterer, og setter filechooser sin filbane til denne.
         if (!filBane.exists()) {
             filBane.mkdirs();
-            fileChooser.setInitialDirectory(filBane);
         }else{
+            fileChooser.setInitialDirectory(filBane);
             fileChooser.setInitialDirectory(filBane);
         }
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("CSV Filer", "*.csv"));

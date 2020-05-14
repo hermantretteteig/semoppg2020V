@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class NykundeController {
+
+    //Oppretter tekstfelt ved feil-input
     public Label lblGjentaPassordFeil;
     public Label lblFornavnFeil;
     public Label lblEtternavnFeil;
@@ -18,6 +20,7 @@ public class NykundeController {
     public Label lblBrukernavnFeil;
     public Label lblEpostFeil;
 
+    //Opprett inputfelt
     public TextField txtFornavn;
     public TextField txtEtternavn;
     public TextField txtBrukernavn;
@@ -25,16 +28,17 @@ public class NykundeController {
     public PasswordField txtGjentaPassord;
     public PasswordField txtPassord;
 
-
     @FXML private javafx.scene.control.Button registrer;
     @FXML private javafx.scene.control.Button avslutt;
 
+    //Dersom brukeren vil avlutte, lukk vinduet
     @FXML
     private void avsluttAction(){
         Stage stage = (Stage) avslutt.getScene().getWindow();
         stage.close();
     }
 
+    //Legg til en ny komponent dersom alt i denne metoden er oppfylt
     @FXML
     private void registrerAction() {
 
@@ -96,6 +100,7 @@ public class NykundeController {
             check5 = false;
         }
 
+        //Kun dersom check'ene er oppfylt legg til ny bruker
         Kunde nyKunde = new Kunde(fornavn, etternavn, brukernavn, passord, epost);
         if (check1 && check2 && check3 && check4 && check5 && check6) {
             KundeData.leggTilKunde(nyKunde);
@@ -104,7 +109,5 @@ public class NykundeController {
             Advarsel.informasjonsAlert("Bruker registrert", brukernavn +
                     " er registrert.", "For å lagre til fil klikk <Eksporter fil> i Administratordashboard");
         }
-
-        //App.setRoot("Adminview/nyAdminView/nyAdmin");
     }
 }

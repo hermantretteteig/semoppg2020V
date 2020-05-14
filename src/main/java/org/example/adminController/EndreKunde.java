@@ -25,7 +25,6 @@ public class EndreKunde {
         public TableColumn coKundenummer;
         public TableColumn coEpost;
 
-
         private KundeData collection = new KundeData();
 
         @FXML
@@ -33,12 +32,10 @@ public class EndreKunde {
             App.setRoot("adminView/dashboardAdmin");
         }
 
-
         public void initialize() {
             collection.hentAlleKunder(tableView);
             LagBindingFraDataTilTabell();
         }
-
 
         public void FornavnEdit(TableColumn.CellEditEvent<Kunde, String> event) {
             if(nyFeil("Må kun inneholde bokstaver", Check.bokstavercheck(event.getNewValue()))==true){
@@ -69,7 +66,6 @@ public class EndreKunde {
             event.getRowValue().setEpost(event.getNewValue()); }
             tableView.refresh();
         }
-
 
         public static boolean nyFeil(String msg, Boolean feil){
             if (feil == false) {
@@ -110,8 +106,5 @@ public class EndreKunde {
                     return new SimpleStringProperty(event.getValue().getEpost());}
             });
 
-
         }
     }
-
-

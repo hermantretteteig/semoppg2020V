@@ -13,21 +13,25 @@ import java.io.IOException;
 
 public class NyTastaturController {
 
+    //Oppretter tekstfelt ved feil-input
     public Label lblVaremerkeFeil;
     public Label lblModellFeil;
     public Label lblPrisFeil;
     public Label lblNumpadFeil;
     public Label lblTrodlosFeil;
 
+    //Opprett inputfelt
     public TextField txtVaremerke;
     public TextField txtModell;
     public TextField txtPris;
     public ChoiceBox choNumpad;
     public ChoiceBox choTrodlos;
 
+    //Dersom brukeren vil avlutte vises nyKomonentView
     @FXML public javafx.scene.control.Button registrer;
     @FXML public javafx.scene.control.Button avslutt;
 
+    //Legg til en ny komponent dersom alt i denne metoden er oppfylt
     @FXML
     public void avsluttAction() throws IOException {
         App.setRoot("adminView/nyKomponentView/nyKomponent");
@@ -50,9 +54,6 @@ public class NyTastaturController {
         boolean check3 = true;
         boolean check4 = true;
         boolean check5 = true;
-
-        //Validerer Varenummer
-
 
         //Validerer Varemerke
         if(Check.lengdeCheck(varemerke) == false){
@@ -82,7 +83,6 @@ public class NyTastaturController {
             numpad = true;
         }
 
-
         //Validerer Trådløs
         if(choTrodlos.getValue().equals(null)) {
             lblTrodlosFeil.setText("Må fylles ut");
@@ -93,8 +93,7 @@ public class NyTastaturController {
             trodlos = true;
         }
 
-
-
+        //Kun dersom check'ene er oppfylt lages det en ny mus
         if(check1 && check2 && check3 && check4 && check5) {
             Tastatur nyTastatur = new Tastatur(varemerke,
                     modell, Double.parseDouble(pris), trodlos, numpad);

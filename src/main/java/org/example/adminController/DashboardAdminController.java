@@ -26,9 +26,9 @@ public class DashboardAdminController {
     private Button btnNyttKomponent, btnEndreKomponent, btnLagreFil, btnHentFil,
                   btnEndreKunde, btnTidligereKjop ,btnNyAdmin, btnLoggUt;
 
-    //TODO brukes denne Tore?
-    @FXML
+
     private TraadLagringAvFil traadLagringAvFil;
+    private TraadHentingAvFil traadHentingAvFil;
 
     //Knapp for henting av fil
     @FXML
@@ -105,41 +105,30 @@ public class DashboardAdminController {
         Stage stage = (Stage) adminPanel.getScene().getWindow();
         File file = opprettFilechooser("Velg filbane").showSaveDialog(stage);
 
-        TraadLagringAvFil traad;
-
         //Sjekker at filobjektet ikke er tomt.
         if (file != null) {
-            traad = new TraadLagringAvFil(file.getAbsolutePath());
-            Thread thread = new Thread(traad);
-            traad.setOnSucceeded(this::traadFerdigLagreFil);
-            traad.setOnFailed(this::traadFeiletLagreFil);
+            traadLagringAvFil = new TraadLagringAvFil(file.getAbsolutePath());
+            Thread thread = new Thread(traadLagringAvFil);
+            traadLagringAvFil.setOnSucceeded(this::traadFerdigLagreFil);
+            traadLagringAvFil.setOnFailed(this::traadFeiletLagreFil);
             setDisable(true);
             thread.start();
         }
     }
 
     private void hentFil(){
-        ButtonType fortsett = new ButtonType("Fortsett", ButtonBar.ButtonData.OK_DONE);
-        ButtonType avbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
-        Alert alert = new Alert(Alert.AlertType.WARNING, "", fortsett, avbryt);
-        alert.setTitle("Hent fil");
-        alert.setHeaderText("Alle endringer som ikke er lagret vil bli slettet.");
-        alert.setContentText("Er du sikker på at du vil fortsette?");
-
-        alert.showAndWait();
-
+        Alert alert = JobjAlerts.bekreftHentFil();
         if(alert.getResult().getButtonData().isDefaultButton()) {
             //Åpner filechooser
             Stage stage = (Stage) adminPanel.getScene().getWindow();
             File file = opprettFilechooser("Velg fil").showOpenDialog(stage);
-            TraadHentingAvFil traad;
 
             //Sjekker at filobjektet ikke er tomt.
             if (file != null) {
-                traad = new TraadHentingAvFil(file.getAbsolutePath());
-                Thread thread = new Thread(traad);
-                traad.setOnSucceeded(this::traadFerdigHentFil);
-                traad.setOnFailed(this::traadFeiletHentFil);
+                traadHentingAvFil = new TraadHentingAvFil(file.getAbsolutePath());
+                Thread thread = new Thread(traadHentingAvFil);
+                traadHentingAvFil.setOnSucceeded(this::traadFerdigHentFil);
+                traadHentingAvFil.setOnFailed(this::traadFeiletHentFil);
                 setDisable(true);
                 thread.start();
             }
@@ -160,7 +149,7 @@ public class DashboardAdminController {
 
     //Metode som kjøres når tråden som kjøres ved henting av fil utføres riktig.
     private void traadFerdigHentFil(WorkerStateEvent event) {
-        JobjAlerts.suksessLagreFil();
+        JobjAlerts.suksessHentFil();
         setDisable(false);
     }
 
@@ -178,7 +167,7 @@ public class DashboardAdminController {
 
     //Metode som kjøres når tråden som kjøres ved lagring av fil feiler
     private void traadFeiletLagreFil(WorkerStateEvent event) {
-        JobjAlerts.feiletHentFil();
+        JobjAlerts.feiletLagreFil();
         setDisable(false);
     }
 

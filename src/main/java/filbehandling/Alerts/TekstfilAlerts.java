@@ -4,9 +4,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 
+/*
+Denne klassen inneholder metoder som viser Alert-bokser ved lagring og henting av tekstfiler.
+ */
+
 public class TekstfilAlerts {
 
-    //Metode som kjøres når tråden som kjøres ved henting av fil utføres riktig.
     public static void suksessHentFil() {
         ButtonType fortsett = new ButtonType("Fortsett", ButtonBar.ButtonData.CANCEL_CLOSE);
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "", fortsett);
@@ -16,7 +19,6 @@ public class TekstfilAlerts {
         alert.showAndWait();
     }
 
-    //Metode som kjøres når tråden som kjøres ved henting av fil feiler
     public static void feiletHentFilNumber() {
         ButtonType avbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
         Alert alert = new Alert(Alert.AlertType.ERROR, "", avbryt);
@@ -27,7 +29,6 @@ public class TekstfilAlerts {
         alert.showAndWait();
     }
 
-    //Metode som kjøres når tråden som kjøres ved henting av fil feiler
     public static void feiletHentFilBoolean() {
         ButtonType avbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
         Alert alert = new Alert(Alert.AlertType.ERROR, "", avbryt);
@@ -38,7 +39,6 @@ public class TekstfilAlerts {
         alert.showAndWait();
     }
 
-    //Metode som kjøres når tråden som kjøres ved henting av fil feiler
     public static void feiletHentFilOrdre() {
         ButtonType avbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
         Alert alert = new Alert(Alert.AlertType.ERROR, "", avbryt);
@@ -49,7 +49,6 @@ public class TekstfilAlerts {
         alert.showAndWait();
     }
 
-    //Metode som kjøres når tråden som kjøres ved lagring av fil utføres riktig.
     public static void suksessLagreFil() {
         ButtonType fortsett = new ButtonType("Fortsett", ButtonBar.ButtonData.CANCEL_CLOSE);
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "", fortsett);
@@ -59,7 +58,6 @@ public class TekstfilAlerts {
         alert.showAndWait();
     }
 
-    //Metode som kjøres når tråden som kjøres ved lagring av fil feiler
     public static void feiletLagreFil() {
         ButtonType avbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
         Alert alert = new Alert(Alert.AlertType.ERROR, "", avbryt);

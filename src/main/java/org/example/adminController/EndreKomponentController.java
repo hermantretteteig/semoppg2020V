@@ -1,111 +1,108 @@
-package org.example.adminController.endreKomponent;
+package org.example.adminController;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.util.converter.BooleanStringConverter;
-import logikk.Advarsel;
-import validering.Check;
 import data.KomponentData;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.ComboBoxTableCell;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
+import logikk.Advarsel;
 import models.komponent.*;
 import org.example.App;
-
-import  javafx.scene.control.cell.TextFieldTableCell;
+import validering.Check;
 
 public class EndreKomponentController {
-
-    public TableView tableView;
-    public TableColumn coTrodlos;
-    public TableColumn coNumpad;
-    public TableColumn coPris;
-
-
-    public ChoiceBox choKomponentvelger;
-
-    //Lagrinsenhet
-    public TableColumn coGb;
-    public TableColumn coFormat;
-    public TableColumn coLesehastighet;
-    public TableColumn coSkrivehastighet;
-
-    //Mus
-    public TableColumn coMusTrodlos;
-    public TableColumn coFarge;
-
-    //Prosessor
-    public TableColumn coKjerner;
-    public TableColumn coKlokkehastighet;
-
-    //Sjerm
-    public TableColumn coHoyde;
-    public TableColumn coBredde;
-    public TableColumn co4K;
-
-    //Type
-    public TableColumn coType;
-
-    //Skjermkort
-    public TableColumn coSkKlokkehastighet;
-    public TableColumn coMinne;
-
-
-    //Filtrering
-    public TextField txtPrisFra;
-    public TextField txtPrisTil;
-
-
-
-
-    private KomponentData collection = new KomponentData();
-
-
-
-
     @FXML
-    public void tilbakeAction() throws Exception {
+    private TableView tableView;
+    @FXML
+    private TableColumn coTrodlos, coNumpad;
+    @FXML
+    private ChoiceBox choKomponentvelger;
+
+    //Lagringsenhet
+    @FXML
+    private TableColumn coGb, coFormat, coLesehastighet, coSkrivehastighet;
+    //Mus
+    @FXML
+    private TableColumn coMusTrodlos, coFarge;
+    //Prosessor
+    @FXML
+    private TableColumn coKjerner, coKlokkehastighet;
+    //Sjerm
+    @FXML
+    private TableColumn coHoyde, coBredde, co4K;
+    //Gjelder alle komponenter
+    @FXML
+    private TableColumn coType, coSkKlokkehastighet, coMinne, coPris;
+    //Filtrering
+    @FXML
+    private TextField txtPrisFra, txtPrisTil;
+
+    //Hender liste over alle komponenter
+    private KomponentData komponentene = new KomponentData();
+
+    //Knapp som fører tilbake til dashboard
+    @FXML
+    public void tilbakeAction(ActionEvent event) throws Exception {
         App.setRoot("adminview/dashboardAdmin");
-
-
     }
 
+    //Knapp som brukes til å aktivere filtreringen på pris
     @FXML
-    public void filtrerAction(){
+    public void filtrerAction(ActionEvent event){
+        //Kontroll som sjekker at verdiene i innputtfeltene er gyldig
         if(Check.desimaltallCheck(txtPrisFra.getText())==false || Check.desimaltallCheck(txtPrisTil.getText()) == false){
+            //Gir informasjon om feilen til bruker hvis feil
             Advarsel.informasjonsAlert("Ugyldige verdier", "Prisene er ikke gyldig", "Prøv på nytt!");
         }
         else {
+            //Hvis veridene er gyldig, parses de til double
             double prisFra = Double.parseDouble(txtPrisFra.getText());
             double prisTil = Double.parseDouble(txtPrisTil.getText());
-            collection.filtrerPris(tableView, prisFra, prisTil, choKomponentvelger.getValue().toString());
+            //Kaller på metoden filtrer pris i KomponentData med verdiene brukeren ønsker som som parametere
+            komponentene.filtrerPris(tableView, prisFra, prisTil, choKomponentvelger.getValue().toString());
         }
     }
 
+    //Knapp som nullstiller filtringen
     @FXML
-    public void fjernFilterAction(){
-        collection.hentKomponenttype(tableView, choKomponentvelger.getValue().toString());
-    }
-
-    @FXML
-    public void hentAction() throws Exception {
+    public void fjernFilterAction(ActionEvent event){
+        //Nullstiller filtreringsfelter slik at det blir tydelig for brukeren at filteringen ikke gjelder lenger
         txtPrisFra.setText("");
         txtPrisTil.setText("");
+        komponentene.hentKomponenttype(tableView, choKomponentvelger.getValue().toString());
+    }
+
+    /*
+    Når valgboksen over de ulike komponentene endres kjøres denne metoden. Metoden filtrerer
+    bort alle komponenttypene som ikke samsvarer med det brukeren har valgt*/
+    @FXML
+    public void hentAction(ActionEvent event) throws Exception {
+        //Nullstiller filtreringsfelter slik at det blir tydelig for brukeren at filteringen ikke gjelder lenger
+        txtPrisFra.setText("");
+        txtPrisTil.setText("");
+        //Alle kollonnene skjules
         SkjulAlleEkstrakolonner();
-        collection.hentKomponenttype(tableView, choKomponentvelger.getValue().toString());
+
+        /*En filtreringsmetode kalles. Denne filtrer bort
+        alle komponentene som ikke samsvarer med den brukeren har valgt.*/
+        komponentene.hentKomponenttype(tableView, choKomponentvelger.getValue().toString());
+
+        //De kollonnene som er realatert til komponentypen som er valgt vises
         visEkstrakolonner(choKomponentvelger.getValue().toString());
     }
 
-
+    @FXML
     public void initialize() {
-        //Konverterer double og integer til string, slik at disse verdiene kan bli endres i tekstfelt
+        /*Konverterer double og integer til string, slik at disse verdiene kan bli endres i et tekstfelt.
+          Dette må gjøres ettersom tekstfelt kun støtter å hente inn string.*/
         coPris.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertDoubleConverter()));
         coGb.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertIntegerConverterer()));
         coKjerner.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertIntegerConverterer()));
@@ -115,8 +112,9 @@ public class EndreKomponentController {
         coSkKlokkehastighet.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertDoubleConverter()));
         coMinne.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertIntegerConverterer()));
 
-
-
+        /*Noen felter krever noe annet enn tekstfelt. Dette gjelder verdier som skal vises i lister eller
+        sjekkbokser (true/false). For dette brukes nedtrekkslister (ComboBoxTableCell) og
+        sjekkbokser (CheckBoxTableCell)*/
         coFormat.setCellFactory(ComboBoxTableCell.<Lagringsenhet, String>forTableColumn("SSD 2.5", "SDD M.2", "SSD mSATA", "HDD"));
         coNumpad.setCellFactory( CheckBoxTableCell.forTableColumn(coNumpad) );
         coTrodlos.setCellFactory(CheckBoxTableCell.forTableColumn(coTrodlos) );
@@ -124,33 +122,38 @@ public class EndreKomponentController {
         co4K.setCellFactory( CheckBoxTableCell.forTableColumn(co4K) );
         coMusTrodlos.setCellFactory( CheckBoxTableCell.forTableColumn(coMusTrodlos) );
 
-
-
+        //Lager bindinger til tabell, kommentert i detalje lenger ned
         LagBindingFraDataTilTabell();
 
         //Setter startvisning til å være lagringsenhet
         choKomponentvelger.setValue("Lagringsenhet");
 
+        //Skjuler alle kollonner
         SkjulAlleEkstrakolonner();
 
-        //Generer kolonner som gjelder for "Lagringsenhet"
-        collection.hentKomponenttype(tableView, choKomponentvelger.getValue().toString());
+        /*Metode som filtrer bort alle komponenttypene, borsett fra den
+        komponenttypen som samsvarer med den brukeren har valgt å vise*/
+        komponentene.hentKomponenttype(tableView, choKomponentvelger.getValue().toString());
+
+        //Setter kolonner som gjelder for "Lagringsenhet" synlig
         visEkstrakolonner(choKomponentvelger.getValue().toString());
     }
 
     /*
-    Under kommmer en rekke metoder for endring av data i tabellen. Metodene tar inn cellen/verdien som er i endring
-    som parameter. Deretter valideres verdien i en metode som returnerer true/false. Dette svaret
-    brukes av metoden "nyFeil" som enten returnere false og viser dialogvindu med feilinformasjon,
-    eller returnerer "true" som oppdaterer objektet med den nye verdien.
+    Under kommmer en rekke metoder for endring av data i tabellen. Metodene tar inn cellen/attributten som
+    er i endring som parameter. Deretter valideres verdien i en check-metode som returnerer true/false. Dette
+    svaret brukes av metoden "valider" som returnerer false og viser dialogvindu med feilinformasjon,
+    eller returnerer "true" og oppdaterer objektet med den nye verdien.
      */
 
-
     public void VareMerkeEdit(TableColumn.CellEditEvent<Komponent, String> event) {
+        //Validerer om veriden er gyldig og viser eventull feilmld hvis ikke.
         if(valider("For kort varemerkenavn. Minst to tegn", Check.lengdeCheck(event.getNewValue())) == true) {
+            //Hvis gyldig endrer veriden
             event.getRowValue().setVaremerke(event.getNewValue());
         }
         else {
+                //Hvis ugyldig setter cellen tilbake til den gamle verdien
                 event.getRowValue().setVaremerke(event.getOldValue());
         }
         tableView.refresh();
@@ -158,6 +161,7 @@ public class EndreKomponentController {
     }
 
     public void PrisEdit(TableColumn.CellEditEvent<Komponent, Double> event) {
+        //Sjekker hvis verdien fra konverteringsmetoden er er -1, hvis dette er tilfellet endres ikke verdien
         if(valider("Må kun inneholde tall", event.getNewValue()!=-1 == true)) {
             event.getRowValue().setPris(event.getNewValue());
         }
@@ -294,6 +298,12 @@ public class EndreKomponentController {
         tableView.refresh();
     }
 
+    /*
+    Alle komponentene kan lastes inn i samme tabellview fordi alle de ulike komponentene arver
+    fra klassen "Komponent". Derimot har de ulike komponenttypene ulike detaljer/attributter.
+    For å kun vise de kollonnene som gjelder for komponenten brukeren har valgt skjules alle
+    kollonnene, for deretter å sette de kollonnene som kun gjelder for komponenten synlige igjen.
+     */
     public void SkjulAlleEkstrakolonner() {
         //Tastatur
         coTrodlos.setVisible(false);
@@ -325,6 +335,11 @@ public class EndreKomponentController {
         //Type
         coType.setVisible(false);
     }
+    /*
+    Her gjøres de kollonnene som kun gjelder for den type komponent som brukeren har valgt synlig.
+     Innparameteret er objektet/komponentens "SimpleName", dette navnet brukes i en switch som
+     bestemmer hviklen kollonner som skal være synlig.
+    */
 
     public void visEkstrakolonner(String type) {
 
@@ -362,6 +377,10 @@ public class EndreKomponentController {
             default:
         }
     }
+    /*
+    Brukes til endring av celler. Hvis valideringen ikke er gyldig vises feil om dette.
+    Hvis den er gyldig returnerer metoden true, og den nye verdien til cellen blir lagret.
+     */
 
     public static boolean valider(String msg, Boolean feil){
         if (feil == false) {
@@ -414,16 +433,23 @@ public class EndreKomponentController {
                 return new SimpleStringProperty(event.getValue().getFormat());
             }
         });
-
-
     }
 
+    /*
+    Som nevnt er ikke alle attributtene/cellene lagret som string (for eksempel pris). For disse kreves
+    det en egen konvertering som parser daten fra String til ønsket datatype når brukren endrer verdien.
+    Konverteringen foregår ved at den først kontrollerer at veriden er gyldig i forhold til ønsket
+    datatype. Hvis verdien er gyldig sendes verdien som retur. Hvis ikke sendes retur -1 som videre
+    behandles og det vises en feilmelding.
+     */
     public static class EgendefinertIntegerConverterer extends IntegerStringConverter {
         @Override
         public Integer fromString(String innputverdi) {
+            //Sjekker at veriden er gyldig og returnerer den hvis den er gyldig.
             if(Check.heltallCheck(innputverdi)==true){
                 return Integer.parseInt(innputverdi);
             }
+            //Sender feilmeling -1 hvis ugylidg
             return -1;
         }
     }

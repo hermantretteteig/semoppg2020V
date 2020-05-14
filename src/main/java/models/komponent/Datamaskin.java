@@ -20,7 +20,6 @@ public class Datamaskin implements Serializable, Cloneable {
     private Skjermkort skjermkort;
     private Tastatur tastatur;
 
-
     public Datamaskin(Prosessor prosessor, Skjermkort skjermkort, Lagringsenhet lagringsenhet,  Skjerm skjerm, Mus mus, Tastatur tastatur) {
         this.prosessor = prosessor;
         this.skjermkort = skjermkort;

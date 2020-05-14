@@ -59,7 +59,7 @@
                   <Insets top="80.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#hentFilAction" prefHeight="65.0" prefWidth="300.0" text="Hent fra fil (CSV)" GridPane.rowIndex="2">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#hentFilAction" prefHeight="65.0" prefWidth="300.0" text="Importer fra fil (CSV)" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>

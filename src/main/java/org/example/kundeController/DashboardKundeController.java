@@ -5,10 +5,11 @@ import data.OrdreData;
 import exceptions.InvalidBooleanFormatException;
 import exceptions.InvalidNumberFormatException;
 import exceptions.InvalidOrdreFormatException;
-import filbehandling.Alerts.TekstfilAlerts;
+import filbehandling.Varsler.VarslerFilbehandling;
 import filbehandling.LagreCSV;
 import filbehandling.LesCSV;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -16,8 +17,6 @@ import org.example.App;
 
 import java.io.File;
 import java.io.IOException;
-
-import static filbehandling.Alerts.TekstfilAlerts.*;
 
 public class DashboardKundeController {
 
@@ -31,35 +30,37 @@ public AnchorPane kundePanel;
         try {
             if(file != null) {
                 LagreCSV.lagreOrdre(OrdreData.getOrdreArray(), file.getAbsolutePath());
-                TekstfilAlerts.suksessLagreFil();
+                VarslerFilbehandling.suksessLagreFil();
             }
         } catch (Exception e) {
-            TekstfilAlerts.feiletLagreFil();
+            VarslerFilbehandling.feiletLagreFil();
             e.printStackTrace();
         }
 
     }
 
     public void hentFilAction() throws IOException{
+        Alert alert = VarslerFilbehandling.bekreftHentFil();
+        if(alert.getResult().getButtonData().isDefaultButton()) {
+            //Åpner filechooser og henter data
+            Stage stage = (Stage) kundePanel.getScene().getWindow();
+            File file = opprettFilechooser("Velg fil").showOpenDialog(stage);
+            if (file != null) {
+                try {
+                    OrdreData.setAlleOrdre(LesCSV.lesOrdre(file.getAbsolutePath()));
+                    VarslerFilbehandling.suksessHentFil();
+                } catch (InvalidNumberFormatException f) {
+                    VarslerFilbehandling.feiletHentFilNumber();
+                    f.printStackTrace();
+                } catch (InvalidBooleanFormatException g) {
+                    VarslerFilbehandling.feiletHentFilBoolean();
+                    g.printStackTrace();
+                } catch (InvalidOrdreFormatException e) {
+                    VarslerFilbehandling.feiletHentFilOrdre();
+                    e.printStackTrace();
+                }
 
-        //Åpner filechooser og henter data
-        Stage stage = (Stage) kundePanel.getScene().getWindow();
-        File file = opprettFilechooser("Velg fil").showOpenDialog(stage);
-        if(file != null) {
-            try {
-                OrdreData.setAlleOrdre(LesCSV.lesOrdre(file.getAbsolutePath()));
-                TekstfilAlerts.suksessHentFil();
-            } catch (InvalidNumberFormatException f){
-                TekstfilAlerts.feiletHentFilNumber();
-                f.printStackTrace();
-            } catch (InvalidBooleanFormatException g) {
-                TekstfilAlerts.feiletHentFilBoolean();
-                g.printStackTrace();
-            } catch (InvalidOrdreFormatException e) {
-                TekstfilAlerts.feiletHentFilOrdre();
-                e.printStackTrace();
             }
-
         }
     }
 

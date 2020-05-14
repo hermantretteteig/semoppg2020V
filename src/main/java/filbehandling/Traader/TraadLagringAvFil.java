@@ -17,7 +17,7 @@ public class TraadLagringAvFil extends Task<ListerForFilbehandling> {
     @Override
     protected ListerForFilbehandling call() throws InterruptedException {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(4000);
             //Sjekker at lff objektet ikke er tomt, og lagrer til fil.
             ListerForFilbehandling lff = new ListerForFilbehandling();
             if (lff.getAdmins() != null && lff.getKunder() != null && lff.getOrdre() != null && lff.getKomponenter() != null) {

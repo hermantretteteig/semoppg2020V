@@ -1,4 +1,4 @@
-package filbehandling.Alerts;
+package filbehandling.Varsler;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
@@ -8,14 +8,22 @@ import javafx.scene.control.ButtonType;
 Denne klassen inneholder metoder som viser Alert-bokser ved lagring og henting av tekstfiler.
  */
 
-public class TekstfilAlerts {
+public class VarslerFilbehandling {
 
     public static void suksessHentFil() {
-        ButtonType fortsett = new ButtonType("Fortsett", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType fortsett = new ButtonType("Ok", ButtonBar.ButtonData.CANCEL_CLOSE);
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "", fortsett);
         alert.setTitle("Henting av fil");
         alert.setHeaderText("Filen ble hentet.");
         alert.setContentText("Trykk på knappen for å fortsette.");
+        alert.showAndWait();
+    }
+
+    public static void feiletHentFil() {
+        ButtonType avbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Alert alert = new Alert(Alert.AlertType.ERROR, "", avbryt);
+        alert.setTitle("Henting av fil feilet");
+        alert.setHeaderText("Henting av fil mislyktes.\n\nSe konsollen for mer info.");
         alert.showAndWait();
     }
 
@@ -50,7 +58,7 @@ public class TekstfilAlerts {
     }
 
     public static void suksessLagreFil() {
-        ButtonType fortsett = new ButtonType("Fortsett", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType fortsett = new ButtonType("Ok", ButtonBar.ButtonData.CANCEL_CLOSE);
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "", fortsett);
         alert.setTitle("Lagring av fil");
         alert.setHeaderText("Filen ble lagret.");
@@ -65,5 +73,17 @@ public class TekstfilAlerts {
         alert.setHeaderText("Lagring av fil mislyktes");
         alert.setContentText("Trykk på knappen for å avbryte.");
         alert.showAndWait();
+    }
+
+    public static Alert bekreftHentFil(){
+        ButtonType fortsett = new ButtonType("Ja", ButtonBar.ButtonData.OK_DONE);
+        ButtonType avbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Alert alert = new Alert(Alert.AlertType.WARNING, "", fortsett, avbryt);
+        alert.setTitle("Hent fil");
+        alert.setHeaderText("Alle endringer som ikke er lagret vil bli slettet.");
+        alert.setContentText("Er du sikker på at du vil fortsette?");
+        alert.showAndWait();
+
+        return alert;
     }
 }

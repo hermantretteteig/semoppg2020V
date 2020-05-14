@@ -17,7 +17,7 @@ public class TraadHentingAvFil extends Task<ListerForFilbehandling> {
     @Override
     protected ListerForFilbehandling call() throws InterruptedException {
         try{
-            Thread.sleep(1000);
+            Thread.sleep(4000);
             //Henter ListerForFilBehandlingsobjekt fra fil, og sjekker att objektet ikke er tomt.
             ListerForFilbehandling lff = LesJOBJ.lesListerForFilbehandling(filnavn);
             if(lff.getAdmins() != null && lff.getKunder() != null && lff.getOrdre() != null && lff.getKomponenter() != null)

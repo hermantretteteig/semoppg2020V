@@ -1,16 +1,14 @@
 package org.example.adminController;
 
 import data.InnloggetBrukerData;
-import filbehandling.Alerts.JobjAlerts;
 import filbehandling.Traader.TraadHentingAvFil;
 import filbehandling.Traader.TraadLagringAvFil;
+import filbehandling.Varsler.VarslerFilbehandling;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -117,7 +115,7 @@ public class DashboardAdminController {
     }
 
     private void hentFil(){
-        Alert alert = JobjAlerts.bekreftHentFil();
+        Alert alert = VarslerFilbehandling.bekreftHentFil();
         if(alert.getResult().getButtonData().isDefaultButton()) {
             //Åpner filechooser
             Stage stage = (Stage) adminPanel.getScene().getWindow();
@@ -149,25 +147,25 @@ public class DashboardAdminController {
 
     //Metode som kjøres når tråden som kjøres ved henting av fil utføres riktig.
     private void traadFerdigHentFil(WorkerStateEvent event) {
-        JobjAlerts.suksessHentFil();
+        VarslerFilbehandling.suksessHentFil();
         setDisable(false);
     }
 
     //Metode som kjøres når tråden som kjøres ved henting av fil feiler
     private void traadFeiletHentFil(WorkerStateEvent event) {
-        JobjAlerts.feiletHentFil();
+        VarslerFilbehandling.feiletHentFil();
         setDisable(false);
     }
 
     //Metode som kjøres når tråden som kjøres ved lagring av fil utføres riktig.
     private void traadFerdigLagreFil(WorkerStateEvent event) {
-        JobjAlerts.suksessLagreFil();
+        VarslerFilbehandling.suksessLagreFil();
         setDisable(false);
     }
 
     //Metode som kjøres når tråden som kjøres ved lagring av fil feiler
     private void traadFeiletLagreFil(WorkerStateEvent event) {
-        JobjAlerts.feiletLagreFil();
+        VarslerFilbehandling.feiletLagreFil();
         setDisable(false);
     }
 

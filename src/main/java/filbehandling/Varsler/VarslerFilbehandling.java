@@ -5,7 +5,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 
 /*
-Denne klassen inneholder metoder som viser Alert-bokser ved lagring og henting av tekstfiler.
+Denne klassen inneholder metoder som viser Alert-bokser ved lagring og henting av filer.
  */
 
 public class VarslerFilbehandling {

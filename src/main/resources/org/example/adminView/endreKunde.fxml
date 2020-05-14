@@ -16,30 +16,45 @@
       <TableView fx:id="tableView" editable="true" layoutX="20.0" layoutY="167.0" prefHeight="374.0" prefWidth="960.0">
          <columns>
 
-         <TableColumn fx:id="coKundenummer"  prefWidth="115.0" text="Kundenummer">
+         <TableColumn fx:id="coKundenummer"  editable="false" prefWidth="115.0" text="Kundenummer">
              <cellValueFactory>
                  <PropertyValueFactory property="Kundenummer" />
              </cellValueFactory>
+             <cellFactory>
+                 <TextFieldTableCell fx:factory="forTableColumn" />
+             </cellFactory>
          </TableColumn>
 
          <TableColumn fx:id="coFornavn" editable="true" onEditCommit="#FornavnEdit" prefWidth="115.0" text="Fornavn">
+             <cellValueFactory>
+                 <PropertyValueFactory property="Fornavn" />
+             </cellValueFactory>
              <cellFactory>
                  <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
          </TableColumn>
 
          <TableColumn fx:id="coEtternavn" onEditCommit="#EtternavnEdit" prefWidth="115.0" text="Etternavn">
+             <cellValueFactory>
+                 <PropertyValueFactory property="Etternavn" />
+             </cellValueFactory>
              <cellFactory>
                  <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
          </TableColumn>
 
          <TableColumn fx:id="coBrukernavn" onEditCommit="#BrukernavnEdit" prefWidth="115.0" text="Brukernavn">
-            <cellFactory>
+             <cellValueFactory>
+                 <PropertyValueFactory property="Brukernavn" />
+             </cellValueFactory>
+             <cellFactory>
                 <TextFieldTableCell fx:factory="forTableColumn" />
             </cellFactory>
          </TableColumn>
          <TableColumn fx:id="coEpost" onEditCommit="#EpostEdit" prefWidth="160.0" text="Epost">
+             <cellValueFactory>
+                 <PropertyValueFactory property="Epost" />
+             </cellValueFactory>
              <cellFactory>
                  <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>

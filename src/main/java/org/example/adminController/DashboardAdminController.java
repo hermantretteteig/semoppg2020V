@@ -43,39 +43,43 @@ public class DashboardAdminController {
     }
 
     //Knapp som sender brukeren til ny komponent-viewet
+    @FXML
     public void nyKomponentAction(ActionEvent event) throws Exception{
         App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 
-    //Knapp som sender brukeren til ny komponent-viewet
+    //Knapp som sender brukeren til ny tidligere kjøp / ordre
+    @FXML
     public void tidligerKjopAction(ActionEvent event) throws Exception{
         App.setRoot("adminView/tidligereKjop");
     }
 
-
-
-
+    //Knapp som åpner viduet der det er mulig å legge til en ny administrator
     @FXML
     public void nyAdminAction(ActionEvent event) throws Exception{
         App.nyttLiteVindu("adminView/nyAdmin", "Legg til ny administrator", 344, 374);
     }
 
+    //Knapp som sender brukeren til endre komponent-viewet
     @FXML
     public void endreKomponentAction(ActionEvent event) throws Exception{
         App.setRoot("adminView/endreKomponent");
     }
 
+    //Knapp som sender brukeren til endre kunde-viewet
     @FXML
     public void endreKundeAction(ActionEvent event) throws Exception{
         App.setRoot("adminView/endreKunde");
     }
 
+    //Knapp som logger brukeren ut
     @FXML
     public void loggUtAction(ActionEvent event) throws Exception{
         InnloggetBrukerData.loggUtAdmin();
         App.setRoot("loggInn");
 
     }
+
 //TODO bør kanskje alle disse metodene under flyttes til en egen fil Tore?
 
     private FileChooser opprettFilechooser(String string){

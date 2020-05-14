@@ -1,6 +1,8 @@
 package org.example.adminController;
 
 import data.AdminData;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import logikk.Advarsel;
 import models.brukere.Admin;
 import validering.*;
@@ -12,33 +14,24 @@ import javafx.stage.Stage;
 
 public class NyAdminController {
 
-    //Oppretter tekstfelt ved feil-input
-    public Label lblGjentaPassordFeil;
-    public Label lblFornavnFeil;
-    public Label lblEtternavnFeil;
-    public Label lblPassordFeil;
-    public Label lblBrukernavnFeil;
+    @FXML
+    public Label lblGjentaPassordFeil, lblFornavnFeil, lblEtternavnFeil, lblPassordFeil, lblBrukernavnFeil;
 
-    //Opprett inputfelt
-    public TextField txtFornavn;
-    public TextField txtEtternavn;
-    public TextField txtBrukernavn;
-    public PasswordField txtGjentaPassord;
-    public PasswordField txtPassord;
+    @FXML
+    public TextField txtFornavn, txtEtternavn, txtBrukernavn, txtGjentaPassord, txtPassord;
 
-    @FXML private javafx.scene.control.Button registrer;
-    @FXML private javafx.scene.control.Button avslutt;
+    @FXML private Button registrer, avslutt;
 
     //Dersom brukeren vil avlutte, lukk vinduet
     @FXML
-    private void avsluttAction(){
+    private void avsluttAction(ActionEvent event){
         Stage stage = (Stage) avslutt.getScene().getWindow();
         stage.close();
     }
 
-    //Legg til en ny admin dersom alt i denne metoden er oppfylt
+    //Legg til en ny admin
     @FXML
-    private void registrerAction() {
+    private void registrerAction(ActionEvent event) {
 
         lblFornavnFeil.setText("");
         lblEtternavnFeil.setText("");
@@ -92,6 +85,7 @@ public class NyAdminController {
         //Kun dersom check'ene er oppfylt legg til admin
         if (check1 && check2 && check3 && check4 && check5 && check6){
             Admin nyAdmin = new Admin(fornavn, etternavn, brukernavn, passord);
+            //Legger til den nye adminen i listen
             AdminData.leggTilAdmin(nyAdmin);
             Stage stage = (Stage) avslutt.getScene().getWindow();
             stage.close();

@@ -31,7 +31,7 @@ public AnchorPane kundePanel;
         try {
             if(file != null) {
                 LagreCSV.lagreOrdre(OrdreData.getOrdreArray(), file.getAbsolutePath());
-                //TekstfilAlerts.suksessLagreFil();
+                TekstfilAlerts.suksessLagreFil();
             }
         } catch (Exception e) {
             TekstfilAlerts.feiletLagreFil();

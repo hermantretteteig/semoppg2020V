@@ -1,13 +1,11 @@
 package org.example.adminController;
 
 import data.*;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TreeTableColumn;
 import javafx.util.Callback;
 import models.brukere.Kunde;
 import models.kjop.Ordre;

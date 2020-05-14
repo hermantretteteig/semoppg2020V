@@ -5,12 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import logikk.NyKomponentAlert;
+import logikk.Advarsel;
 import models.komponent.Skjerm;
 import org.example.App;
-import validering.DesimaltallCheck;
-import validering.LengeCheck;
-import validering.HeltallCheck;
+import validering.Check;
 
 import java.io.IOException;
 
@@ -63,31 +61,31 @@ public class NySkjermController {
 
 
         //Validerer Varemerke
-        if(LengeCheck.lengdeCheck(varemerke) == false){
+        if(Check.lengdeCheck(varemerke) == false){
             lblVaremerkeFeil.setText("Må inneholde minst 2 bokstaver");
             check1 = false;
         }
 
         //Validerer Modell
-        if(LengeCheck.lengdeCheck(modell) == false){
+        if(Check.lengdeCheck(modell) == false){
             lblModellFeil.setText("Må inneholde minst 2 bokstaver");
             check2 = false;
         }
 
         //Validerer Pris
-        if(DesimaltallCheck.desimaltallCheck(pris) == false){
+        if(Check.desimaltallCheck(pris) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
 
         //Validerer Bredde
-        if(HeltallCheck.heltallCheck(bredde) == false){
+        if(Check.heltallCheck(bredde) == false){
             lblBreddeFeil.setText("Må inneholde kun tall");
             check4 = false;
         }
 
         //Validerer Høyde
-        if(HeltallCheck.heltallCheck(hoyde) == false){
+        if(Check.heltallCheck(hoyde) == false){
             lblHoydeFeil.setText("Må inneholde kun tall");
             check5 = false;
         }
@@ -99,7 +97,8 @@ public class NySkjermController {
                     Integer.parseInt(hoyde), Integer.parseInt(bredde));
             KomponentData.leggTilKomponent(nySkjerm);
             App.setRoot("adminView/nyKomponentView/nyKomponent");
-            NyKomponentAlert.visBekreftelse(varemerke, modell);
+            Advarsel.informasjonsAlert("Skjerm registrert", varemerke +
+                    " er registrert", "For å lagre til fil klikk <Eksporter fil> i Administratordashboard");
         }
     }
 }

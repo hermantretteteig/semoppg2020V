@@ -13,9 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.App;
-
 import java.io.File;
-
 import static data.KomponentData.getKomponenter;
 
 public class DashboardAdminController {

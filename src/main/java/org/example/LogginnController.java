@@ -52,10 +52,4 @@ public class LogginnController  {
             App.setRoot("adminView/dashboardAdmin");
         }
     }
-
-
-
-
-
-
 }

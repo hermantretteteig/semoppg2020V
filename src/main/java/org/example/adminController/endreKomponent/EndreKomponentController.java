@@ -2,9 +2,7 @@ package org.example.adminController.endreKomponent;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import logikk.Advarsel;
-import validering.DesimaltallCheck;
-import validering.LengeCheck;
-import validering.HeltallCheck;
+import validering.Check;
 import data.KomponentData;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -77,7 +75,7 @@ public class EndreKomponentController {
 
     @FXML
     public void filtrerAction(){
-        if(DesimaltallCheck.desimaltallCheck(txtPrisFra.getText())==false || DesimaltallCheck.desimaltallCheck(txtPrisTil.getText()) == false){
+        if(Check.desimaltallCheck(txtPrisFra.getText())==false || Check.desimaltallCheck(txtPrisTil.getText()) == false){
             Advarsel.informasjonsAlert("Ugyldige verdier", "Prisene er ikke gyldig", "Prøv på nytt!");
         }
         else {
@@ -135,7 +133,7 @@ public class EndreKomponentController {
 
 
     public void VareMerkeEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if(valider("For kort varemerkenavn. Minst to tegn", LengeCheck.lengdeCheck(event.getNewValue())) == true) {
+        if(valider("For kort varemerkenavn. Minst to tegn", Check.lengdeCheck(event.getNewValue())) == true) {
             event.getRowValue().setVaremerke(event.getNewValue());
         }
         else {
@@ -156,7 +154,7 @@ public class EndreKomponentController {
     }
 
     public void ModellEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if(valider("For kort modelnavn. Minst to tegn", LengeCheck.lengdeCheck(event.getNewValue())) == true) {
+        if(valider("For kort modelnavn. Minst to tegn", Check.lengdeCheck(event.getNewValue())) == true) {
             event.getRowValue().setModell(event.getNewValue());
         }
         else {
@@ -190,7 +188,7 @@ public class EndreKomponentController {
     }
 
     public void SkrivehastighetEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if(valider("Må kun inneholde tall", HeltallCheck.heltallCheck(event.getNewValue())) == true) {
+        if(valider("Må kun inneholde tall", Check.heltallCheck(event.getNewValue())) == true) {
             ((Lagringsenhet) event.getRowValue()).setSkriveHastighet(event.getNewValue());
         }
         else{
@@ -200,7 +198,7 @@ public class EndreKomponentController {
     }
 
     public void LesehastighetEdit(TableColumn.CellEditEvent<Komponent, String> event) {
-        if(valider("Må kun inneholde tall", HeltallCheck.heltallCheck(event.getNewValue())) == true) {
+        if(valider("Må kun inneholde tall", Check.heltallCheck(event.getNewValue())) == true) {
             ((Lagringsenhet) event.getRowValue()).setLeseHastighet(event.getNewValue());
         }
         else{
@@ -412,7 +410,7 @@ public class EndreKomponentController {
     public static class EgendefinertIntegerConverterer extends IntegerStringConverter {
         @Override
         public Integer fromString(String innputverdi) {
-            if(HeltallCheck.heltallCheck(innputverdi)==true){
+            if(Check.heltallCheck(innputverdi)==true){
                 return Integer.parseInt(innputverdi);
             }
             return -1;
@@ -422,7 +420,7 @@ public class EndreKomponentController {
     public static class EgendefinertDoubleConverter extends DoubleStringConverter {
         @Override
         public Double fromString(String innputverdi) {
-            if(HeltallCheck.heltallCheck(innputverdi)==true) {
+            if(Check.heltallCheck(innputverdi)==true) {
                 return Double.parseDouble(innputverdi);
             }
             return -1.0;

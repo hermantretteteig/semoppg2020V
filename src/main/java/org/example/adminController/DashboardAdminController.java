@@ -2,6 +2,7 @@ package org.example.adminController;
 
 import data.InnloggetBrukerData;
 import filbehandling.LagreJOBJ;
+import filbehandling.ListerForFilbehandling;
 import filbehandling.Traad;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
@@ -92,6 +93,17 @@ public class DashboardAdminController {
     }
 
     private void lagreFil(){
+            //Åpner filechooser og eksporterer data
+            Stage stage = (Stage) adminPanel.getScene().getWindow();
+            File file = opprettFilechooser("Velg filbane").showSaveDialog(stage);
+            //Sjekker at filobjektet ikke er tomt.
+            if (file != null) {
+                ListerForFilbehandling lff = new ListerForFilbehandling();
+                LagreJOBJ.lagreListerForFilbehandling(lff, file.getAbsolutePath());
+            }
+    }
+
+    private void hentFil(){
         ButtonType fortsett = new ButtonType("Fortsett", ButtonBar.ButtonData.OK_DONE);
         ButtonType avbryt = new ButtonType("Avbryt", ButtonBar.ButtonData.CANCEL_CLOSE);
         Alert alert = new Alert(Alert.AlertType.WARNING, "", fortsett, avbryt);
@@ -102,28 +114,18 @@ public class DashboardAdminController {
         alert.showAndWait();
 
         if(alert.getResult().getButtonData().isDefaultButton()) {
-            //Åpner filechooser og eksporterer data
+            //Åpner filechooser
             Stage stage = (Stage) adminPanel.getScene().getWindow();
-            File file = opprettFilechooser("Velg filbane").showSaveDialog(stage);
-
+            File file = opprettFilechooser("Velg fil").showOpenDialog(stage);
+            //Sjekker at filobjektet ikke er tomt.
             if (file != null) {
-                LagreJOBJ.lagreListe(getKomponenter(), file.getAbsolutePath());
+                traad = new Traad(file.getAbsolutePath());
+                Thread thread = new Thread(traad);
+                traad.setOnSucceeded(this::traadFerdig);
+                traad.setOnFailed(this::traadFeilet);
+                setDisable(true);
+                thread.start();
             }
-        }
-    }
-
-    private void hentFil(){
-        //Åpner filechooser
-        Stage stage = (Stage) adminPanel.getScene().getWindow();
-        File file = opprettFilechooser("Velg fil").showSaveDialog(stage);
-
-        if (file != null) {
-            traad = new Traad(file.getAbsolutePath());
-            Thread thread = new Thread(traad);
-            traad.setOnSucceeded(this::traadFerdig);
-            traad.setOnFailed(this::traadFeilet);
-            setDisable(true);
-            thread.start();
         }
     }
 

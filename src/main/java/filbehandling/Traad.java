@@ -10,7 +10,7 @@ import models.komponent.Komponent;
 
 import java.util.ArrayList;
 
-public class Traad extends Task<ArrayList<Komponent>> {
+public class Traad extends Task<ListerForFilbehandling> {
     private String filnavn;
 
     public Traad(String filnavn) {
@@ -19,9 +19,10 @@ public class Traad extends Task<ArrayList<Komponent>> {
 
 
     @Override
-    protected ArrayList<Komponent> call() throws InterruptedException {
+    protected ListerForFilbehandling call() throws InterruptedException {
         try{
             Thread.sleep(1000);
+            //Henter objekt fra fil, og sjekker at dette objektet ikke er tomt.
             ListerForFilbehandling listerForFilbehandling = LesJOBJ.lesListerForFilbehandling(filnavn);
             if(listerForFilbehandling != null) {
                 listerForFilbehandling.setDataFraFil();

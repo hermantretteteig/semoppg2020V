@@ -29,11 +29,28 @@ public class ListerForFilbehandling implements Serializable {
     private static ArrayList<Ordre> ordre;
     private static ArrayList<Komponent> komponenter;
 
+    //Konstrøktør som setter listene lik listene i de forskjellige klassenes datafiler
     public ListerForFilbehandling() {
         admins = AdminData.getAdminArray();
         kunder = KundeData.getKundeArray();
         ordre = OrdreData.getOrdreArray();
         komponenter = KomponentData.getKomponentArray();
+    }
+
+    public static ArrayList<Admin> getAdmins() {
+        return admins;
+    }
+
+    public static ArrayList<Kunde> getKunder() {
+        return kunder;
+    }
+
+    public static ArrayList<Ordre> getOrdre() {
+        return ordre;
+    }
+
+    public static ArrayList<Komponent> getKomponenter() {
+        return komponenter;
     }
 
     //Setter listene i data klassene lik listene som er hentet fra fil.
@@ -43,6 +60,7 @@ public class ListerForFilbehandling implements Serializable {
         OrdreData.setOrdre(FXCollections.observableArrayList(ordre));
         KomponentData.setKomponenter(FXCollections.observableArrayList(komponenter));
     }
+
 
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();

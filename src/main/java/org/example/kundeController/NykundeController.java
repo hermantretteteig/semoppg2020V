@@ -1,6 +1,8 @@
 package org.example.kundeController;
 
 import data.KundeData;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import logikk.Advarsel;
 import models.brukere.Kunde;
 import validering.*;
@@ -12,35 +14,26 @@ import javafx.stage.Stage;
 
 public class NykundeController {
 
-    //Oppretter tekstfelt ved feil-input
-    public Label lblGjentaPassordFeil;
-    public Label lblFornavnFeil;
-    public Label lblEtternavnFeil;
-    public Label lblPassordFeil;
-    public Label lblBrukernavnFeil;
-    public Label lblEpostFeil;
+    @FXML
+    private Label lblGjentaPassordFeil, lblFornavnFeil, lblEtternavnFeil,
+            lblPassordFeil, lblBrukernavnFeil, lblEpostFeil;
 
-    //Opprett inputfelt
-    public TextField txtFornavn;
-    public TextField txtEtternavn;
-    public TextField txtBrukernavn;
-    public TextField txtEpost;
-    public PasswordField txtGjentaPassord;
-    public PasswordField txtPassord;
+    @FXML
+    private TextField txtFornavn, txtEtternavn, txtBrukernavn,
+            txtEpost, txtGjentaPassord, txtPassord;
 
-    @FXML private javafx.scene.control.Button registrer;
-    @FXML private javafx.scene.control.Button avslutt;
+    @FXML private Button avslutt;
 
     //Dersom brukeren vil avlutte, lukk vinduet
     @FXML
-    private void avsluttAction(){
+    public void avsluttAction(ActionEvent event){
         Stage stage = (Stage) avslutt.getScene().getWindow();
         stage.close();
     }
 
     //Legg til en ny komponent dersom alt i denne metoden er oppfylt
     @FXML
-    private void registrerAction() {
+    public void registrerAction(ActionEvent event) {
 
         lblFornavnFeil.setText("");
         lblEtternavnFeil.setText("");
@@ -105,9 +98,11 @@ public class NykundeController {
         if (check1 && check2 && check3 && check4 && check5 && check6) {
             KundeData.leggTilKunde(nyKunde);
             Stage stage = (Stage) avslutt.getScene().getWindow();
+            //Avslutter viewet
             stage.close();
-            Advarsel.informasjonsAlert("Bruker registrert", brukernavn +
-                    " er registrert.", "For å lagre til fil klikk <Eksporter fil> i Administratordashboard");
+            //Viser informasjon til bruker om at kunden er registrert
+            Advarsel.informasjonsAlert("Kunde registrert", brukernavn +
+                    " er registrert.", "");
         }
     }
 }

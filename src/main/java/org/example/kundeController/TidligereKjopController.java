@@ -3,6 +3,7 @@ package org.example.kundeController;
 import data.OrdreData;
 import data.NyttKjopKomponentinfoViewData;
 import data.ValgtOrdreSinDatamaskinData;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import models.kjop.Ordre;
@@ -11,14 +12,10 @@ import org.example.App;
 
 public class TidligereKjopController {
 
-    //public TreeTableColumn coPris;
-
     @FXML
     public TableView<Ordre> ordre;
     public TableView komponentinfo;
     public TableView<Komponent> valgtDatamaskin;
-
-
 
     private NyttKjopKomponentinfoViewData collection1 = new NyttKjopKomponentinfoViewData();
     private ValgtOrdreSinDatamaskinData collection2 = new ValgtOrdreSinDatamaskinData();
@@ -26,55 +23,45 @@ public class TidligereKjopController {
 
 
     @FXML
-    public void valgtOrdre(){
-        collection2.hentValgtDatamaskin(valgtDatamaskin, ordre.getSelectionModel().getSelectedItem());
-        ordre.refresh();
+    private void valgtOrdre() {
+        //Sjekker at det faktisk er valgt en rad for å forhindre NullPointerException
+        if (komponentinfo.getSelectionModel().getSelectedItem() != null) {
+            //Oppdaterer komponent-listen med komponenter som finnes i ordren som er "valgt"
+            collection2.hentValgtDatamaskin(valgtDatamaskin, ordre.getSelectionModel().getSelectedItem());
+            //Oppdaterer tabellen
+            ordre.refresh();
+        }
     }
 
-
+    /*Når en komponent er valgt i listen over komponenter skal detaljene til komponenten hentes frem.
+    metoden under genererer et listeview med to kollonner, den ene kollonnen er en detalj, mens den
+    andre kollonnen er verdien til detaljen, f. eks. for en prosessor "Antall kjerner: 8"
+    */
 
     @FXML
     public void valgtKomponent(){
+        //Sjekker at det faktisk er valgt en rad for å forhindre NullPointerException
         if(valgtDatamaskin.getSelectionModel().getSelectedItem()!=null) {
+            //Setter komponinfotabellen synlig
             komponentinfo.setVisible(true);
+            //Oppdaterer viewt med de nye detaljene til den valgte komponenten
             NyttKjopKomponentinfoViewData.OppdaterView(valgtDatamaskin.getSelectionModel().getSelectedItem());
             komponentinfo.refresh();
         }
     }
 
-
+    //Knapp tilbake til dashboard
     @FXML
-    public void tilbakeAction() throws Exception {
+    private void tilbakeAction(ActionEvent event) throws Exception {
         App.setRoot("kundeView/dashboardKunde");
     }
 
-
-    public void initialize() {
-
-
+    @FXML
+    private void initialize() {
+        //Henter komponentinfo
         collection1.hentKomponentinfo(komponentinfo);
+        //Henter kundens ordre
         collection3.hentKundensOrdre(ordre);
 
-
-
-
-
-/*
-        coModell.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Komponent, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Komponent, String> param) {
-                return param.getValue().getValue().getSSPModell();
-            }
-        });
-
-        coPris.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Komponent, Double>, ObservableValue<Double>>() {
-            @Override
-            public ObservableValue<Double> call(TreeTableColumn.CellDataFeatures<Komponent, Double> param) {
-                return param.getValue().getValue().getSSPPris();
-            }
-        });
-        */
-
-        //tabell.setShowRoot(false);
     }
 }

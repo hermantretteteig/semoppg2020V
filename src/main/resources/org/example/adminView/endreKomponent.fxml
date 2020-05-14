@@ -223,20 +223,21 @@
          <Font name="System Bold" size="12.0" />
       </font>
    </Label>
-   <Label layoutX="340.0" layoutY="96.0" text="Vis kun komponenter med pris fra kr." textFill="WHITE">
+   <Label layoutX="294.0" layoutY="96.0" text="Vis komponenter med pris fra kr." textFill="WHITE">
       <font>
          <Font name="System Bold" size="15.0" />
       </font>
    </Label>
-   <TextField fx:id="txtPrisFra" layoutX="611.0" layoutY="94.0" prefHeight="25.0" prefWidth="72.0" />
-   <TextField fx:id="txtPrisTil" layoutX="734.0" layoutY="94.0" prefHeight="25.0" prefWidth="72.0" />
-   <Label layoutX="690.0" layoutY="96.0" text="til kr." textFill="WHITE">
+   <TextField fx:id="txtPrisFra" layoutX="534.0" layoutY="94.0" prefHeight="25.0" prefWidth="72.0" />
+   <TextField fx:id="txtPrisTil" layoutX="657.0" layoutY="94.0" prefHeight="25.0" prefWidth="72.0" />
+   <Label layoutX="613.0" layoutY="96.0" text="til kr." textFill="WHITE">
       <font>
          <Font name="System Bold" size="15.0" />
       </font>
    </Label>
-   <Button layoutX="828.0" layoutY="94.0" mnemonicParsing="false" onAction="#filtrerAction" text="Filtrer pris" />
-   <Button layoutX="910.0" layoutY="94.0" mnemonicParsing="false" onAction="#fjernFilterAction" text="Fjern filter" />
+   <Button layoutX="745.0" layoutY="94.0" mnemonicParsing="false" onAction="#filtrerAction" text="Filtrer pris" />
+   <Button layoutX="826.0" layoutY="94.0" mnemonicParsing="false" onAction="#fjernFilterAction" text="Fjern filter" />
+   <Button layoutX="908.0" layoutY="94.0" mnemonicParsing="false" onAction="#slettKomponent" text="Slett valgt" />
 
 
 

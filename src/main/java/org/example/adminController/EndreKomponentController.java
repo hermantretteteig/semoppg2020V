@@ -54,6 +54,20 @@ public class EndreKomponentController {
         App.setRoot("adminview/dashboardAdmin");
     }
 
+    //Metode som sletter en komponent
+    @FXML
+    public void slettKomponent(ActionEvent event){
+        //Kontrollerer at en komponent er valgt, for å forhindre nullpointerexception
+        if(tableView.getSelectionModel().getSelectedItem()!=null) {
+            //Caster objektet i tabellen til en komponent
+            Komponent slettKom = (Komponent) tableView.getSelectionModel().getSelectedItem();
+            //Sletter komponenten fra listen
+            KomponentData.slettKomponent(slettKom);
+            //Oppdaterer viewt ved å hente det inn på nytt
+            komponentene.hentKomponenttype(tableView, choKomponentvelger.getValue().toString());
+        }
+    }
+
     //Knapp som brukes til å aktivere filtreringen på pris
     @FXML
     public void filtrerAction(ActionEvent event){

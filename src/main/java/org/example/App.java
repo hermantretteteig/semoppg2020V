@@ -21,6 +21,8 @@ public class App extends Application {
         //Legger in eksepeldata
         Eksempeldata.GenererEksempeldata();
 
+        //Oppretteter en ny scene med FXML-filen "logginn"
+        //Legger inn diverse konfigurasjoner til scenen/staget
         hovedscene = new Scene(loadFXML("logginn"));
         stage.setScene(hovedscene);
         stage.setTitle("Datamaskinkonfiguering");
@@ -32,16 +34,18 @@ public class App extends Application {
 
     }
 
+    //Metode som brukes for å navigere til forskjellige FXML-filer i programet
     public static void setRoot(String fxml) throws IOException {
         hovedscene.setRoot(loadFXML(fxml));
-
     }
 
+    //Laster inn bestemt FXML-fil
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
+    //Brukes til mindre vinduer, som registrering av kunde/admin
     public static void nyttLiteVindu(String fxml, String tittel, int lengde, int hoyde) throws IOException {
         Stage stage = new Stage();
         registrerScene = new Scene(loadFXML(fxml), lengde, hoyde);

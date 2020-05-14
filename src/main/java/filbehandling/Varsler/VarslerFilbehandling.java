@@ -11,11 +11,11 @@ Denne klassen inneholder metoder som viser Alert-bokser ved lagring og henting a
 public class VarslerFilbehandling {
 
     public static void suksessHentFil() {
-        ButtonType fortsett = new ButtonType("Ok", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType fortsett = new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE);
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "", fortsett);
         alert.setTitle("Henting av fil");
         alert.setHeaderText("Filen ble hentet.");
-        alert.setContentText("Trykk på knappen for å fortsette.");
+        alert.setContentText("");
         alert.showAndWait();
     }
 
@@ -58,11 +58,11 @@ public class VarslerFilbehandling {
     }
 
     public static void suksessLagreFil() {
-        ButtonType fortsett = new ButtonType("Ok", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType fortsett = new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE);
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "", fortsett);
         alert.setTitle("Lagring av fil");
         alert.setHeaderText("Filen ble lagret.");
-        alert.setContentText("Trykk på knappen for å fortsette.");
+        alert.setContentText("");
         alert.showAndWait();
     }
 

@@ -94,6 +94,7 @@ public class NyMusController {
         }
     }
 
+    //Setter verdi til choiceboksene for å unngå nullpointerexceptions
     public void initialize() {
         choFarge.setValue("Grå");
         choTrodlos.setValue("Ja");

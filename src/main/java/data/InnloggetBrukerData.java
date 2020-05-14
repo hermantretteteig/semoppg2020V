@@ -4,13 +4,17 @@ import models.brukere.Admin;
 import models.brukere.Kunde;
 
 public class InnloggetBrukerData {
+    /*Når brukeren" er logget inn settes han/hun lik "innloggetKunde"/"innloggetAdmin", slik at dataene
+    til kunden kan akselreres fra ulike steder i programvaren*/
     private static Kunde innloggetKunde = null;
     private static Admin innloggetAdmin = null;
 
+    //Logger ut ved å sette innlogget kunde til null
     public static void loggUtKunde(){
         innloggetKunde = null;
     }
 
+    //Logger ut ved å sette innlogget admin til null
     public static void loggUtAdmin(){
         innloggetAdmin = null;
     }

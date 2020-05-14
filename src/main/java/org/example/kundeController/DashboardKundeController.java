@@ -18,11 +18,13 @@ import org.example.App;
 import java.io.File;
 import java.io.IOException;
 
+
 public class DashboardKundeController {
 
 @FXML
 public AnchorPane kundePanel;
 
+    @FXML
     public void eksporterFilAction() {
         //Åpner filechooser og eksporterer data
         Stage stage = (Stage) kundePanel.getScene().getWindow();
@@ -39,6 +41,7 @@ public AnchorPane kundePanel;
 
     }
 
+    @FXML
     public void hentFilAction() throws IOException{
         Alert alert = VarslerFilbehandling.bekreftHentFil();
         if(alert.getResult().getButtonData().isDefaultButton()) {
@@ -63,15 +66,17 @@ public AnchorPane kundePanel;
             }
         }
     }
-
+    @FXML
     public void nyttKjopAction() throws IOException {
         App.setRoot("kundeView/nyttKjop");
     }
 
+    @FXML
     public void tidligereKjopAction() throws IOException{
         App.setRoot("kundeView/tidligereKjop");
     }
 
+    @FXML
     public void endreKundeinformasjonAction() throws IOException{
         App.setRoot("kundeView/endreKundeinfoKunde");
     }
@@ -83,6 +88,7 @@ public AnchorPane kundePanel;
 
     }
 
+    @FXML
     private FileChooser opprettFilechooser(String string){
         //Forhåndsvalgt ilbane: C:\Users\brukernavn\Datamaskinkonfigurering\komponenter
         File filBane = new File(System.getProperty("user.home"), "Datamaskinkonfigurering/Ordre");

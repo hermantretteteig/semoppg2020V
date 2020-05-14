@@ -15,77 +15,64 @@ import org.example.App;
 import data.OrdreData;
 import data.NyttKjopKomponentinfoViewData;
 import data.ValgtOrdreSinDatamaskinData;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.util.Callback;
-import models.kjop.Ordre;
-import models.komponent.Komponent;
-import org.example.App;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class TidligereKjopController {
     @FXML
-    public TableView<Ordre> ordre;
-    public TableView komponentinfo;
-    public TableView<Komponent> valgtDatamaskin;
+    private TableView<Ordre> ordre;
+    @FXML
+    private TableView komponentinfo;
+    @FXML
+    private TableView<Komponent> valgtDatamaskin;
 
     @FXML
-    public TableColumn coKunde;
-    public TableColumn coDato;
+    private TableColumn coKunde;
 
-    private NyttKjopKomponentinfoViewData collection1 = new NyttKjopKomponentinfoViewData();
-    private ValgtOrdreSinDatamaskinData collection2 = new ValgtOrdreSinDatamaskinData();
+    //Oppretter et nytt objekt av de ulike listene som skal implementeres i tabellviewene
+    private NyttKjopKomponentinfoViewData detaljeinformasjon = new NyttKjopKomponentinfoViewData();
+    private ValgtOrdreSinDatamaskinData valgtdatamaskin = new ValgtOrdreSinDatamaskinData();
     private OrdreData alleOrdre = new OrdreData();
 
 
+    /*Når en ordre er valgt skal komponentene til ordren hentes frem. Listen over komponenter
+    settes til de komponentene som er konfigurert i datamaskinen.*/
     @FXML
     public void valgtOrdre(){
-        collection2.hentValgtDatamaskin(valgtDatamaskin, ordre.getSelectionModel().getSelectedItem());
-        ordre.refresh();
+            //Komponentlisten oppdateres med ordrekomponentene
+            valgtdatamaskin.hentValgtDatamaskin(valgtDatamaskin, ordre.getSelectionModel().getSelectedItem());
+            //Ordrelisten oppdateres
+            ordre.refresh();
     }
 
-
-
+    /*
+    Når en komponent er valgt i listen over komponenter skal detaljene til komponenten hentes frem.
+    metoden under genererer et listeview med to kollonner, den ene kollonnen er en detalj, mens den
+    andre kollonnen er verdien til detaljen, f. eks. for en prosessor "Antall kjerner: 8"
+    */
     @FXML
     public void valgtKomponent(){
+        //Sjekker at det faktisk er valgt en rad for å forhindre NullPointerException
         if(valgtDatamaskin.getSelectionModel().getSelectedItem()!=null) {
+            //Setter komponinfotabellen synlig
             komponentinfo.setVisible(true);
+            //Oppdaterer viewt med de nye detaljene til den valgte komponenten
             NyttKjopKomponentinfoViewData.OppdaterView(valgtDatamaskin.getSelectionModel().getSelectedItem());
             komponentinfo.refresh();
         }
     }
 
-
+    //Knapp tilbake til dashboard
     @FXML
     public void tilbakeAction() throws Exception {
         App.setRoot("adminView/dashboardAdmin");
     }
 
-
     public void initialize() {
-        collection1.hentKomponentinfo(komponentinfo);
+        //Henter inn alle detaljene som skal være tilgjenelig
+        detaljeinformasjon.hentKomponentinfo(komponentinfo);
+        //Henter alle ordre
         alleOrdre.hentAlleOrdre(ordre);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        /*coDato.setCellFactory(tc -> new TableCell<Ordre, String>() {
-            @Override
-            protected void updateItem(String date, boolean empty) {
-                System.out.println(date);
-                LocalDate today = LocalDate.parse(date, formatter);
-                super.updateItem(date, empty);
-                if (empty) {
-                    setText(null);
-                } else {
-                    setText(formatter.format(today));
-                }
-            }
-        });*/
-
+    //Slår sammen fornavn og etternavn til en kollonne
     coKunde.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordre, String>,
             ObservableValue<String>>() {
         @Override
@@ -95,8 +82,6 @@ public class TidligereKjopController {
             return new SimpleStringProperty(valgtKunde.getFornavn()+" "+valgtKunde.getEtternavn());
         }
     });
-
-
     }
 
 }

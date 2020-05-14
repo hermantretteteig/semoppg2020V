@@ -261,11 +261,11 @@ public class Eksempeldata {
         Ordre nyOrdre2 = new Ordre("22/11/2015 12:28:34", nyKunde2.getKundenummer(), nyDatamaskin2);
         Ordre nyOrdre3 = new Ordre("12/04/2020 14:23:27", nyKunde3.getKundenummer(), nyDatamaskin3);
         Ordre nyOrdre4 = new Ordre("02/01/2020 10:34:38", nyKunde4.getKundenummer(), nyDatamaskin4);
-        Ordre nyOrdre5 = new Ordre("04/03/2019 07:12:32", nyKunde1.getKundenummer(), nyDatamaskin5);
-        Ordre nyOrdre6 = new Ordre("12-10-2016", nyKunde2.getKundenummer(), nyDatamaskin6);
-        Ordre nyOrdre7 = new Ordre("25-11-2018", nyKunde3.getKundenummer(), nyDatamaskin7);
-        Ordre nyOrdre8 = new Ordre("12-12-2018", nyKunde4.getKundenummer(), nyDatamaskin8);
-        Ordre nyOrdre9 = new Ordre("28-10-2020", nyKunde1.getKundenummer(), nyDatamaskin9);
+        Ordre nyOrdre5 = new Ordre("04/03/2019 09:12:12", nyKunde1.getKundenummer(), nyDatamaskin5);
+        Ordre nyOrdre6 = new Ordre("12-10-2016 12:22:32", nyKunde2.getKundenummer(), nyDatamaskin6);
+        Ordre nyOrdre7 = new Ordre("25-11-2018 17:17:12", nyKunde3.getKundenummer(), nyDatamaskin7);
+        Ordre nyOrdre8 = new Ordre("12-12-2018 10:21:32", nyKunde4.getKundenummer(), nyDatamaskin8);
+        Ordre nyOrdre9 = new Ordre("28-10-2020 07:12:32", nyKunde1.getKundenummer(), nyDatamaskin9);
         Ordre nyOrdre10 = new Ordre("12/03/2020 15:43:44", nyKunde2.getKundenummer(), nyDatamaskin10);
         Ordre nyOrdre11 = new Ordre("30/08/2012 18:34:25", nyKunde5.getKundenummer(), nyDatamaskin11);
         Ordre nyOrdre12 = new Ordre("18/09/2017 23:45:32", nyKunde6.getKundenummer(), nyDatamaskin12);

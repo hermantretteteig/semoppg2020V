@@ -33,6 +33,10 @@ public class KomponentData {
         KomponentData.komponenter = alleKomponenter;
     }
 
+    public static void slettKomponent(Komponent selectedItem) {
+        komponenter.remove(selectedItem);
+    }
+
     /*
     Brukes i viewt til endre komponenter. Metoden filtrerer ut de komponetenene som ikke samvarer med den
     komponenten brukeren ønsker å vise i viewt.

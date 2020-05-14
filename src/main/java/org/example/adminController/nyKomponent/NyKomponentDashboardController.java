@@ -1,5 +1,6 @@
 package org.example.adminController.nyKomponent;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import org.example.App;
 
@@ -7,37 +8,37 @@ public class NyKomponentDashboardController {
 
 
     @FXML
-    public void tilDashboardAction() throws Exception {
+    public void tilDashboardAction(ActionEvent event) throws Exception {
         App.setRoot("adminView/dashboardAdmin");
     }
 
     @FXML
-    public void nySkjermkortAction() throws Exception {
+    public void nySkjermkortAction(ActionEvent event) throws Exception {
         App.setRoot("adminView/nyKomponentView/nySkjermkort");
     }
 
     @FXML
-    public void nyLagringsenhetAction() throws Exception {
+    public void nyLagringsenhetAction(ActionEvent event) throws Exception {
         App.setRoot("adminView/nyKomponentView/nyLagringsenhet");
     }
 
     @FXML
-    public void nyMusAction() throws Exception {
+    public void nyMusAction(ActionEvent event) throws Exception {
         App.setRoot("adminView/nyKomponentView/nyMus");
     }
 
     @FXML
-    public void nyProsessorAction() throws Exception {
+    public void nyProsessorAction(ActionEvent event) throws Exception {
         App.setRoot("adminView/nyKomponentView/nyProsessor");
     }
 
     @FXML
-    public void nySkjermAction() throws Exception {
+    public void nySkjermAction(ActionEvent event) throws Exception {
         App.setRoot("adminView/nyKomponentView/nySkjerm");
     }
 
     @FXML
-    public void nyTastaturAction() throws Exception {
+    public void nyTastaturAction(ActionEvent event) throws Exception {
         App.setRoot("adminView/nyKomponentView/nyTastatur");
     }
 }

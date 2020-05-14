@@ -1,7 +1,9 @@
 package org.example.kundeController;
 
 import data.InnloggetBrukerData;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -13,36 +15,22 @@ import java.io.IOException;
 
 public class EndreKundeKundeController {
 
-    //Oppretter tekstfelt ved feil-input
-    public Label lblGjentaPassordFeil;
-    public Label lblFornavnFeil;
-    public Label lblEtternavnFeil;
-    public Label lblPassordFeil;
-    public Label lblBrukernavnFeil;
-    public Label lblEpostFeil;
-    public Label lblFeil;
-
-    //Opprett inputfelt
-    public TextField txtFornavn;
-    public TextField txtEtternavn;
-    public TextField txtBrukernavn;
-    public TextField txtEpost;
-    public PasswordField txtGjentaPassord;
-    public PasswordField txtPassord;
+    @FXML
+    private Label lblGjentaPassordFeil, lblFornavnFeil, lblEtternavnFeil,
+            lblPassordFeil, lblBrukernavnFeil, lblEpostFeil, lblFeil;
 
     @FXML
-    private javafx.scene.control.Button registrer;
-    @FXML private javafx.scene.control.Button avslutt;
+    private TextField txtFornavn, txtEtternavn, txtBrukernavn, txtEpost,
+        txtGjentaPassord, txtPassord;
 
     //Dersom brukeren vil avlutte gå tilbake til dashboadKunde
     @FXML
-    private void avsluttAction() throws IOException {
+    private void avsluttAction(ActionEvent event) throws IOException {
         App.setRoot("kundeView/dashboardKunde");
     }
 
-    //Legg til en ny komponent dersom alt i denne metoden er oppfylt
     @FXML
-    private void registrerAction() throws IOException {
+    private void registrerAction(ActionEvent event) throws IOException {
 
         lblFornavnFeil.setText("");
         lblEtternavnFeil.setText("");
@@ -102,6 +90,7 @@ public class EndreKundeKundeController {
             check5 = false;
         }
 
+        //Kontrollerer at alle felt er gyldig før eventuelt verdiene endres
         if (check1 && check2 && check3 && check4 && check5 && check6) {
             InnloggetBrukerData.getInnloggetKunde().setFornavn(txtFornavn.getText());
             InnloggetBrukerData.getInnloggetKunde().setEtternavn(txtEtternavn.getText());
@@ -116,11 +105,14 @@ public class EndreKundeKundeController {
             App.setRoot("kundeView/dashboardKunde");
 
         }
+        //Hvis det brukeren har skrevet inn ugyldig verdi gis det informasjon om dette.
         else {
             lblFeil.setText("Ett eller flere tekstfelt inneholdt ugyldig verdi. Prøv på nytt!");
         }
     }
 
+    //Henter inn informasjonen til brukeren.
+    @FXML
     public void initialize(){
         txtFornavn.setText(InnloggetBrukerData.getInnloggetKunde().getFornavn());
         txtEtternavn.setText(InnloggetBrukerData.getInnloggetKunde().getEtternavn());

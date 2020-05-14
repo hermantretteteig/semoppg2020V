@@ -12,12 +12,14 @@ import java.io.IOException;
 
 public class NySkjermkortController {
 
+    //Oppretter tekstfelt ved feil-input
     public Label lblVaremerkeFeil;
     public Label lblModellFeil;
     public Label lblPrisFeil;
     public Label lblKlokkehastighetFeil;
     public Label lblMinneFeil;
 
+    //Opprett inputfelt
     public TextField txtVaremerke;
     public TextField txtModell;
     public TextField txtPris;
@@ -27,11 +29,13 @@ public class NySkjermkortController {
     @FXML public javafx.scene.control.Button registrer;
     @FXML public javafx.scene.control.Button avslutt;
 
+    //Dersom brukeren vil avlutte vises nyKomonentView
     @FXML
     public void avsluttAction() throws IOException {
         App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 
+    //Legg til en ny komponent dersom alt i denne klassen er oppfylt
     @FXML
     public void leggTilAction() throws IOException {
 
@@ -53,8 +57,6 @@ public class NySkjermkortController {
         boolean check3 = true;
         boolean check4 = true;
         boolean check5 = true;
-
-        //Validerer Varenummer
 
         //Validerer Varemerke
         if (Check.lengdeCheck(varemerke) == false) {
@@ -86,8 +88,7 @@ public class NySkjermkortController {
             check5 = false;
         }
 
-
-
+        //Kun dersom check'ene er oppfylt lages det en ny skjermkort
         if (check1 && check2 && check3 && check4 && check5){
             Skjermkort nyttSkjermkort = new Skjermkort(varemerke,
                     modell,

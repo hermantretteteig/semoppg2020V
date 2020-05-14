@@ -14,28 +14,30 @@ import java.io.IOException;
 
 public class NySkjermController {
 
+    //Oppretter tekstfelt ved feil-input
     public Label lblVaremerkeFeil;
     public Label lblModellFeil;
     public Label lblPrisFeil;
     public Label lblHoydeFeil;
     public Label lblBreddeFeil;
-    public Label lbl4KFeil;
 
+    //Opprett inputfelt
     public TextField txtVaremerke;
     public TextField txtModell;
     public TextField txtPris;
     public TextField txtHoyde;
     public TextField txtBredde;
-    public ChoiceBox cho4K;
 
     @FXML public javafx.scene.control.Button registrer;
     @FXML public  javafx.scene.control.Button avslutt;
 
+    //Dersom brukeren vil avlutte vises nyKomonentView
     @FXML
     public void avsluttAction() throws Exception{
         App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 
+    //Legg til en ny komponent dersom alt i denne klassen er oppfylt
     @FXML
     public void leggTilAction() throws IOException{
 
@@ -56,9 +58,6 @@ public class NySkjermController {
         boolean check3 = true;
         boolean check4 = true;
         boolean check5 = true;
-
-        //Validerer Varenummer
-
 
         //Validerer Varemerke
         if(Check.lengdeCheck(varemerke) == false){
@@ -90,8 +89,7 @@ public class NySkjermController {
             check5 = false;
         }
 
-
-
+        //Kun dersom check'ene er oppfylt lages det en ny skjerm
         if (check1 && check2 && check3 && check4 && check5){
             Skjerm nySkjerm = new Skjerm(varemerke, modell, Double.parseDouble(pris),
                     Integer.parseInt(hoyde), Integer.parseInt(bredde));

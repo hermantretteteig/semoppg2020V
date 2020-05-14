@@ -12,6 +12,8 @@ import validering.*;
 import java.io.IOException;
 
 public class EndreKundeKundeController {
+
+    //Oppretter tekstfelt ved feil-input
     public Label lblGjentaPassordFeil;
     public Label lblFornavnFeil;
     public Label lblEtternavnFeil;
@@ -20,6 +22,7 @@ public class EndreKundeKundeController {
     public Label lblEpostFeil;
     public Label lblFeil;
 
+    //Opprett inputfelt
     public TextField txtFornavn;
     public TextField txtEtternavn;
     public TextField txtBrukernavn;
@@ -27,16 +30,17 @@ public class EndreKundeKundeController {
     public PasswordField txtGjentaPassord;
     public PasswordField txtPassord;
 
-
     @FXML
     private javafx.scene.control.Button registrer;
     @FXML private javafx.scene.control.Button avslutt;
 
+    //Dersom brukeren vil avlutte gå tilbake til dashboadKunde
     @FXML
     private void avsluttAction() throws IOException {
         App.setRoot("kundeView/dashboardKunde");
     }
 
+    //Legg til en ny komponent dersom alt i denne metoden er oppfylt
     @FXML
     private void registrerAction() throws IOException {
 
@@ -61,7 +65,6 @@ public class EndreKundeKundeController {
         boolean check4 = true;
         boolean check5 = true;
         boolean check6 = true;
-
 
         //Validerer fornavn
         if (Check.bokstavercheck(fornavn) == false) {
@@ -99,7 +102,6 @@ public class EndreKundeKundeController {
             check5 = false;
         }
 
-
         if (check1 && check2 && check3 && check4 && check5 && check6) {
             InnloggetBrukerData.getInnloggetKunde().setFornavn(txtFornavn.getText());
             InnloggetBrukerData.getInnloggetKunde().setEtternavn(txtEtternavn.getText());
@@ -117,8 +119,6 @@ public class EndreKundeKundeController {
         else {
             lblFeil.setText("Ett eller flere tekstfelt inneholdt ugyldig verdi. Prøv på nytt!");
         }
-
-
     }
 
     public void initialize(){
@@ -128,4 +128,3 @@ public class EndreKundeKundeController {
         txtEpost.setText(InnloggetBrukerData.getInnloggetKunde().getEpost());
     }
 }
-

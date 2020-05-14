@@ -12,6 +12,7 @@ import validering.Check;
 
 public class NyLagringsenhetController {
 
+    //Opprett tekstfelt ved feil-input
     public Label lblVaremerkeFeil;
     public Label lblModellFeil;
     public Label lblPrisFeil;
@@ -20,7 +21,7 @@ public class NyLagringsenhetController {
     public Label lblLesehastighetFeil;
     public Label lblSkrivehastighetFeil;
 
-
+    //Opprett inputfelt
     public TextField txtVaremerke;
     public TextField txtModell;
     public TextField txtPris;
@@ -32,11 +33,13 @@ public class NyLagringsenhetController {
     @FXML public javafx.scene.control.Button registrer;
     @FXML public javafx.scene.control.Button avslutt;
 
+    //Dersom brukeren vil avlutte vises nyKomonentView
     @FXML
     public void avsluttAction() throws Exception{
         App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 
+    //Legg til en ny komponent dersom alt i denne klassen er oppfylt
     @FXML
     public void leggTilAction() throws Exception{
         lblVaremerkeFeil.setText("");
@@ -61,9 +64,6 @@ public class NyLagringsenhetController {
         boolean check5 = true;
         boolean check6 = true;
         boolean check7 = true;
-
-        //Validerer Varenummer
-
 
         //Validerer Varemerke
         if(Check.lengdeCheck(varemerke) == false){
@@ -107,7 +107,7 @@ public class NyLagringsenhetController {
             check7 = false;
         }
 
-
+        //Kun dersom check'ene er oppfylt lages det en ny lagringsenhet
         if (check1 && check2 && check3 && check4 && check5 && check6 && check7){
             Lagringsenhet nyLagringsenhet = new Lagringsenhet(varemerke,
                     modell, Double.parseDouble(pris),

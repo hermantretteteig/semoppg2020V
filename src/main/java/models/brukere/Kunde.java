@@ -7,6 +7,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.UUID;
 
+/*
+Kunde arver fra superklasse bruker. SimpleProperty blir brukt ettersom dette støttes av JavaFX tableview.
+ */
+
 public class Kunde extends Bruker {
     private transient SimpleStringProperty kundenummer;
     private transient SimpleStringProperty epost;
@@ -18,6 +22,7 @@ public class Kunde extends Bruker {
         this.epost = new SimpleStringProperty(epost);
     }
 
+    //TODO erstatte metoden i eksdata med den orginale?
     //Konstruktør for oppretting av kunde fra eksempeldata
     public Kunde(String fornavn, String etternavn, String brukernavn, String passord, String kundenummer, String epost) {
         super(fornavn, etternavn, brukernavn, passord);
@@ -42,8 +47,9 @@ public class Kunde extends Bruker {
         this.epost.set(epost);
     }
 
+    //Generer et kundenummer ved bruk av UUID
     private String genererKundenr() {
-        return UUID.randomUUID().toString();
+        return "KUNDE-"+UUID.randomUUID().toString();
     }
 
     private void writeObject(ObjectOutputStream out) throws IOException {

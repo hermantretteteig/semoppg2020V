@@ -199,9 +199,11 @@
              <!--TASTATUR-->
          <TableColumn fx:id="coNumpad" onEditCommit="#NumpadEdit" prefWidth="115.0" text="Numpad">
          </TableColumn>
+
          <TableColumn fx:id="coTrodlos" onEditCommit="#TrodlosEdit" prefWidth="115.0" text="Trådløs">
+
          </TableColumn>
-             <!--TASTATUR SLUTT-->
+         <!--TASTATUR SLUTT-->
 
          </columns>
 

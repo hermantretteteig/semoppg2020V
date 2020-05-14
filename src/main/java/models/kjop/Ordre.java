@@ -14,7 +14,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-public class Ordre implements Cloneable, Serializable {
+/*
+SimpleProperty brukes ettersom dette støttes av JavaFX tableview.
+ */
+
+public class Ordre implements Cloneable, Serializable{
     private static final long serialVersionUID = 1;
 
     private transient SimpleStringProperty ordrenumer;
@@ -23,11 +27,16 @@ public class Ordre implements Cloneable, Serializable {
     private transient SimpleDoubleProperty totalsum;
     private transient Datamaskin datamaskin;
 
-    //Konstruktør for oppretting av nytt objekt.
+
+    //Konstruktør for oppretting av nytt ordreobjekt.
     public Ordre(String kjopsdato, String kundenr, Datamaskin datamaskin) {
         this.ordrenumer = new SimpleStringProperty(genererOrdrenr());
         this.kjopsdato = new SimpleStringProperty(kjopsdato);
         this.kundenr = new SimpleStringProperty(kundenr);
+
+         // - Finner totalprisen til ordren ved å kalle metoden "genrerDatamaskinpris".
+         //   Denne metoden summerer prisene til komponentene  som er lagt til handlekurven
+
         this.totalsum = new SimpleDoubleProperty(genererDatamaskinpris(datamaskin));
         this.datamaskin = datamaskin;
     }
@@ -40,31 +49,46 @@ public class Ordre implements Cloneable, Serializable {
         this.datamaskin = datamaskin;
     }
 
+    //TODO hvor brukes denne egentlig?
     public Ordre Clone() throws CloneNotSupportedException {
         Ordre ordre = (Ordre) super.clone();
         ordre.datamaskin = (Datamaskin) this.datamaskin.clone();
         return ordre;
     }
 
+    //Metode som brukes til kjøp. Metoden opprettet et nytt ordreobjekt ut av handlekurven.
+    public static void genererOrdreAvHandlekurv() throws CloneNotSupportedException {
+        //Bruker Date for å finne dato og tid akkurat nå
+        SimpleDateFormat naa = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date dato = new Date();
 
-    private double genererDatamaskinpris(Datamaskin enDatamaskin){
+        /*
+        Konstruktøren under gis følgende:
+        - Setter tiden til ordren til "nå"
+        - Finner kundenummeret til ordren ved å se hviklet kunde som er innloggget
+        - Generer en datamaskin ut i fra komponentene som er lagt til i handlekureven
+        */
+        Ordre nyOrdre = new Ordre(
+                naa.format(dato),
+                InnloggetBrukerData.getInnloggetKunde().getKundenummer(),
+                HandlekurvData.genererDatamaskinAvHandlekurv());
+
+        //Legger til ordren i listen over ordre
+        OrdreData.leggTilOrdre(nyOrdre);
+
+        //Sletter handlekurven, slik at den er tom til neste kjøp.
+        HandlekurvData.getHandlekurv().clear();
+    }
+
+    //Metodde som summerer prisen til alle komponentene som er generert i datamaskinen.
+    private static double genererDatamaskinpris(Datamaskin enDatamaskin){
         return enDatamaskin.getLagringsenhet().getPris()+enDatamaskin.getMus().getPris()+
                 enDatamaskin.getProsessor().getPris()+enDatamaskin.getSkjerm().getPris()+
                 enDatamaskin.getSkjermkort().getPris()+enDatamaskin.getTastatur().getPris();
 
     }
 
-    //TODO KUTT METODE, LEGG HELLER INN I ORDREKONSTRUKTØREN
-    public static void genererOrdreAvHandlekurv() throws CloneNotSupportedException {
-        SimpleDateFormat naa = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date dato = new Date();
-
-        Ordre nyOrdre = new Ordre(naa.format(dato), InnloggetBrukerData.getInnloggetKunde().getKundenummer(), HandlekurvData.genererDatamaskinAvHandlekurv());
-        OrdreData.leggTilOrdre(nyOrdre);
-        HandlekurvData.getHandlekurv().clear();
-
-    }
-
+    //Metoden som generer et unikt ordrenummer
     private static String genererOrdrenr() {
         UUID ordrenr = UUID.randomUUID();
         return ordrenr.toString();

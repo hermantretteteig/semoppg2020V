@@ -1,6 +1,10 @@
 package org.example.adminController.endreKomponent;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.util.converter.BooleanStringConverter;
 import logikk.Advarsel;
 import validering.Check;
 import data.KomponentData;
@@ -112,6 +116,16 @@ public class EndreKomponentController {
         coMinne.setCellFactory(TextFieldTableCell.forTableColumn(new EgendefinertIntegerConverterer()));
 
 
+
+        coFormat.setCellFactory(ComboBoxTableCell.<Lagringsenhet, String>forTableColumn("SSD 2.5", "SDD M.2", "SSD mSATA", "HDD"));
+        coNumpad.setCellFactory( CheckBoxTableCell.forTableColumn(coNumpad) );
+        coTrodlos.setCellFactory(CheckBoxTableCell.forTableColumn(coTrodlos) );
+        coFarge.setCellFactory(ComboBoxTableCell.<Lagringsenhet, String>forTableColumn("Grå", "Svart", "Blå", "Brun", "Rose", "Hvit", "Oransje", "Rød"));
+        co4K.setCellFactory( CheckBoxTableCell.forTableColumn(co4K) );
+        coMusTrodlos.setCellFactory( CheckBoxTableCell.forTableColumn(coMusTrodlos) );
+
+
+
         LagBindingFraDataTilTabell();
 
         //Setter startvisning til å være lagringsenhet
@@ -138,7 +152,7 @@ public class EndreKomponentController {
         }
         else {
                 event.getRowValue().setVaremerke(event.getOldValue());
-            }
+        }
         tableView.refresh();
 
     }
@@ -169,6 +183,7 @@ public class EndreKomponentController {
     }
 
     public void TrodlosEdit(TableColumn.CellEditEvent<Komponent, Boolean> event) {
+        System.out.println("endrnge endr");
         ((Tastatur) event.getRowValue()).setTrodlos(event.getNewValue());
     }
 
@@ -365,18 +380,20 @@ public class EndreKomponentController {
     valgvelger og sjekkboks.
      */
     private void LagBindingFraDataTilTabell() {
-        coTrodlos.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Tastatur,Boolean>, ObservableValue<Boolean>>()
+        coTrodlos.setCellValueFactory(
+                new Callback<TableColumn.CellDataFeatures<Tastatur,Boolean>, ObservableValue<Boolean>>()
         {
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Tastatur, Boolean> event)
             {
-                return new SimpleBooleanProperty(event.getValue().getTrodlos());}
+                return event.getValue().getBpTrodlos();}
         });
 
-        coNumpad.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Tastatur,Boolean>, ObservableValue<Boolean>>()
+        coNumpad.setCellValueFactory(
+                new Callback<TableColumn.CellDataFeatures<Tastatur,Boolean>, ObservableValue<Boolean>>()
         {
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Tastatur, Boolean> event)
             {
-                return new SimpleBooleanProperty(event.getValue().getNumpad());}
+                return event.getValue().getBpNumpad();}
         });
         co4K.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Skjerm,Boolean>, ObservableValue<Boolean>>()
         {
@@ -388,22 +405,16 @@ public class EndreKomponentController {
         {
             public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Mus, Boolean> event)
             {
-                return new SimpleBooleanProperty(event.getValue().getTrodlos());}
+                return event.getValue().getBpTrodlos();}
         });
 
 
         coFormat.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Lagringsenhet,String>, ObservableValue<String>>() {
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Lagringsenhet, String> event) {
-                return event.getValue().getSpFormat();
+                return new SimpleStringProperty(event.getValue().getFormat());
             }
         });
 
-        coFormat.setCellFactory(ComboBoxTableCell.<Lagringsenhet, String>forTableColumn("SSD 2.5", "SDD M.2", "SSD mSATA", "HDD"));
-        coNumpad.setCellFactory( CheckBoxTableCell.forTableColumn(coNumpad) );
-        coTrodlos.setCellFactory( CheckBoxTableCell.forTableColumn(coTrodlos) );
-        coFarge.setCellFactory(ComboBoxTableCell.<Lagringsenhet, String>forTableColumn("Grå", "Svart", "Blå", "Brun", "Rose", "Hvit", "Oransje", "Rød"));
-        co4K.setCellFactory( CheckBoxTableCell.forTableColumn(co4K) );
-        coMusTrodlos.setCellFactory( CheckBoxTableCell.forTableColumn(coMusTrodlos) );
 
     }
 

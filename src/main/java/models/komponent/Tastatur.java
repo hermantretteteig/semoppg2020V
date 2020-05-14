@@ -7,6 +7,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/*
+Som alle andre komponenter arver klassen fra superkomponentobjektet.
+ */
+
+
 public class Tastatur extends Komponent{
     private transient SimpleBooleanProperty  trodlos;
     private transient SimpleBooleanProperty  numpad;
@@ -30,6 +35,7 @@ public class Tastatur extends Komponent{
     }
 
     public void setTrodlos(boolean trodlos) {
+        System.out.println("trådløs endring");
         this.trodlos = new SimpleBooleanProperty(trodlos);
     }
 
@@ -40,8 +46,6 @@ public class Tastatur extends Komponent{
     public BooleanProperty getBpTrodlos() {
         return trodlos;
     }
-
-
 
     public void setNumpad(boolean numpad) {
         this.numpad = new SimpleBooleanProperty(numpad);

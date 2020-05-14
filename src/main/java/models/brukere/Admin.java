@@ -7,6 +7,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.UUID;
 
+/*
+SimpleStringProperty blir brukt ettersom dette støttes direkte med tabelview fra JavaFX. Klassen
+arver fra superklassen bruker.
+ */
+
 public class Admin extends Bruker {
     private transient SimpleStringProperty adminnummer;
 
@@ -22,6 +27,7 @@ public class Admin extends Bruker {
         this.adminnummer = new SimpleStringProperty(adminnummer);
     }
 
+
     public String getAdminnummer() {
         return adminnummer.get();
     }
@@ -30,9 +36,9 @@ public class Admin extends Bruker {
         this.adminnummer.set(adminnummer);
     }
 
+    //Generer et adminnummer ved bruk av UUID
     private String genererAdminnr() {
-        UUID adminnr = UUID.randomUUID();
-        return adminnr.toString();
+        return "ADMIN-" + UUID.randomUUID().toString();
     }
 
     private void writeObject(ObjectOutputStream out) throws IOException {

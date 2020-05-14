@@ -8,6 +8,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+/*
+SimpleProperty blir brukt ettersom dette støttes direkte med tabelview fra JavaFX. Kunde og Admin arver fra
+denne klassen.
+ */
+
+
 public class Bruker implements Serializable {
     private static final long serialVersionUID = 1;
 
@@ -21,10 +27,6 @@ public class Bruker implements Serializable {
         this.etternavn = new SimpleStringProperty(etternavn);
         this.brukernavn = new SimpleStringProperty(brukernavn);
         this.passord = new SimpleStringProperty(passord);
-    }
-
-    public SimpleStringProperty getSSPFornavn(){
-        return this.fornavn;
     }
 
     public String getFornavn() {

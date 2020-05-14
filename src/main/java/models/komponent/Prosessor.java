@@ -2,10 +2,13 @@ package models.komponent;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
+/*
+Som alle andre komponenter arver klassen fra superkomponentobjektet.
+ */
 
 public class Prosessor extends Komponent {
     private transient SimpleIntegerProperty antallKjerner;
@@ -42,7 +45,6 @@ public class Prosessor extends Komponent {
     }
 
     private void writeObject(ObjectOutputStream out) throws IOException {
-
         out.defaultWriteObject();
         out.writeObject(antallKjerner.get());
         out.writeObject(klokkehastighet.get());
@@ -50,7 +52,6 @@ public class Prosessor extends Komponent {
 
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
-
         antallKjerner = new SimpleIntegerProperty((Integer) in.readObject());
         klokkehastighet = new SimpleDoubleProperty((Double) in.readObject());
     }

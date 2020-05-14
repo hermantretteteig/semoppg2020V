@@ -10,6 +10,9 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.UUID;
 
+/*
+Superklasse som alle de ulike komponentklassene arver fra.
+ */
 
 //ListerForFilbehandling som alle andre varer arver fra.
 public class Komponent implements Serializable, Cloneable{
@@ -48,9 +51,13 @@ public class Komponent implements Serializable, Cloneable{
     public SimpleStringProperty getSSPVaremerke() {
         return varemerke;
     }
+
+    //Metode som brukes av javaFX for å vise modellnavnet i viewet.
     public SimpleStringProperty getSSPModell() {
         return modell;
     }
+
+    //Brukes for vise pris i viewet.
     public ObservableValue getSSPPris() {
         return pris;
     }
@@ -71,17 +78,15 @@ public class Komponent implements Serializable, Cloneable{
         return varenr.get();
     }
 
-
-    //Brukes i handlekurv
+    //Brukes i handlekurv for å vise merke og modell i samme kollonne
     public String getMerkeOgModell() {
         return varemerke.get()+" "+modell.get();
     }
 
-    //Bruker i handlekurv og tidligere kjøp
+    //Bruker i viewet
     public String getType() {
         return Komponent.super.getClass().getSimpleName();
     }
-
 
     public String getVaremerke() {
         return varemerke.get();
@@ -91,6 +96,7 @@ public class Komponent implements Serializable, Cloneable{
         this.varemerke.set(varemerke);
     }
 
+    //TODO Tore kommenter?
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
 
@@ -100,6 +106,7 @@ public class Komponent implements Serializable, Cloneable{
         out.writeObject(pris.get());
     }
 
+    //TODO Tore kommenter?
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
 

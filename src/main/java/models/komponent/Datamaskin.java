@@ -1,12 +1,14 @@
 package models.komponent;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+/*
+Datamskinklassen inneholder alle komponentene som en datamaskin må ha. Dette inkluderer lagringsenhet,
+skjerm, mus, prosessor, skjermkort og tastatur. Videre er det som vanlig get og set metoder for
+de ulike attributtene.
+ */
 
 public class Datamaskin implements Serializable, Cloneable {
     private static final long serialVersionUID = 1;
@@ -27,7 +29,7 @@ public class Datamaskin implements Serializable, Cloneable {
         this.mus = mus;
         this.tastatur = tastatur;
     }
-
+    //TODO trennger denne bruker clone, ettersom dette blir gjort i overgangen fra handlekurv til ordre?
     public Datamaskin clone() throws CloneNotSupportedException {
         Datamaskin datamaskin = (Datamaskin) super.clone();
         datamaskin.prosessor = (Prosessor) this.prosessor.clone();

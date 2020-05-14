@@ -3,6 +3,8 @@ package org.example.kundeController;
 import data.HandlekurvData;
 import data.KomponentData;
 import data.NyttKjopKomponentinfoViewData;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -212,7 +214,7 @@ public class NyttKjopController {
         coVaremerke.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<models.komponent.Komponent, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<models.komponent.Komponent, String> param) {
-                return param.getValue().getValue().getSSPVaremerke();
+                return new SimpleStringProperty(param.getValue().getValue().getVaremerke());
             }
         });
 
@@ -221,7 +223,7 @@ public class NyttKjopController {
         coModell.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<models.komponent.Komponent, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<models.komponent.Komponent, String> param) {
-                return param.getValue().getValue().getSSPModell();
+                return new SimpleStringProperty(param.getValue().getValue().getModell());
             }
         });
 

@@ -2,14 +2,16 @@ package models.komponent;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/*
+Som alle andre komponenter arver klassen fra superkomponentobjektet.
+ */
+
+
 public class Lagringsenhet extends Komponent implements Cloneable{
-    //Nedtreksliste med alle de ulike formatene (HDD, hybrid, SSD)
     private transient SimpleStringProperty format;
     private transient SimpleIntegerProperty gb;
     private transient SimpleStringProperty leseHastighet;
@@ -32,6 +34,9 @@ public class Lagringsenhet extends Komponent implements Cloneable{
         this.leseHastighet = new SimpleStringProperty(leseHastighet);
         this.skriveHastighet = new SimpleStringProperty(skriveHastighet);
     }
+
+    //Getter og setter:
+
 
     public String getFormat() {
         return format.get();
@@ -83,7 +88,4 @@ public class Lagringsenhet extends Komponent implements Cloneable{
         skriveHastighet = new SimpleStringProperty((String) in.readObject());
     }
 
-    public StringProperty getSpFormat() {
-        return this.format;
-    }
 }

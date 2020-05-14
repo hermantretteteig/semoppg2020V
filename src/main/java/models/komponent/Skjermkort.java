@@ -6,6 +6,10 @@ import javafx.beans.property.SimpleIntegerProperty;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+/*
+Som alle andre komponenter arver klassen fra superkomponentobjektet.
+ */
+
 
 public class Skjermkort extends Komponent{
     private transient SimpleDoubleProperty klokkehastighet;

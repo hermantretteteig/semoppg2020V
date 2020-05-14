@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="endreKomponentBakgrunn" stylesheets="@../../../../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.endreKomponent.EndreKomponentController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="endreKomponentBakgrunn" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.EndreKomponentController">
    <ChoiceBox fx:id="choKomponentvelger" layoutX="78.0" layoutY="94.0" onAction="#hentAction" prefHeight="25.0" prefWidth="142.0">
         <items>
             <FXCollections fx:factory="observableArrayList">

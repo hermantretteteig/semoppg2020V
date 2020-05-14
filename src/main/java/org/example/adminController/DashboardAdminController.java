@@ -6,6 +6,7 @@ import filbehandling.ListerForFilbehandling;
 import filbehandling.Traader.TraadHentingAvFil;
 import filbehandling.Traader.TraadLagringAvFil;
 import javafx.concurrent.WorkerStateEvent;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -23,54 +24,57 @@ public class DashboardAdminController {
     @FXML
     private AnchorPane adminPanel;
     @FXML
-    public Button btnNyttKomponent, btnEndreKomponent, btnLagreFil, btnHentFil,
+    private Button btnNyttKomponent, btnEndreKomponent, btnLagreFil, btnHentFil,
                   btnEndreKunde, btnTidligereKjop ,btnNyAdmin, btnLoggUt;
 
-
+    //TODO brukes denne Tore?
+    @FXML
     private TraadLagringAvFil traadLagringAvFil;
 
+    //Knapp for henting av fil
     @FXML
-    public void hentFilAction() {
+    public void hentFilAction(ActionEvent event) {
         hentFil();
     }
 
-
+    //Knapp for eksportering av fil
     @FXML
-    public void eksportFilAction() {
+    public void eksportFilAction(ActionEvent event) {
         lagreFil();
     }
 
-    public void nyKomponentAction() throws Exception{
+    //Knapp som sender brukeren til ny komponent-viewet
+    public void nyKomponentAction(ActionEvent event) throws Exception{
         App.setRoot("adminView/nyKomponentView/nyKomponent");
     }
 
-    public void tidligerKjopAction() throws Exception{
+    //Knapp som sender brukeren til ny komponent-viewet
+    public void tidligerKjopAction(ActionEvent event) throws Exception{
         App.setRoot("adminView/tidligereKjop");
     }
 
     @FXML
-    public void nyAdminAction() throws Exception{
+    public void nyAdminAction(ActionEvent event) throws Exception{
         App.nyttLiteVindu("adminView/nyAdmin", "Legg til ny administrator", 344, 374);
     }
 
     @FXML
-    public void endreKomponentAction() throws Exception{
-        App.setRoot("adminView/endreKomponent/endreKomponent");
+    public void endreKomponentAction(ActionEvent event) throws Exception{
+        App.setRoot("adminView/endreKomponent");
     }
 
     @FXML
-    public void endreKundeAction() throws Exception{
+    public void endreKundeAction(ActionEvent event) throws Exception{
         App.setRoot("adminView/endreKunde");
     }
 
     @FXML
-    public void loggUtAction() throws Exception{
+    public void loggUtAction(ActionEvent event) throws Exception{
         InnloggetBrukerData.loggUtAdmin();
-
         App.setRoot("loggInn");
 
     }
-
+//TODO bør kanskje alle disse metodene under flyttes til en egen fil Tore?
 
     private FileChooser opprettFilechooser(String string){
         //Forhåndsvalgt ilbane: C:\Users\brukernavn\Datamaskinkonfigurering\komponenter

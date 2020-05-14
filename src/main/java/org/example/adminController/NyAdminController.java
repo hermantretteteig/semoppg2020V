@@ -90,13 +90,13 @@ public class NyAdminController {
             check1 = false;
         }
 
-
-        Admin nyAdmin = new Admin(fornavn, etternavn, brukernavn, passord);
         if (check1 && check2 && check3 && check4 && check5 && check6){
+            Admin nyAdmin = new Admin(fornavn, etternavn, brukernavn, passord);
             AdminData.leggTilAdmin(nyAdmin);
             Stage stage = (Stage) avslutt.getScene().getWindow();
             stage.close();
-            //Advarsel.informasjonsAlert(brukernavn);
+            Advarsel.informasjonsAlert("Administrator registrert", brukernavn +
+                    " er registrert.", "For å lagre til fil klikk <Eksporter fil> i Administratordashboard");
         }
 
         //App.setRoot("Adminview/nyAdminView/nyAdmin");

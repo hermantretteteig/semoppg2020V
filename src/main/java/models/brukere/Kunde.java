@@ -52,6 +52,10 @@ public class Kunde extends Bruker {
         return "KUNDE-"+UUID.randomUUID().toString();
     }
 
+    /*
+    Tilpasset metode for å kunne serialisere SimpleStringProperties, da det ikke støttes som standard. Sørger for at, disse
+    lagres som String istedet.
+     */
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
 
@@ -59,6 +63,10 @@ public class Kunde extends Bruker {
         out.writeObject(epost.get());
     }
 
+    /*
+    Tilpasset metode for å kunne serialisere SimpleStringProperties, da det ikke støttes som standard. Konverterer
+    String til SimpleStringProperty når de leses fra fil.
+     */
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
 

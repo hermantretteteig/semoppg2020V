@@ -29,7 +29,10 @@ public class Datamaskin implements Serializable, Cloneable {
         this.mus = mus;
         this.tastatur = tastatur;
     }
-    //TODO trennger denne bruker clone, ettersom dette blir gjort i overgangen fra handlekurv til ordre?
+    /*
+    Metode for å klone Datamaskin objekt ved nytt kjøp. Dette for å hindre at ordren endrer seg etter gjennomført kjøp
+    om f.eks. prisen på ett komponent endres.
+    */
     public Datamaskin clone() throws CloneNotSupportedException {
         Datamaskin datamaskin = (Datamaskin) super.clone();
         datamaskin.prosessor = (Prosessor) this.prosessor.clone();
@@ -89,6 +92,9 @@ public class Datamaskin implements Serializable, Cloneable {
         this.tastatur = tastatur;
     }
 
+    /*
+        Tilpasset metode for å kunne serialisere SimpleProperties, da det ikke støttes som standard.
+     */
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
 
@@ -100,6 +106,9 @@ public class Datamaskin implements Serializable, Cloneable {
         out.writeObject(tastatur);
     }
 
+    /*
+    Tilpasset metode for å kunne serialisere SimpleProperties, da det ikke støttes som standard.
+     */
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
 
@@ -110,5 +119,4 @@ public class Datamaskin implements Serializable, Cloneable {
         skjermkort = (Skjermkort) in.readObject();
         tastatur = (Tastatur) in.readObject();
     }
-
 }

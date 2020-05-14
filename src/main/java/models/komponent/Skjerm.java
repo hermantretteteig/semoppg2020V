@@ -60,6 +60,10 @@ public class Skjerm extends Komponent {
         this.min4k = new SimpleBooleanProperty(min4k);
     }
 
+    /*
+    Tilpasset metode for å kunne serialisere SimpleProperties, da det ikke støttes som standard. Sørger for at, disse
+    lagres som String/Integer/Double istedet.
+     */
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
 
@@ -68,6 +72,10 @@ public class Skjerm extends Komponent {
         out.writeObject(min4k.get());
     }
 
+    /*
+    Tilpasset metode for å kunne serialisere SimpleProperties, da det ikke støttes som standard. Konverterer
+    String/Integer/Double til SimpleProperty når de leses fra fil.
+     */
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
 
@@ -78,10 +86,6 @@ public class Skjerm extends Komponent {
 
     //Metode sjekker om skjermen møter kravet til 4K, bredde min 3840 og høyde min 2160
     private static boolean sjekk4K(int bredde, int hoyde) {
-        if (bredde >= 3840 && hoyde >= 2160) {
-            return true;
-        } else {
-            return false;
-        }
+        return bredde >= 3840 && hoyde >= 2160;
     }
 }

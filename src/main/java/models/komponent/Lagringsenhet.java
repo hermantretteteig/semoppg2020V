@@ -11,7 +11,7 @@ Som alle andre komponenter arver klassen fra superkomponentobjektet.
  */
 
 
-public class Lagringsenhet extends Komponent implements Cloneable{
+public class Lagringsenhet extends Komponent{
     private transient SimpleStringProperty format;
     private transient SimpleIntegerProperty gb;
     private transient SimpleStringProperty leseHastighet;
@@ -69,7 +69,11 @@ public class Lagringsenhet extends Komponent implements Cloneable{
     public void setSkriveHastighet(String skriveHastighet) {
         this.skriveHastighet.set(skriveHastighet);
     }
-    
+
+    /*
+    Tilpasset metode for å kunne serialisere SimpleProperties, da det ikke støttes som standard. Sørger for at, disse
+    lagres som String/Integer/Double istedet.
+     */
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
 
@@ -79,6 +83,10 @@ public class Lagringsenhet extends Komponent implements Cloneable{
         out.writeObject(skriveHastighet.get());
     }
 
+    /*
+    Tilpasset metode for å kunne serialisere SimpleProperties, da det ikke støttes som standard. Konverterer
+    String/Integer/Double til SimpleProperty når de leses fra fil.
+     */
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
 

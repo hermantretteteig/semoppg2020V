@@ -44,12 +44,20 @@ public class Prosessor extends Komponent {
         this.klokkehastighet = new SimpleDoubleProperty(klokkehastighet);
     }
 
+    /*
+    Tilpasset metode for å kunne serialisere SimpleProperties, da det ikke støttes som standard. Sørger for at, disse
+    lagres som String/Integer/Double istedet.
+     */
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
         out.writeObject(antallKjerner.get());
         out.writeObject(klokkehastighet.get());
     }
 
+    /*
+    Tilpasset metode for å kunne serialisere SimpleProperties, da det ikke støttes som standard. Konverterer
+    String/Integer/Double til SimpleProperty når de leses fra fil.
+     */
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
         antallKjerner = new SimpleIntegerProperty((Integer) in.readObject());

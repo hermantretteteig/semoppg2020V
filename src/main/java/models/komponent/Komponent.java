@@ -39,6 +39,10 @@ public class Komponent implements Serializable, Cloneable{
         this.pris = new SimpleDoubleProperty(pris);
     }
 
+    /*
+    Implementerer clone() metoden for å klone de ulike komponentene. Dette gjøres forå ungå at en ordre ikke endres
+    etter utført kjøp, om f.eks prisen eller andre ting blir endret i etterkant.
+     */
     public Komponent clone() throws CloneNotSupportedException {
         return (Komponent) super.clone();
     }
@@ -96,7 +100,10 @@ public class Komponent implements Serializable, Cloneable{
         this.varemerke.set(varemerke);
     }
 
-    //TODO Tore kommenter?
+    /*
+    Tilpasset metode for å kunne serialisere SimpleProperties, da det ikke støttes som standard. Sørger for at, disse
+    lagres som String/Integer/Double istedet.
+     */
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
 
@@ -106,7 +113,10 @@ public class Komponent implements Serializable, Cloneable{
         out.writeObject(pris.get());
     }
 
-    //TODO Tore kommenter?
+    /*
+    Tilpasset metode for å kunne serialisere SimpleProperties, da det ikke støttes som standard. Konverterer
+    String/Integer/Double til SimpleProperty når de leses fra fil.
+     */
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
 

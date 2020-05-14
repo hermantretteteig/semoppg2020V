@@ -18,7 +18,7 @@ import java.util.UUID;
 SimpleProperty brukes ettersom dette støttes av JavaFX tableview.
  */
 
-public class Ordre implements Cloneable, Serializable{
+public class Ordre implements Serializable{
     private static final long serialVersionUID = 1;
 
     private transient SimpleStringProperty ordrenumer;
@@ -47,13 +47,6 @@ public class Ordre implements Cloneable, Serializable{
         this.kundenr = new SimpleStringProperty(kundenr);
         this.totalsum = new SimpleDoubleProperty(totalsum);
         this.datamaskin = datamaskin;
-    }
-
-    //TODO hvor brukes denne egentlig?
-    public Ordre Clone() throws CloneNotSupportedException {
-        Ordre ordre = (Ordre) super.clone();
-        ordre.datamaskin = (Datamaskin) this.datamaskin.clone();
-        return ordre;
     }
 
     //Metode som brukes til kjøp. Metoden opprettet et nytt ordreobjekt ut av handlekurven.
@@ -146,6 +139,10 @@ public class Ordre implements Cloneable, Serializable{
         this.datamaskin = datamaskin;
     }
 
+
+    /*
+    Tilpasset metode for å kunne serialisere SimpleProperties, da det ikke støttes som standard.
+     */
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
 
@@ -156,6 +153,9 @@ public class Ordre implements Cloneable, Serializable{
         out.writeObject(datamaskin);
     }
 
+    /*
+    Tilpasset metode for å kunne serialisere SimpleProperties, da det ikke støttes som standard.
+     */
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
 

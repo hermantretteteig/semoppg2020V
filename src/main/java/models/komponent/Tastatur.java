@@ -51,6 +51,10 @@ public class Tastatur extends Komponent{
         this.numpad = new SimpleBooleanProperty(numpad);
     }
 
+    /*
+    Tilpasset metode for å kunne serialisere SimpleProperties, da det ikke støttes som standard. Sørger for at, disse
+    lagres som String/Integer/Double istedet.
+     */
     private void writeObject(ObjectOutputStream out) throws IOException {
 
         out.defaultWriteObject();
@@ -58,6 +62,10 @@ public class Tastatur extends Komponent{
         out.writeObject(numpad.get());
     }
 
+    /*
+    Tilpasset metode for å kunne serialisere SimpleProperties, da det ikke støttes som standard. Konverterer
+    String/Integer/Double til SimpleProperty når de leses fra fil.
+     */
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
 

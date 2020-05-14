@@ -64,37 +64,37 @@ public class EndreKundeKundeController {
 
 
         //Validerer fornavn
-        if (BokstaverCheck.bokstavercheck(fornavn) == false) {
+        if (Check.bokstavercheck(fornavn) == false) {
             lblFornavnFeil.setText("Fornavn er ugyldig");
             check1 = false;
         }
 
         //Validerer etternavn
-        if (BokstaverCheck.bokstavercheck(etternavn) == false) {
+        if (Check.bokstavercheck(etternavn) == false) {
             lblEtternavnFeil.setText("Etternavn er ugyldig");
             check2 = false;
         }
 
         //Validerer brukernavn
-        if (LengeCheck.lengdeCheck(brukernavn) == false) {
+        if (Check.lengdeCheck(brukernavn) == false) {
             lblBrukernavnFeil.setText("Må inneholde minst to tegn.");
             check3 = false;
         }
 
         //Validerer epost
-        if (EpostCheck.epostchecker(epost) == false) {
+        if (Check.epostchecker(epost) == false) {
             lblEpostFeil.setText("Eposten er ugyldig.");
             check6 = false;
         }
 
         //Validerer passord
-        if (PassordCheck.passordchecker(passord) == false && !(txtPassord.getText().isBlank())) {
+        if (Check.passordchecker(passord) == false && !(txtPassord.getText().isBlank())) {
             lblPassordFeil.setText("Må være små og store bokstaver, minst 8 tegn og tall.");
             check4 = false;
         }
 
         //Validerer gjentatt passord
-        if (PassordValCheck.passordValCheck(gjentaPassord, passord) == false && !(txtGjentaPassord.getText().isBlank())) {
+        if (Check.passordValCheck(gjentaPassord, passord) == false && !(txtGjentaPassord.getText().isBlank())) {
             lblGjentaPassordFeil.setText("Passordene er ulike.");
             check5 = false;
         }

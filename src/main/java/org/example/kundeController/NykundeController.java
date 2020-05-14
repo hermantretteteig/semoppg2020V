@@ -1,8 +1,7 @@
 package org.example.kundeController;
 
 import data.KundeData;
-import logikk.NyKomponentAlert;
-import logikk.NyKundeAlert;
+import logikk.Advarsel;
 import models.brukere.Kunde;
 import validering.*;
 import javafx.fxml.FXML;
@@ -62,37 +61,37 @@ public class NykundeController {
 
 
         //Validerer fornavn
-        if (BokstaverCheck.bokstavercheck(fornavn) == false) {
+        if (Check.bokstavercheck(fornavn) == false) {
             lblFornavnFeil.setText("Fornavn er ugyldig");
             check1 = false;
         }
 
         //Validerer etternavn
-        if (BokstaverCheck.bokstavercheck(etternavn) == false) {
+        if (Check.bokstavercheck(etternavn) == false) {
             lblEtternavnFeil.setText("Fornavn er ugyldig");
             check2 = false;
         }
 
         //Validerer brukernavn
-        if (LengeCheck.lengdeCheck(brukernavn) == false) {
+        if (Check.lengdeCheck(brukernavn) == false) {
             lblBrukernavnFeil.setText("Må inneholde minst to tegn.");
             check3 = false;
         }
 
         //Validerer epost
-        if (EpostCheck.epostchecker(epost) == false) {
+        if (Check.epostchecker(epost) == false) {
             lblEpostFeil.setText("Eposen er ugyldig.");
             check6 = false;
         }
 
         //Validerer passord
-        if (PassordCheck.passordchecker(passord) == false) {
+        if (Check.passordchecker(passord) == false) {
             lblPassordFeil.setText("Må være små og store bokstaver, minst 8 tegn og tall.");
             check4 = false;
         }
 
         //Validerer gjentatt passord
-        if (PassordValCheck.passordValCheck(gjentaPassord, passord) == false) {
+        if (Check.passordValCheck(gjentaPassord, passord) == false) {
             lblGjentaPassordFeil.setText("Passordene er ulike.");
             check5 = false;
         }
@@ -102,7 +101,8 @@ public class NykundeController {
             KundeData.leggTilKunde(nyKunde);
             Stage stage = (Stage) avslutt.getScene().getWindow();
             stage.close();
-            NyKundeAlert.visBekreftelse(brukernavn);
+            Advarsel.informasjonsAlert("Bruker registrert", brukernavn +
+                    " er registrert.", "For å lagre til fil klikk <Eksporter fil> i Administratordashboard");
         }
 
         //App.setRoot("Adminview/nyAdminView/nyAdmin");

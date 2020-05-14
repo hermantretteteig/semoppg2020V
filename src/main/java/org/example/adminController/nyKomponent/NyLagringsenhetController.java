@@ -5,12 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import logikk.NyKomponentAlert;
+import logikk.Advarsel;
 import models.komponent.Lagringsenhet;
 import org.example.App;
-import validering.DesimaltallCheck;
-import validering.LengeCheck;
-import validering.HeltallCheck;
+import validering.Check;
 
 public class NyLagringsenhetController {
 
@@ -68,37 +66,37 @@ public class NyLagringsenhetController {
 
 
         //Validerer Varemerke
-        if(LengeCheck.lengdeCheck(varemerke) == false){
+        if(Check.lengdeCheck(varemerke) == false){
             lblVaremerkeFeil.setText("Må inneholde minst 2 bokstaver");
             check1 = false;
         }
 
         //Validerer Modell
-        if(LengeCheck.lengdeCheck(modell) == false){
+        if(Check.lengdeCheck(modell) == false){
             lblModellFeil.setText("Må inneholde minst 2 bokstaver");
             check2 = false;
         }
 
         //Validerer Pris
-        if(DesimaltallCheck.desimaltallCheck(pris) == false){
+        if(Check.desimaltallCheck(pris) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
 
         //Valderer Størrelse
-        if(HeltallCheck.heltallCheck(storrelse) == false){
+        if(Check.heltallCheck(storrelse) == false){
             lblStorrelseFeil.setText("Må inneholde kun tall");
             check4 = false;
         }
 
         //Validerer Lesehastighet
-        if(HeltallCheck.heltallCheck(lesehastighet) == false){
+        if(Check.heltallCheck(lesehastighet) == false){
             lblLesehastighetFeil.setText("Må inneholde kun tall");
             check5 = false;
         }
 
         //Validerer Skrivehastighet
-        if(HeltallCheck.heltallCheck(skrivehastighet) == false) {
+        if(Check.heltallCheck(skrivehastighet) == false) {
             lblSkrivehastighetFeil.setText("Må inneholde kun tall");
             check6 = false;
         }
@@ -118,10 +116,9 @@ public class NyLagringsenhetController {
                     lesehastighet, skrivehastighet);
             KomponentData.leggTilKomponent(nyLagringsenhet);
             App.setRoot("adminView/nyKomponentView/nyKomponent");
-            NyKomponentAlert.visBekreftelse(varemerke, modell);
+            Advarsel.informasjonsAlert("Lagringsenhet registrert", varemerke +
+                            " er registrert", "For å lagre til fil klikk <Eksporter fil> i Administratordashboard");
         }
-
-
     }
 
     public void initialize() {

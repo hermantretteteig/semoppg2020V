@@ -4,12 +4,10 @@ import data.KomponentData;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import logikk.NyKomponentAlert;
+import logikk.Advarsel;
 import models.komponent.Skjermkort;
 import org.example.App;
-import validering.DesimaltallCheck;
-import validering.LengeCheck;
-import validering.HeltallCheck;
+import validering.Check;
 import java.io.IOException;
 
 public class NySkjermkortController {
@@ -59,31 +57,31 @@ public class NySkjermkortController {
         //Validerer Varenummer
 
         //Validerer Varemerke
-        if (LengeCheck.lengdeCheck(varemerke) == false) {
+        if (Check.lengdeCheck(varemerke) == false) {
             lblVaremerkeFeil.setText("Må inneholde minst 2 bokstaver");
             check1 = false;
         }
 
         //Validerer Modell
-        if (LengeCheck.lengdeCheck(modell) == false) {
+        if (Check.lengdeCheck(modell) == false) {
             lblModellFeil.setText("Må inneholde minst 2 bokstaver");
             check2 = false;
         }
 
         //Validerer Pris
-        if (DesimaltallCheck.desimaltallCheck(pris) == false) {
+        if (Check.desimaltallCheck(pris) == false) {
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
 
         //Validerer klokkehastighet
-        if (DesimaltallCheck.desimaltallCheck(klokkehastighet) == false) {
+        if (Check.desimaltallCheck(klokkehastighet) == false) {
             lblKlokkehastighetFeil.setText("Må kun inneholde tall");
             check4 = false;
         }
 
         //Validerer Minne
-        if (HeltallCheck.heltallCheck(minne) == false) {
+        if (Check.heltallCheck(minne) == false) {
             lblMinneFeil.setText("Må kun inneholde tall");
             check5 = false;
         }
@@ -98,7 +96,8 @@ public class NySkjermkortController {
                     Integer.parseInt(minne));
             KomponentData.leggTilKomponent(nyttSkjermkort);
             App.setRoot("adminView/nyKomponentView/nyKomponent");
-            NyKomponentAlert.visBekreftelse(varemerke, modell);
+            Advarsel.informasjonsAlert("Skjermkort registrert", varemerke +
+                    " er registrert", "For å lagre til fil klikk <Eksporter fil> i Administratordashboard");
         }
     }
 }

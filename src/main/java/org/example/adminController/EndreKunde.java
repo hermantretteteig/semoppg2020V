@@ -1,28 +1,16 @@
 package org.example.adminController;
 
-import data.KomponentData;
 import data.KundeData;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.CheckBoxTableCell;
-import javafx.scene.control.cell.ComboBoxTableCell;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
-import javafx.util.converter.DoubleStringConverter;
-import javafx.util.converter.IntegerStringConverter;
 import models.brukere.Kunde;
-import models.komponent.*;
 import org.example.App;
-import validering.BokstaverCheck;
-import validering.EpostCheck;
-import validering.LengeCheck;
-import validering.PassordCheck;
+import validering.*;
 
 public class EndreKunde {
 
@@ -53,31 +41,31 @@ public class EndreKunde {
 
 
         public void FornavnEdit(TableColumn.CellEditEvent<Kunde, String> event) {
-            if(nyFeil("Må kun inneholde bokstaver", BokstaverCheck.bokstavercheck(event.getNewValue()))==true){
+            if(nyFeil("Må kun inneholde bokstaver", Check.bokstavercheck(event.getNewValue()))==true){
             event.getRowValue().setFornavn(event.getNewValue()); }
             tableView.refresh();
         }
 
         public void EtternavnEdit(TableColumn.CellEditEvent<Kunde, String> event) {
-            if(nyFeil("Må kun inneholde bokstaver", BokstaverCheck.bokstavercheck(event.getNewValue()))==true){
+            if(nyFeil("Må kun inneholde bokstaver", Check.bokstavercheck(event.getNewValue()))==true){
             event.getRowValue().setEtternavn(event.getNewValue()); }
             tableView.refresh();
         }
 
         public void BrukernavnEdit(TableColumn.CellEditEvent<Kunde, String> event) {
-            if(nyFeil("For kort brukernavn. Minst to tegn", LengeCheck.lengdeCheck(event.getNewValue()))==true){
+            if(nyFeil("For kort brukernavn. Minst to tegn", Check.lengdeCheck(event.getNewValue()))==true){
             event.getRowValue().setBrukernavn(event.getNewValue()); }
             tableView.refresh();
         }
 
         public void PassordEdit(TableColumn.CellEditEvent<Kunde, String> event) {
-            if(nyFeil("Ugyldig passord! \nMå være små og store bokstaver, \nminst 8 tegn og inneholde tall", PassordCheck.passordchecker(event.getNewValue()))==true){
+            if(nyFeil("Ugyldig passord! \nMå være små og store bokstaver, \nminst 8 tegn og inneholde tall", Check.passordchecker(event.getNewValue()))==true){
             event.getRowValue().setPassord(event.getNewValue()); }
             tableView.refresh();
         }
 
         public void EpostEdit(TableColumn.CellEditEvent<Kunde, String> event) {
-            if(nyFeil("Du har skrevet inn en ugyldig epost", EpostCheck.epostchecker(event.getNewValue()))==true){
+            if(nyFeil("Du har skrevet inn en ugyldig epost", Check.epostchecker(event.getNewValue()))==true){
             event.getRowValue().setEpost(event.getNewValue()); }
             tableView.refresh();
         }

@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import logikk.NyKomponentAlert;
+import logikk.Advarsel;
 import models.komponent.Tastatur;
 import org.example.App;
 import validering.*;
@@ -55,19 +55,19 @@ public class NyTastaturController {
 
 
         //Validerer Varemerke
-        if(LengeCheck.lengdeCheck(varemerke) == false){
+        if(Check.lengdeCheck(varemerke) == false){
             lblVaremerkeFeil.setText("Må inneholde minst 2 bokstaver");
             check1 = false;
         }
 
         //Validerer Modell
-        if(LengeCheck.lengdeCheck(modell) == false){
+        if(Check.lengdeCheck(modell) == false){
             lblModellFeil.setText("Må inneholde minst 2 bokstaver");
             check2 = false;
         }
 
         //Validerer Pris
-        if(DesimaltallCheck.desimaltallCheck(pris) == false){
+        if(Check.desimaltallCheck(pris) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
@@ -98,9 +98,10 @@ public class NyTastaturController {
         if(check1 && check2 && check3 && check4 && check5) {
             Tastatur nyTastatur = new Tastatur(varemerke,
                     modell, Double.parseDouble(pris), trodlos, numpad);
-           KomponentData.leggTilKomponent(nyTastatur);
-           App.setRoot("adminView/nyKomponentView/nyKomponent");
-           NyKomponentAlert.visBekreftelse(varemerke, modell);
+            KomponentData.leggTilKomponent(nyTastatur);
+            App.setRoot("adminView/nyKomponentView/nyKomponent");
+            Advarsel.informasjonsAlert("Tastatur registrert", varemerke +
+                    " er registrert", "For å lagre til fil klikk <Eksporter fil> i Administratordashboard");
         }
     }
 

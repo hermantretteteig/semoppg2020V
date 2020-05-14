@@ -4,12 +4,10 @@ import data.KomponentData;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import logikk.NyKomponentAlert;
+import logikk.Advarsel;
 import models.komponent.Prosessor;
 import org.example.App;
-import validering.LengeCheck;
-import validering.DesimaltallCheck;
-import validering.HeltallCheck;
+import validering.Check;
 
 import java.io.IOException;
 
@@ -61,31 +59,31 @@ public class NyProsessorController {
 
 
         //Validerer Varemerke
-        if(LengeCheck.lengdeCheck(varemerke) == false){
+        if(Check.lengdeCheck(varemerke) == false){
             lblVaremerkeFeil.setText("Må inneholde minst 2 bokstaver");
             check1 = false;
         }
 
         //Validerer Modell
-        if(LengeCheck.lengdeCheck(modell) == false){
+        if(Check.lengdeCheck(modell) == false){
             lblModellFeil.setText("Må inneholde minst 2 bokstaver");
             check2 = false;
         }
 
         //Validerer Pris
-        if(DesimaltallCheck.desimaltallCheck(pris) == false){
+        if(Check.desimaltallCheck(pris) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
 
         //Validerer Kjerner
-        if(HeltallCheck.heltallCheck(kjerner) == false){
+        if(Check.heltallCheck(kjerner) == false){
             lblKjernerFeil.setText("Må inneholde kun tall");
             check4 = false;
         }
 
         //Validerer Klokkehastighet
-        if(DesimaltallCheck.desimaltallCheck(klokkehastighet) == false){
+        if(Check.desimaltallCheck(klokkehastighet) == false){
             lblKlokkehastighetFeil.setText("Må inneholde kun tall");
             check5 = false;
         }
@@ -99,7 +97,8 @@ public class NyProsessorController {
 
             KomponentData.leggTilKomponent(nyProsessor);
             App.setRoot("adminView/nyKomponentView/nyKomponent");
-            NyKomponentAlert.visBekreftelse(varemerke, modell);
+            Advarsel.informasjonsAlert("Prosessor registrert", varemerke +
+                    " er registrert", "For å lagre til fil klikk <Eksporter fil> i Administratordashboard");
         }
     }
 }

@@ -3,15 +3,13 @@ package org.example.adminController.nyKomponent;
 import data.KomponentData;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import logikk.NyKomponentAlert;
+import logikk.Advarsel;
 import models.komponent.Mus;
 import org.example.App;
-import validering.DesimaltallCheck;
-import validering.LengeCheck;
-import validering.HeltallCheck;
+import validering.Check;
+
 
 public class NyMusController {
 
@@ -59,20 +57,20 @@ public class NyMusController {
         //Validerer varenummer?
 
         //Validerer Varemerke
-        if(LengeCheck.lengdeCheck(varemerke) == false){
+        if(Check.lengdeCheck(varemerke) == false){
             lblVaremerkeFeil.setText("Må inneholde minst 2 bokstaver");
             check1 = false;
 
         }
 
         //Validerer Modell
-        if(LengeCheck.lengdeCheck(modell) == false){
+        if(Check.lengdeCheck(modell) == false){
             lblModellFeil.setText("Må inneholde minst 2 bokstaver");
             check2 = false;
         }
 
         //Validerer Pris
-        if(DesimaltallCheck.desimaltallCheck(pris) == false){
+        if(Check.desimaltallCheck(pris) == false){
             lblPrisFeil.setText("Må inneholde kun tall");
             check3 = false;
         }
@@ -90,7 +88,8 @@ public class NyMusController {
             Mus nyMus = new Mus(varemerke, modell, Double.parseDouble(pris), trodlos, choFarge.getValue().toString());
             KomponentData.leggTilKomponent(nyMus);
             App.setRoot("adminView/nyKomponentView/nyKomponent");
-            NyKomponentAlert.visBekreftelse(varemerke, modell);
+            Advarsel.informasjonsAlert("Mus registrert", varemerke +
+                    " er registrert", "For å lagre til fil klikk <Eksporter fil> i Administratordashboard");
         }
 
 

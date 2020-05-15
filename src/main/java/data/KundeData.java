@@ -30,6 +30,10 @@ public class KundeData {
         return kunde;
     }
 
+    public static void slettKunde(Kunde slettKunde) {
+        kunder.remove(slettKunde);
+    }
+
     public void hentAlleKunder(TableView tv) {
         tv.setItems(kunder);
     }

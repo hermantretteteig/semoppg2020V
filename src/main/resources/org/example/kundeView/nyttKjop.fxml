@@ -64,7 +64,7 @@
       <Button layoutX="870.0" layoutY="337.0" mnemonicParsing="false" onAction="#slettValgtVareAction" prefHeight="30.0" prefWidth="99.0" text="Slett valgt vare" />
 
 
-       <TableView fx:id="komponentinfo" layoutX="480.0" layoutY="91.0" prefHeight="222.0" prefWidth="483.0" stylesheets="@../../../style/komponentinfotabell.css" visible="false">
+       <TableView fx:id="komponentinfo" layoutX="480.0" layoutY="91.0" prefHeight="222.0" prefWidth="483.0" stylesheets="@../../../style/komponentinfoTabell.css" visible="false">
         <columns>
             <TableColumn editable="false" maxWidth="180.0" minWidth="180.0" prefWidth="180.0" sortable="false" text="">
                 <cellValueFactory>

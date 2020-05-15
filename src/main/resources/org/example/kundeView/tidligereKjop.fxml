@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="nyttKjopBakgrunn" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.kundeController.TidligereKjopController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="tidligereKjop" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.kundeController.TidligereKjopController">
    <children>
       <TableView fx:id="ordre" layoutX="28.0" layoutY="106.0" onMousePressed="#valgtOrdre" prefHeight="173.0" prefWidth="819.0">
         <columns>
@@ -62,7 +62,7 @@
       </Label>
 
 
-       <TableView fx:id="komponentinfo" layoutX="483.0" layoutY="299.0" prefHeight="222.0" prefWidth="483.0" stylesheets="@../../../style/komponentinfotabell.css" visible="false">
+       <TableView fx:id="komponentinfo" layoutX="483.0" layoutY="299.0" prefHeight="222.0" prefWidth="483.0" stylesheets="@../../../style/komponentinfoTabell.css" visible="false">
         <columns>
             <TableColumn editable="false" maxWidth="180.0" minWidth="180.0" prefWidth="180.0" sortable="false" text="">
                 <cellValueFactory>

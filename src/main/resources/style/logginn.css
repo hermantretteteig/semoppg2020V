@@ -1,16 +1,10 @@
 
+/*
+Henter inn bakgrunner til ulike views
+ */
 
-.brukerLoggInnBakgrunn{
-    -fx-background-image: url("../bakgrunner/BrukerLoggInnFerdig.PNG");
-    -fx-background-position: center center;
-    -fx-background-size: 100%;
-}
 
-.adminLoggInnBakgrunn{
-    -fx-background-image: url("../bakgrunner/BrukerLoggInnFerdig.PNG");
-    -fx-background-position: center center;
-    -fx-background-size: 100%;
-}
+
 
 
 

@@ -23,6 +23,17 @@ public class EndreKunde {
             App.setRoot("adminView/dashboardAdmin");
         }
 
+        //Metode for å slette en kunde
+        @FXML
+        public void slettKunde(ActionEvent event){
+            //Sjekker at en kunde faktisk er valgt
+            if(tableView.getSelectionModel().getSelectedItem()!=null){
+                Kunde slettKunde =  (Kunde) tableView.getSelectionModel().getSelectedItem();
+                KundeData.slettKunde(slettKunde);
+                kunder.hentAlleKunder(tableView);
+            }
+        }
+
         @FXML
         public void initialize() {
             kunder.hentAlleKunder(tableView);

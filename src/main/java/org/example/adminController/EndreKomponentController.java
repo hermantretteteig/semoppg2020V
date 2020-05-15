@@ -140,7 +140,7 @@ public class EndreKomponentController {
         LagBindingFraDataTilTabell();
 
         //Setter startvisning til å være lagringsenhet
-        choKomponentvelger.setValue("Lagringsenhet");
+        choKomponentvelger.setValue("Vis alle");
 
         //Skjuler alle kollonner
         SkjulAlleEkstrakolonner();

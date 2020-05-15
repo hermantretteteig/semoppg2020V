@@ -17,19 +17,22 @@
    <ChoiceBox fx:id="choKomponentvelger" layoutX="78.0" layoutY="94.0" onAction="#hentAction" prefHeight="25.0" prefWidth="142.0">
         <items>
             <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Vis alle" />
                 <String fx:value="Lagringsenhet" />
                 <String fx:value="Mus" />
                 <String fx:value="Tastatur" />
                 <String fx:value="Prosessor" />
                 <String fx:value="Skjerm" />
                 <String fx:value="Skjermkort" />
-                <String fx:value="Vis alle" />
             </FXCollections>
         </items>
     </ChoiceBox>
 
 
-      <Button layoutX="20.0" layoutY="561.0" mnemonicParsing="false" onAction="#tilbakeAction" text="Tilbake" />
+      <Button layoutX="20.0" layoutY="555.0" mnemonicParsing="false" onAction="#tilbakeAction" prefHeight="31.0" prefWidth="80.0" text="Tilbake">
+      <font>
+         <Font size="15.0" />
+      </font></Button>
 
 
 
@@ -57,6 +60,14 @@
                  <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
          </TableColumn>
+         <TableColumn onEditCommit="#VareMerkeEdit" prefWidth="100.0" text="Varemerke">
+             <cellValueFactory>
+                 <PropertyValueFactory property="Varemerke" />
+             </cellValueFactory>
+             <cellFactory>
+                 <TextFieldTableCell fx:factory="forTableColumn" />
+             </cellFactory>
+         </TableColumn>
          <TableColumn onEditCommit="#ModellEdit" prefWidth="100.0" text="Modell">
              <cellValueFactory>
                  <PropertyValueFactory property="Modell" />
@@ -73,14 +84,7 @@
                  <TextFieldTableCell fx:factory="forTableColumn" />
              </cellFactory>
          </TableColumn>
-         <TableColumn onEditCommit="#VareMerkeEdit" prefWidth="100.0" text="Varemerke">
-             <cellValueFactory>
-                 <PropertyValueFactory property="Varemerke" />
-             </cellValueFactory>
-             <cellFactory>
-                 <TextFieldTableCell fx:factory="forTableColumn" />
-             </cellFactory>
-         </TableColumn>
+
 
              <!--GENERELLE FOR SLUTT-->
              <!--GENERELLE FOR SLUTT-->

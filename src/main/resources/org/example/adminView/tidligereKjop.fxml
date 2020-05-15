@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="nyttKjopBakgrunn" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.TidligereKjopController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="tidligereKjop" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.adminController.TidligereKjopController">
    <children>
-      <TableView fx:id="ordre" layoutX="28.0" layoutY="106.0" onMousePressed="#valgtOrdre" prefHeight="420.0" prefWidth="472.0">
+      <TableView fx:id="ordre" layoutX="28.0" layoutY="106.0" onMousePressed="#valgtOrdre" prefHeight="402.0" prefWidth="472.0">
         <columns>
             <TableColumn fx:id="coKunde" editable="false" maxWidth="152.0" minWidth="100.0" prefWidth="118.5" resizable="false" text="Kunde">
 
@@ -65,7 +65,7 @@
       </Label>
 
 
-       <TableView fx:id="komponentinfo" layoutX="525.0" layoutY="313.0" prefHeight="208.0" prefWidth="425.0" stylesheets="@../../../style/komponentinfotabell.css" visible="false">
+       <TableView fx:id="komponentinfo" layoutX="525.0" layoutY="313.0" prefHeight="208.0" prefWidth="425.0" stylesheets="@../../../style/komponentinfoTabell.css" visible="false">
         <columns>
             <TableColumn editable="false" maxWidth="180.0" minWidth="180.0" prefWidth="180.0" sortable="false" text="">
                 <cellValueFactory>

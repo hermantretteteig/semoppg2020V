@@ -102,35 +102,37 @@ public class NyttKjopController {
     //Metode som legger til komponenten kunden har valgt i handlekurven
     @FXML
     public void leggTilIHandekurv(ActionEvent event){
-        //Finner komponenten brukeren har valgt
-        Komponent valgtKomponent = tabell.getSelectionModel().getSelectedItem().getValue();
+        //Sjekker at en vare faktisk er valgt for å unngå nullpointer
+        if(tabell.getSelectionModel().getSelectedItem()!=null) {
+            //Finner komponenten brukeren har valgt
+            Komponent valgtKomponent = tabell.getSelectionModel().getSelectedItem().getValue();
 
-        boolean duplikat = false;
+            boolean duplikat = false;
 
         /*Det er kun mulig å legge til en type av hver komponent i handlekurven, for å forhindre
         at brukeren f. eks kjøper to prosessorer. Dette gjøres ved å gå igjennom handlekurven
         å se om et objekt med samme SimpleName eksiterer.
          */
-        for(Komponent enKomponent : HandlekurvData.getHandlekurv()){
-            if(enKomponent.getClass().getSimpleName().equals(valgtKomponent.getClass().getSimpleName())){
-                enKomponent = tabell.getSelectionModel().getSelectedItem().getValue();
-                duplikat = true;
-                break;
+            for (Komponent enKomponent : HandlekurvData.getHandlekurv()) {
+                if (enKomponent.getClass().getSimpleName().equals(valgtKomponent.getClass().getSimpleName())) {
+                    enKomponent = tabell.getSelectionModel().getSelectedItem().getValue();
+                    duplikat = true;
+                    break;
+                }
             }
-        }
-        //Hvis det finnes allerede kalles en metode for å informere om dette
-        if(duplikat==true){
-            duplikater(valgtKomponent);
-        }
+            //Hvis det finnes allerede kalles en metode for å informere om dette
+            if (duplikat == true) {
+                duplikater(valgtKomponent);
+            }
 
-        //Hvis komponententypen ikke allerede eksiterer i handlekurven, blir den lagt til
-        if(duplikat==false && valgtKomponent.getPris()!=0.0) {
-            HandlekurvData.nyVare(valgtKomponent);
-            tableHandekurv.refresh();
+            //Hvis komponententypen ikke allerede eksiterer i handlekurven, blir den lagt til
+            if (duplikat == false && valgtKomponent.getPris() != 0.0) {
+                HandlekurvData.nyVare(valgtKomponent);
+                tableHandekurv.refresh();
+            }
+            //Oppdaterer totalprisen til handlekurven ved å kalle en metode som summerer handlekurven
+            lblTotalpris.setText("Totalpris: " + HandlekurvData.getSumHandlekurv());
         }
-        //Oppdaterer totalprisen til handlekurven ved å kalle en metode som summerer handlekurven
-        lblTotalpris.setText("Totalpris: "+ HandlekurvData.getSumHandlekurv());
-
     }
 
     //Varsel som vises når duplikater blir funnet i handlekurven
@@ -223,11 +225,13 @@ public class NyttKjopController {
     //Mulighet til å slette en komponent i handlekurven
     @FXML
     public void slettValgtVareAction(ActionEvent event){
-        Komponent slettVare = (Komponent) tableHandekurv.getSelectionModel().getSelectedItem();
-        HandlekurvData.getHandlekurv().remove(slettVare);
-        HandlekurvData.setSumHandlekurv(HandlekurvData.getSumHandlekurv() - slettVare.getPris());
-        lblTotalpris.setText("Totalpris: "+ HandlekurvData.getSumHandlekurv());
-        tableHandekurv.refresh();
+        if(tableHandekurv.getSelectionModel().getSelectedItem()!=null) {
+            Komponent slettVare = (Komponent) tableHandekurv.getSelectionModel().getSelectedItem();
+            HandlekurvData.getHandlekurv().remove(slettVare);
+            HandlekurvData.setSumHandlekurv(HandlekurvData.getSumHandlekurv() - slettVare.getPris());
+            lblTotalpris.setText("Totalpris: " + HandlekurvData.getSumHandlekurv());
+            tableHandekurv.refresh();
+        }
     }
 
 

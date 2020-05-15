@@ -36,22 +36,22 @@ public class HandlekurvData {
 
         for(Komponent enVare : handlekurv){
             if(enVare.getClass().getSimpleName().equals("Lagringsenhet")){
-                nyLagringsenhet = (Lagringsenhet) enVare;
+                nyLagringsenhet = (Lagringsenhet) enVare.clone();
             }
             if(enVare.getClass().getSimpleName().equals("Mus")){
-                nyMus = (Mus) enVare;
+                nyMus = (Mus) enVare.clone();
             }
             if(enVare.getClass().getSimpleName().equals("Prosessor")){
-                nyProsessor = (Prosessor) enVare;
+                nyProsessor = (Prosessor) enVare.clone();
             }
             if(enVare.getClass().getSimpleName().equals("Skjerm")){
-                nySkjerm = (Skjerm) enVare;
+                nySkjerm = (Skjerm) enVare.clone();
             }
             if(enVare.getClass().getSimpleName().equals("Skjermkort")){
-                nySkjermkort = (Skjermkort) enVare;
+                nySkjermkort = (Skjermkort) enVare.clone();
             }
             if(enVare.getClass().getSimpleName().equals("Tastatur")){
-                nyTastatur = (Tastatur) enVare;
+                nyTastatur = (Tastatur) enVare.clone();
             }
         }
 

@@ -1,8 +1,14 @@
 package validering;
 
+import data.AdminData;
+import data.KundeData;
+import models.brukere.Admin;
+import models.brukere.Kunde;
+
 import java.util.regex.Pattern;
 
 public class Check {
+
 
     //Validerer bokstaver
 
@@ -95,4 +101,26 @@ public class Check {
             return true;
         }
     }
+
+    //Metode som kontrollerer at brukernavn ikke finnes fra før
+    public static boolean brukernavnLedig(String brukernavn){
+        for(Kunde eksiBrukernavn : KundeData.getKunder()){
+            if(brukernavn.equals(eksiBrukernavn.getBrukernavn())){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //Metode som kontrollerer at brukernavn ikke finnes fra før
+    public static boolean adminbrukernavnLedig(String brukernavn){
+        for(Admin eksiBrukernavn : AdminData.getAdmins()){
+            if(brukernavn.equals(eksiBrukernavn.getBrukernavn())){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 }

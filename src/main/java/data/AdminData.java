@@ -19,7 +19,6 @@ public class AdminData {
         return new ArrayList<>(admins);
     }
 
-    //TODO fjerne?
     public static Admin getAdmin(String adminnr){
         Admin admin = null;
         for (Admin enAdmin : admins) {

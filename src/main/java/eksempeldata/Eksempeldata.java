@@ -12,11 +12,6 @@ Denne filen genrerer eksempeldata som gjør det enklere å illustrere funksjonal
 
 public class Eksempeldata {
 
-    //TODO Skal fjernes
-    public static Kunde enKunde(){
-        return new Kunde("Ole", "Hansen", "olehasen", "hemmelig", "ole.hansen@online.no");
-    }
-
     public static void GenererEksempeldata() {
 
         Kunde nyKunde1 = new Kunde("Ole", "Hansen", "olehansen", "passord123", "edf60e08-9b08-442c-b07d-b6bf2bb7670d",  "ole.hansen@online.no");
@@ -27,8 +22,6 @@ public class Eksempeldata {
         Kunde nyKunde6 = new Kunde("Oliver", "Hansen", "oliverhansen", "OliHans90", "22e91143-3cd4-4a45-a92e-a5ddbd33c220", "oliver.hansen@online.no");
         KundeData.getKunder().addAll(nyKunde1, nyKunde2, nyKunde3, nyKunde4, nyKunde5, nyKunde6);
 
-        //TODO må fjernes før levering
-        InnloggetBrukerData.loggInnKunde("olehansen", "passord123");
 
         Admin nyAdmin = new Admin("Adim", "Amid", "admin", "passord123", "edf60e08-9b08-442c-b07d-b6bf2bb7670c");
         AdminData.leggTilAdmin(nyAdmin);

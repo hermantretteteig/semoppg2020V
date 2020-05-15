@@ -33,9 +33,6 @@ public class LogginnController  {
          else{
              lblBrukerFeil.setText("Ugyldig brukernavn/passord");
 
-             //TODO linja under må fjernes før levering
-             App.setRoot("kundeView/dashboardKunde");
-
          }
     }
 
@@ -49,9 +46,6 @@ public class LogginnController  {
         //Hvis ikke de eksiterer gis det informasjon om feil brukernavn/passord
         else{
             lblAdminFeil.setText("Ugyldig brukernavn/passord");
-
-            //TODO linja under må fjernes før levering
-            App.setRoot("adminView/dashboardAdmin");
         }
     }
 }

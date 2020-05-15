@@ -23,12 +23,11 @@ public class TidligereKjopController {
 
 
     @FXML
-    private void valgtOrdre() {
-            //Oppdaterer komponent-listen med komponenter som finnes i ordren som er "valgt"
-            collection2.hentValgtDatamaskin(valgtDatamaskin, ordre.getSelectionModel().getSelectedItem());
-            //Oppdaterer tabellen
-            ordre.refresh();
-
+    public void valgtOrdre() {
+        //Oppdaterer komponent-listen med komponenter som finnes i ordren som er "valgt"
+        collection2.hentValgtDatamaskin(valgtDatamaskin, ordre.getSelectionModel().getSelectedItem());
+        //Oppdaterer tabellen
+        ordre.refresh();
     }
 
     /*Når en komponent er valgt i listen over komponenter skal detaljene til komponenten hentes frem.

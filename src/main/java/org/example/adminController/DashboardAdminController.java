@@ -78,7 +78,6 @@ public class DashboardAdminController {
 
     }
 
-//TODO bør kanskje alle disse metodene under flyttes til en egen fil Tore?
 
     private FileChooser opprettFilechooser(String string){
         //Forhåndsvalgt ilbane: C:\Users\brukernavn\Datamaskinkonfigurering\komponenter

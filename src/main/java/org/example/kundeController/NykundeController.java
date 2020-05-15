@@ -65,7 +65,7 @@ public class NykundeController {
 
         //Validerer etternavn
         if (Check.bokstavercheck(etternavn) == false) {
-            lblEtternavnFeil.setText("Fornavn er ugyldig");
+            lblEtternavnFeil.setText("Etternavn er ugyldig");
             check2 = false;
         }
 
@@ -75,9 +75,14 @@ public class NykundeController {
             check3 = false;
         }
 
+        if (Check.brukernavnLedig(brukernavn) == false) {
+            lblBrukernavnFeil.setText("Brukernavn er opptatt.");
+            check3 = false;
+        }
+
         //Validerer epost
         if (Check.epostchecker(epost) == false) {
-            lblEpostFeil.setText("Eposen er ugyldig.");
+            lblEpostFeil.setText("Eposten er ugyldig.");
             check6 = false;
         }
 

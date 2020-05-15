@@ -82,6 +82,11 @@ public class NyAdminController {
             check1 = false;
         }
 
+        if (Check.adminbrukernavnLedig(brukernavn) == false) {
+            lblBrukernavnFeil.setText("Brukernavn er opptatt.");
+            check3 = false;
+        }
+
         //Kun dersom check'ene er oppfylt legg til admin
         if (check1 && check2 && check3 && check4 && check5 && check6){
             Admin nyAdmin = new Admin(fornavn, etternavn, brukernavn, passord);
@@ -90,7 +95,7 @@ public class NyAdminController {
             Stage stage = (Stage) avslutt.getScene().getWindow();
             stage.close();
             Advarsel.informasjonsAlert("Administrator registrert", brukernavn +
-                    " er registrert.", "For å lagre til fil klikk <Eksporter fil> i Administratordashboard");
+                    " er registrert.", "");
         }
     }
 }
